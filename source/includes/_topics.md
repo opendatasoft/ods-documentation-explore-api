@@ -60,3 +60,11 @@ action is over, the poll's response will contain the action's response.
 <p>Asynchronous URLs all end with a verb.</p>
 <p>E.g. <code>/datasets/preview_resource</code></p>
 </aside>
+
+## Expanding objects
+
+Many objects contain the ID of a related object in their response properties. For example, a Charge may have an associated Customer ID. Those objects can be expanded inline with the expand request parameter. Objects that can be expanded are noted in this documentation. This parameter is available on all API requests, and applies to the response of that request only.
+
+You can nest expand requests with the dot property. For example, requesting invoice.customer on a charge will expand the invoice property into a full Invoice object, and will then expand the customer property on that invoice into a full Customer object.
+
+You can expand multiple objects at once by identifying multiple items in the expand array.
