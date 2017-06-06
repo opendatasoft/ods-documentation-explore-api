@@ -22,6 +22,8 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
 
+    <link rel="shortcut icon" href="<%= image_path('ods-favicon.ico') %>"/>
+
     <style>
       <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
     </style>
@@ -42,7 +44,16 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-      <%= image_tag "logo.png" %>
+      <div class="toc-header">
+        <%= image_tag "ods-logo.png" %>
+        <p>OpenDataSoft API Documentation</p>
+        <% if current_page.data.search %>
+          <div class="search">
+            <input type="text" class="search" id="input-search" placeholder="Search">
+          </div>
+          <ul class="search-results"></ul>
+        <% end %>
+      </div>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -53,12 +64,6 @@ under the License.
             <% end %>
           <% end %>
         </div>
-      <% end %>
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <% end %>
       <div id="toc">
       </div>

@@ -80,13 +80,23 @@ html, body {
   }
 
   // This is the logo at the top of the ToC
-  &>img {
-    display: block;
-    max-width: 100%;
+  .toc-header {
+    text-align: center;
+    color: $nav-text;
+    padding: 15px;
   }
 
-  &>.search {
+  .toc-header > img {
+    display: block;
+    max-width: 100%;
+    width: 45px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .search {
     position: relative;
+    margin: 0 -15px;
 
     input {
       background: $nav-bg;
