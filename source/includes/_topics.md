@@ -2,63 +2,61 @@
 
 ## Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> Specify your username and password with each call
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl https://mydomain.opendatasoft.com/management/api/v2/datasets/
+  -u username:password
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+The API currently only supports basic auth for authentication.
 
 ## Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+> Sample error
 
-The Kittn API uses the following error codes:
+```json
+{
+  "status_code": 404,
+  "error_key": "UnknownUsernameException",
+  "message": "Unknown username: toto",
+  "raw_message": "Unknown username: {username}",
+  "raw_params": {
+    "username": "toto"
+  }
+}
+```
 
+All errors raised by the platform follow a common pattern. They will be rendered as an HTTP response with the proper
+HTTP status code (400, 404 etc.) and with a body describing the error.
 
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+> Wrapped errors
+
+```json
+{
+  "status_code": 400,
+  "error_key": "InvalidManagementAPIRequestException",
+  "message": "Invalid management API request",
+  "raw_message": "Invalid management API request",
+  "raw_params": {},
+  "errors": [
+	]
+}
+```
+
+When updating a resource, you may get multiple errors because multiple properties of the object you provided in the
+payload have issues. In this case, these errors will be returned together, wrapped with a meta error.
 
 ## Asynchronous calls
+
+While most API calls are synchronous, a few are not due to the impredictable nature of their execution time. Publishing
+a dataset for example can be almost instantaneous but could also go on for hours depending on the size of the dataset
+and the complexity of the processing pipeline.
+
+These calls will return instantaneously with a job ID that you can then use to poll for a status update. Once the
+action is over, the poll's response will contain the action's response.
+
+<aside class="important">
+<p>Asynchronous URLs all end with a verb.</p>
+<p>E.g. <code>/datasets/preview_resource</code></p>
+</aside>
