@@ -15,7 +15,7 @@ after_success:
   - chmod 600 .travis.deploy
   - eval "$(ssh-agent -s)"
   - ssh-add .travis.deploy
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && rsync -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_PATH"2>/dev/null
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && rsync -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_PATH" 2>/dev/null
 notifications:
   slack:
     secure: P/I0H5JW8Dw0ZprYm+ChcKg3D8Ma1Eatm1oXSCrOi9+iev85BnP2gibo3DJKazyvRiG2wbEhShNAe9cX5g0DfLn+LKpR4hSPs99d462PGYfo26d70eRvu1TiX3r3aOChY0x0JKh1qP5sqxbHyzVqIiMn1pnQ5NOauc1CDHMjNQ5gtVcxe7VUI7tGeyslJ4q6Pg3MeNEcWxLJlJZf37krTU6VDT2j4PsQd7z2pGodNW2P/x7LPcUCSBbmkmq2Bs8jIKJaaI5LIYN3hd/gXW6blHDGLeO8FY9nLF8vBgGkRXqn+VITVYLsgnoxKmypqN75mBgplBesVPATO4EN9h2EIMB22ugHyX5s1ybqsdDMhQPwNegBSq4ocjGnPW4BjQOtwD3U/NmuVd29LK0GmiJYPdsDlOI3zbuWb2AaaMiDdsDNGBJbiMCKhlER37E5lAr/v7SkajIse8uICkxvdXSnYxazQRHUhDHwaeDZS601SBwlLRrayrycD3s4Zc9EWVhftXB97H60qdrvBHDjrTzGNwKNQxRTj1Mxp1C2yv2cdlx7uoCrCtMuiq4kjxlZOaxAD0pL8DGsrKfgu0jslK2BRfA5wMk6BNxLuwcDIg6VJT7Q78s1SJ6NMZQJcAPHdH7m0eq5fQs8fOzAa5OveWnLudWR/KZTLJHEy21krWjT9B8=
