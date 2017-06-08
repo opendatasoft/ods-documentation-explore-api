@@ -11,9 +11,8 @@ toc_footers:
 includes:
   - introduction
   - topics
-  - misc
-  - datasets
-  - reference
+  - jobs
+  - dataset_metadata
 
 search: true
 ---
