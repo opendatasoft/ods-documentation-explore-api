@@ -36,7 +36,6 @@ All endpoints should include:
 
   The URL must include the full path and scheme.
 
-  ```markdown
   ```HTTP
   GET https://{DOMAIN_ID}.opendatasoft.com/api/management/v2/datasets/{DATASET_UID}/metadata/{TEMPLATE_NAME}/{METADATA_NAME}
   ```
@@ -45,12 +44,10 @@ All endpoints should include:
 
   A real-life example. Be careful not to include your actual username and password.
 
-  ```markdown
   ```HTTP
   curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/da_XXXXXX/metadata/default/title/ \
       -u username:password \
       -X DELETE
-  ```
   ```
 
 * An *example response*
@@ -59,7 +56,6 @@ All endpoints should include:
 
   You can do ellipsis with `{...}`.
 
-  ```markdown
   ```json
   {
       "name": "title",
@@ -69,5 +65,4 @@ All endpoints should include:
       "remote_value": "agendav2",
       "override_remote_value": false
   }
-  ```
   ```

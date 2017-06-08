@@ -6,6 +6,7 @@ cache: bundler
 env:
   global:
   - DEPLOY_PATH=/var/www/apidoc/
+  - DEPLOY_BETA_PATH=/var/www/betaapidoc/
   - secure: 0N7jHUCXb2AgKGpAN3necIZJsScF0L+1QtcQC+/cVw0nDgfX2aQLcvJ5deOSsWvTSo1FXwo3lZYuR+SDiWXkuMJjomFw8N266mBIXzXPj6rA3V0yzRGfpPQvPDtPQCDsnwh4EIHUGa4rxXqCIJzFf/rVvK8WZKZDzRdjNoTNisR1TJ7IpqZ+jfuW51YpQyQGzLpxitq9lOHkgWEmQZwvTymH7CHUf9KOh0ug2lIuxeZrYpM2UTF1iZU6rvL1ahaHaqltMYWYokx1zBwFOaq42epyMMNML/IqQojK8rQF9bXMMIaRLg8e0lOfeY1pwIwts6cDaYt8oud0/JRB1Qc21X36nrr3Lz1nGQ+ovCneCXFMGTggXX1z2wdQ27+KNNuAEzCWwR2Wd8Mtcldkst82YHGPvvL08c21BO9rIv0x6/ZtF02deEC6KvzoXK0vSyCDl9aP0Y36K3+TGJ/O0p3tPisKXZEoOlm83KOgks+qMdF/CEKpH9JPXGJYHBjJDr3s8PfEy0Mfsp112deU9iKduSVqjh3LHnbvi5/AqFPFV03bqU6Aw/FaKNE1XMKrTe2e5u75171QBNFBrr0d9udLRQbLYCfI9QvmeWQfdCKLj1dhNTpyqAk2xcxsUPlx1eNspvtMAryOVO4nrjjtlB6KjFzTrgshxC5F+GwNsyU4F1Q=
   - secure: fL9No899ywFs7OwD+/0IzBN6PCnSrB+fDjAiKjMNsr87vZHlmecaD4Q9QFpIaLBxyeBe1UqS4X8kJMAMAd02gvZ/EPp/h0Jp4gHd80XbHTQutEJpOBkW6M/waGwZQ7BrsGkMYj8EH52ylHOLoF3U0fCKbKZ0bDihURRvQyjVXMTxn9R1V0IZx2NNT/jOd1A+u8jhiDPYzNkIsBADCJg6zCKsqbFdH9Gfa5dEs2p+tb/ZWkqnnLuNFhbZW+xzURJUlQrSkrI0iFFtFFnMAWI1Y5WVsvAbUnCikUCDg6l2lOWy5tEEbBHosAWF+esNokuI0NiOc2fueK/BSAPUXKcY2JNcl0PnXDg5RizdF01o7wnWVCO87oEgNHkcLUYq5nxoYXBhSG5W6DfFau10ddpgUjels0o+00zv8SNRK/KT9qMccRVRr7kwXWeguAHs+GbPQPD7LnzNsVY8rOcCDIitUmJRchN0sQ/lNBqZcs61EySP5qWKT3b857dnawdXeq3Dm7VtOvpZ5GEOAJsxCiGbyKE+6JnpCtLH9gd7dtfkjZjP0+OrYU2PJa+aiQiKC33F4CJYBuz7zgjlFVhtuDGLKv3xKFdYVdtLGg4VOFgAG8FFxDHtLmLRGcuWdzu1wg1C0dvPbWoyhemrNZmvgw9O3F8chL0IlMwinieqN/9TJ4Q=
 install: bundle install
@@ -16,6 +17,7 @@ after_success:
   - eval "$(ssh-agent -s)"
   - ssh-add .travis.deploy
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && rsync -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_PATH" 2>/dev/null
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "develop" && rsync -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_BETA_PATH" 2>/dev/null
 notifications:
   slack:
     secure: P/I0H5JW8Dw0ZprYm+ChcKg3D8Ma1Eatm1oXSCrOi9+iev85BnP2gibo3DJKazyvRiG2wbEhShNAe9cX5g0DfLn+LKpR4hSPs99d462PGYfo26d70eRvu1TiX3r3aOChY0x0JKh1qP5sqxbHyzVqIiMn1pnQ5NOauc1CDHMjNQ5gtVcxe7VUI7tGeyslJ4q6Pg3MeNEcWxLJlJZf37krTU6VDT2j4PsQd7z2pGodNW2P/x7LPcUCSBbmkmq2Bs8jIKJaaI5LIYN3hd/gXW6blHDGLeO8FY9nLF8vBgGkRXqn+VITVYLsgnoxKmypqN75mBgplBesVPATO4EN9h2EIMB22ugHyX5s1ybqsdDMhQPwNegBSq4ocjGnPW4BjQOtwD3U/NmuVd29LK0GmiJYPdsDlOI3zbuWb2AaaMiDdsDNGBJbiMCKhlER37E5lAr/v7SkajIse8uICkxvdXSnYxazQRHUhDHwaeDZS601SBwlLRrayrycD3s4Zc9EWVhftXB97H60qdrvBHDjrTzGNwKNQxRTj1Mxp1C2yv2cdlx7uoCrCtMuiq4kjxlZOaxAD0pL8DGsrKfgu0jslK2BRfA5wMk6BNxLuwcDIg6VJT7Q78s1SJ6NMZQJcAPHdH7m0eq5fQs8fOzAa5OveWnLudWR/KZTLJHEy21krWjT9B8=
