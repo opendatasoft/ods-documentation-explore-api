@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - introduction
   - topics
+  - changelog
   - jobs
   - dataset_metadata
 
