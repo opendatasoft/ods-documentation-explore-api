@@ -8,39 +8,7 @@ This object contains all the information necessary to generate a form component 
 
 ### Attributes
 
-> Example object
 
-```json
-{
-    "suggest_url": null,
-    "name": "license",
-    "help_text": null,
-    "choices": [
-        "Licence Ouverte (Etalab)",
-        "Licence Ouverte v2.0 (Etalab)",
-        "Open Database License (ODbL)",
-        "Public Domain",
-        "CC BY",
-        "CC BY-ND",
-        "CC BY-NC-ND",
-        "CC BY-NC",
-        "CC BY-NC-SA",
-        "CC BY-SA",
-        "CC BY-IGO"
-    ],
-    "type": "text",
-    "label": "License"
-}
-```
-
-Attribute | Description
---------- | -----------
-`suggest_url` <br> *string* | The URL of the suggest service
-`name` <br> *string* | Identifier for the object
-`help_text` <br> *string* | Help text describing the constraints and uses of this metadata
-`choices` <br> *array of strings* | List of common values for the metadata (but can accept other values)
-`type` <br> *string* | Nature of the metadata value. <br> Possible values are `text`, `list`, `int`, `geo_shape`
-`label` <br> *string* | Plain english name of the object
 
 ## The metadata object
 
@@ -63,7 +31,7 @@ Attribute | Description
 --------- | -----------
 `name` <br> *string* | Identifier for the object (inherited from the [definition](#the-metadata-definition-object)'s name)
 `template` <br> *string* | Identifier for the metadata template the object falls in
-`definition` <br> *[metadata definition object](#the-metadata-definition-object)* | A metadata definition object <br> *expandable*
+`definition` <br> *[form object](#the-form-object)* | The definition of the metadata type and widget <br> *expandable*
 `value` <br> *type depends on `definition` type* | The object's value (may not be the indexed value, see below)
 `remote_value` <br> *type depends on `definition` type* | The remote object's metadata value (see below)
 `override_remote_value` <br> *boolean* | Flag indicating whether the indexed value is `value` or `remote_value`
