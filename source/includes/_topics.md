@@ -68,7 +68,3 @@ Many objects contain the ID of a related object in their response properties. Fo
 You can nest expand requests with the dot property. For example, requesting metadata.definition on a charge will expand the each metadata value into a full Metadata object, and will then expand the definition property on that metadata value into a full Metadata Definition object.
 
 You can expand multiple objects at once by identifying multiple items in the expand array.
-
-## Concurrency management
-
-Todo

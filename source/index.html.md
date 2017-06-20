@@ -13,9 +13,9 @@ includes:
   - topics
   - datasets
   - changelog
-  - jobs
   - dataset_metadata
   - form_widgets
+  - jobs
 
 search: true
 ---
