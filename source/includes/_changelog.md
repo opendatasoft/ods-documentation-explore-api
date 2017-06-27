@@ -1,21 +1,59 @@
-# Changelog
+# Changes
 
-The changelog of a dataset is the list of all changes that have been made on different sections of the dataset. Every action taken on any resource through POST, PUT or DELETE creates an entry in the changelog. These entries consist of the time and day at which the change occured, the user who created the new state, the diff between the old and the new state of the dataset and the sections in which the change happened.
+The changes of a dataset describe subsequent changes of states that affected the different sections of a dataset. Every action taken on any resource through POST, PUT or DELETE creates a change object that can be retrieved and acted upon.
 
 ## The change object
+
+> An example change object
+
+```json
+{
+    "change_uid": 125,
+    "dataset": {
+        "dataset_uid": "dataset"
+        "domain": "domain"
+    },
+    "user": {
+        "username": "username"
+    },
+    "timestamp": "2017-06-07T15:16:05.701266+00:00",
+    "diff": {
+        "metadata": [
+            "path": ["default", "description"],
+            "old_value": null
+            "new_value": "dataset title"
+            "operation_type": create
+        ]
+    },
+    "sections": [
+        "metadata"
+    ]
+}
+```
+
+The change object contains:
+
+* a unique identifier
+* a reference to the dataset that changed
+* a reference to the user who created the new state
+* the day and time at which the change occured
+* the difference between the old and the new state of the dataset
+* the sections in which the change happened
 
 ### Attributes
 
 Attribute | Description
 --------- | -----------
-`change_id` <br> *string* | Unique identifier for the change
-`dataset` <br> *expandable object* | The dataset 
-`user` <br> *expandable object* | Unique identifier of the dataset linked to the object
-`timestamp` <br> *string* | Unique identifier of the user who created the object
-`diff` <br> *string* | Name of the function the job is running
-`sections` <br> *object* | Parameters passed to the job's function
+`change_uid` <br> *string* | unique identifier for the change
+`dataset` <br> [dataset object](#the-dataset-object) | dataset targeted by the change <br> *expandable*
+`user` <br> [user object](#the-user-object) | user who made the change <br> *expandable*
+`timestamp` <br> *string* | time at which the change was made
+`diff` <br> *string* | difference between the state before and after the change
+`sections` <br> *array* | sections modified by this change
 
 ## List all changes
+
+This endpoint lists all changes made to a dataset.
 
 > Definition
 
@@ -23,20 +61,19 @@ Attribute | Description
 GET https://{DOMAIN_ID}.opendatasoft.com/api/management/v2/datasets/{DATASET_ID}/changes/
 ```
 
-Returns a list of changes for this datasets.
 
 ### Parameters
 
 Parameter | Description
 --------- | -----------
-dataset_id <br> *string* | **required** ID of the dataset whose changes we want to list
+dataset_uid <br> *string* | identifier of the dataset whose changes are to be listed
 
+Returns a list of changes for this datasets.
 
 ```shell
-curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/yourdataset/changes/ \
+curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/changed_dataset/changes/ \
     -u username:password
 ```
-
 
 > Example response
 
@@ -44,47 +81,62 @@ curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/yourdataset/
 [
     {...},
     {
-        "change_id": 126,
+        "change_uid": 126,
         "dataset": {
-            "dataset_id": "yourdataset"
+            "dataset_id": "changed_dataset",
+            "domain": "domain"
         },
         "user": {
             "username": "username"
         },
         "timestamp": "2017-06-07T15:16:05.701266+00:00",
-        "diff": null,
+        "diff": {
+            "security": [{
+               "path": ["user", "bli.blou"],
+               "old_value": None,
+               "new_value": {...},
+               "operation_type": "create"
+            }]
+        },
         "sections": [
-            "metadata",
-            "data"
+            "security"
         ]
     },
     {...}
 ]
 ```
 
-
-
 ## Restore a changes
+
+This endpoint is used to restore a dataset to the state it was before the selected change happened. Restoring a change will not erase the change history, but rather create a new change encapsulating the restoration.
 
 > Definition
 
 ```HTTP
-GET https://{DOMAIN_ID}.opendatasoft.com/api/management/v2/datasets/{DATASET_ID}/restore_change/{CHANGE_ID}/
+PUT https://{DOMAIN_ID}.opendatasoft.com/api/management/v2/datasets/{DATASET_ID}/restore_change/
 ```
 
-Returns a list of changes for this datasets.
+Restore a dataset to the state it was in before the change (undoing the change).
 
 ### Parameters
 
 > Example request
 
 ```shell
-curl https://yourdomain.opendatasoft.com/api/management/v2/restore_change/126/ \
-    -u username:password
+curl -XPUT https://yourdomain.opendatasoft.com/api/management/v2/restore_change/ \
+    -u username:password -d '{ "change_uid": 126 }'
 ```
 
 Parameter | Description
 --------- | -----------
-dataset_id <br> *string* | **required** ID of the dataset to restore to a previous change
-change_id <br> *string* | **required** ID of the change to restore
+`dataset_uid` <br> *string* | identifier of the dataset to restore to a previous change
+`change_uid` <br> *string* | identifier of the change to restore. This parameter must be sent in the json format, inside a json an object
 
+### Response
+> Example response
+
+```http
+HTTP/2 200
+```
+
+On success, a HTTP 200 is returned.
