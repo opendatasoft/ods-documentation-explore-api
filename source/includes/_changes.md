@@ -87,15 +87,17 @@ curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/changed_data
             "domain": "domain"
         },
         "user": {
-            "username": "username"
+            "username": "delbingo"
         },
         "timestamp": "2017-06-07T15:16:05.701266+00:00",
         "diff": {
             "security": [{
-               "path": ["user", "bli.blou"],
-               "old_value": None,
-               "new_value": {...},
-               "operation_type": "create"
+                "path": ["user", "mr_manager"],
+                "old_value": None,
+                "new_value": {
+                    "data_visible": true
+                },
+                "operation_type": "create"
             }]
         },
         "sections": [
