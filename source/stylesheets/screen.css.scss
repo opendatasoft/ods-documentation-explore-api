@@ -344,7 +344,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6 {
+  &>h1, &>h2 {
     clear: both;
   }
 
@@ -499,6 +499,21 @@ html, body {
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    margin-left: $main-padding;
+    margin-right: calc(50% + #{$main-padding});
+
+    &:before {
+      display: block;
+      content: 'Note';
+      position: static;
+      background-color: $nav-active-bg;
+      color: white;
+      padding: 1em $main-padding;
+      margin-left: -$main-padding;
+      margin-right: -$main-padding;
+      margin-top: -1em;
+      margin-bottom: 1em;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -548,6 +563,7 @@ html, body {
 
     padding: 2em $main-padding;
     margin: 0;
+    margin-bottom: 2em;
     width: $examples-width;
 
     float:right;
@@ -571,14 +587,8 @@ html, body {
   }
 
   blockquote {
-    &>p {
-      background-color: $code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
-    }
+    padding: 0 $main-padding;
+    background-color: transparent;
   }
 }
 
