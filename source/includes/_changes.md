@@ -83,7 +83,7 @@ curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/changed_data
     {
         "change_uid": 126,
         "dataset": {
-            "dataset_id": "changed_dataset",
+            "dataset_uid": "changed_dataset",
             "domain": "domain"
         },
         "user": {
