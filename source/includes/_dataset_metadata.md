@@ -31,7 +31,7 @@ Attribute | Description
 --------- | -----------
 `name` <br> *string* | Identifier for the object (inherited from the [definition](#the-metadata-definition-object)'s name)
 `template` <br> *string* | Identifier for the metadata template the object falls in
-`definition` <br> *[form object](#the-form-object)* | The definition of the metadata type and widget <br> *expandable*
+`definition` <br> *[form object](#the-form-object)* <br> <em class="expandable">expandable</em> | The definition of the metadata type and widget
 `value` <br> *type depends on `definition` type* | The object's value (may not be the indexed value, see below)
 `remote_value` <br> *type depends on `definition` type* | The remote object's metadata value (see below)
 `override_remote_value` <br> *boolean* | Flag indicating whether the indexed value is `value` or `remote_value`

@@ -9,8 +9,8 @@ The changelog of a dataset is the list of all changes that have been made on dif
 Attribute | Description
 --------- | -----------
 `change_id` <br> *string* | Unique identifier for the change
-`dataset` <br> *expandable object* | The dataset 
-`user` <br> *expandable object* | Unique identifier of the dataset linked to the object
+`dataset` <br> <em class="expandable">expandable</em> | The dataset
+`user` <br> <em class="expandable">expandable</em> | Unique identifier of the dataset linked to the object
 `timestamp` <br> *string* | Unique identifier of the user who created the object
 `diff` <br> *string* | Name of the function the job is running
 `sections` <br> *object* | Parameters passed to the job's function
