@@ -45,8 +45,8 @@ The change object contains:
 Attribute | Description
 --------- | -----------
 `change_uid` <br> *string* | unique identifier for the change
-`dataset` <br> [dataset object](#the-dataset-object) | dataset targeted by the change <br> *expandable*
-`user` <br> [user object](#the-user-object) | user who made the change <br> *expandable*
+`dataset` <br> *[dataset object](#the-dataset-object)* <br> <em class="expandable">expandable</em> | dataset targeted by the change <br> *expandable*
+`user` <br> *[user object](#the-user-object)* <br> <em class="expandable">expandable</em> | user who made the change <br> *expandable*
 `timestamp` <br> *string* | time at which the change was made
 `diff` <br> *string* | difference between the state before and after the change
 `sections` <br> *array* | sections modified by this change
