@@ -1,4 +1,4 @@
-# Changes
+# Dataset Changes
 
 The changes of a dataset describe subsequent changes of states that affected the different sections of a dataset. Every action taken on any resource through POST, PUT or DELETE creates a change object that can be retrieved and acted upon.
 
@@ -10,20 +10,20 @@ The changes of a dataset describe subsequent changes of states that affected the
 {
     "change_uid": 125,
     "dataset": {
-        "dataset_uid": "dataset"
+        "dataset_uid": "dataset",
         "domain": "domain"
     },
     "user": {
-        "username": "username"
+        "username": "john_smith"
     },
     "timestamp": "2017-06-07T15:16:05.701266+00:00",
     "diff": {
-        "metadata": [
+        "metadata": [{
             "path": ["default", "description"],
-            "old_value": null
-            "new_value": "dataset title"
-            "operation_type": create
-        ]
+            "old_value": null,
+            "new_value": "dataset title",
+            "operation_type": "create"
+        }]
     },
     "sections": [
         "metadata"
@@ -87,13 +87,13 @@ curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/changed_data
             "domain": "domain"
         },
         "user": {
-            "username": "delbingo"
+            "username": "john_smith"
         },
         "timestamp": "2017-06-07T15:16:05.701266+00:00",
         "diff": {
             "security": [{
-                "path": ["user", "mr_manager"],
-                "old_value": None,
+                "path": ["user", "jane_doe"],
+                "old_value": null,
                 "new_value": {
                     "data_visible": true
                 },
