@@ -12,7 +12,7 @@ includes:
   - introduction
   - topics
   - datasets
-  - changelog
+  - changes
   - dataset_metadata
   - form_widgets
   - jobs
