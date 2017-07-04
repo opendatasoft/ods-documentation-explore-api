@@ -31,4 +31,4 @@ Attribute | Description
 `published` <br> *boolean*       | Flag indicating whether the dataset is published or not
 `default_security` <br> *object* |
 `visibility` <br> *string*       | Defines if the dataset is visible for anonymous visitors <br> Can be `domain` if visibility is the same as the domain's visibility, or `restricted` if access is restricted to allowed users and groups
-`dataset_processing_status` <br> *[dataset processing status object](#dataset-processing-status)* | Keyword indicating if the dataset is waiting to be published, currently being published or if it encountered errors during last publishing <br> *expandable*
+`dataset_processing_status` <br> *[dataset processing status object](#dataset-processing-status)* <br> <em class="expandable">expandable</em> | Keyword indicating if the dataset is waiting to be published, currently being published or if it encountered errors during last publishing
