@@ -50,7 +50,7 @@ The `master` branch is automatically deployed to https://docs.opendatasoft.com/a
 * **Always add an example**
   Each section or subsection should include an example illustrating what it's about. If the objects you are describing can have different shapes depending on some value, include multiple examples.
 * **Use bullet points, not enumeration**
-Eviter les parenthèses
+* **No (frigging) parentheses** They are used to signify content of lesser importance.
 * **2, not two**
 * **Neither we nor you** Use another phrasing
 * **Identifier rather than ID** One is understandable by everyone, the other only by seasoned developers
