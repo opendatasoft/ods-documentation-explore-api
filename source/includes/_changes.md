@@ -4,7 +4,7 @@ The changes of a dataset describe subsequent changes of states that affected the
 
 ## The change object
 
-> An example change object
+> Example change object
 
 ```json
 {
@@ -44,12 +44,12 @@ The change object contains:
 
 Attribute | Description
 --------- | -----------
-`change_uid` <br> *string* | unique identifier for the change
-`dataset` <br> *[dataset object](#the-dataset-object)* <br> <em class="expandable">expandable</em> | dataset targeted by the change <br> *expandable*
-`user` <br> *[user object](#the-user-object)* <br> <em class="expandable">expandable</em> | user who made the change <br> *expandable*
-`timestamp` <br> *string* | time at which the change was made
-`diff` <br> *string* | difference between the state before and after the change
-`sections` <br> *array* | sections modified by this change
+`change_uid` <br> *string* | Unique identifier for the change
+`dataset` <br> *[dataset object](#the-dataset-object)* <br> <em class="expandable">expandable</em> | Dataset targeted by the change <br> *expandable*
+`user` <br> *[user object](#the-user-object)* <br> <em class="expandable">expandable</em> | User who made the change <br> *expandable*
+`timestamp` <br> *string* | Time at which the change was made
+`diff` <br> *string* | Difference between the state before and after the change
+`sections` <br> *array* | Sections modified by this change
 
 ## List all changes
 
@@ -108,7 +108,7 @@ curl https://yourdomain.opendatasoft.com/api/management/v2/datasets/changed_data
 ]
 ```
 
-## Restore a changes
+## Restore a change
 
 This endpoint is used to restore a dataset to the state it was before the selected change happened. Restoring a change will not erase the change history, but rather create a new change encapsulating the restoration.
 
@@ -131,8 +131,8 @@ curl -XPUT https://yourdomain.opendatasoft.com/api/management/v2/restore_change/
 
 Parameter | Description
 --------- | -----------
-`dataset_uid` <br> *string* | identifier of the dataset to restore to a previous change
-`change_uid` <br> *string* | identifier of the change to restore. This parameter must be sent in the json format, inside a json an object
+`dataset_uid` <br> *string* | Identifier of the dataset to restore to a previous change
+`change_uid` <br> *string* | Identifier of the change to restore. This parameter must be sent in the json format, inside a json object
 
 ### Response
 > Example response
