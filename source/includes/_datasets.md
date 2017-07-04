@@ -15,7 +15,7 @@ Through the management API, it is possible to:
 
 ## The dataset object
 
-Datasets are identifed by 2 kinds of identifiers:
+Datasets are identified by 2 kinds of identifiers:
 
 - the `dataset_uid` that is automatically set, and will never change through the dataset's lifetime
 - the `dataset_id`, that can be chosen during dataset creation or changed on an unpublished dataset
