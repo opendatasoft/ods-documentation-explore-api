@@ -2,16 +2,16 @@
 
 Datasets are at the core of the platform. A dataset is composed of:
 
-- metadata like a title, a description and keywords, that make users able to discover it in the portal's catalog
+- the actual data available on the portal (not available via the management API)
+- metadata like a title, a description and keywords describing the data, so users can discover it in the portal's catalog
 - configurations for processors, visualisation and security, which define the way data will be processed by the platform and made visible to users
-- and of course, the actual data you want to put on your portal (not available via the management API)
 
-Through the management API, you can:
+Through the management API, it is possible to:
 
 - create datasets
 - attach resources to datasets
 - configure datasets processing pipeline, visualisations and security attributes
-- publish them
+- publish datasets
 
 ## The dataset object
 
