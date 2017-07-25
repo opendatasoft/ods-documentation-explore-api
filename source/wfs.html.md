@@ -10,6 +10,8 @@ toc_footers:
 
 includes:
  - wfs/introduction
+  - common/authentication
+  - common/oauth2
  - wfs/get_capabilities
  - wfs/describe_feature_type
  - wfs/get_feature

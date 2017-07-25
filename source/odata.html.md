@@ -9,7 +9,9 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
- - odata/excel_integration
- - odata/odata_basics
+  - common/authentication
+  - common/oauth2
+  - odata/excel_integration
+  - odata/odata_basics
 search: true
 ---
