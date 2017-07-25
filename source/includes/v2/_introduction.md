@@ -1,6 +1,6 @@
 # Introduction
 
-> API endpoint
+> Search API endpoint for domain mydomain
 
 ```text
 https://mydomain.opendatasoft.com/api/v2
