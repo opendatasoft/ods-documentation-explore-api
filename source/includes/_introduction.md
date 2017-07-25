@@ -3,9 +3,13 @@
 > API endpoint
 
 ```text
-https://mydomain.opendatasoft.com/api/management/v2
+https://mydomain.opendatasoft.com/api/v2
 ```
 
-The OpenDataSoft management API is organized around REST. Our API has predictable, resource-oriented URLs, and uses
-HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs,
-which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
+The OpenDataSoft search API v2 is organized around REST. It provides access in a coherent, hierarchical way to all the data available through the platform. 
+
+- only HTTP `GET` method is supported
+- all API endpoints return JSON
+- endpoints are organized in a hierarchical way describing the relative relationship between objects
+- all responses contain a list of links allowing easy and relevant navigation through the API endpoints
+- search API use the same internal query language. That means, that parameters "mostly" work the same way in all entrypoints

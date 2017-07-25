@@ -10,12 +10,11 @@ toc_footers:
 
 includes:
   - introduction
-  - topics
-  - datasets
-  - changes
-  - dataset_metadata
-  - form_widgets
-  - jobs
+  - authentication
+  - sources
+  - metadata
+  - catalog
+  - odsql
 
 search: true
 ---
