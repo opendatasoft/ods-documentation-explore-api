@@ -18,7 +18,7 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates'
 
 ### HTTP Request
 
-`GET /api/v2/metadata_templates`
+`GET /api/v2/catalog/metadata_templates`
 
 
 ## Metadata templates for a specific type
