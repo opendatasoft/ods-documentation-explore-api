@@ -194,6 +194,14 @@ Include and exclude are functions that accept fields name. Fields listed in incl
 
 ## Where clause
 
+> Where clause with boolean operators
+
+```plain-text
+my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, geom'POINT(1 1)', 1 km)
+```
+
+> This where clause filters results where numeric_field > 10 and (my_text_field contains the word `paris` or distance between my_geo_field and the point with 1,1 as lat,lon is under 1 kilometer)
+
 The where clause can be used in the whole search API as the parameter where.
 Its goal is to filter rows with a combination of where expressions.
 A where expression can be :
@@ -204,6 +212,30 @@ A where expression can be :
 - a filter expression
 
 Where expressions can be combined thanks to boolean operators (`AND`, `OR`, `NOT`) and grouped via parenthesiss.
+
+<div class=“clearfix”></div>
+### Boolean operators
+
+> Boolean operators
+
+```plain-text
+my_boolean_field OR my_numeric_field > 50 and my_date_field > date'1972'
+# Results can have my_boolean_field to true. They can also have my_numeric_field greater than 50 and my_date_field older than 1972
+
+(my_boolean_field OR my_numeric_field > 50) and my_date_field > date'1972'
+# Results must have my_date_field older than 1972. They also must have my_boolean_field to true or my_numeric_field greater than 50
+```
+
+Where expression can use boolean operators to express boolean filter.
+
+- `AND`: results must match left and right expressions
+- `OR`: results must match left or right expression
+- `NOT`: inverse next expression
+
+`AND` has precedence over `OR` operator. That means that, in the expression `a or b and c`, the sub-expression `b and c` is interpreted and executed before. It can be rewritten with parenthesis: `a or (b and c)`.
+
+In order to change operator precedence, it is possible to use parenthesis in expression. To give precedence to `OR` operator, above expression can be rewritten to `(a or b) and c`.
+
 
 ### Filter functions
 
@@ -247,7 +279,28 @@ The bbox function limits the result set to a rectangular box defined by its top 
 <div class=“clearfix”></div>
 ### Filter expression
 
-A filter expression 
+<div class=“clearfix”></div>
+#### Boolean field filter
+
+> Example of a boolean field filter
+
+```plain-text
+my_boolean_field          # Filters results where boolean_field is true
+my_boolean_field is false # Filters results where boolean_field is false
+```
+
+A boolean field filter takes a boolean field and restricts result only if boolean value is `true`.
+There are two ways of creating a filter expression:
+
+- with a field_literal only. In that case, it filters the result where field_literal value is `true`
+- with a field_literal followed by `is` keyword then `true` or `false` keywords.
+
+#### Usage
+
+- `<field_literal>`
+- `<field_literal> is (true|false)`
+`<field_literal>` must be a valid boolean field
+
 
 <div class=“clearfix”></div>
 #### Like filter

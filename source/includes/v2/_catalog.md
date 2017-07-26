@@ -8,6 +8,29 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/'
 
 A catalog is considered as a list of datasets for a domain. Catalog operations are all API entrypoints available on datasets.
 
+## Requestable fields
+
+> Filter on `default.modified` basic meta
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
+```
+
+> Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
+
+`where` and `sort` expressions can contain field name from dataset. These fields can either be technical dataset fields or metadata.
+
+List of technical fields : 
+
+Field name | Description
+---------- | -----------
+datasetid | Human readable dataset identifier
+has_records | Boolean field indicating if dataset has records
+features | List of dataset features. Possible values : calendar, geo, image, apiproxy, timeserie, aggregate
+
+In expression, metadata must be fully qualified with their template name. For basic metadata, this prefix is optionnal. 
+
+A list of basic metadata can be retrieve with [metadata API](#metadata-templates-for-a-specific-type)
 
 ## Search datasets
 
@@ -35,18 +58,17 @@ This entrypoint provides a search facility in the dataset catalog.
 It is not possible to retrieve all datasets from a domain with this API. For that use case, <bold>export</bold> entrypoints must be used.
 </aside>
 
-
 ### HTTP Request
 
 `GET /api/v2/catalog/datasets`
 
 ### URL Parameters
 
-List of available parameters for dataset search API. Each of these parameter has his own sub section for a more detailed description.
+List of available parameters for dataset search API.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-where | None | Filter expression used to restrict returned datasets
+where | None | Filter expression used to restrict returned datasets. see [ODSQL documentation](#where-clause)
 start | 0 | Index of the first item to return
 rows | 10 | Number of items to return. Max value : 100
 include_app_metas | false | Explicitely request application metas for each datasets
@@ -56,37 +78,32 @@ timezone | UTC | Timezone applied on datetime fields in query and response
 Value of start + rows cannot exceed 10000. Use export API to download all datasets.
 </aside>
 
-### Requestable fields
+## Aggregate datasets
 
-> Filter on `default.modified` basic meta
-
-```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
-```
-
-> Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
-
-`where` and `sort` expressions can contain field name from dataset. These fields can either be technical dataset fields or metadata.
-
-List of technical fields : 
-
-Field name | Description
----------- | -----------
-datasetid | Human readable dataset identifier
-has_records | Boolean field indicating if dataset has records
-features | List of dataset features. Possible values : calendar, geo, image, apiproxy, timeserie, aggregate
-
-In expression, metadata must be fully qualified with their template name. For basic metadata, this prefix is optionnal. 
-
-A list of basic metadata can be retrieve with [metadata API](#metadata-templates-for-a-specific-type)
-
-#### Where
-
-> Get only datasets with geo feature
+> Get number of datasets
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=features:"geo"'
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*)'
 ```
+
+This entrypoint provides an aggregation facility in the datasets catalog.
+
+### HTTP Request
+
+`GET /api/v2/catalog/aggregates`
+
+### URL Parameters
+
+List of available parameters for dataset search API.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+where | None | Filter expression used to restrict returned datasets. see [where clause in ODSQL documentation](#where-clause)
+select | None | Select clause for aggregation. see [select clause in ODSQL documentation](#select-clause)
+group_by | None | Group by clause for aggregation. see [group_by clause in ODSQL documentation](#group-by-clause)
+timezone | UTC | Timezone applied on datetime fields in query and response
+limit | 10 | Number of items to return. Max value : 100
+
 
 ## Export datasets
 
