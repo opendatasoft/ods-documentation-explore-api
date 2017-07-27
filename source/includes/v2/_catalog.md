@@ -1,4 +1,4 @@
-# Catalog operations
+# Catalog
 
 > List available entrypoints on a catalog
 
@@ -8,19 +8,21 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/'
 
 A catalog is considered as a list of datasets for a domain. Catalog operations are all API entrypoints available on datasets.
 
-## Requestable fields
+## Field literal in catalog queries
 
-> Filter on `default.modified` basic meta
+Some parameters, such as `select`, `where` or `group_by`, in the following entry points accept [field literal](#field-literal)
+In catalog search, a field literal can either be a technical field or a metadata.
+
+<div class=“clearfix”></div>
+### Dataset technical fields: 
+
+>  Use technical field as field literal
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
+# Count dataset grouped by their features (`features` is a technical field)
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
+# Note : (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
-
-> Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
-
-`where` and `sort` expressions can contain field name from dataset. These fields can either be technical dataset fields or metadata.
-
-List of technical fields : 
 
 Field name | Description
 ---------- | -----------
@@ -28,9 +30,27 @@ datasetid | Human readable dataset identifier
 has_records | Boolean field indicating if dataset has records
 features | List of dataset features. Possible values : calendar, geo, image, apiproxy, timeserie, aggregate
 
-In expression, metadata must be fully qualified with their template name. For basic metadata, this prefix is optionnal. 
+<div class=“clearfix”></div>
+### Dataset metadata
 
-A list of basic metadata can be retrieve with [metadata API](#metadata-templates-for-a-specific-type)
+>  Use metadata as field literal
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
+# Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
+curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
+
+# Get datasets that have been downloaded more than a 100 time
+# download_count meta must be prefixed with its metadata template: 'explore'  
+curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
+```
+
+All metadata can be use as field literal in query parameters.
+They must be fully qualified with their template name. It means that the name of the metadata must be prefixed by its template name followed by a dot: `<template_name>.<metadata_name>`
+For basic metadata, this prefix is optionnal. 
+
+The list of metadata and their types for a domain can be obtained with the metadata [metadata API](#metadata-templates-for-a-specific-type)
+
 
 ## Search datasets
 
@@ -80,13 +100,75 @@ Value of start + rows cannot exceed 10000. Use export API to download all datase
 
 ## Aggregate datasets
 
-> Get number of datasets
+> Aggregation query without group_by
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*)'
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
+```
+
+> Returns an array with one element
+
+```json
+{
+    "aggregations": [
+        {
+            "count": 1234
+        }
+    ]
+}
+```
+
+> Aggregation query with a single group_by
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
+```
+
+> Returns an array with an object for each `feature` containing feature's name and number of datasets.
+```json
+{
+    "aggregations": [
+        {
+            "features": "analyze",
+            "count": 123
+        },
+        {
+            "features": "geo",
+            "count": 45
+        },
+        ...
+    ]
+}
+```
+
+
+> Invalid aggregation with a selected field not present in group_by
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
+```
+
+> Valid aggregation with an aggregation function
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
+```
+
+> Aggregation with an multiple group_by
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
 ```
 
 This entrypoint provides an aggregation facility in the datasets catalog.
+Aggregation query returns a JSON array containing an object for each group created by the query.
+Each JSON object contains key/value pair for each select instruction.
+Without `group_by` parameter, it returns an array with only one object.
+
+`select` parameter can only be composed of aggregation function or by aggregated value. 
+It means that literal_field in select clause outside aggregation function must be present in `group_by` clauses.
+
+If query contains multiple `group_by` clauses, returned groups are combined together.
 
 ### HTTP Request
 
@@ -102,7 +184,7 @@ where | None | Filter expression used to restrict returned datasets. see [where 
 select | None | Select clause for aggregation. see [select clause in ODSQL documentation](#select-clause)
 group_by | None | Group by clause for aggregation. see [group_by clause in ODSQL documentation](#group-by-clause)
 timezone | UTC | Timezone applied on datetime fields in query and response
-limit | 10 | Number of items to return. Max value : 100
+limit | None | Number of items to return
 
 
 ## Export datasets
@@ -230,3 +312,17 @@ Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.s
 
 #### HTTP Request
 `GET /api/v2/catalog/exports/data.json`
+
+## Lookup dataset
+
+> Lookup airbnb-listings dataset
+
+```shell
+curl 'https://public.opendatasoft.com/api/v2/catalog/datasets/airbnb-listings'
+```
+
+Retrieve information about a specific datasets
+
+### HTTP Request
+`GET /api/v2/catalog/datasets/<dataset_id>`
+
