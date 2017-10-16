@@ -9,12 +9,12 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
- - wfs/introduction
+  - wfs/introduction
   - common/authentication
   - common/oauth2
- - wfs/get_capabilities
- - wfs/describe_feature_type
- - wfs/get_feature
+  - wfs/get_capabilities
+  - wfs/describe_feature_type
+  - wfs/get_feature
 
 search: true
 ---
