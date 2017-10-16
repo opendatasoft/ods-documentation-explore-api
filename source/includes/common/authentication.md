@@ -29,7 +29,7 @@ API keys are passed along requests through the query parameter `apikey`.
 
 > Unauthenticated request on private portal
 
-``` text
+``` http
 > GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
 
 < HTTP/1.0 401 Unauthorized
@@ -40,7 +40,7 @@ For example, accessing a private portal's catalog unauthenticated will return a 
 
 > Request authenticated with an API key
 
-``` text
+``` http
 > GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
 
 < HTTP/1.0 200 OK

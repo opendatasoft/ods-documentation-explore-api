@@ -66,7 +66,7 @@ The API response contains three headers to indicate the current state of a user'
 
 > Example of an error occuring when you reach the domain requests limit
 
-``` text
+``` http
 > GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
@@ -84,7 +84,7 @@ The API response contains three headers to indicate the current state of a user'
 
 > Example of an error occuring when you reach the requests limit for anonymous users
 
-``` text
+``` http
 > GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
