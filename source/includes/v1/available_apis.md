@@ -1,8 +1,8 @@
 # Explore API V1
 
-OpenDataSoft datasets can be accessed by developers through HTTP REST APIs.
+OpenDataSoft datasets are accessible by developers through an HTTP REST APIs.
 
-The domain http://public.opendatasoft.com will be use to illustrate examples given in this forum.
+The domain <https://examples.opendatasoft.com> will be use to illustrate examples given in this forum.
 
 ![API Console](v1/available_apis__console.png)
 
@@ -10,70 +10,57 @@ The domain http://public.opendatasoft.com will be use to illustrate examples giv
 
 The available APIs are listed below.
 
-API Name | API Short Description
--------- | ---------------------
-Dataset search API <br> `Dataset search API` | Search datasets
-Dataset lookup API <br> `Dataset lookup API` | Find a dataset based on its identifier
-Records search API <br> `Records search API` | Search records within a specific dataset
-Analysis API <br> `Analysis API` | Build advanced aggregations using records of a specific dataset
-Download API <br> `Download API` | Efficiently download a large number of records from a specific dataset
-Geo clustering API <br> `Geo clustering API` | Build geo clusters using records of a specific dataset
-Real Time Push API <br> `Real Time Push API` | Real time data integration
-Multimedia Download API <br> `Multimedia Download API` | Download multimedia content attached with datasets or records
+API Name                    | Description
+----------------------------|--------------------------------------------------------------------------
+**Dataset search API**      | Search datasets in a catalog
+**Dataset lookup API**      | Find a dataset based on its identifier
+**Records search API**      | Search records within a given dataset
+**Analysis API**            | Build advanced aggregations of records from a given dataset
+**Download API**            | Efficiently download a large number of records from a given dataset
+**Geo clustering API**      | Build geo clusters of records from a given dataset
+**Real time push API**      | Push new records to a given dataset in real time
+**Multimedia download API** | Download multimedia content attached to a dataset or a record
 
-All these APIs (except the Multimedia download API) return JSON by default. Some of them can return alternate content.
+These APIs return JSON by default, except the download API that returns CSV by default but supports several output formats like JSON and geographic formats, and the multimedia download API that depends on the file.
 
-All these APIs (except the Real Time Push API) support cross-domain access from
-a browser, using [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
-For older browsers or other specific purposes, [JSONP](http://en.wikipedia.org/wiki/JSONP) is supported when
-returning JSON content by adding a `callback` parameter.
+These APIs, except the real time push API, support cross-domain access from a browser using [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](http://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
 
-## Finding the dataset identifier
+The real time push API is very specific and will not be detailed in the following documentation. Please refer to the [platform documentation](https://docs.opendatasoft.com/en/sourcing_and_processing_data/realtime.html#pushing-real-time-data) for more information about this API.
 
-You are looking for specific data to build your application but you don't know yet in which dataset you can find these
-data?
+## Finding a dataset identifier
 
-You can simply use the exploration console by clicking on the "Explore" link in the top page menu. Once you have
-identified the dataset you need, just go to this dataset's "Information" tab where you'll find the dataset id.
+To access a dataset directly via the dataset lookup API or record related APIs, its **identifier** must be provided. This identifier is found in the information tab of each dataset.
 
 ## HTTP Methods
 
-
-Except for the Real Time Push API which respects more strictly RESTful concepts, all the APIs endpoints accept GET and
-POST HTTP methods. GET methods shall be prefered of course. The POST can be used to workaround browsers / libraries /
-proxies limitations regarding the size of the HTTP URL.
+All API endpoints support both GET and POST requests. GET methods are preferred, but POST methods can be used to work around browser, library or proxy limitations regarding the size of HTTP URLs.
 
 ## Security
 
-All the APIs are secured using the same authentication and authorization model.
+All API endpoints are protected by the same authentication and authorization model.
 
-Users can only see what they are allowed to see:
+Anonymous access and authenticated users can be restricted to:
 
-* Datasets in a domain
-* Records in a dataset
+- a subset of the domain's datasets
+- a subset of records in a given dataset
 
-APIs are available both in HTTP and HTTPS. We advise API users to always use the HTTPS endpoint.
+All API endpoints are available in HTTPS, which use is highly recommended wherever possible.
 
 The following authentication modes are available:
 
-- **Basic HTTP authentication:** Provide your account's login and password
-  [http://en.wikipedia.org/wiki/Basic_access_authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)
-- **Simple key authentication:** Provide an API key you generated for your account (API keys work on any domain an
-  OpenDataSoft user has access to)
-
-Note that when you are connected with a Browser session, API calls triggered from that browser will reuse your current
-credentials.
+- **HTTP Basic authentication:** via an account login and password ([https://en.wikipedia.org/wiki/Basic_access_authentication](https://en.wikipedia.org/wiki/Basic_access_authentication))
+- **API key authentication:** via an API key generated from [the account settings page](https://docs.opendatasoft.com/en/using_api/authentication.html#finding-and-generating-api-keys)
+- **Session authentication:** API calls performed from a browser will authenticate logged users via the OpenDataSoft session cookie
 
 ## Quotas
 
-APIs endpoints are subject to quota-based limitations. Contact the domain administrator or the dataset owner when you
-reach a limit.
+All API endpoints are subject to quota-based limitations. According to the domain configuration, authenticated users may have extended quotas compared to anonymous access. Please contact the domain administrator for more information about a user's quotas.
 
-The API response contains three headers to indicate the current state of your quota:
+The API response contains three headers to indicate the current state of a user's quota:
 
-- **X-RateLimit-Limit** indicates the total number of API calls you can do in a single day (resets at midnight UTC)
-- **X-RateLimit-Remaining** indicates the number of API calls currently remaining
-- **X-RateLimit-Reset** indicates the [epoch](http://en.wikipedia.org/wiki/Unix_time) of the next reset time
+- **X-RateLimit-Limit** indicates the total number of API calls the user can do in a single day (resets at midnight UTC)
+- **X-RateLimit-Remaining** indicates the remaining number of API calls for the user until reset
+- **X-RateLimit-Reset** indicates the [epoch](https://en.wikipedia.org/wiki/Unix_time) of the next reset time
 
 ## Errors handling
 
