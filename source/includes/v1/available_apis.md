@@ -64,16 +64,40 @@ The API response contains three headers to indicate the current state of a user'
 
 ## Errors handling
 
-> Example of an error occuring when you reach a quota limit
+> Example of an error occuring when you reach the domain requests limit
 
-```text
-HTTP return code:
-    403
-HTTP response body:
-    {
-        "errorcode": 10001,
-        "error"": "License Violation Exception : You have exceeded your quotas."
-    }
+``` text
+> GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+
+< HTTP/1.0 429 TOO MANY REQUESTS
+```
+
+``` json
+{
+  "errorcode": 10002,
+  "reset_time": "2017-10-17T00:00:00Z",
+  "limit_time_unit": "day",
+  "call_limit": 10000,
+  "error": "Too many requests on the domain. Please contact the domain administrator."
+}
+```
+
+> Example of an error occuring when you reach the requests limit for anonymous users
+
+``` text
+> GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+
+< HTTP/1.0 429 TOO MANY REQUESTS
+```
+
+``` json
+{
+  "errorcode": 10005,
+  "reset_time": "2017-10-17T00:00:00Z",
+  "limit_time_unit": "day",
+  "call_limit": 1000,
+  "error": "You have exceeded the requests limit for anonymous users."
+}
 ```
 
 When an error occurs, a JSON object describing the error is returned by the API.
