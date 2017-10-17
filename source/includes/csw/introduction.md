@@ -1,7 +1,8 @@
 # Introduction
 
-OpenDataSoft datasets can be accessed through a Catalog Service for the Web (CSW). This is a standard for exposing a
-catalogue of geospatial records in XML. The OpenDataSoft platform uses the CSW specification version 2.0.2.
+OpenDataSoft datasets can be accessed through a Catalog Service for the Web (CSW) API. This is a standard for exposing a catalogue of geospatial records in XML.
+
+The OpenDataSoft platform uses the CSW specification version 2.0.2.
 
 ## Operations supported
 
@@ -20,15 +21,15 @@ Operation | Description
 > Service entry address
 
 ```http
-GET http://public.opendatasoft.com/api/csw
+GET https://examples.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the the domain `http://public.opendatasoft.com` as an example but you should replace it
+For this documentation, we use the the domain `https://examples.opendatasoft.com` as an example but you should replace it
 by your custom domain name.
 
-The CSW supports both `GET` and `POST` HTTP methods.
+The CSW API supports both `GET` and `POST` HTTP methods.
 
 ## Request Headers
 
@@ -39,6 +40,7 @@ HTTP request.
 
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
 encoding.
+
 When the HTTP `POST` method is used, the operation request message is encoded as an XML document in the body
 of the `POST` message.
 
@@ -52,13 +54,6 @@ Operation | Description | Possible values | Optionality and use
 
 ## Exception reports
 
-When an error occurs, the service respond to the client using an Exception Report message to describe the error.
-
-Name | Definition | Data type and value | Multiplicity and use
----- | ---------- | ------------------- | --------------------
-`ExceptionText` | Text describing specific exception represented by the exceptionCode | Character String type, not empty. Value is an exception description as defined by individual servers | Zero or more (optional). Omitted only when no more useful information available
-`exceptionCode` | Code representing type of this exception | Character String type, not empty. Allowed values are specified by each implementation specification and server <br> implementation | One (mandatory)
-`locator` | Indicator of location in the client's operation request where this exception was encountered | Character String type, not empty. Contents defined for each allowed exceptionCode value for each operation | Zero or one (optional). Omitted when no useful value available
 
 > Example exception
 
@@ -72,4 +67,10 @@ Name | Definition | Data type and value | Multiplicity and use
 </ExceptionReport>
 ```
 
-# Operations
+When an error occurs, the service respond to the client using an Exception Report message to describe the error.
+
+Name | Definition | Data type and value | Multiplicity and use
+---- | ---------- | ------------------- | --------------------
+`ExceptionText` | Text describing specific exception represented by the exceptionCode | Character String type, not empty. Value is an exception description as defined by individual servers | Zero or more (optional). Omitted only when no more useful information available
+`exceptionCode` | Code representing type of this exception | Character String type, not empty. Allowed values are specified by each implementation specification and server <br> implementation | One (mandatory)
+`locator` | Indicator of location in the client's operation request where this exception was encountered | Character String type, not empty. Contents defined for each allowed exceptionCode value for each operation | Zero or one (optional). Omitted when no useful value available

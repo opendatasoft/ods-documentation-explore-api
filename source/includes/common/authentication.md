@@ -10,7 +10,7 @@ For the platform to authenticate a user, you need to either:
 
 ## Finding and generating API keys
 
-In order to see the list of your API keys, head to your profile page on `http://<youropendatasoftportal>.com/account/` (or by clicking on your name in the header).
+In order to see the list of your API keys, head to your profile page on `https://<youropendatasoftportal>.com/account/` (or by clicking on your name in the header).
 
 ![Link to account settings](common/authentication__profile-link.png)
 

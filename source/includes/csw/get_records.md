@@ -1,5 +1,34 @@
 ## GetRecords
 
+> `GetRecords` operation with the optional `resultType`, `outputSchema` and
+`ElementSetName` parameters
+
+```http
+GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecords&resulttype=results&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&typenames=csw:Record HTTP/1.1
+```
+
+> Same request using a POST method
+
+```http
+POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+```
+
+```xml
+<?xml version="1.0" ?>
+<GetRecords
+  service="CSW"
+  resultType="results"
+  outputSchema="http://www.isotc211.org/2005/gmd"
+  xmlns="http://www.opengis.net/cat/csw/2.0.2"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2/CSW-discovery.xsd">
+  <Query typeNames="Record">
+      <ElementSetName>full</ElementSetName>
+  </Query>
+</GetRecords>
+````
+
 The `GetRecords` operation allows clients to discover resources (datasets). The response is a XML document and
 the output schema can be specified.
 
@@ -18,37 +47,3 @@ Parameter | Description | Optionality and use
 `maxRecords` | Used to define the maximum number of records that should be returned from the result set of a query. | Optional. Value must be a positive integer. Default value is 10.
 `ElementSetName` | Used to indicate which named set the service shall present to the client. It usually defines the level of details present in the result set. | Optional. Values can be `full`, `summary` or `brief`. Default value is `summary`.
 `typeNames` | Used to indicate which named set the service shall present to the client. It usually defines the level of details present in the result set. | Mandatory. Values can be `csw:Record` or `gmd:MD_Metadata`.
-
-### Examples
-
-Here is an example of a `GetRecords` operation with the optional `resultType`, `outputSchema` and
-`ElementSetName` parameters, using a `GET` HTTP method :
-
-```http
-GET http://public.opendatasoft.com/api/csw?service=CSW&request=GetRecords&resulttype=results&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&typenames=csw:Record
-```
-
-And the same request using a `POST` HTTP method :
-
-```http
-POST http://public.opendatasoft.com/api/csw
-```
-
-The request body :
-
-```xml
-<?xml version="1.0" ?>
-<GetRecords
-  service="CSW"
-  resultType="results"
-  outputSchema="http://www.isotc211.org/2005/gmd"
-  xmlns="http://www.opengis.net/cat/csw/2.0.2"
-  xmlns:ogc="http://www.opengis.net/ogc"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2
-  ../../../csw/2.0.2/CSW-discovery.xsd">
-  <Query typeNames="Record">
-      <ElementSetName>full</ElementSetName>
-  </Query>
-</GetRecords>
-````

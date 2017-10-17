@@ -1,4 +1,33 @@
+# Operations
+
 ## GetCapabilities
+
+> Example GET request
+
+```http
+GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider HTTP/1.1
+```
+
+> Example POST request
+
+```http
+POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+```
+
+```xml
+<?xml version="1.0"?>
+<GetCapabilities
+  xmlns="http://www.opengis.net/cat/csw/2.0.2"
+  xmlns:ows="http://www.opengis.net/ows"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2/CSW-discovery.xsd"
+  service="CSW">
+  <ows:Sections>
+      <ows:Section>ServiceIdentification</ows:Section>
+      <ows:Section>ServiceProvider</ows:Section>
+  </ows:Sections>
+</GetCapabilities>
+```
 
 The `GetCapabilities` operation allows clients to retrieve service metadata. The response is a XML document
 containing the information.
@@ -26,37 +55,3 @@ Section name | Contents
 `ServiceProvider` |	Metadata about the organization offering the CSW service.
 `OperationsMetadata` |	Metadata about the CSW operations offered by a the CSW implementation.
 `Filter_Capabilities` |	Metadata about the filter capabilities of the server. The OpenDataSoft CSW currently does not support filters.
-
-### Examples
-
-Here is an example of a `GetCapabilities` operation with the optional `Sections` parameter, using a `GET` HTTP method :
-
-> Example request
-
-```http
-GET http://public.opendatasoft.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider
-```
-
-And the same request using a `POST` HTTP method :
-
-```http
-POST http://public.opendatasoft.com/api/csw
-```
-
-The request body :
-
-```xml
-<?xml version="1.0"?>
-<GetCapabilities
-  xmlns="http://www.opengis.net/cat/csw/2.0.2"
-  xmlns:ows="http://www.opengis.net/ows"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2
-  ../../../csw/2.0.2/CSW-discovery.xsd"
-  service="CSW">
-  <ows:Sections>
-      <ows:Section>ServiceIdentification</ows:Section>
-      <ows:Section>ServiceProvider</ows:Section>
-  </ows:Sections>
-</GetCapabilities>
-```

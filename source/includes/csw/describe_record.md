@@ -1,5 +1,33 @@
 ## DescribeRecord
 
+
+> `DescribeRecord` operation with the optional `TypeName` parameter
+
+```http
+GET https://examples.opendatasoft.com/api/csw?service=CSW&request=DescribeRecord&typename=csw:Record HTTP/1.1
+```
+
+> Same request using a POST method
+
+```http
+POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+```
+
+```xml
+<?xml version="1.0" ?>
+<DescribeRecord
+    service="CSW"
+    version="2.0.2"
+    outputFormat="application/xml"
+    schemaLanguage="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.opengis.net/cat/csw/2.0.2"
+    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2/CSW-discovery.xsd">
+    <TypeName>csw:Record</TypeName>
+</DescribeRecord>
+```
+
 The `DescribeRecord` operation allows clients to discover elements of the information model supported by the
 catalogue service.
 
@@ -13,35 +41,3 @@ The existing parameters in the CSW standard which are not listed in this table a
 Parameter | Description | Optionality and use
 --------- | ----------- | -------------------
 `TypeName` | Unordered list of zero or more type names that are to be described by the catalogue. | Optional. When omitted, return all types known.
-
-### Examples
-
-Here is an example of a `DescribeRecord` operation with the optional `TypeName` parameter, using a `GET` HTTP method :
-
-```http
-GET http://public.opendatasoft.com/api/csw?service=CSW&request=DescribeRecord&typename=csw:Record
-```
-
-And the same request using a `POST` HTTP method :
-
-```http
-POST http://public.opendatasoft.com/api/csw
-```
-
-The request body :
-
-```xml
-<?xml version="1.0" ?>
-<DescribeRecord
-    service="CSW"
-    version="2.0.2"
-    outputFormat="application/xml"
-    schemaLanguage="http://www.w3.org/2001/XMLSchema"
-    xmlns="http://www.opengis.net/cat/csw/2.0.2"
-    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2
-    ../../../csw/2.0.2/CSW-discovery.xsd">
-    <TypeName>csw:Record</TypeName>
-</DescribeRecord>
-```

@@ -6,8 +6,8 @@ OpenDataSoft implements the OAuth2 authorization flow, allowing third party appl
 hosted on a OpenDataSoft platform on behalf of a user while never having to deal with a password, thus avoiding any user
 credential to be compromised.
 
-The OpenDataSoft OAuth2 authorization flow is compliant with [RFC 6749](http://tools.ietf.org/html/rfc6749) and makes
-use of Bearer Tokens in compliance with [RFC 6750](http://tools.ietf.org/html/rfc6750).
+The OpenDataSoft OAuth2 authorization flow is compliant with [RFC 6749](https://tools.ietf.org/html/rfc6749) and makes
+use of Bearer Tokens in compliance with [RFC 6750](https://tools.ietf.org/html/rfc6750).
 
 Application developers who want to use the OpenDataSoft APIs with OAuth2 must go through the following steps, which will
 be explained in this section. They must first register their application with the OpenDataSoft platform. Secondly, they
@@ -40,7 +40,7 @@ Now that your application is registered, you can request an authorization grant 
 ```text
 GET /oauth2/authorize/?
     client_id=123456789&
-    redirect_uri=http://example.com&
+    redirect_uri=https://example.com&
     response_type=code&
     state=ilovedata&
     scope=all HTTP/1.1
@@ -67,7 +67,7 @@ back to you when you receive your authorization grant.
 
 ```text
 HTTP/1.0 302 FOUND
-Location: http://example.com?state=ilovedata&code=gKnAQc2yIfdz2mY25xxgpTY2uyG5Sv
+Location: https://example.com?state=ilovedata&code=gKnAQc2yIfdz2mY25xxgpTY2uyG5Sv
 ```
 
 Your authorization grant will have these values:
@@ -90,7 +90,7 @@ client_id=cid&
     grant_type=authorization_code&
     code=GokshWxRFXmW0MaLHkDv5HrG6wieGs&
     scopes=all&
-    redirect_uri=http://example.com&
+    redirect_uri=https://example.com&
     state=ilovedata
 ```
 
@@ -115,7 +115,7 @@ Authorization: Basic Y2lkOmNzYw==
 grant_type=authorization_code&
     code=GokshWxRFXmW0MaLHkDv5HrG6wieGs&
     scopes=all&
-    redirect_uri=http://example.com&state=ilovedata
+    redirect_uri=https://example.com&state=ilovedata
 ```
 
 Alternatively, you can pass your client ID and client secret through the Authorization header
@@ -197,7 +197,7 @@ client_id=cid&
     grant_type=refresh_token&
     refresh_token=jFfDUcsK9zzNMs1zwczzJxGrimPtmf&
     scopes=all&
-    redirect_uri=http://example.com&
+    redirect_uri=https://example.com&
     state=ilovedata
 ```
 
