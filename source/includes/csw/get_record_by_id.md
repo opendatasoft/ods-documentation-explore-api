@@ -3,7 +3,7 @@
 > `GetRecordById` operation with the optional `outputSchema` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=arrondissement_od HTTP/1.1
+GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=world-heritage-unesco-list HTTP/1.1
 ```
 
 > Same request using a POST method
@@ -24,7 +24,7 @@ The request body :
       xmlns="http://www.opengis.net/cat/csw/2.0.2"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2/csw/2.0.2/CSW-discovery.xsd">
-      <Id>arrondissement_od</Id>
+      <Id>world-heritage-unesco-list</Id>
   </GetRecordById>
 ```
 
