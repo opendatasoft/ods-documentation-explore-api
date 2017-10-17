@@ -2,9 +2,8 @@
 
 ## Records Analysis API
 
-> Definition
 ```http
-GET /api/records/1.0/analyze
+GET /api/records/1.0/analyze HTTP/1.1
 ```
 
 This API provides powerful analytics features over a set of selected records. It returns analyzed results in light and
@@ -34,27 +33,25 @@ Parameter | Description
 
 ### Expression language
 
+> Example analysis query
+
+```text
+x=espece_arbre&y.series1.func=Min&y.series1.expr=sin(height)*2
+```
+
 An arbitrary expression can be used as the value of the definition of an aggregated.
 
 * Classical numerical operators are available: `+`, `-`, `*`, `/`
 * Parenthesis can be used to group sub expressions together
 * The following functions are also available: time, sin, cos, tan, asin, acos, atan, toRadians, toDegrees, exp, log, log10, sqrt, cbrt, IEEEremainder, ceil, floor, rint, atan2, pow, round, random, abs, max, min, ulp, signum, sinh, cosh, tanh, hypot
 
-> Example
-
-```text
-x=espece_arbre&y.series1.func=Min&y.series1.expr=sin(height)*2
-```
-
 ## Records Download API
 
-> Definition
-
 ```http
-GET /api/records/1.0/download
+GET /api/records/1.0/download HTTP/1.1
 ```
 
-This API provides a performant way to download a large set of records out of a dataset. The HTTP
+This API provides an efficient way to download a large set of records out of a dataset. The HTTP
 answer is streamed which makes it possible to optimize the memory consumption client side.
 
 ### Parameters
@@ -75,16 +72,14 @@ Parameter | Description
 
 ## Records Geo Clustering API
 
-> Definition
-
 ```http
-GET /api/records/1.0/geocluster
+GET /api/records/1.0/geocluster HTTP/1.1
 ```
 
-This API provides powerfull geo clustering features over a set of selected records. It returns results under a format
+This API provides powerful geo clustering features over a set of selected records. It returns results under a format
 which can easily be used to build comprehensive data visualizations on a map, using a very large number of records.
 
-This API takes as an input the cluster precision and a polygon representing the current view (on a map) and returns a
+This API takes, as an input, the cluster precision and a polygon representing the current view (on a map) and returns a
 list of clusters with the number of points contained in each cluster and the polygon of the cluster envelope (along
 with computed analytical series when required).
 
@@ -108,10 +103,8 @@ Parameter | Description
 
 ## Record Lookup API
 
-> Definition
-
 ```http
-GET /api/datasets/1.0/<DATASETID>/records/<RECORDID>
+GET /api/datasets/1.0/<dataset_id>/records/<record_id> HTTP/1.1
 ```
 
 This API makes it possible to fetch an individual record using its identifier (Record ID).
@@ -121,17 +114,15 @@ This API makes it possible to fetch an individual record using its identifier (R
 Parameter | Description
 --------- | -----------
 `datasetid` | Part of the URL path. Identifier of the dataset. Example: `http://opendata.paris.fr/api/dataset/1.0/arbresremarquablesparis2011/`
-`recordid` | Part of the URL path. Identifier of the record. Example: `http://opendata.paris.fr/api/dataset/1.0/<DATASETID>/records/758885b5183fd28f14ecf39e44484fdccf/`
+`recordid` | Part of the URL path. Identifier of the record. Example: `http://opendata.paris.fr/api/dataset/1.0/<dataset_id>/records/758885b5183fd28f14ecf39e44484fdccf/`
 `pretty_print` | If set to true (default is false), pretty prints JSON and JSONP outputs.
 `format` | Format of the response output. One of JSON (default) and JSONP.
 `callback` | JSONP callback. Example: `format=jsonp&callback=myFunction`
 
 ## Record Search API
 
-> Definition
-
 ```http
-GET /api/records/1.0/search
+GET /api/records/1.0/search HTTP/1.1
 ```
 
 This API makes it possible to perform complex queries on the records of a dataset, such as full-text search or geo
