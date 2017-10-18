@@ -1,4 +1,33 @@
+# Operations
+
 ## GetCapabilities
+
+> `GetCapabilities` operation with the optional `Sections` parameter
+
+```http
+GET https://examples.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
+```
+
+> Same request using a POST method
+
+```http
+POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<GetCapabilities xmlns="http://www.opengis.net/ows"
+  xmlns:ows="http://www.opengis.net/ows"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/ows
+  fragmentGetCapabilitiesRequest.xsd"
+  service="WFS">
+  <Sections>
+      <Section>OperationsMetadata</Section>
+      <Section>FeatureTypeList</Section>
+  </Sections>
+</GetCapabilities>
+```
 
 The `GetCapabilities` operation allows clients to retrieve service metadata. The response is a XML document
 containing the information.
@@ -25,34 +54,3 @@ Section name | Contents
 `ServiceProvider` | Metadata about the organization offering the WFS service.
 `OperationsMetadata` | Metadata about the WFS operations offered by a the WFS implementation.
 `FeatureTypeList` | This section defines the list of features types that are available from the service.
-
-### Examples
-
-Here is an example of a `GetCapabilities` operation with the optional `Sections` parameter, using a `GET` HTTP method :
-
-```http
-GET http://public.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList
-```
-
-And the same request using a `POST` HTTP method :
-
-```http
-POST http://public.opendatasoft.com/api/wfs
-```
-
-The request body :
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<GetCapabilities xmlns="http://www.opengis.net/ows"
-  xmlns:ows="http://www.opengis.net/ows"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/ows
-  fragmentGetCapabilitiesRequest.xsd"
-  service="WFS">
-  <Sections>
-      <Section>OperationsMetadata</Section>
-      <Section>FeatureTypeList</Section>
-  </Sections>
-</GetCapabilities>
-```

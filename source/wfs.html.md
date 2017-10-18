@@ -1,5 +1,5 @@
 ---
-title: OpenDataSoft - CSW API documentation
+title: OpenDataSoft - WFS API documentation
 
 language_tabs:
   - shell

@@ -1,5 +1,33 @@
 ## GetFeature
 
+> `GetFeature` operation with the optional `PropertyName` parameter
+
+```http
+GET https://examples.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&typename=ods:world-heritage-unesco-list&propertyname=ods:world-heritage-unesco-list/geo_shape HTTP/1.1
+```
+
+> Same request using a POST method
+
+```http
+POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:GetFeature
+  service="WFS"
+  version="1.1.0"
+  xmlns:wfs="http://www.opengis.net/wfs"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:myns="http://www.someserver.com/myns"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/wfs ../wfs/1.1.0/WFS.xsd">
+  <wfs:Query typeName="ods:world-heritage-unesco-list">
+      <wfs:PropertyName>geo_shape</wfs:PropertyName>
+  </wfs:Query>
+</wfs:GetFeature>
+```
+
 The `GetFeature` operation allows retrieval of features from the WFS, and output them using the GML 3.1.1
 representation.
 
@@ -16,35 +44,3 @@ Parameter | Description | Optionality and use
 `TypeName` | A list of feature type names to query. | Mandatory.
 `PropertyName` | A list of properties that should be returned. | Optional. The absence of a value also indicates that all properties should be fetched.
 `featureId` | An enumerated list of feature instances to fetch identified by their feature identifiers. | Optional.
-
-### Examples
-
-Here is an example of a `GetFeature` operation with the optional `PropertyName` parameter, using a `GET` HTTP method :
-
-```http
-GET http://public.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&typename=ods:arrondissement_od&propertyname=ods:arrondissement_od/geo_shape
-```
-
-And the same request using a `POST` HTTP method :
-
-```http
-POST http://public.opendatasoft.com/api/wfs
-```
-
-The request body :
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<wfs:GetFeature
-  service="WFS"
-  version="1.1.0"
-  xmlns:wfs="http://www.opengis.net/wfs"
-  xmlns:ogc="http://www.opengis.net/ogc"
-  xmlns:myns="http://www.someserver.com/myns"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/wfs ../wfs/1.1.0/WFS.xsd">
-  <wfs:Query typeName="ods:arrondissement_od">
-      <wfs:PropertyName>geo_shape</wfs:PropertyName>
-  </wfs:Query>
-</wfs:GetFeature>
-```
