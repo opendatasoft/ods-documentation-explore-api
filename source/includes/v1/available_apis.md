@@ -23,7 +23,7 @@ API Name                    | Description
 
 These APIs return JSON by default, except the download API that returns CSV by default but supports several output formats like JSON and geographic formats, and the multimedia download API that depends on the file.
 
-These APIs, except the real time push API, support cross-domain access from a browser using [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](http://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
+These APIs, except the real time push API, support cross-domain access from a browser using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](https://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
 
 The real time push API is very specific and will not be detailed in the following documentation. Please refer to the [platform documentation](https://docs.opendatasoft.com/en/sourcing_and_processing_data/realtime.html#pushing-real-time-data) for more information about this API.
 

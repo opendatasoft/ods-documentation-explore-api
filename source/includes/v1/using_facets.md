@@ -171,7 +171,7 @@ the state attribute are:
 It is possible to limit the result set by refining on a given facet value. To do so, use the following API parameter:
 `refine.FACETNAME=FACETVALUE`.
 
-For example: <http://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013>.
+For example: <https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013>.
 
 In the returned result set, only the datasets modified in 2013 will be returned.
 
@@ -183,16 +183,16 @@ are dispatched in the "month" sub value.
 Using the same principle as above, it is possible to exclude from the result set the hits matching a given value of a
 given facet. To do so, use the following API parameter: `exclude.FACETNAME=FACETVALUE`.
 
-For example: <http://public.opendatasoft.com/api/datasets/1.0/search?exclude.modified=2013>
+For example: <https://public.opendatasoft.com/api/datasets/1.0/search?exclude.modified=2013>
 
 Only results that have not been modified in 2011 will be returned.
 
 ## Disjunctive faceting
 
 By default, faceting is conjunctive. This means that the following context will lead down to no results:
-<http://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014>.
+<https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014>.
 
 You can enable disjunctive faceting using the following API parameter: `disjunctive.FACETNAME=true`.
 
 For example:
-<http://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014&disjunctive.modified=true>
+<https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014&disjunctive.modified=true>
