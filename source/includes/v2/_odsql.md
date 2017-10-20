@@ -79,7 +79,7 @@ date'2018/04/01'
 ```
 
 Date literals are defined with a **date** keyword followed by a valid date format enclosed in single quotes.
-A valid date is :
+A valid date is:
 
 - [ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)
 - slash separated date with format YYYY/MM/DD (year/month/day)
@@ -106,7 +106,7 @@ distance(my_geo_field, geom'POINT(1 1)', 10km)
 geometry(my_geo_field, geom'{"type": "Polygon","coordinates":[[[100.0, 0.0],[101.0, 0.0],[101.0, 1.0],[100.0, 1.0],[100.0,0.0]]]}')
 ```
 
-Geometry literals are defined with a geom keyword followed by a valid geometry expression enclosed in single quotes. Supported geometry expression are :
+Geometry literals are defined with a geom keyword followed by a valid geometry expression enclosed in single quotes. Supported geometry expression are:
 
 - [WKT/WKB](https://en.wikipedia.org/wiki/Well-known_text)
 - [GeoJSON geometry](https://en.wikipedia.org/wiki/GeoJSON)
@@ -204,7 +204,7 @@ my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, g
 
 The where clause can be used in the whole search API as the parameter where.
 Its goal is to filter rows with a combination of where expressions.
-A where expression can be :
+A where expression can be:
 
 - a search query
 - a filter function
@@ -312,7 +312,7 @@ film_name like "star"      # matches `star wars` and `Star Trek`
 film_name like "star wars" # match fields containing `star` and `wars`
 ```
 
-Format : `<field_literal> LIKE <string_literal>`
+Format: `<field_literal> LIKE <string_literal>`
 
 <div class=“clearfix”></div>
 #### In filter
@@ -332,10 +332,10 @@ date_field IN [date'2017'..date'2018'] # Filter results such as date_field date 
 ```
 
 The `In expression` filters results based on a a numeric or date range. It only works on a field_literal.
-Formats are : 
+Formats are:
 
-- on numeric : `<field_literal> IN (]|[)<numeric_literal> (TO|..) <numeric_literal>(]|[)`
-- on date : `<field_literal> IN (]|[)<date_literal> (TO|..) <date_literal>(]|[)`
+- on numeric: `<field_literal> IN (]|[)<numeric_literal> (TO|..) <numeric_literal>(]|[)`
+- on date: `<field_literal> IN (]|[)<date_literal> (TO|..) <date_literal>(]|[)`
 
 <div class=“clearfix”></div>
 ### Comparison filter
@@ -376,7 +376,7 @@ NOT "dog"
 "dog" AND NOT "cat"
 ```
 
-> Examples of search query with mutliple words 
+> Examples of search query with mutliple words
 
 ```plain-text
 "film"           # returns results that contain film
@@ -409,7 +409,7 @@ group_by=my_field as myfield
 group_by=my_field1,my_field2 as my_field
 ```
 
-The group by clause can be used in aggregations search API as the parameter group_by. 
+The group by clause can be used in aggregations search API as the parameter group_by.
 It creates groups from data depending on a `group by expression`.
 
 A group by clause can contains:
@@ -438,7 +438,7 @@ group_by=my_field
 Group by field expression allows grouping on specified field value. It will create a group for each different value of field.
 
 #### Usage
-`group_by=<field_literal>` 
+`group_by=<field_literal>`
 
 
 <div class=“clearfix”></div>
@@ -455,7 +455,7 @@ RANGE(population, [1,2,3])       # Creates 2 groups: 1-2 and 2-3
 The static range function takes two parameters: a field name and an array of steps inside brackets. The side of brackets determines if values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
 
 #### Usage
-`group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])` 
+`group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])`
 `<field_literal>` must be a numeric field
 
 
@@ -482,7 +482,7 @@ The equi range function takes four parameters: a field name, a step value, a low
 It creates a group for the lower bound, then it will create another group at each step, adding step value from previous value until reaching higher bound.
 
 #### Usage
-`group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))` 
+`group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))`
 `<field_literal>` must be a numeric field
 
 <div class=“clearfix”></div>
@@ -500,7 +500,7 @@ Date functions allow to group data on a date field by a specific unit of time:
 Function name | Description
 ------------- | -----------
 year | group by year
-month | group by month 
+month | group by month
 day | group by day
 hour | group by hour
 minute | group by minute
@@ -508,7 +508,7 @@ second | group by second
 millisecond | group by millisecond
 
 #### Usage
-`group_by=<date_function>(<field_literal>)` 
+`group_by=<date_function>(<field_literal>)`
 `<field_literal>` must be a datetime field
 
 
@@ -523,7 +523,7 @@ date_format(date_field, "w") # Create a group for each different week in date_fi
 ```
 
 Group by date format expression allow to group by a custom date format.
-`Date format` is a string enclosed in double-quotes. 
+`Date format` is a string enclosed in double-quotes.
 Every characters between a-z and A-Z are considered to be a pattern representing a date unit. In order to use these characters as simple characters and not pattern, they must be enlosed in single-quotes.
 
 Following formats come from [joda time documentation](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html)
@@ -568,7 +568,7 @@ Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 
 Zone names: Time zone names ('z') cannot be parsed.
 
 #### Usage
-`group_by=date_format(<string_literal>)` 
+`group_by=date_format(<string_literal>)`
 `<string_literal>` contains a date format
 
 

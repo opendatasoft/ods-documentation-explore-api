@@ -131,7 +131,10 @@ The service supports ATOM and JSON formats. For the JSON formats, the "minimal" 
 supported. Any request for a metadata level of "none" will be responded to with the "minimal" metadata level, as per
 the standard.
 
-There are two main ways of requesting a specific format: in the `Accept` header and in the `$format` REST parameter.
+There are two main ways of requesting a specific format:
+
+* in the `Accept` header
+* in the `$format` query parameter
 
 The format parameter, be it in the headers or in the query string, can be either the abbreviations JSON, XML or ATOM, or
 the exact MIME type requested. For the JSON format, different metadata levels can be requested by using the full MIME
@@ -263,8 +266,8 @@ GET https://examples.opendatasoft.com/api/odata/baby_names_nc_2013?$skip=1&$top=
 }
 ```
 
-Client-driven paging can be requested with the `$top` REST parameter to limit the size of the response, and the
-`$skip` REST parameter to define the first result to display.
+Client-driven paging can be requested with the `$top` query parameter to limit the size of the response, and the
+`$skip` query parameter to define the first result to display.
 
 The server will ignore `$skip` results and then return the first `$top` items.
 
@@ -374,7 +377,7 @@ Supported restriction operators are `eq` and `ne` for equality and inequality, `
 
 Multiple restriction expessions can be combined into bigger expressions with the logical operators `and` and `or`.
 
-Expression can be negated with the `not` operator.
+Expressions can be negated with the `not` operator.
 
 ## Count
 
@@ -408,11 +411,11 @@ GET https://examples.opendatasoft.com/api/odata/baby_names_nc_2013/$count
 2841
 ```
 
-There are two ways of obtaining the number of records in a dataset.
+There are 2 ways of obtaining the number of records in a dataset.
 
-The first way is to use the `$count` REST parameter (`$inlinecount` for protocol version 3.0).
+- use the `$count` query parameter (`$inlinecount` for protocol version 3.0).
 
-The other way is to navigate to the count document for a resource. This is achieved by querying `/<dataset_id>/$count`.
+- navigate to the count document for a resource. This is achieved by querying `/<dataset_id>/$count`.
 
 These two methods have slightly different semantics:
 

@@ -2,7 +2,7 @@
 
 Metadata is data describing the dataset itself.
 
-Each metadata belongs to a metadata template. Each metadata template has a type : `basic`, `interop` or `extra`.
+Each metadata belongs to a metadata template. Each metadata template has a type: `basic`, `interop` or `extra`.
 
 - basic: include metadata users can see. This includes the title, the license attached to the data...
 - interoperability: metadata usually described in specific standards (such as DCAT or INSPIRE), intended for automatic usage by other systems for interoperability purposes, or for regulatory compliance.

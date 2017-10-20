@@ -145,7 +145,7 @@ The response to this request is a JSON representation of a bearer token, which c
 * `refresh_token`: a refresh token that can be used to renew this bearer token when expired
 
 <aside>
-    Unlike the access token, that can be use any number of times until expiration, the refresh token doesn't expire but can only be used once
+    Unlike the access token, that can be used any number of times until expiration, the refresh token doesn't expire but can only be used once
 </aside>
 
 ## Using the bearer token

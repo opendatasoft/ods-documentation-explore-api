@@ -65,7 +65,7 @@ Field name      | Description
 `theme`         | The theme of the dataset
 `references`    | The references for the dataset
 
-The domain administrator might define a richer metadata template, thus giving acces to a richer set of filtering fields.
+The domain administrator might define a richer metadata template, thus giving access to a richer set of filtering fields.
 
 > Examples of queries for the record search API
 
@@ -76,7 +76,7 @@ film_date: [1950 TO 2000]
 film_box_office > 10000 AND film_date < 1965
 ```
 
-**For the record search APIs**, the list of available fields depend on the schema of the dataset. To fetch the list of
+For the record search API, the list of available fields depends on the schema of the dataset. To fetch the list of
 available fields for a given dataset, you may use the search dataset or lookup dataset APIs.
 
 Multiple operator fields can be used between the field name and the query:

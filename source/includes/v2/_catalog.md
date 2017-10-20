@@ -14,21 +14,21 @@ Some parameters, such as `select`, `where` or `group_by`, in the following entry
 In catalog search, a field literal can either be a technical field or a metadata.
 
 <div class=“clearfix”></div>
-### Dataset technical fields: 
+### Dataset technical fields:
 
 >  Use technical field as field literal
 
 ```shell
 # Count dataset grouped by their features (`features` is a technical field)
 curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
-# Note : (since a dataset can have multiple features, total count is not the number of datasets in the domain)
+# Note: (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
 
 Field name | Description
 ---------- | -----------
 datasetid | Human readable dataset identifier
 has_records | Boolean field indicating if dataset has records
-features | List of dataset features. Possible values : calendar, geo, image, apiproxy, timeserie, aggregate
+features | List of dataset features. Possible values: calendar, geo, image, apiproxy, timeserie, aggregate
 
 <div class=“clearfix”></div>
 ### Dataset metadata
@@ -41,13 +41,13 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modi
 curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
 
 # Get datasets that have been downloaded more than a 100 time
-# download_count meta must be prefixed with its metadata template: 'explore'  
+# download_count meta must be prefixed with its metadata template: 'explore'
 curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
-All metadata can be use as field literal in query parameters.
+All metadata can be used as field literal in query parameters.
 They must be fully qualified with their template name. It means that the name of the metadata must be prefixed by its template name followed by a dot: `<template_name>.<metadata_name>`
-For basic metadata, this prefix is optionnal. 
+For basic metadata, this prefix is optionnal.
 
 The list of metadata and their types for a domain can be obtained with the metadata [metadata API](#metadata-templates-for-a-specific-type)
 
@@ -90,7 +90,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 where | None | Filter expression used to restrict returned datasets. see [ODSQL documentation](#where-clause)
 start | 0 | Index of the first item to return
-rows | 10 | Number of items to return. Max value : 100
+rows | 10 | Number of items to return. Max value: 100
 include_app_metas | false | Explicitely request application metas for each datasets
 timezone | UTC | Timezone applied on datetime fields in query and response
 
@@ -165,7 +165,7 @@ Aggregation query returns a JSON array containing an object for each group creat
 Each JSON object contains key/value pair for each select instruction.
 Without `group_by` parameter, it returns an array with only one object.
 
-`select` parameter can only be composed of aggregation function or by aggregated value. 
+`select` parameter can only be composed of aggregation function or by aggregated value.
 It means that literal_field in select clause outside aggregation function must be present in `group_by` clauses.
 
 If query contains multiple `group_by` clauses, returned groups are combined together.

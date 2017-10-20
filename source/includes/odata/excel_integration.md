@@ -1,9 +1,15 @@
 # Microsoft Excel integration
 
-The OpenDataSoft OData service makes it possible to gather data directly from Microsoft Excel, without any programming
-knowledge. There are 3 ways to proceed: first, for Microsoft Excel 2013, the OData native integration can be used. For
-Excel 2010 and Excel 2013, PowerPivot and PowerQuery extensions can be used. This article will give a detailed
-explanation on how to do it.
+The OpenDataSoft OData service makes it possible to gather data directly from Microsoft Excel without any programming
+knowledge.
+
+There are 3 ways to proceed:
+
+* the OData native integration (Excel 2013 only)
+* the PowerPivot extension (Excel 2010 and 2013)
+* the PowerQuery extension (Excel 2010 and 2013)
+
+This article will give a detailed explanation on how to do it.
 
 ## Native Integration
 
@@ -74,7 +80,7 @@ Here are the steps that will allow you to import data through PowerPivot for Mic
 
 ![Data preview.](odata/ppivot8.png)
 
-* You can now verify the integrity of your data om the data source management window.
+* You can now verify the integrity of your data on the data source management window.
 
 ![The data import list in PowerPivot.](odata/ppivot10.png)
 
@@ -93,7 +99,7 @@ Here are the steps that will allow you to import data through Power Query for Mi
 
 
 * Before you can use Power Query, you must download and activate it. To download it, visit
-  `this link <http://www.microsoft.com/en-us/download/details.aspx?id=39379>`_. The activation process is similar to
+  this link: <http://www.microsoft.com/en-us/download/details.aspx?id=39379>. The activation process is similar to
   that of PowerPivot.
 
 ![Data sources supported by Microsoft Power Query.](odata/pquery1.png)

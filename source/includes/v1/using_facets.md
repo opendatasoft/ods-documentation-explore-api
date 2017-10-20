@@ -127,14 +127,13 @@ facets.
 
 Every facet contains two additional information:
 
-The "count" attribute contains the number of hits that have the same facet value.
-
-The "state" attribute defines whether the facet is currently used in a "refine" or in an "exclude". Possible values for
+* the `count` attribute contains the number of hits that have the same facet value
+* the `state` attribute defines whether the facet is currently used in a `refine` or in an `exclude`. Possible values for
 the state attribute are:
 
-* **displayed**: no refine nor exclude
-* **refined**: refine
-* **excluded**: exclude
+    * **displayed**: no refine nor exclude
+    * **refined**: refine
+    * **excluded**: exclude
 
 ## Refining
 
