@@ -29,7 +29,7 @@ POST https://examples.opendatasoft.com/api/csw HTTP/1.1
 </GetRecords>
 ````
 
-The `GetRecords` operation allows clients to discover resources (datasets). The response is a XML document and
+The `GetRecords` operation allows clients to discover resources (datasets). The response is an XML document and
 the output schema can be specified.
 
 ### Parameters

@@ -29,7 +29,7 @@ POST https://examples.opendatasoft.com/api/csw HTTP/1.1
 </GetCapabilities>
 ```
 
-The `GetCapabilities` operation allows clients to retrieve service metadata. The response is a XML document
+The `GetCapabilities` operation allows clients to retrieve service metadata. The response is an XML document
 containing the information.
 
 ### Parameters
@@ -51,7 +51,7 @@ This is the list of the existing section in the service metadata. The section na
 
 Section name | Contents
 ------------ | --------
-`ServiceIdentification` |	Metadata about the the CSW implementation.
+`ServiceIdentification` |	Metadata about the CSW implementation.
 `ServiceProvider` |	Metadata about the organization offering the CSW service.
 `OperationsMetadata` |	Metadata about the CSW operations offered by a the CSW implementation.
 `Filter_Capabilities` |	Metadata about the filter capabilities of the server. The OpenDataSoft CSW currently does not support filters.

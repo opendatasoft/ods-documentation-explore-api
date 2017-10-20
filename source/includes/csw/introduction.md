@@ -26,7 +26,7 @@ GET https://examples.opendatasoft.com/api/csw HTTP/1.1
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the the domain `https://examples.opendatasoft.com` as an example but you should replace it
+For this documentation, we use the domain `https://examples.opendatasoft.com` as an example but you should replace it
 by your custom domain name.
 
 The CSW API supports both `GET` and `POST` HTTP methods.
@@ -44,7 +44,7 @@ encoding.
 When the HTTP `POST` method is used, the operation request message is encoded as an XML document in the body
 of the `POST` message.
 
-Here is the list of the common parameters, supported by all CSW operations :
+Here is the list of the common parameters, supported by all CSW operations:
 
 Operation | Description | Possible values | Optionality and use
 --------- | ----------- | --------------- | -------------------
@@ -67,7 +67,7 @@ Operation | Description | Possible values | Optionality and use
 </ExceptionReport>
 ```
 
-When an error occurs, the service respond to the client using an Exception Report message to describe the error.
+When an error occurs, the service responds to the client using an Exception Report message to describe the error.
 
 Name | Definition | Data type and value | Multiplicity and use
 ---- | ---------- | ------------------- | --------------------

@@ -1,12 +1,13 @@
 # Introduction
 
 OpenDataSoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
-requests for geographical features. The OpenDataSoft platform uses the WFS specification version 1.1.0.
+requests for geographical features.
+
+The OpenDataSoft platform uses the WFS specification version 1.1.0.
 
 ## Operations supported
 
-
-OpenDataSoft platform implements three operations defined by the WFS standard :
+OpenDataSoft platform implements three operations defined by the WFS standard:
 
 Operation | Description
 --------- | -----------
@@ -19,12 +20,12 @@ Operation | Description
 > Service entry address
 
 ```http
-GET https://examples.opendatasoft.com/api/wfs
+GET https://examples.opendatasoft.com/api/wfs HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the the domain `https://examples.opendatasoft.com` as an example but you should replace it
+For this documentation, we use the domain `https://examples.opendatasoft.com` as an example but you should replace it
 by your custom domain name.
 
 The WFS supports both `GET` and `POST` HTTP methods.
@@ -39,16 +40,16 @@ HTTP request.
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
 encoding.
 
-When the HTTP `POST` method is used, the operation request message are encoded as an XML document in the body
+When the HTTP `POST` method is used, the operation request message is encoded as an XML document in the body
 of the `POST` message.
 
-Here is the list of the common parameters, supported by all WFS operations :
+Here is the list of the common parameters, supported by all WFS operations:
 
 Operation | Description | Possible values | Optionality and use
 --------- | ----------- | --------------- | -------------------
 `service` | The requested service | `WFS` | One (Mandatory)
 `request` | The requested operation | `GetCapabilities`, `DescribeFeatureType`, `GetFeature` | One (Mandatory)
-`version` | The requested version of the service. | `1.1.0` | One (Optional)
+`version` | The requested version of the service | `1.1.0` | One (Optional)
 
 ## Exception reports
 
@@ -64,7 +65,7 @@ Operation | Description | Possible values | Optionality and use
 </ExceptionReport>
 ```
 
-When an error occurs, the service respond to the client using an Exception Report message to describe the error.
+When an error occurs, the service responds to the client using an Exception Report message to describe the error.
 
 Name | Definition | Data type and value | Multiplicity and use
 ---- | ---------- | ------------------- | --------------------
