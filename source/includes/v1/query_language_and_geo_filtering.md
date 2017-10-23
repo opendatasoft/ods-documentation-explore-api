@@ -51,7 +51,7 @@ GET https://public.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR de
 One of the major feature of the query language is to allow per field filtering. You can use field names as a prefix to
 your queries to filter the results based on a specific field's value.
 
-**For the dataset search API**, the list of available fields corresponds exactly to available metadata. By default
+For the dataset search API, the list of available fields corresponds exactly to available metadata. By default
 
 Field name      | Description
 ----------------|------------
@@ -91,16 +91,33 @@ Date formats can be specified in different formats: simple (`YYYY[[/mm]/dd]`) or
 
 ### Query language functions
 
+> Return all records where `birthdate` is greater or equal to the current datetime:
+
+```text
+birthdate >= #now()
+```
+
+> Return records where `birthdate` is not set:
+
+```text
+#null(birthdate)
+```
+
+> Return records where `firstname` contains exactly "Marie":
+
+```text
+#exact(firstname, "Marie")
+```
+
 Advanced functions can be used in the query language. Function names need to be prefixed with a sharp (`#`) sign.
 
 Function name | Description
 ------------- | -----------
-`now`         | Returns the current date. This function may be called as a query value for a field. When called without an argument, it will evaluate to the current datetime: `birthdate >= #now()` returns all Records containing a birth date greater or equal to the current datetime. This function can also accept parameters, see below for the `#now` function available parameters.
-`null`        | This function may be called specifying a field name as a parameter. It returns the hits for which no value is defined for the specified field. For example `#null(birthdate)`
-`exact`       | This function makes it possible to search for records with a field exactly matching a given value. For example, `#exact(firstname, "Marie")` will return records with a field `firstname` containing exactly "Marie" and nothing else.
+`now`         | Return the current date. This function should be called as a query value for a field
+`null`        | Search for records where no value is defined for the given field
+`exact`       | Search for records with a field exactly matching a given value
 
-**Available parameters for the `#now` function**
-
+#### Available parameters for the `#now` function
 
 ``` text
 #now(years=-1, hours=-1) -> current date minus a year and an hour
@@ -125,11 +142,18 @@ Function name | Description
 
 ## Geo Filtering
 
+> Example geo filtering expressions
+
+``` text
+geofilter.distance=48.8520930694,2.34738897685,1000
+geofilter.polygon=(48.883086, 2.379072), (48.879022, 2.379930), (48.883651, 2.386968)
+```
+
 Records search APIs accept geofilter parameters to filter in records which are located in a specific geographical area.
 
 The following parameters may be used.
 
-Parameter Name | Description
--------------- | -----------
-`geofilter.distance` | Limits the result set to a geographical area defined by a circle (coordinates of the center of the circle expressed in WGS84 and distance expressed in meters): latitude,longitude,distance: `geofilter.distance=48.8520930694,2.34738897685,1000`
-`geofilter.polygon` | Limits the result set to a geographical area defined by a polygon (coordinates of the points expressed in WGS84 as in ((lat1,lon1),(lat2,lon2),(lat3,lon3)): `geofilter.polygon=(48.883086,2.379072),(48.879022,2.379930),(48.883651,2.386968)`
+Parameter Name       | Description
+-------------------- | -----------
+`geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
+`geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
