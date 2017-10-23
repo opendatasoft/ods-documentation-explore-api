@@ -39,8 +39,9 @@ consideration the common parameters. [See more](#parameters).
 The existing parameters in the WFS standard which are not listed in this table are currently not supported.
 
 Parameter | Description | Optionality and use
-`resultType` | Used to indicate whether a WFS should generate a complete response document of whether it should generate an <br> empty response document indicating only the number of features that the query would return. | Optional. Values can be `hits` or `results`. Default value is `results`.
-`maxFeatures` | Used to define the maximum number of records that should be returned from the result set of a query. | Optional. Value must be a positive integer.
-`TypeName` | A list of feature type names to query. | Mandatory.
-`PropertyName` | A list of properties that should be returned. | Optional. The absence of a value also indicates that all properties should be fetched.
-`featureId` | An enumerated list of feature instances to fetch identified by their feature identifiers. | Optional.
+--------- | ----------- | -------------------
+`resultType` | Used to indicate whether a WFS should generate a complete response document of whether it should generate an <br> empty response document indicating only the number of features that the query would return | Optional. Values can be `hits` or `results`. Default value is `results`
+`maxFeatures` | Used to define the maximum number of records that should be returned from the result set of a query | Optional. Value must be a positive integer
+`TypeName` | A list of feature type names to query | Mandatory
+`PropertyName` | A list of properties that should be returned | Optional. The absence of a value also indicates that all properties should be fetched
+`featureId` | An enumerated list of feature instances to fetch identified by their feature identifiers | Optional

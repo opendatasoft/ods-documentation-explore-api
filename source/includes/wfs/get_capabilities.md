@@ -29,7 +29,7 @@ POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
 </GetCapabilities>
 ```
 
-The `GetCapabilities` operation allows clients to retrieve service metadata. The response is a XML document
+The `GetCapabilities` operation allows clients to retrieve service metadata. The response is an XML document
 containing the information.
 
 ### Parameters
@@ -49,8 +49,9 @@ Parameter | Description | Optionality and use
 This is the list of the existing section in the service metadata. The section name can be used as a value for the
 `Sections` parameter.
 
-Section name | Contents
-`ServiceIdentification` | Metadata about the the WFS implementation.
-`ServiceProvider` | Metadata about the organization offering the WFS service.
-`OperationsMetadata` | Metadata about the WFS operations offered by a the WFS implementation.
-`FeatureTypeList` | This section defines the list of features types that are available from the service.
+Section name | Content
+------------ | -------
+`ServiceIdentification` | Metadata about the WFS implementation
+`ServiceProvider` | Metadata about the organization offering the WFS service
+`OperationsMetadata` | Metadata about the WFS operations offered by a the WFS implementation
+`FeatureTypeList` | This section defines the list of features types that are available from the service

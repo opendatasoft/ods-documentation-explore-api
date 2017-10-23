@@ -1,8 +1,8 @@
 # Explore API V1
 
-OpenDataSoft datasets are accessible by developers through an HTTP REST APIs.
+OpenDataSoft datasets are accessible by developers through an HTTP REST API.
 
-The domain <https://examples.opendatasoft.com> will be use to illustrate examples given in this forum.
+The domain <https://examples.opendatasoft.com> will be used to illustrate examples given in the following documentation.
 
 ![API Console](v1/available_apis__console.png)
 
@@ -21,11 +21,14 @@ API Name                    | Description
 **Real time push API**      | Push new records to a given dataset in real time
 **Multimedia download API** | Download multimedia content attached to a dataset or a record
 
-These APIs return JSON by default, except the download API that returns CSV by default but supports several output formats like JSON and geographic formats, and the multimedia download API that depends on the file.
+These APIs return JSON by default, except:
 
-These APIs, except the real time push API, support cross-domain access from a browser using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](https://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
+- the download API that returns CSV by default but supports several output formats like JSON and geographic formats
+- the multimedia download API that depends on the file
 
 The real time push API is very specific and will not be detailed in the following documentation. Please refer to the [platform documentation](https://docs.opendatasoft.com/en/sourcing_and_processing_data/realtime.html#pushing-real-time-data) for more information about this API.
+
+These APIs support cross-domain access from a browser using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](https://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
 
 ## Finding a dataset identifier
 
@@ -64,7 +67,7 @@ The API response contains three headers to indicate the current state of a user'
 
 ## Errors handling
 
-> Example of an error occuring when you reach the domain requests limit
+> Example of an error occurring when you reach the domain requests limit
 
 ``` http
 > GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
@@ -82,7 +85,7 @@ The API response contains three headers to indicate the current state of a user'
 }
 ```
 
-> Example of an error occuring when you reach the requests limit for anonymous users
+> Example of an error occurring when you reach the requests limit for anonymous users
 
 ``` http
 > GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1

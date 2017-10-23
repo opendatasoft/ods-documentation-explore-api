@@ -3,35 +3,33 @@
 ## Overview
 
 OpenDataSoft implements the OAuth2 authorization flow, allowing third party application makers to access the data
-hosted on a OpenDataSoft platform on behalf of a user while never having to deal with a password, thus avoiding any user
+hosted on an OpenDataSoft platform on behalf of a user while never having to deal with a password, thus avoiding any user
 credential to be compromised.
 
 The OpenDataSoft OAuth2 authorization flow is compliant with [RFC 6749](https://tools.ietf.org/html/rfc6749) and makes
 use of Bearer Tokens in compliance with [RFC 6750](https://tools.ietf.org/html/rfc6750).
 
-Application developers who want to use the OpenDataSoft APIs with OAuth2 must go through the following steps, which will
-be explained in this section. They must first register their application with the OpenDataSoft platform. Secondly, they
-must request approval from users. With that approval, they can request a Bearer Token. This token allows them to query
-the OpenDataSoft platform APIs for a limited amount of time, after which they must refresh their Bearer Token.
+Application developers who want to use the OpenDataSoft APIs with OAuth2 must go through the following steps, which will be explained in this section.
+
+1. Register their application with the OpenDataSoft platform.
+2. Request approval from users via an OAuth2 authorization grant.
+3. Request a bearer token that will allows them to query the OpenDataSoft platform APIs for a limited amount of time.
+4. Refresh the Bearer Token when it expires.
 
 Currently, applications are registered on a specific domain and can only access data on this domain.
 
-## Getting started
+## Register an application for OAuth2 authentication
 
 ![OAuth2 applications management interface](common/oauth2__applications.png)
 
-The first step to use the OAuth2 authorization flow is to register your application. To do so, go to your account
-page on the domain you want to register the application on. There, you will find a form prompting you for the following:
-
-* **Application name:** the name of the application
-* **Type:** can be either confidential or public. An application is confidential if it can keep information from a user,
-  other applications are public. Typically, a web application running on its own server is confidential. Conversely a
-  smartphone application is public, because the user has control over the running environment of the application.
-* **Redirection URL:** The URL users will be redirected to after they have granted you permission to access their data.
-
-You will then be awarded a **client ID** and a **client secret**.
-
-Now that your application is registered, you can request an authorization grant from a user.
+1. Go to the **My applications** tab of your account page on the domain you want to register the application on.
+2. Fill the registration form with the following information:
+    * **Application name:** the name of the application
+    * **Type:**
+        * confidential: client password is kept secret from the user and only used from a trusted environment (e.g: a web service, where the client password is stored server-side and never sent to the user)
+        * public: client password is embedded in a client-side application, making it potentially available to the world (e.g: a mobile or desktop application)
+    * **Redirection URL:** the URL users will be redirected to after they have granted you permission to access their data
+3. Store the resulting **client ID** and **client secret** that will be needed to perform the next steps.
 
 ## Getting an authorization grant
 
@@ -46,22 +44,24 @@ GET /oauth2/authorize/?
     scope=all HTTP/1.1
 ```
 
-To get an authorization grant from a user, you will need to redirect them to `/oauth2/authorize/` with a few REST
-parameters. The user will then be authenticated in the platform, and redirected to a page identifying your application
-with the info you provided when you registered it, the list of scopes your application would like to access and
-prompting them to grant your application the right to access their data. Once the user has accepted those terms, they will be
-redirected to your application's redirection URL, with REST parameters describing your authorization grant.
+To get an authorization grant from a user:
 
-The REST parameters you will need to supply when redirecting the user are the following:
+1. Redirect them to `/oauth2/authorize/` with the appropriate query parameters.
+2. The user will then be authenticated in the platform and redirected to a page identifying your application.
+3. From there, the user will review the information you filled in the form described above and the scope of the requested access, and grant your application the right to access their data.
+4. Once the user has accepted those terms, they will be redirected to your application's redirection URL with query parameters describing your authorization grant.
 
-* **client_id**: The client ID you were given when you registered your application.
-* **redirect_uri**: The redirect URI you provided when you registered your application.
-* **response_type**: The response type you provided when you registered your application. This should be set to "code"
-* **scopes** *(optional)*: A list of requested scopes, space-separated (currently only "all" is supported)
-* **state** *(optional)*: A random string.
+The query parameters you need to supply when redirecting the user are the following:
 
-Please note that while the state parameter is not mandatory, we encourage you to provide one for security reasons and check that it was given
-back to you when you receive your authorization grant.
+* `client_id`: the client ID you were given during registration
+* `redirect_uri`: the redirect URI you provided during registration
+* `response_type`: this should always be set to `code`
+* `scopes` *(optional)*: a list of space-separated requested scopes. Currently only `all` is supported
+* `state` *(optional)*: a random string of your choice
+
+<aside>
+The state parameter is not mandatory, but providing one is recommended for security reasons to verify the returned value provided in the authorization grant redirect
+</aside>
 
 > Redirection following a successful authorization
 
@@ -70,13 +70,12 @@ HTTP/1.0 302 FOUND
 Location: https://example.com?state=ilovedata&code=gKnAQc2yIfdz2mY25xxgpTY2uyG5Sv
 ```
 
-Your authorization grant will have these values:
+The authorization grant redirect will have these values:
 
-* **code**: the 30-characters-long authorization code
-* **state**: The random string you provided, that you can now check.
+* `code`: a 30-characters-long authorization code
+* `state`: the state passed in the request described above
 
-Now that you have an authorization grant, you can convert it into a bearer token. Please note that your
-authorization grant is only valid for an hour.
+The 30-character authorization code must now be converted into a bearer token within 1 hour before expiring.
 
 ## Converting an authorization grant to a bearer token
 
@@ -94,17 +93,15 @@ client_id=cid&
     state=ilovedata
 ```
 
-To receive your bearer token, you will need to convert your previously obtained authorization grant. To do so, you will
-need to send a POST request to `/oauth2/token/` with the following parameters:
+To receive a bearer token, convert the previously obtained authorization grant via a POST request to `/oauth2/token/` with the following parameters:
 
-* **client_id**: The client ID you were given when you registered your application.
-* **client_secret**: The client secret you were given when you registered your application.
-* **grant_type**: The type of the authorization grant you were awarded. This should be set to "authorization_code".
-* **code**: The 30-characters-long authorization code that was part of your authorization grant.
-* **scopes**: The list of scopes you require access to. Please note that the scopes should all be within the scopes that
-  your authorization grant gives you access to.
-* **redirect_uri**: The redirect URI you provided when registering your application.
-* **state** *(optional)*: A random string.
+* `client_id`: the client ID you were given during registration
+* `client_secret`: the client secret you were given during registration
+* `redirect_uri`: the redirect URI you provided during registration
+* `grant_type`: this should always be set to `authorization_code`
+* `code`: the 30-character authorization code received as an authorization grant
+* `scopes` *(optional)*: a list of space-separated requested scopes. Currently only `all` is supported
+* `state` *(optional)*: a random string of your choice
 
 > Alternative call with an `Authorization` header
 
@@ -138,19 +135,18 @@ Content-Type: application/json
 }
 ```
 
-The response to this request will be the JSON representation of your bearer token, which contains the following values:
+The response to this request is a JSON representation of a bearer token, which contains the following values:
 
-* **access_token**: the token that will authorize you to access the user's data.
-* **expires_in**: the amount of time in seconds after which the bearer token will be made invalid.
-* **token_type**: the type of the token. It will always be "Bearer"
-* **state**: The random string you provided, that you can now check.
-* **scope**: the list of scopes this authorization code allows you to claim
-* **refresh_token**: the token that will allow you to obtain a new bearer token once this one expires
+* `access_token`: the token you can use to access the user's data.
+* `expires_in`: the number of seconds before token expiration
+* `token_type`: the type of the token. It will always be `Bearer`
+* `state`: the state passed in the request described above
+* `scope`: the list of scopes of this authorization code
+* `refresh_token`: a refresh token that can be used to renew this bearer token when expired
 
-Even though there is an expiration time on the bearer token, the refresh token contained in it stays valid until it is
-used once, which means that you can request a new bearer token at any time after the expiry of your current token.
-
-You are now all set to use your newly awarded bearer token!
+<aside>
+    Unlike the access token, that can be used any number of times until expiration, the refresh token doesn't expire but can only be used once
+</aside>
 
 ## Using the bearer token
 
@@ -175,15 +171,11 @@ GET /api/end/point HTTP/1.1
 access_token=9kxoTUYvSxnAiMpv008NBqRiqk5xWt
 ```
 
-Once you have your bearer token, you can start using it to request data from our APIs. You can display your token in one
-of three ways:
+The bearer token can be passed along requests for authentication in three different ways:
 
-* In the API endpoint URL of your request, as a REST parameter
-* In the Authorization header of your request
-* In the body of your request
-
-After using your token for a bit, it will expire, and to continue accessing the data that you need, you will have to
-refresh it.
+* as a query parameter of the request
+* in the request's `Authorization` header
+* in the request body
 
 ## Refreshing a bearer token
 
@@ -201,16 +193,14 @@ client_id=cid&
     state=ilovedata
 ```
 
-To refresh the bearer token, you must send a request to the `/oauth2/token/` endpoint, with the following REST
-parameters:
+To refresh an expired bearer token, send a request to the `/oauth2/token/` endpoint, with the following query parameters:
 
-* **client_id**: The client ID you were given when you registered your application.
-* **client_secret**: The client secret you were given when you registered your application.
-* **grant_type**: The type of the authorization grant you were awarded. This should be set to "refresh_token".
-* **scopes**: The list of scopes you require access to. Please note that this list must match the one you provided when
-  you converted your grant request to a bearer token.
-* **refresh_token**: The refresh token included in your last bearer token.
-* **state** *(optional)*: A random string.
+* `client_id`: the client ID you were given during registration
+* `client_secret`: the client secret you were given during registration
+* `refresh_token`: the refresh token returned in the bearer token response
+* `grant_type`: this should always be set to `refresh_token`
+* `scopes`: a list of space-separated requested scopes. Currently only `all` is supported
+* `state` *(optional)*: a random string of your choice
 
-The response to this request will provide you with a new bearer token in the same way as when you obtained your first
-token from converting your authorization grant.
+The response to this request is identical to the bearer token response.
+

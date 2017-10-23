@@ -10,22 +10,19 @@ For the platform to authenticate a user, you need to either:
 
 ## Finding and generating API keys
 
-In order to see the list of your API keys, head to your profile page on `https://<youropendatasoftportal>.com/account/` (or by clicking on your name in the header).
+API keys are managed via your user profile page at `https://<youropendatasoftportal>.com/account/` or by clicking on your name in the header.
 
 ![Link to account settings](common/authentication__profile-link.png)
 
-Once there, go to the tab named **My API keys** to see your existing API keys, revoke them and create new ones.
+Go to the tab named **My API keys** to see your existing API keys, revoke them and create new ones.
 
 ![Account's API keys page](common/authentication__my-api-keys.png)
 
 <aside>
-   Every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys.
+Every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys.
 </aside>
 
-## Providing API keys within your requests
-
-API keys are passed along requests through the query parameter `apikey`.
-
+## Providing API keys within requests
 
 > Unauthenticated request on private portal
 
@@ -34,9 +31,6 @@ API keys are passed along requests through the query parameter `apikey`.
 
 < HTTP/1.0 401 Unauthorized
 ```
-
-For example, accessing a private portal's catalog unauthenticated will return a `401 Unauthorized` error.
-
 
 > Request authenticated with an API key
 
@@ -63,4 +57,8 @@ For example, accessing a private portal's catalog unauthenticated will return a 
 }
 ```
 
- But passing the API key of an authorized user will return the JSON response with the list of accessible datasets for this user on the portal.
+API keys are passed along requests through the query parameter `apikey`.
+
+For example, accessing a private portal's catalog unauthenticated will return a `401 Unauthorized` error.
+
+But passing the API key of an authorized user will return the JSON response with the list of accessible datasets for this user on the portal.

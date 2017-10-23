@@ -12,8 +12,6 @@ GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&
 POST https://examples.opendatasoft.com/api/csw HTTP/1.1
 ```
 
-The request body :
-
 ```xml
 <?xml version="1.0" ?>
   <GetRecordById
@@ -29,7 +27,7 @@ The request body :
 ```
 
 The `GetRecordById` operation allows clients to retrieve the representation of catalogue records using their
-identifier. The response is a XML document and the output schema can be specified.
+identifier. The response is an XML document and the output schema can be specified.
 
 ### Parameters
 
