@@ -3,7 +3,7 @@
 > Retreive a list of available sources on `public` domain
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/'
+curl 'https://examples.opendatasoft.com/api/v2/'
 ```
 
 > The above command returns
@@ -11,19 +11,19 @@ curl 'https://public.opendatasoft.com/api/v2/'
 ```json
 {
 	"links": [{
-			"href": "https://public.opendatasoft.com/api/v2",
+			"href": "https://examples.opendatasoft.com/api/v2",
 			"rel": "self"
 		},
 		{
-			"href": "https://public.opendatasoft.com/api/v2/catalog",
+			"href": "https://examples.opendatasoft.com/api/v2/catalog",
 			"rel": "catalog"
 		},
 		{
-			"href": "https://public.opendatasoft.com/api/v2/monitoring",
+			"href": "https://examples.opendatasoft.com/api/v2/monitoring",
 			"rel": "monitoring"
 		},
 		{
-			"href": "https://public.opendatasoft.com/api/v2/opendatasoft",
+			"href": "https://examples.opendatasoft.com/api/v2/opendatasoft",
 			"rel": "opendatasoft"
 		}
 	]
@@ -43,7 +43,7 @@ Every calls on [datasets](#datasets) or [records](#records) APIs will be perform
 > Get a list of published datasets on `public` domain
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets
 ```
 
 Catalog source works on published dataset of requested domain. This is the source to use for retrieve actual data for a specific domain.
@@ -61,7 +61,7 @@ This source is used by default in all examples.
 > Get a list of monitoring datasets on `public` domain
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/monitoring/datasets
+curl 'https://examples.opendatasoft.com/api/v2/monitoring/datasets
 ```
 
 Monitoring source works on special datasets providing analysis informations about the requested domain. 
@@ -79,7 +79,7 @@ Appart of a public dataset listing, other monitoring data require specific secur
 > Get a list of all public datasets on OpenDataSoft Data Hub
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/opendatasoft/datasets
+curl 'https://examples.opendatasoft.com/api/v2/opendatasoft/datasets
 ```
 
 > Note : This can also be done by directly requesting `catalog` source on `data.opendatasoft.com` domain

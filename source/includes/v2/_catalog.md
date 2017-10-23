@@ -3,7 +3,7 @@
 > List available entrypoints on a catalog
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/'
 ```
 
 A catalog is considered as a list of datasets for a domain. Catalog operations are all API entrypoints available on datasets.
@@ -20,7 +20,7 @@ In catalog search, a field literal can either be a technical field or a metadata
 
 ```shell
 # Count dataset grouped by their features (`features` is a technical field)
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
 # Note : (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
 
@@ -36,13 +36,13 @@ features | List of dataset features. Possible values : calendar, geo, image, api
 >  Use metadata as field literal
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
 # Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
 
 # Get datasets that have been downloaded more than a 100 time
 # download_count meta must be prefixed with its metadata template: 'explore'  
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
 All metadata can be use as field literal in query parameters.
@@ -57,19 +57,19 @@ The list of metadata and their types for a domain can be obtained with the metad
 > Get first 10 datasets
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?rows=10'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?rows=10'
 ```
 
 > Get 10 datasets starting at the 10th result
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10'
 ```
 
-> Search datasets containing `water` in their metas
+> Search datasets containing `world` in their metas
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets?where="water"'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where="world"'
 ```
 
 This entrypoint provides a search facility in the dataset catalog.
@@ -103,7 +103,7 @@ Value of start + rows cannot exceed 10000. Use export API to download all datase
 > Aggregation query without group_by
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
 ```
 
 > Returns an array with one element
@@ -121,7 +121,7 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*)
 > Aggregation query with a single group_by
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
 ```
 
 > Returns an array with an object for each `feature` containing feature's name and number of datasets.
@@ -145,19 +145,19 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=features
 > Invalid aggregation with a selected field not present in group_by
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
 ```
 
 > Valid aggregation with an aggregation function
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
 ```
 
 > Aggregation with an multiple group_by
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
 ```
 
 This entrypoint provides an aggregation facility in the datasets catalog.
@@ -192,7 +192,7 @@ limit | None | Number of items to return
 > Get a list of available export formats
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/'
 ```
 
 Download all datasets for the requested domain.
@@ -217,7 +217,7 @@ timezone | UTC | Timezone applied on datetime fields in query and response
 > Export datasets in json format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/json'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/json'
 ```
 
 #### HTTP Request
@@ -230,7 +230,7 @@ Export datasets to Json format
 > Export datasets in csv format using **,** as delimiter
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
 ```
 
 Export datasets to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
@@ -252,7 +252,7 @@ list_separator | , | Character used to separate values in list
 > Export datasets in xls format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/xls'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
 ```
 
 Export datasets to XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
@@ -266,7 +266,7 @@ Export datasets to XLS format using [SpreadsheetML specification](https://en.wik
 > Export datasets in rss format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/rss'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rss'
 ```
 
 Export datasets to RSS format.
@@ -279,7 +279,7 @@ Export datasets to RSS format.
 > Export datasets in turle rdf format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/ttl'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/ttl'
 ```
 
 Export datasets to Turtle RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
@@ -292,7 +292,7 @@ Export datasets to Turtle RDF format using [DCAT application for data portals in
 > Export datasets in rdf-xml format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/rdf'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdf'
 ```
 
 Export datasets to XML-RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
@@ -305,7 +305,7 @@ Export datasets to XML-RDF format using [DCAT application for data portals in Eu
 > Export datasets in data.json format
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/exports/data.json'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/data.json'
 ```
 
 Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.swiss/en/library/ch-dcat-ap).
@@ -318,7 +318,7 @@ Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.s
 > Lookup airbnb-listings dataset
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/datasets/airbnb-listings'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/airbnb-listings'
 ```
 
 Retrieve information about a specific datasets

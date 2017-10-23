@@ -3,7 +3,7 @@
 > Search API endpoint for domain mydomain
 
 ```text
-https://mydomain.opendatasoft.com/api/v2
+https://examples.opendatasoft.com/api/v2
 ```
 
 The OpenDataSoft search API v2 is organized around REST. It provides access in a coherent, hierarchical way to all the data available through the platform. 
