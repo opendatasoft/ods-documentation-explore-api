@@ -9,12 +9,12 @@ credential to be compromised.
 The OpenDataSoft OAuth2 authorization flow is compliant with [RFC 6749](https://tools.ietf.org/html/rfc6749) and makes
 use of Bearer Tokens in compliance with [RFC 6750](https://tools.ietf.org/html/rfc6750).
 
-Application developers who want to use the OpenDataSoft APIs with OAuth2 must go through the following steps, which will be explained in this section:
+Application developers who want to use the OpenDataSoft APIs with OAuth2 must go through the following steps, which will be explained in this section.
 
-1. register their application with the OpenDataSoft platform
-2. request approval from users via an OAuth2 authorization grant
-3. request a bearer token that will allows them to query the OpenDataSoft platform APIs for a limited amount of time
-4. refresh the Bearer Token when it expires
+1. Register their application with the OpenDataSoft platform.
+2. Request approval from users via an OAuth2 authorization grant.
+3. Request a bearer token that will allows them to query the OpenDataSoft platform APIs for a limited amount of time.
+4. Refresh the Bearer Token when it expires.
 
 Currently, applications are registered on a specific domain and can only access data on this domain.
 
@@ -22,14 +22,14 @@ Currently, applications are registered on a specific domain and can only access 
 
 ![OAuth2 applications management interface](common/oauth2__applications.png)
 
-1. go to the **My applications** tab of your account page on the domain you want to register the application on
-2. fill the registration form with the following information:
+1. Go to the **My applications** tab of your account page on the domain you want to register the application on.
+2. Fill the registration form with the following information:
     * **Application name:** the name of the application
     * **Type:**
         * confidential: client password is kept secret from the user and only used from a trusted environment (e.g: a web service, where the client password is stored server-side and never sent to the user)
         * public: client password is embedded in a client-side application, making it potentially available to the world (e.g: a mobile or desktop application)
     * **Redirection URL:** the URL users will be redirected to after they have granted you permission to access their data
-3. store the resulting **client ID** and **client secret** that will be needed to perform the next steps
+3. Store the resulting **client ID** and **client secret** that will be needed to perform the next steps.
 
 ## Getting an authorization grant
 
@@ -46,10 +46,10 @@ GET /oauth2/authorize/?
 
 To get an authorization grant from a user:
 
-1. redirect them to `/oauth2/authorize/` with the appropriate query parameters
-2. the user will then be authenticated in the platform and redirected to a page identifying your application
-3. from there, the user will review the information you filled in the form described above and the scope of the requested access, and grant your application the right to access their data
-4. once the user has accepted those terms, they will be redirected to your application's redirection URL with query parameters describing your authorization grant
+1. Redirect them to `/oauth2/authorize/` with the appropriate query parameters.
+2. The user will then be authenticated in the platform and redirected to a page identifying your application.
+3. From there, the user will review the information you filled in the form described above and the scope of the requested access, and grant your application the right to access their data.
+4. Once the user has accepted those terms, they will be redirected to your application's redirection URL with query parameters describing your authorization grant.
 
 The query parameters you need to supply when redirecting the user are the following:
 

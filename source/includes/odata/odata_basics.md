@@ -131,7 +131,7 @@ The service supports ATOM and JSON formats. For the JSON formats, the "minimal" 
 supported. Any request for a metadata level of "none" will be responded to with the "minimal" metadata level, as per
 the standard.
 
-There are two main ways of requesting a specific format:
+There are 2 main ways of requesting a specific format:
 
 * in the `Accept` header
 * in the `$format` query parameter

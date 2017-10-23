@@ -22,7 +22,7 @@ This API makes it possible to fetch an individual dataset information.
 
 ### Parameters
 
-The dataset identifier is passed as a part of the URL as indicated by the `<dataset_id>` placeholder in the exemple on the right.
+The dataset identifier is passed as a part of the URL as indicated by the `<dataset_id>` placeholder in the example on the right.
 
 Other parameters, passed as query parameters, are described below:
 
