@@ -13,7 +13,7 @@ Each metadata belongs to a metadata template. Each metadata template has a type:
 > List metadata template types
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 ```
 
 ### HTTP Request
@@ -26,7 +26,7 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates'
 > List templates for `basic` type
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 ```
 
 ### HTTP Request
@@ -39,7 +39,7 @@ curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 > List metadata for `default` template
 
 ```shell
-curl 'https://public.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
 ```
 
 ### HTTP Request
