@@ -201,16 +201,6 @@ Download all datasets for the requested domain.
 
 `GET /api/v2/catalog/exports`
 
-### URL Parameters
-
-List of available parameters for dataset search API.
-
-Parameter | Default | Description
---------- | ------- | -----------
-where | None | Filter expression used to restrict returned datasets
-include_app_metas | false | Explicitely request application metas for each datasets
-timezone | UTC | Timezone applied on datetime fields in query and response
-
 
 ### Json catalog export
 
@@ -315,10 +305,10 @@ Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.s
 
 ## Lookup dataset
 
-> Lookup airbnb-listings dataset
+> Lookup Unesco dataset
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/airbnb-listings'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list'
 ```
 
 Retrieve information about a specific datasets
