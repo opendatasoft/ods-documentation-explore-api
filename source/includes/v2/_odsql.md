@@ -111,6 +111,24 @@ Geometry literals are defined with a geom keyword followed by a valid geometry e
 - [WKT/WKB](https://en.wikipedia.org/wiki/Well-known_text)
 - [GeoJSON geometry](https://en.wikipedia.org/wiki/GeoJSON)
 
+
+<div class=“clearfix”></div>
+### Scalar functions
+
+Scalar functions can be used in [select arithmetic expressions](#arithmetic-select-expression), [filter expressions](#filter-expression)
+
+function|parameters|description|limitation
+--------|-----------|----------|----------
+length|string literal or string field literal|returns the number of characters|
+now|no parameter|returns the current date|only works on filter expression
+year|date field literal|return year of field literal|
+month|date field literal|return month of field literal|
+day|date field literal|return day of field literal|
+hour|date field literal|return hour of field literal|
+minute|date field literal|return minute of field literal|
+second|date field literal|return second of field literal|
+date_format|date field literal|returns formatted date (see [Group by date format](#group-by-date-format) for examples)|
+
 <div class=“clearfix”></div>
 ### Reserved keywords
 
@@ -164,23 +182,34 @@ List of reserved keywords:
 
 The select clause can be used in records search APIs as the parameter select. Its goal is to allow you to choose the fields that will be returned for each row, transform them using arithmetic, rename them, add computed virtual fields, include or exclude fields based on a pattern.
 
-A select clause can be:
+A select clause is composed of a single select expression or a list of comma-separated expressions.
+A select expression can be:
 
-- a single expression
-- a list of comma-separated expressions
+ - a field literal
+ - an include/exclude function 
+ - an arithmetic expression
+ - an aggregation function
 
+ Except include/exclude function, a select expression can define a label with the keyword `AS`. This label will be used in the output of the API as `key` for the select expression result.
 
-### Select expressions
+<div class=“clearfix”></div>
+### Select field literal
 
-> Examples of select expressions
-
+> Examples of select field literal
 ```plain-text
 *                           # Select all fields
-field1, field2, field3      # Select field1, field2 and field3
+field1, field2, field3      # Only select field1, field2 and field3
 field1 AS my_field, field2  # Renaming field1 as my_field and select field2
-field1 * 2 AS twice_field1  # Create a new field twice_field1 with value field1 * 2
 ```
 
+Select field literal is the simplier form of select expression. It takes a field literal that must be returns in the result.
+It also accepts the special character `*` to select all fields (it is the default behaviour).
+
+<aside>
+If a select expression is used in conjunction with a group by clause, then selected field literal must be in the group by clause
+</aside>
+
+<div class=“clearfix”></div>
 ### Include and exclude
 
 > Example of include/exclude
@@ -190,7 +219,80 @@ exclude(pop) # will exclude fields which name is pop
 include(pop*) # Will include fields beginning with pop
 ```
 
-Include and exclude are functions that accept fields name. Fields listed in include (resp. exclude) are present (resp absent) from result. Field can contain a wildcard suffix ('*' char). In that case, inclusion/exclusion works on all field name beginning with the value preceding the wildcard.
+Include and exclude are functions that accept fields name. Fields listed in include (resp. exclude) are present (resp absent) from result. Field can contain a wildcard suffix (`*` char). In that case, inclusion/exclusion works on all field name beginning with the value preceding the wildcard.
+
+
+<div class=“clearfix”></div>
+### Arithmetic select expression
+
+> Example of include/exclude
+```plain-text
+2 as const_2 # Creates a field `const_2` containing the value `2`
+2 * population as double_population # Create a field `double_population` containing the double of population field
+"hello" as hello # Creates a field containing "hello" value
+length(country_name) # Get length (number of characters) of country_name field values
+```
+
+An arithmetic select expression accepts simple arithmetic operations. It accepts field literal, constant numeric/text values or [scalar functions](#scalar-functions). More complex arithmetic expressions can be formed by connecting this elements with arithmetic operators:
+ - `+`: add
+ - `-`: substract
+ - `*`: multiply
+ - `/`: divide
+
+### Select aggregation
+
+> Examples of aggregation expression
+```plain-text
+SUM(population) as sum_population # Will compute the sum of all values for the field `population` returned as sum_population
+COUNT(*) # Return number of elements
+```
+
+Like SQL language, a select can also express an aggregation expression. Available aggregation functions are:
+
+<div class=“clearfix”></div>
+#### Count aggregation
+
+> Examples of count aggregation
+```plain-text
+COUNT(*) # Return number of elements
+count(population) as population_count_not_empty # Return number of elements where `population` field is not empty
+```
+
+This function computes number of elements. It accepts as parameter:
+  - a field literal: in that case, it returns only the count for not `null` value for this field.
+  - a `*` : It returns the count of all elements.
+
+
+<div class=“clearfix”></div>
+#### Max aggregation
+
+> Examples of max aggregation
+```plain-text
+max(population) as max_population # Return max value for population field
+```
+
+This function takes a numeric field literal and returns the `max` value this field.
+
+<div class=“clearfix”></div>
+#### Min aggregation
+
+> Examples of min aggregation
+```plain-text
+min(population) as min_population # Return min value for population field
+```
+
+This function takes a numeric field literal and returns the `min` value this field.
+
+
+<div class=“clearfix”></div>
+#### Avg aggregation
+
+> Examples of avg aggregation
+```plain-text
+avg(population) as avg_population # Return the average of the population
+```
+
+This function takes a numeric field literal and returns the `avg` for this field.
 
 ## Where clause
 
