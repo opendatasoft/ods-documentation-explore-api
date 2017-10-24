@@ -36,7 +36,7 @@ Search APIv2 can access data from 3 different sources. They are used to controll
 - `monitoring`: access monitoring data for requested domain
 - `opendatasoft`: search in all public OpenDataSoft catalog.
 
-Every calls on [datasets](#datasets) or [records](#records) APIs will be performed on the requested data source.
+Every calls on [catalog](#catalog) or [dataset](#dataset) APIs will be performed on the requested data source.
 
 ## Catalog
 

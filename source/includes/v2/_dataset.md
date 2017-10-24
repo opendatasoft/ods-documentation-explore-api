@@ -4,11 +4,11 @@ This section details all entry points to work on a specific dataset data called 
 
 ## Field literal in dataset queries
 
-Some parameters, such as `select`, `where` or `group_by`, in the following entry points accept [field literal](#field-literal)
-In catalog search, a field literal can either be a technical field or a field from dataset mapping.
+Some parameters, such as `select`, `where` or `group_by`, in the following entry points accept [field literal](#field-literal).
+In dataset search, a field literal can either be a technical field or a field from dataset mapping.
 
 <div class=“clearfix”></div>
-### Record technical fields:
+### Dataset technical fields:
 
 ```shell
 # Sort records by their technical size 
@@ -41,7 +41,7 @@ Any field name from a dataset can be used as [field literal](#field-literal) in 
 If a field name contains only digits or is a keyword, it must be enclosed in back-quotes
 </aside> 
 
-The list of fields for a specific dataset can be obtained with the [dataset lookup API](#Lookup-dataset)
+The list of fields for a specific dataset can be obtained with the [dataset lookup API](#lookup-dataset)
 
 ## Search records
 
@@ -193,7 +193,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 Download all records for the requested dataset.
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/catalog/<dataset_id>/exports`
 

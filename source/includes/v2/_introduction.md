@@ -1,6 +1,6 @@
 # Introduction
 
-> Search API endpoint for domain mydomain
+> Search API endpoint for examples domain
 
 ```text
 https://examples.opendatasoft.com/api/v2
