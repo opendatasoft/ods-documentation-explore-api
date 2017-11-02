@@ -32,12 +32,12 @@ More complex queries can be run using a TPF client [See here](#run-sparql-querie
 > Service entry address
 
 ```http
-GET http://public.opendatasoft.com/api/tpf/{DATASET_UID}
+GET https://public.opendatasoft.com/api/tpf/{DATASET_UID}
 ```
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the the domain `http://public.opendatasoft.com` as an example but you should replace it
+For this documentation, we use the the domain `https://public.opendatasoft.com` as an example but you should replace it
 by your custom domain name.
 
 The TPF API supports `GET` HTTP methods.
@@ -47,7 +47,7 @@ The TPF API supports `GET` HTTP methods.
 > TPF API call with parameters
 
 ```http
-GET http://public.opendatasoft.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fpublic.opendatasoft.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
+GET https://public.opendatasoft.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fpublic.opendatasoft.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
 ```
 
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
