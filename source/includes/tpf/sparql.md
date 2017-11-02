@@ -10,7 +10,7 @@ TPF API can be used to run `SPARQL` queries over OpenDataSoft datasets.
 PREFIX roman: <https://public.opendatasoft.com/ld/ontologies/roman-emperors/>
 
 SELECT ?name WHERE {
-  ?s roman:birth_city "Rome"^^xsd:string .
+  ?s roman:birth_cty "Rome"^^xsd:string .
   ?s roman:reign_start ?date .
     FILTER (?date > "0014-12-31T00:00:00+00:00"^^xsd:dateTime)
   ?s  roman:name ?name .
