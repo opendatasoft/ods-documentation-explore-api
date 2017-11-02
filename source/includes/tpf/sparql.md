@@ -7,7 +7,7 @@ TPF API can be used to run `SPARQL` queries over OpenDataSoft datasets.
 > a SPARQL query to retrieve roman emperors born in Rome whose reign start after AD 14.
 
 ```shell
-PREFIX roman: <http://public.opendatasoft.com/ld/ontologies/roman-emperors/>
+PREFIX roman: <https://public.opendatasoft.com/ld/ontologies/roman-emperors/>
 
 SELECT ?name WHERE {
   ?s roman:birth_city "Rome"^^xsd:string .
