@@ -16,6 +16,35 @@ Each metadata belongs to a metadata template. Each metadata template has a type:
 curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 ```
 
+> API response:
+
+```json
+{
+	"links": [{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"rel": "self"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/interop",
+			"rel": "Interoperatibility"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"rel": "Basic"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/extra",
+			"rel": "Extra"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/admin",
+			"rel": "Admin"
+		}
+	]
+}
+```
+
+
 ### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates`
@@ -27,6 +56,60 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
+```
+
+> API response:
+
+```json
+{
+	"links": [{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"rel": "self"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"rel": "metadata_templates"
+		}
+	],
+	"metadata_templates": [{
+		"links": [{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
+			"rel": "self"
+		}],
+		"matadata_template": {
+			"type": "basic",
+			"name": "default",
+			"schema": [{
+					"widget": "textinput",
+					"name": "title",
+					"uri": "http://purl.org/dc/terms/title",
+					"label": "Title",
+					"values": null,
+					"self_suggest": false,
+					"allow_empty": false,
+					"help_text": null,
+					"hidden": true,
+					"type": "text",
+					"values_domain_property": null
+				},
+				{
+					"widget": "richtextinput",
+					"name": "description",
+					"uri": "http://purl.org/dc/terms/description",
+					"label": "Description",
+					"values": null,
+					"self_suggest": false,
+					"allow_empty": true,
+					"help_text": null,
+					"hidden": false,
+					"type": "longstring",
+					"values_domain_property": null
+				},
+                ...
+			]
+		}
+	}]
+}
 ```
 
 ### HTTP Request
@@ -41,6 +124,72 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
 ```
+
+> API response:
+
+```json
+{
+	"links": [{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
+			"rel": "self"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"rel": "basic"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"rel": "metadata_templates"
+		}
+	],
+	"metadata_template": {
+		"type": "basic",
+		"name": "default",
+		"schema": [{
+				"widget": "textinput",
+				"name": "title",
+				"uri": "http://purl.org/dc/terms/title",
+				"label": "Title",
+				"values": null,
+				"self_suggest": false,
+				"allow_empty": false,
+				"help_text": null,
+				"hidden": true,
+				"type": "text",
+				"values_domain_property": null
+			},
+			{
+				"widget": "richtextinput",
+				"name": "description",
+				"uri": "http://purl.org/dc/terms/description",
+				"label": "Description",
+				"values": null,
+				"self_suggest": false,
+				"allow_empty": true,
+				"help_text": null,
+				"hidden": false,
+				"type": "longstring",
+				"values_domain_property": null
+			},
+			{
+				"widget": "multidatalist",
+				"name": "theme",
+				"uri": "http://www.w3.org/ns/dcat#theme",
+				"label": "Themes",
+				"values": null,
+				"self_suggest": false,
+				"allow_empty": true,
+				"help_text": null,
+				"hidden": false,
+				"type": "list",
+				"values_domain_property": "metadata.themes"
+			},
+            ...
+		]
+	}
+}
+```
+
 
 ### HTTP Request
 
