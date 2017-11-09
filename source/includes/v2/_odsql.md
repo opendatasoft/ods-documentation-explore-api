@@ -196,6 +196,7 @@ A select expression can be:
 ### Select field literal
 
 > Examples of select field literal
+
 ```plain-text
 *                           # Select all fields
 field1, field2, field3      # Only select field1, field2 and field3
@@ -213,6 +214,7 @@ If a select expression is used in conjunction with a group by clause, then selec
 ### Include and exclude
 
 > Example of include/exclude
+
 ```plain-text
 include(pop) # will only include fields which name is pop
 exclude(pop) # will exclude fields which name is pop
@@ -226,6 +228,7 @@ Include and exclude are functions that accept fields name. Fields listed in incl
 ### Arithmetic select expression
 
 > Example of include/exclude
+
 ```plain-text
 2 as const_2 # Creates a field `const_2` containing the value `2`
 2 * population as double_population # Create a field `double_population` containing the double of population field
@@ -242,6 +245,7 @@ An arithmetic select expression accepts simple arithmetic operations. It accepts
 ### Select aggregation
 
 > Examples of aggregation expression
+
 ```plain-text
 SUM(population) as sum_population # Will compute the sum of all values for the field `population` returned as sum_population
 COUNT(*) # Return number of elements
@@ -253,6 +257,7 @@ Like SQL language, a select can also express an aggregation expression. Availabl
 #### Count aggregation
 
 > Examples of count aggregation
+
 ```plain-text
 COUNT(*) # Return number of elements
 count(population) as population_count_not_empty # Return number of elements where `population` field is not empty
@@ -267,6 +272,7 @@ This function computes number of elements. It accepts as parameter:
 #### Max aggregation
 
 > Examples of max aggregation
+
 ```plain-text
 max(population) as max_population # Return max value for population field
 ```
@@ -277,6 +283,7 @@ This function takes a numeric field literal and returns the `max` value this fie
 #### Min aggregation
 
 > Examples of min aggregation
+
 ```plain-text
 min(population) as min_population # Return min value for population field
 ```
@@ -288,6 +295,7 @@ This function takes a numeric field literal and returns the `min` value this fie
 #### Avg aggregation
 
 > Examples of avg aggregation
+
 ```plain-text
 avg(population) as avg_population # Return the average of the population
 ```
@@ -345,6 +353,7 @@ Filter functions are built-in functions that can be used in a `where` expression
 
 <div class=“clearfix”></div>
 #### Distance function
+
 > Distance function examples
 
 ```plain-text
@@ -357,6 +366,7 @@ The distance function limits the result set to a geographical area defined by a 
 
 <div class=“clearfix”></div>
 #### Geometry function
+
 > Geometry function examples
 
 ```plain-text
@@ -370,6 +380,7 @@ The geometry function limits the result set to a geographical area defined by a 
 
 <div class=“clearfix”></div>
 #### Bbox function
+
 > Bbox function example
 
 ```plain-text
@@ -394,14 +405,8 @@ my_boolean_field is false # Filters results where boolean_field is false
 A boolean field filter takes a boolean field and restricts result only if boolean value is `true`.
 There are two ways of creating a filter expression:
 
-- with a field_literal only. In that case, it filters the result where field_literal value is `true`
-- with a field_literal followed by `is` keyword then `true` or `false` keywords.
-
-#### Usage
-
-- `<field_literal>`
-- `<field_literal> is (true|false)`
-`<field_literal>` must be a valid boolean field
+- `<field_literal>`: filters results where `field_literal` value is `true`
+- `<field_literal> is (true|false)`: filters results where `field_literal` is (true|false)
 
 
 <div class=“clearfix”></div>
@@ -539,7 +544,7 @@ group_by=my_field
 
 Group by field expression allows grouping on specified field value. It will create a group for each different value of field.
 
-#### Usage
+##### Usage
 `group_by=<field_literal>`
 
 
@@ -556,7 +561,7 @@ RANGE(population, [1,2,3])       # Creates 2 groups: 1-2 and 2-3
 
 The static range function takes two parameters: a field name and an array of steps inside brackets. The side of brackets determines if values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
 
-#### Usage
+##### Usage
 `group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])`
 `<field_literal>` must be a numeric field
 
@@ -583,11 +588,10 @@ An equi range function can be used in [static range funciton](#group-by-static-r
 The equi range function takes four parameters: a field name, a step value, a lower bound and an higher bound.
 It creates a group for the lower bound, then it will create another group at each step, adding step value from previous value until reaching higher bound.
 
-#### Usage
+##### Usage
 `group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))`
 `<field_literal>` must be a numeric field
 
-<div class=“clearfix”></div>
 ### Group by date functions
 
 > group by date examples
@@ -609,7 +613,7 @@ minute | group by minute
 second | group by second
 millisecond | group by millisecond
 
-#### Usage
+##### Usage
 `group_by=<date_function>(<field_literal>)`
 `<field_literal>` must be a datetime field
 
@@ -669,7 +673,7 @@ Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 
 
 Zone names: Time zone names ('z') cannot be parsed.
 
-#### Usage
+##### Usage
 `group_by=date_format(<string_literal>)`
 `<string_literal>` contains a date format
 

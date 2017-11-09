@@ -2,13 +2,13 @@
 
 This section details all entry points to work on a specific dataset data called `records`.
 
-## Field literal in dataset queries
+
+##### Field literal in dataset queries
 
 Some parameters, such as `select`, `where` or `group_by`, in the following entry points accept [field literal](#field-literal).
 In dataset search, a field literal can either be a technical field or a field from dataset mapping.
 
-<div class=“clearfix”></div>
-### Dataset technical fields:
+###### Dataset technical fields
 
 ```shell
 # Sort records by their technical size 
@@ -22,8 +22,7 @@ record_timestamp | Date field indicating publishing date
 recordid | Unique identifier the record
 record_size | Size of the record
 
-<div class=“clearfix”></div>
-### Dataset fields
+###### Dataset fields
 
 > Use a field name as field_literal
 
@@ -42,6 +41,7 @@ If a field name contains only digits or is a keyword, it must be enclosed in bac
 </aside> 
 
 The list of fields for a specific dataset can be obtained with the [dataset lookup API](#lookup-dataset)
+
 
 ## Search records
 
@@ -79,15 +79,15 @@ List of available parameters for dataset search API.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-select | * | Select expression used to retrieve specific fields. See [ODSQL documentation](#select-clause)
-where | None | Filter expression used to restrict returned datasets. See [ODSQL documentation](#where-clause)
-start | 0 | Index of the first item to return
-rows | 10 | Number of items to return. Max value : 100
-include_app_metas | false | Explicitely request application metas for each datasets
-timezone | UTC | Timezone applied on datetime fields in query and response
+`select` | * | Select expression used to retrieve specific fields ([ODSQL documentation](#select-clause))
+`where` | None | Filter expression used to restrict returned datasets ([ODSQL documentation](#where-clause))
+`start` | 0 | Index of the first item to return
+`rows` | 10 | Number of items to return. Max value : 100
+`include_app_metas` | false | Explicitely request application metas for each datasets
+`timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-Value of start + rows cannot exceed 1000. Use export API to download all records.
+Value of `start` + `rows` cannot exceed 1000. Use export API to download all records.
 </aside>
 
 
@@ -118,7 +118,8 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_20
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-cities/aggregates?select=count(*) as num_cities,state,sum(population) as sum_population&group_by=state'
 ```
 
-> Returns an array with an object for each `feature` containing feature's name and number of datasets.
+> Returns an array with an object for each `feature` containing feature's name and number of datasets
+
 ```json
 {
     "aggregations": [
@@ -177,11 +178,11 @@ List of available parameters for dataset search API.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-where | None | Filter expression used to restrict returned datasets. see [where clause in ODSQL documentation](#where-clause)
-select | None | Select clause for aggregation. see [select clause in ODSQL documentation](#select-clause)
-group_by | None | Group by clause for aggregation. see [group_by clause in ODSQL documentation](#group-by-clause)
-timezone | UTC | Timezone applied on datetime fields in query and response
-limit | None | Number of items to return
+`where` | None | Filter expression used to restrict returned datasets ([where clause in ODSQL documentation](#where-clause))
+`select` | None | Select clause for aggregation ([select clause in ODSQL documentation](#select-clause))
+`group_by` | None | Group by clause for aggregation ([group_by clause in ODSQL documentation](#group-by-clause))
+`timezone` | UTC | Timezone applied on datetime fields in query and response
+`limit` | None | Number of items to return
 
 ## Export records
 
@@ -193,7 +194,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 Download all records for the requested dataset.
 
-#### HTTP Request
+*HTTP Request*
 
 `GET /api/v2/catalog/<dataset_id>/exports`
 

@@ -199,6 +199,23 @@ html, body {
       font-size: 12px;
     }
 
+    .tocify-subheader {
+      .tocify-item>a {
+        // Styling here for a level 2 nesting. For example -> 
+        padding-left: $nav-padding + $nav-indent * 2;
+        font-size: 12px;
+      }
+
+      .tocify-subheader {
+        .tocify-item>a {
+          // Styling here for a level 2 nesting. For example -> 
+          padding-left: $nav-padding + $nav-indent * 4;
+          font-size: 12px;
+        }
+      }
+
+    }
+
     // for embossed look:
     @include embossed-bg;
     &>li:last-child {
@@ -348,7 +365,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2 {
+  &>h1, &>h2, &>h3, &>h4 {
     clear: both;
   }
 
@@ -366,7 +383,7 @@ html, body {
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
+  &>h1, &>h2, &>h3, &>h4, &>h5 &>div {
     clear:both;
   }
 
