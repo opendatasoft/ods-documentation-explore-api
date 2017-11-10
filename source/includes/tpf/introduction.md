@@ -42,7 +42,7 @@ The TPF API supports `GET` HTTP methods.
 > TPF API call with parameters
 
 ```http
-GET http://public.opendatasoft.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fpublic.opendatasoft.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
+GET https://public.opendatasoft.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fpublic.opendatasoft.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
 ```
 
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
