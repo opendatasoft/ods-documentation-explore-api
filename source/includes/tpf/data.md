@@ -1,12 +1,12 @@
 # OpenDataSoft RDF data
 
 Data retrieved with the OpenDataSoft TPF API is in triple format described with RDF.
-Data in such format can use `ontologies` (vocabularies) to define their meaning.
+Data in such format can use ontologies (vocabularies) to define their meaning.
 
 ## Structure
 
 For the moment, OpenDataSoft datasets are not enriched with ontologies. A direct mapping
-of datasets to triple is used and follow those simple rules:
+of datasets to triple is used and follows 3 rules:
 
 * A `record` is the `subject` of a triple
 * A `field` is the `predicate` of a triple
