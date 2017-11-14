@@ -1,6 +1,6 @@
 # Sources
 
-> Retreive a list of available sources on `public` domain
+> Retrieve a list of available sources on `public` domain
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/'
@@ -30,66 +30,66 @@ curl 'https://examples.opendatasoft.com/api/v2/'
 }
 ```
 
-Search APIv2 can access data from 3 different sources. They are used to controlled the type of data to search on.
+The search API v2 can access data from 3 different sources, depending on the type of data to search.
 
-- `catalog`: search in data published in requested domain
-- `monitoring`: access monitoring data for requested domain
-- `opendatasoft`: search in all public OpenDataSoft catalog.
+- `catalog`: to search data published on a requested domain
+- `monitoring`: to access monitoring data from a requested domain
+- `opendatasoft`: to search in the public OpenDataSoft catalog
 
-Every calls on [catalog](#catalog) or [dataset](#dataset) APIs will be performed on the requested data source.
+Every call from the [catalog](#catalog) or [dataset](#dataset) APIs will be performed on the chosen data source.
 
-## Catalog
+<aside>
+For now, the metadata API only works on the catalog data source.
+</aside>
+
+
+## Catalog source
 
 > Get a list of published datasets on `public` domain
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets'
 ```
 
-Catalog source works on published dataset of requested domain. This is the source to use for retrieve actual data for a specific domain.
+The catalog source works on the published dataset of a requested domain. Use this source to retrieve actual data from a specific domain.
 
-### HTTP Request
+**HTTP Request**
 
 `GET /api/v2/catalog/`
 
-<aside>
-This source is used by default in all examples.
-</aside>
-
-## Monitoring
+## Monitoring source
 
 > Get a list of monitoring datasets on `public` domain
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/monitoring/datasets
+curl 'https://examples.opendatasoft.com/api/v2/monitoring/datasets'
 ```
 
-Monitoring source works on special datasets providing analysis informations about the requested domain.
+The monitoring source allows to search and work on special datasets providing analysis information about a requested domain.
 
-### HTTP Request
+**HTTP Request**
 
 `GET /api/v2/monitoring/`
 
 <aside>
-Appart of a public dataset listing, other monitoring data require specific security permissions.
+The monitoring API gives access to the data of one specific dataset containing the list of public datasets of the requested domain. Other monitoring data require specific permissions for security reasons.
 </aside>
 
-## OpenDataSoft
+
+## OpenDataSoft source
 
 > Get a list of all public datasets on OpenDataSoft Data Hub
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/opendatasoft/datasets
+curl 'https://examples.opendatasoft.com/api/v2/opendatasoft/datasets'
 ```
 
-> Note: This can also be done by directly requesting `catalog` source on `data.opendatasoft.com` domain
+The OpenDataSoft allows to search and work on all available public datasets from the OpenDataSoft data network.
 
-```shell
-curl 'https://data.opendatasoft.com/api/v2/catalog/datasets
-```
+<aside>
+The HTTP request below returns the same datasets as `https//data.opendatasoft.com/api/v2/catalog`.
+</aside>
 
-This source works on all available public datasets of OpenDataSoft Data Hub. This works as a shortcut of `https//data.opendatasoft.com/api/v2/catalog`.
-
-### HTTP Request
+**HTTP Request**
 
 `GET /api/v2/opendatasoft/`
