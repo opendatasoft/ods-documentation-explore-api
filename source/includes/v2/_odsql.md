@@ -18,7 +18,7 @@ The ODSQL is split into 5 different kinds of clauses:
 These clauses are used as parameters in the Search API v2 for searching, aggregating and exporting datasets and records. Depending on the used endpoint, some features of the query language are available or not in the request.
 
 <aside>
-The whole query language is case insensitive and spaced are optional. In this documentation, upper case will however be used for language keywords, only for clarity purpose.
+The whole query language is case insensitive and spaces are optional. In this documentation, upper case will however be used for language keywords, only for clarity purpose.
 </aside>
 
 
@@ -109,7 +109,7 @@ my_boolean_field is TRUE
 my_boolean_field: FALSE
 ```
 
-A boolean literal can either be a TRUE or a FALSE keyword (non case sensitive). It should be used in boolean filters.
+A boolean literal can either be a TRUE or a FALSE keyword (case insensitive). It should be used in boolean filters.
 
 <div class=“clearfix”></div>
 #### Geometry literal
@@ -123,7 +123,7 @@ geometry(my_geo_field, geom'{"type": "Polygon","coordinates":[[[100.0, 0.0],[101
 
 A geometry literal is defined with a geom keyword followed by a valid geometry expression enclosed in single quotes.
 
-Supported geometry expression are:
+Supported geometry expressions are:
 
 - [WKT/WKB](https://en.wikipedia.org/wiki/Well-known_text)
 - [GeoJSON geometry](https://en.wikipedia.org/wiki/GeoJSON)
@@ -202,7 +202,7 @@ List of reserved keywords:
 The select clause can be used in records search APIs as the parameter `select`.
 
 The select clause allows to:
-- allow to choose the fields that will be returned for each row
+- choose the fields that will be returned for each row
 - transform fields using arithmetic
 - rename fields
 - add computed virtual fields to fields
@@ -449,7 +449,7 @@ DISTANCE(field_name, GEOM'<geometry>', 100 yd)
 The distance function limits the result set to a geographical area defined by a circle. This circle must be defined by its center and a distance.
 
 - The center of the circle is expressed as a [geometry literal](#geometry-literal)).
-- The distance is numeric and can have a unit in:
+- The distance is numeric and can have an unit in:
 
   - miles (mi)
   - yards (yd)
@@ -592,7 +592,7 @@ numeric_field: [1..10]   # Use `:` instead of `IN` operator
 date_field IN [date'2017'..date'2018'] # Filter results such as date_field date is between year 2017 and 2018
 ```
 
-In filters results are based on a numeric or a date range. In filters only work on a field literal.
+`In filters` results are based on a numeric or a date range. `In filters` only work on a field literal.
 
 **Format:s**
 
