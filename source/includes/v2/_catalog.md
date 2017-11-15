@@ -6,6 +6,32 @@
 curl 'https://examples.opendatasoft.com/api/v2/catalog/'
 ```
 
+> API Response
+
+```json
+
+{
+	"links": [{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog",
+			"rel": "self"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/datasets",
+			"rel": "datasets"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/exports",
+			"rel": "exports"
+		},
+		{
+			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"rel": "metadata_templates"
+		}
+	]
+}
+
+```
+
 A catalog is the list of datasets sourced in a domain.
 
 The catalog API allows to:
@@ -22,13 +48,12 @@ Each endpoint above is documented in its own section, along with its available p
 
 Some parameters, such as `select`, `where` or `group_by`, accept [field literals](#field-literal), which can either be technical fields or metadata.
 
-<div class=“clearfix”></div>
 ###### Dataset technical fields
 
 >  Use technical field as field literal
 
 ```shell
-# Count dataset grouped by their features (`features` is a technical field)
+# Count dataset grouped by their features
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
 # Note: (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
@@ -39,18 +64,16 @@ Field name | Description
 `has_records` | Boolean field indicating if a dataset contains records
 `features` | List of dataset features. Possible values: calendar, geo, image, apiproxy, timeserie and aggregate
 
-<div class=“clearfix”></div>
 ###### Dataset metadata
 
 >  Use metadata as field literal
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
-# Since modified is a `basic` meta, `where` expression can be simplified to `modified>2015`
+# Since modified is a `basic` metadata, `where` expression can be simplified to `modified>2015`
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
 
-# Get datasets that have been downloaded more than a 100 time
-# download_count meta must be prefixed with its metadata template: 'explore'
+# Get datasets that have been downloaded more than a 100 times
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
@@ -94,10 +117,10 @@ It is not possible to retrieve all datasets from a domain with this API. To do t
 
 Parameter | Default | Description
 --------- | ------- | -----------
-`where` | None | Filter expression used to restrict returned datasets (see [ODSQL documentation](#where-clause))
+`where` | None | Filter expression used to restrict returned datasets ([ODSQL documentation](#where-clause))
 `start` | 0 | Index of the first item to return
 `rows` | 10 | Number of items to return. Max value: 100
-`include_app_metas` | false | Explicitely request application metadata for each dataset
+`include_app_metas` | false | Explicitely request application metadata for each datasets
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
@@ -112,13 +135,13 @@ The value of both `start` and `rows` parameters must not exceed 10000. Use the e
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
 ```
 
-> Returns an array with one element
+> API Response
 
 ```json
 {
     "aggregations": [
         {
-            "count": 1234
+            "count": 2
         }
     ]
 }
@@ -130,19 +153,23 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=count(
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
 ```
 
-> Returns an array with an object for each `feature` containing feature's name and number of datasets.
+> API Response
+
 ```json
 {
     "aggregations": [
         {
-            "features": "analyze",
-            "count": 123
+            "count": 2,
+            "features": "analyze"
         },
         {
-            "features": "geo",
-            "count": 45
+            "count": 2,
+            "features": "timeserie"
         },
-        ...
+        {
+            "count": 1,
+            "features": "geo"
+        }
     ]
 }
 ```
@@ -160,10 +187,59 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=record
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
 ```
 
+> API Response
+
+```json
+{
+    "aggregations": [
+        {
+            "sum(records_count)": 3893
+        }
+    ]
+}
+```
+
 > Aggregation with an multiple group_by
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
+```
+
+> API Response
+
+```json
+{
+	"links": [{
+		"href": "https://examples.opendatasoft.com/api/v2/catalog/aggregates",
+		"rel": "self"
+	}],
+	"aggregations": [{
+			"theme": "Administration, Government, Public finances, Citizenship",
+			"count(*)": 1,
+			"features": "analyze"
+		},
+		{
+			"theme": "Culture, Heritage",
+			"count(*)": 1,
+			"features": "analyze"
+		},
+		{
+			"theme": "Administration, Government, Public finances, Citizenship",
+			"count(*)": 1,
+			"features": "timeserie"
+		},
+		{
+			"theme": "Culture, Heritage",
+			"count(*)": 1,
+			"features": "timeserie"
+		},
+		{
+			"theme": "Culture, Heritage",
+			"count(*)": 1,
+			"features": "geo"
+		}
+	]
+}
 ```
 
 This endpoint provides an aggregation facility in the datasets catalog.

@@ -16,7 +16,6 @@ Each endpoint above is documented in its own section, along with its available p
 Some parameters, such as `select`, `where` or `group_by`, accept [field literal](#field-literal).
 In dataset search, a field literal can either be a technical field or a field from dataset mapping.
 
-<div class=“clearfix”></div>
 ###### Dataset technical fields
 
 ```shell
@@ -31,7 +30,6 @@ Field name | Description
 `recordid` | Unique identifier of the record
 `record_size` | Size of the record
 
-<div class=“clearfix”></div>
 ###### Dataset fields
 
 > Use a field name as field_literal
@@ -125,7 +123,8 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_20
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-cities/aggregates?select=count(*) as num_cities,state,sum(population) as sum_population&group_by=state'
 ```
 
-> Returns an array with an object for each `feature` containing feature's name and number of datasets.
+> Returns an array with an object for each `feature` containing feature's name and number of datasets
+
 ```json
 {
     "aggregations": [

@@ -223,6 +223,7 @@ A select expression can be:
 ### Select field literal
 
 > Examples of select field literal
+
 ```plain-text
 *                           # Select all fields
 field1, field2, field3      # Only select field1, field2 and field3
@@ -240,6 +241,7 @@ If a select expression is used in conjunction with a `group by` clause, the sele
 ### Include and exclude functions
 
 > Example of include/exclude
+
 ```plain-text
 include(pop) # will only include fields which name is pop
 exclude(pop) # will exclude fields which name is pop
@@ -257,6 +259,7 @@ Fields can contain a wildcard suffix (the `*` character). In that case, the incl
 ### Arithmetic select expression
 
 > Example of include/exclude
+
 ```plain-text
 2 as const_2 # Creates a field `const_2` containing the value `2`
 2 * population as double_population # Create a field `double_population` containing the double of population field
@@ -274,6 +277,7 @@ An arithmetic select expression accepts simple arithmetic operations. It accepts
 ### Select aggregation
 
 > Examples of aggregation expression
+
 ```plain-text
 SUM(population) as sum_population # Will compute the sum of all values for the field `population` returned as sum_population
 COUNT(*) # Return number of elements
@@ -292,6 +296,7 @@ Available aggregation functions are:
 #### Count aggregation
 
 > Examples of count aggregation
+
 ```plain-text
 COUNT(*) # Return number of elements
 count(population) as population_count_not_empty # Return number of elements where `population` field is not empty
@@ -308,6 +313,7 @@ It accepts the following parameters:
 #### Max aggregation
 
 > Examples of max aggregation
+
 ```plain-text
 max(population) as max_population # Return max value for population field
 ```
@@ -318,6 +324,7 @@ This function takes a numeric field literal. It returns the maximum value (`max`
 #### Min aggregation
 
 > Examples of min aggregation
+
 ```plain-text
 min(population) as min_population # Return min value for population field
 ```
@@ -329,6 +336,7 @@ This function takes a numeric field literal. It returns the minimum value (`min`
 #### Avg aggregation
 
 > Examples of avg aggregation
+
 ```plain-text
 avg(population) as avg_population # Return the average of the population
 ```
@@ -430,6 +438,7 @@ There are 3 filter functions:
 
 <div class=“clearfix”></div>
 #### Distance function
+
 > Distance function examples
 
 ```plain-text
@@ -452,6 +461,7 @@ The distance function limits the result set to a geographical area defined by a 
 
 <div class=“clearfix”></div>
 #### Geometry function
+
 > Geometry function examples
 
 ```plain-text
@@ -473,6 +483,7 @@ This polygon must be defined with both:
 
 <div class=“clearfix”></div>
 #### Bbox function
+
 > Bbox function example
 
 ```plain-text
@@ -693,7 +704,6 @@ The equi range function creates a group for the lower bound. It then creates ano
 `group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))`
 in which `<field_literal>` must be a numeric field
 
-<div class=“clearfix”></div>
 ### Group by date functions
 
 > group by date examples
