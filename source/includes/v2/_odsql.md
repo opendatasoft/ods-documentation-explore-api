@@ -594,7 +594,7 @@ date_field IN [date'2017'..date'2018'] # Filter results such as date_field date 
 
 `In filters` results are based on a numeric or a date range. `In filters` only work on a field literal.
 
-**Format:s**
+**Format:**
 
 - on a numeric: `<field_literal> IN (]|[)<numeric_literal> (TO|..) <numeric_literal>(]|[)`
 - on a date: `<field_literal> IN (]|[)<date_literal> (TO|..) <date_literal>(]|[)`

@@ -53,7 +53,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets'
 
 The catalog source works on the published dataset of a requested domain. Use this source to retrieve actual data from a specific domain.
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/catalog/`
 
@@ -67,7 +67,7 @@ curl 'https://examples.opendatasoft.com/api/v2/monitoring/datasets'
 
 The monitoring source allows to search and work on special datasets providing analysis information about a requested domain.
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/monitoring/`
 
@@ -90,6 +90,6 @@ The OpenDataSoft allows to search and work on all available public datasets from
 The HTTP request below returns the same datasets as `https//data.opendatasoft.com/api/v2/catalog`.
 </aside>
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/opendatasoft/`

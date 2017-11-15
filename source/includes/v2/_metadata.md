@@ -45,7 +45,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 }
 ```
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates`
 
@@ -114,7 +114,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 }
 ```
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates/<TYPE>`
 
@@ -195,7 +195,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/
 }
 ```
 
-**HTTP Request**
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates/<TYPE>/<TEMPLATE>`
 

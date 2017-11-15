@@ -77,10 +77,10 @@ This endpoint provides a search facility in the dataset catalog.
 It is not possible to retrieve all records from a dataset with this API. To do so, export endpoints must be used.
 </aside>
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>/records`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -174,10 +174,10 @@ It means that literal field in select clause outside aggregation function must b
 
 If a query contains multiple `group_by` clauses, returned groups are combined together.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/aggregates`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -211,7 +211,7 @@ Records can be exported in 10 different formats:
 - N3 RDF
 - JSON-LD RDF
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports`
 
 
@@ -223,7 +223,7 @@ Records can be exported in 10 different formats:
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/json'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/json`
 
 ### Exporting records in GeoJSON
@@ -234,7 +234,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/geojson'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/geojson`
 
 Export records to a [GeoJSON format](http://geojson.org/).
@@ -247,7 +247,7 @@ Export records to a [GeoJSON format](http://geojson.org/).
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/jsonl'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/jsonl`
 
 Export records to a [NDJSON](http://ndjson.org/) (Json lines) format.
@@ -263,10 +263,10 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 Export records to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/csv`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -283,7 +283,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
 
 Export records to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/xls`
 
 
@@ -297,7 +297,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/shp`
 
 ### Exporting records in Turtle RDF
@@ -308,7 +308,7 @@ Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile)
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/turtle'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/turtle`
 
 
@@ -320,7 +320,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/turtle'
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdfxml'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/rdfxml`
 
 
@@ -332,7 +332,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdfxml'
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/n3'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/n3`
 
 ### Exporting records in JSON-LD RDF
@@ -343,7 +343,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/n3'
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/jsonld'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/<dataset_id>/exports/jsonld`
 
 
@@ -359,5 +359,5 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 This endpoint allows to retrieve information about a specific record.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>/records/<record_id>`

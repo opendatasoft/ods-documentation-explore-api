@@ -44,7 +44,7 @@ The catalog API allows to:
 Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters however accept field literals, which are documented right below. We recommend reading the **Field literal in catalog queries** section before diving into the catalog API.
 
 
-##### Field literal in catalog queries**
+##### Field literal in catalog queries
 
 Some parameters, such as `select`, `where` or `group_by`, accept [field literals](#field-literal), which can either be technical fields or metadata.
 
@@ -110,10 +110,10 @@ This endpoint provides a search facility in the dataset catalog.
 It is not possible to retrieve all datasets from a domain with this API. To do that, export endpoints must be used.
 </aside>
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/datasets`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -253,10 +253,10 @@ It means that literal field in `select` clause outside aggregation function must
 
 If query contains multiple `group_by` clauses, returned groups are combined together.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/aggregates`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -287,7 +287,7 @@ A dataset catalog can be exported in 7 different formats:
 - RDF
 - Data.json
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports`
 
 
@@ -299,7 +299,7 @@ A dataset catalog can be exported in 7 different formats:
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/json'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/json`
 
 ### Exporting a catalog in CSV
@@ -312,10 +312,10 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
 
 In the CSV format, the default separator is `;`. It can be changed with the `delimiter` parameter.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/csv`
 
-**URL Parameters**
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -332,7 +332,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
 
 Export datasets to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/xls`
 
 ### Exporting a catalog in RSS
@@ -343,7 +343,7 @@ Export datasets to an XLS format using [SpreadsheetML specification](https://en.
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rss'
 ```
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/rss`
 
 ### Exporting a catalog in TTL
@@ -356,7 +356,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/ttl'
 
 Export datasets to a Turtle RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/ttl`
 
 ### Exporting a catalog in RDF
@@ -369,7 +369,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdf'
 
 Export datasets to an XML-RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/rdf`
 
 ### Exporting a catalog in Data.json
@@ -382,7 +382,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/data.json'
 
 Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.swiss/en/library/ch-dcat-ap).
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/exports/data.json`
 
 
@@ -396,5 +396,5 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 This endpoint allows to retrieve information about a specific datasets.
 
-**HTTP Request**
+##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>`
