@@ -553,7 +553,7 @@ There are 2 ways of creating a filter expression:
 - with a field literal only: in that case, it filters the result where the field literal value is `true`
 - with a field literal followed by `is` keyword, then `true` or `false` keywords
 
-**Format:**
+##### Format:
 
 - `<field_literal>`
 - `<field_literal> is (true|false)`
@@ -572,7 +572,7 @@ film_name like "star wars" # match fields containing `star` and `wars`
 
 A like filter restricts results to field literal values containing a defined string literal.
 
-**Format:**
+##### Format:
 `<field_literal> LIKE <string_literal>`
 
 <div class=“clearfix”></div>
@@ -594,7 +594,7 @@ date_field IN [date'2017'..date'2018'] # Filter results such as date_field date 
 
 `In filters` results are based on a numeric or a date range. `In filters` only work on a field literal.
 
-**Format:**
+##### Format:
 
 - on a numeric: `<field_literal> IN (]|[)<numeric_literal> (TO|..) <numeric_literal>(]|[)`
 - on a date: `<field_literal> IN (]|[)<date_literal> (TO|..) <date_literal>(]|[)`
@@ -644,7 +644,7 @@ group_by=my_field
 
 A group by field expression allows to group specified field values. It creates a group for each different field value.
 
-**Format:**
+##### Format:
 `group_by=<field_literal>`
 
 
@@ -666,7 +666,7 @@ The static range function takes 2 parameters:
 
 The side of the brackets determines if the values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
 
-**Format:**
+##### Format:
 `group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])`
 in which `<field_literal>` must be a numeric field
 
@@ -700,7 +700,7 @@ The equi range function takes 4 parameters:
 
 The equi range function creates a group for the lower bound. It then creates another group at each step, adding the step value from the previous value until the higher bound is reached.
 
-**Format:**
+##### Format:
 `group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))`
 in which `<field_literal>` must be a numeric field
 
@@ -725,7 +725,7 @@ Function name | Description
 `second` | Groups by second
 `millisecond` | Groups by millisecond
 
-**Format:**
+##### Format:
 `group_by=<date_function>(<field_literal>)`
 in which `<field_literal>` must be a datetime field
 
@@ -782,6 +782,6 @@ The count of pattern letters determine the format.
 - Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 'ZZZ' or more outputs the zone id.
 - Zone names: time zone names ('z') cannot be parsed.
 
-**Format:**
+##### Format:
 `group_by=date_format(<string_literal>)`
 in which `<string_literal>` contains a date format

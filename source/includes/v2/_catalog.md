@@ -81,7 +81,7 @@ All metadata can be used as field literal in a query parameter.
 
 Metadata must be fully qualified with their template name. It means that the name of the metadata must be prefixed by its template name, followed by a dot. Example: `<template_name>.<metadata_name>` For basic metadata, this prefix is optional.
 
-The list of metadata and their types for a domain can be obtained with the [metadata API](#metadata-templates-for-a-specific-type).
+The list of metadata and their types for a domain can be obtained with the [metadata API](#listing-metadata-templates-for-a-specific-type).
 
 
 ## Searching datasets

@@ -48,7 +48,7 @@ Any field name from a dataset can be used as [field literal](#field-literal) in 
 If a field name contains only numbers or is a keyword, it must be enclosed in back-quotes.
 </aside>
 
-The list of fields for a specific dataset can be obtained with the [dataset lookup API](#lookup-dataset).
+The list of fields for a specific dataset can be obtained with the [dataset lookup API](#looking-up-a-dataset).
 
 
 ## Searching records
