@@ -1,4 +1,4 @@
-# Explore API V1
+# Search API v1
 
 OpenDataSoft datasets are accessible by developers through an HTTP REST API.
 
