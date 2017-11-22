@@ -15,6 +15,7 @@ API Name                    | Description
 **Dataset search API**      | Search datasets in a catalog
 **Dataset lookup API**      | Find a dataset based on its identifier
 **Records search API**      | Search records within a given dataset
+**Records lookup API**      | Find a record based on its identifier
 **Analysis API**            | Build advanced aggregations of records from a given dataset
 **Download API**            | Efficiently download a large number of records from a given dataset
 **Geo clustering API**      | Build geo clusters of records from a given dataset
