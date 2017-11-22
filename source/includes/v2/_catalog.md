@@ -32,13 +32,21 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/'
 
 ```
 
-A catalog is considered as a list of datasets for a domain. Catalog operations are all API entrypoints available on datasets.
+A catalog is the list of datasets sourced in a domain.
+
+The catalog API allows to:
+
+- search the datasets of a chosen domain's catalog
+- aggregate datasets from a chosen domain's catalog
+- export the datasets of a chosen domain's catalog
+- lookup a dataset from a domain's catalog
+
+Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters however accept field literals, which are documented right below. We recommend reading the **Field literal in catalog queries** section before diving into the catalog API.
 
 
 ##### Field literal in catalog queries
 
-Some parameters, such as `select`, `where` or `group_by`, in the following entry points accept [field literal](#field-literal)
-In catalog search, a field literal can either be a technical field or a metadata.
+Some parameters, such as `select`, `where` or `group_by`, accept [field literals](#field-literal), which can either be technical fields or metadata.
 
 ###### Dataset technical fields
 
@@ -47,14 +55,14 @@ In catalog search, a field literal can either be a technical field or a metadata
 ```shell
 # Count dataset grouped by their features
 curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
-# Note : (since a dataset can have multiple features, total count is not the number of datasets in the domain)
+# Note: (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
 
 Field name | Description
 ---------- | -----------
-datasetid | Human readable dataset identifier
-has_records | Boolean field indicating if dataset has records
-features | List of dataset features. Possible values: calendar, geo, image, apiproxy, timeserie, aggregate
+`datasetid` | Human readable dataset identifier
+`has_records` | Boolean field indicating if a dataset contains records
+`features` | List of dataset features. Possible values: calendar, geo, image, apiproxy, timeserie and aggregate
 
 ###### Dataset metadata
 
@@ -69,14 +77,14 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=modified>2
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
-All metadata can be used as field literal in query parameters.
-They must be fully qualified with their template name. It means that the name of the metadata must be prefixed by its template name followed by a dot: `<template_name>.<metadata_name>`
-For basic metadata, this prefix is optionnal.
+All metadata can be used as field literal in a query parameter.
 
-The list of metadata and their types for a domain can be obtained with the [metadata API](#metadata-templates-for-a-specific-type)
+Metadata must be fully qualified with their template name. It means that the name of the metadata must be prefixed by its template name, followed by a dot. Example: `<template_name>.<metadata_name>` For basic metadata, this prefix is optional.
+
+The list of metadata and their types for a domain can be obtained with the [metadata API](#listing-metadata-templates-for-a-specific-type).
 
 
-## Search datasets
+## Searching datasets
 
 > Get first 10 datasets
 
@@ -96,19 +104,16 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where="world"'
 ```
 
-This entrypoint provides a search facility in the dataset catalog.
+This endpoint provides a search facility in the dataset catalog.
 
 <aside>
-It is not possible to retrieve all datasets from a domain with this API. For that use case, <bold>export</bold> entrypoints must be used.
+It is not possible to retrieve all datasets from a domain with this API. To do that, export endpoints must be used.
 </aside>
 
-### HTTP Request
-
+##### HTTP Request
 `GET /api/v2/catalog/datasets`
 
-### URL Parameters
-
-List of available parameters for dataset search API.
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -119,10 +124,10 @@ Parameter | Default | Description
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-Value of start + rows cannot exceed 10000. Use export API to download all datasets.
+The value of both `start` and `rows` parameters must not exceed 10000. Use the export API to download all datasets.
 </aside>
 
-## Aggregate datasets
+## Aggregating datasets
 
 > Aggregation query without group_by
 
@@ -237,35 +242,32 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=featur
 }
 ```
 
+This endpoint provides an aggregation facility in the datasets catalog.
 
-This entrypoint provides an aggregation facility in the datasets catalog.
-Aggregation query returns a JSON array containing an object for each group created by the query.
-Each JSON object contains key/value pair for each select instruction.
-Without `group_by` parameter, it returns an array with only one object.
+An aggregation query returns a JSON array containing an object for each group created by the query.
+Each JSON object contains a key/value pair for each `select` instruction.
+However, without the `group_by` parameter, the query returns an array with only one object.
 
 `select` parameter can only be composed of aggregation function or by aggregated value.
-It means that literal_field in select clause outside aggregation function must be present in `group_by` clauses.
+It means that literal field in `select` clause outside aggregation function must be present in `group_by` clauses.
 
 If query contains multiple `group_by` clauses, returned groups are combined together.
 
-### HTTP Request
-
+##### HTTP Request
 `GET /api/v2/catalog/aggregates`
 
-### URL Parameters
-
-List of available parameters for dataset search API.
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-`where` | None | Filter expression used to restrict returned datasets ([where clause in ODSQL documentation](#where-clause))
-`select` | None | Select clause for aggregation ([select clause in ODSQL documentation](#select-clause))
-`group_by` | None | Group by clause for aggregation ([group_by clause in ODSQL documentation](#group-by-clause))
+`where` | None | Filter expression used to restrict returned datasets (see [where clause in ODSQL documentation](#where-clause))
+`select` | None | Select clause for aggregation (see [select clause in ODSQL documentation](#select-clause))
+`group_by` | None | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 `limit` | None | Number of items to return
 
 
-## Export datasets
+## Exporting datasets
 
 > Get a list of available export formats
 
@@ -273,14 +275,23 @@ Parameter | Default | Description
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/'
 ```
 
-Download all datasets for the requested domain.
+The endpoint allows to download all datasets for a requested domain.
 
-### HTTP Request
+A dataset catalog can be exported in 7 different formats:
 
+- JSON
+- CSV
+- XLS
+- RSS
+- TTL
+- RDF
+- Data.json
+
+##### HTTP Request
 `GET /api/v2/catalog/exports`
 
 
-### Json catalog export
+### Exporting a catalog in JSON
 
 > Export datasets in json format
 
@@ -288,12 +299,10 @@ Download all datasets for the requested domain.
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/json'
 ```
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/json`
 
-Export datasets to Json format
-
-### CSV catalog export
+### Exporting a catalog in CSV
 
 > Export datasets in csv format using **,** as delimiter
 
@@ -301,21 +310,19 @@ Export datasets to Json format
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
 ```
 
-Export datasets to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
+In the CSV format, the default separator is `;`. It can be changed with the `delimiter` parameter.
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/csv`
 
-#### URL Parameters
-
-List of available parameters for dataset search API.
+##### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-delimiter | ; | Delimiter used between column values
-list_separator | , | Character used to separate values in list
+`delimiter` | ; | Delimiter used between column values
+`list_separator` | , | Character used to separate values in a list
 
-### XLS catalog export
+### Exporting a catalog in XLS
 
 > Export datasets in xls format
 
@@ -323,13 +330,12 @@ list_separator | , | Character used to separate values in list
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
 ```
 
-Export datasets to XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
+Export datasets to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/xls`
 
-
-### RSS catalog export
+### Exporting a catalog in RSS
 
 > Export datasets in rss format
 
@@ -337,12 +343,10 @@ Export datasets to XLS format using [SpreadsheetML specification](https://en.wik
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rss'
 ```
 
-Export datasets to RSS format.
-
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/rss`
 
-### TTL catalog export
+### Exporting a catalog in TTL
 
 > Export datasets in turle rdf format
 
@@ -350,12 +354,12 @@ Export datasets to RSS format.
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/ttl'
 ```
 
-Export datasets to Turtle RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
+Export datasets to a Turtle RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/ttl`
 
-### RDF catalog export
+### Exporting a catalog in RDF
 
 > Export datasets in rdf-xml format
 
@@ -363,12 +367,12 @@ Export datasets to Turtle RDF format using [DCAT application for data portals in
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdf'
 ```
 
-Export datasets to XML-RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
+Export datasets to an XML-RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/rdf`
 
-### Data.json catalog export
+### Exporting a catalog in Data.json
 
 > Export datasets in data.json format
 
@@ -378,10 +382,11 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/data.json'
 
 Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.swiss/en/library/ch-dcat-ap).
 
-#### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/exports/data.json`
 
-## Lookup dataset
+
+## Looking up a dataset
 
 > Lookup Unesco dataset
 
@@ -389,8 +394,7 @@ Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.s
 curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list'
 ```
 
-Retrieve information about a specific datasets
+This endpoint allows to retrieve information about a specific datasets.
 
-### HTTP Request
+##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>`
-

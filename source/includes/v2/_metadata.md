@@ -2,13 +2,14 @@
 
 Metadata is data describing the dataset itself.
 
-Each metadata belongs to a metadata template. Each metadata template has a type: `basic`, `interop` or `extra`.
+Each metadata belongs to a metadata template. There are 3 different types of metadata template:
 
-- basic: include metadata users can see. This includes the title, the license attached to the data...
-- interoperability: metadata usually described in specific standards (such as DCAT or INSPIRE), intended for automatic usage by other systems for interoperability purposes, or for regulatory compliance.
-- extra: metadata intended for specific applications, and not expected to be used by users directly. For example, if contains information about default visualizations on the OpenDataSoft portal.
+- `basic`: metadata that users can see. For example, `basic` metadata include the dataset title, the license attached to it data, etc.
+- `interop` (for interoperability): metadata usually described in specific standards (e.g. DCAT, INSPIRE), intended for automatic usage by other systems, for interoperability purpose or for regulatory compliance.
+- `extra`: metadata intended for specific applications, and not expected to be used by users directly. For example, `extra` metadata contain information about default visualizations on the OpenDataSoft portal.
 
-## Metadata template types
+
+## Listing metadata template types
 
 > List metadata template types
 
@@ -44,13 +45,14 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 }
 ```
 
-
-### HTTP Request
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates`
 
+This endpoint returns the list of all available metadata template types.
 
-## Metadata templates for a specific type
+
+## Listing metadata templates for a specific type
 
 > List templates for `basic` type
 
@@ -112,18 +114,21 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 }
 ```
 
-### HTTP Request
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates/<TYPE>`
 
+This endpoint returns the list of existing metadata templates for a chosen type.
 
-## Metadata for a specific template
+
+## Listing metadata for a specific template
 
 > List metadata for `default` template
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
 ```
+
 
 > API response:
 
@@ -190,8 +195,8 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/
 }
 ```
 
-
-### HTTP Request
+##### HTTP Request
 
 `GET /api/v2/catalog/metadata_templates/<TYPE>/<TEMPLATE>`
 
+This endpoint returns the list of existing metadata for a chosen template.
