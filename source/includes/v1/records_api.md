@@ -1,5 +1,58 @@
 # Dataset Records APIs
 
+## Record Search API
+
+```http
+GET /api/records/1.0/search HTTP/1.1
+```
+
+This API makes it possible to perform complex queries on the records of a dataset, such as full-text search or geo filtering.
+
+It also provides faceted search features on dataset records.
+
+### Parameters
+
+Parameter            | Description
+-------------------- | -----------
+`dataset`            | Identifier of the dataset. Datasets that are hosted in the same domain may be queried simultaneously by repeating this parameter. This parameter is mandatory
+`q`                  | Full-text query performed on the result set
+`geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
+`geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
+`facet`              | Activate faceting on the specified field. This parameter can be used multiple times to simultaneously activate several facets. By default, faceting is disabled. Example: `facet=city`
+`refine.<FACET>`     | Limit the result set to records where `FACET` has the specified value. It can be used several times for the same facet or for different facets
+`exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
+`fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
+`pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
+`format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
+`callback`           | JSONP or GEOJSONP callback
+`sort`               | Sorts results by the specified field (in `modified`, `issued`, `created` and `records_count`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort
+`rows`               | Number of results to return in a single call. The maximum number of rows returned is 1000. By default, 10 results are returned
+`start`              | Index of the first result to return (starting at 0). Use in conjunction with "rows" to implement paging
+
+## Record Lookup API
+
+```http
+GET /api/datasets/1.0/<dataset_id>/records/<record_id> HTTP/1.1
+```
+
+> Example lookup for record `ff1f5b718ce2ee87f18dfaf20610f257979f2f4a` in dataset `world-heritage-unesco-list`:
+
+```text
+https://examples.opendatasoft.com/api/datasets/1.0/world-heritage-unesco-list/records/ff1f5b718ce2ee87f18dfaf20610f257979f2f4a
+```
+
+This API makes it possible to fetch an individual record using its identifier (Record ID).
+
+### Parameters
+
+Parameter      | Description
+-------------- | -----------
+`datasetid`    | Part of the URL path. Identifier of the dataset
+`recordid`     | Part of the URL path. Identifier of the record
+`pretty_print` | If set to true (default is false), pretty prints JSON and JSONP output
+`format`       | Format of the response output. Can be `json` (default) or `jsonp`
+`callback`     | JSONP callback
+
 ## Record Analysis API
 
 ```http
@@ -265,56 +318,3 @@ Parameter            | Description
 `shapeprecision`     | The precision of the returned cluster envelope. The sum of clusterprecision and shapeprecision must not exceed 29
 `clustermode`        | The desired clustering mode. Supported values are `polygon` (default) and `heatmap`
 `y.<SERIE>.func`, `y.<SERIE>.expr` | This API also accepts a serie definition as described in the record analysis API. If a serie is defined, the aggregation will be performed using the values of the serie
-
-## Record Lookup API
-
-```http
-GET /api/datasets/1.0/<dataset_id>/records/<record_id> HTTP/1.1
-```
-
-> Example lookup for record `ff1f5b718ce2ee87f18dfaf20610f257979f2f4a` in dataset `world-heritage-unesco-list`:
-
-```text
-https://examples.opendatasoft.com/api/datasets/1.0/world-heritage-unesco-list/records/ff1f5b718ce2ee87f18dfaf20610f257979f2f4a
-```
-
-This API makes it possible to fetch an individual record using its identifier (Record ID).
-
-### Parameters
-
-Parameter      | Description
--------------- | -----------
-`datasetid`    | Part of the URL path. Identifier of the dataset
-`recordid`     | Part of the URL path. Identifier of the record
-`pretty_print` | If set to true (default is false), pretty prints JSON and JSONP output
-`format`       | Format of the response output. Can be `json` (default) or `jsonp`
-`callback`     | JSONP callback
-
-## Record Search API
-
-```http
-GET /api/records/1.0/search HTTP/1.1
-```
-
-This API makes it possible to perform complex queries on the records of a dataset, such as full-text search or geo filtering.
-
-It also provides faceted search features on dataset records.
-
-### Parameters
-
-Parameter            | Description
--------------------- | -----------
-`dataset`            | Identifier of the dataset. Datasets that are hosted in the same domain may be queried simultaneously by repeating this parameter. This parameter is mandatory
-`q`                  | Full-text query performed on the result set
-`geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
-`geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
-`facet`              | Activate faceting on the specified field. This parameter can be used multiple times to simultaneously activate several facets. By default, faceting is disabled. Example: `facet=city`
-`refine.<FACET>`     | Limit the result set to records where `FACET` has the specified value. It can be used several times for the same facet or for different facets
-`exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
-`fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
-`pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
-`format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
-`callback`           | JSONP or GEOJSONP callback
-`sort`               | Sorts results by the specified field (in `modified`, `issued`, `created` and `records_count`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort
-`rows`               | Number of results to return in a single call. The maximum number of rows returned is 1000. By default, 10 results are returned
-`start`              | Index of the first result to return (starting at 0). Use in conjunction with "rows" to implement paging

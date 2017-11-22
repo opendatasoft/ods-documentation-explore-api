@@ -1,4 +1,4 @@
-# Introduction
+# Search API v2
 
 > Search API endpoint for examples domain
 

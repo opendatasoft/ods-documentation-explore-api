@@ -1,14 +1,12 @@
 # Using the OData API
 
-In this article, you will learn how to use the OData API to query data from the OpenDataSoft platform.
-
 ## General points
 
 ### Service address
 
-In this article, we will use the words "service root" or "service document" to refer to the base address of the OData
+In this documentation, we will use the words "service root" or "service document" to refer to the base address of the OData
 service. For the OpenDataSoft platform, this URL can be found on the `/api/odata` path, relative to the platform
-hostname. Unless stated otherwise, all addresses in the rest of this article are relative to the service root.
+hostname. Unless stated otherwise, all addresses in the rest of this documentation are relative to the service root.
 
 ### HTTP Method
 

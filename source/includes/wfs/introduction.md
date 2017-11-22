@@ -1,4 +1,4 @@
-# Introduction
+# WFS API
 
 OpenDataSoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
 requests for geographical features.
