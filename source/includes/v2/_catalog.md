@@ -380,7 +380,7 @@ Export datasets to an XML-RDF format using [DCAT application for data portals in
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/data.json'
 ```
 
-Export datasets in [DCAT-AP for swittzerland format](https://handbook.opendata.swiss/en/library/ch-dcat-ap).
+Export datasets in the [Project Open Data Metadata Schema v1.1](https://project-open-data.cio.gov/) (data.json).
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports/data.json`
