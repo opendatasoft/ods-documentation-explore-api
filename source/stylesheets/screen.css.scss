@@ -513,56 +513,6 @@ html, body {
     font-style: normal;
   }
 
-  aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    background: $aside-notice-bg;
-    line-height: 1.6;
-    margin-left: $main-padding;
-    margin-right: calc(50% + #{$main-padding});
-
-    &:before {
-      display: block;
-      content: 'Note';
-      position: static;
-      background-color: $nav-active-bg;
-      color: white;
-      padding: 1em $main-padding;
-      margin-left: -$main-padding;
-      margin-right: -$main-padding;
-      margin-top: -1em;
-      margin-bottom: 1em;
-    }
-
-    &.warning {
-      background-color: $aside-warning-bg;
-    }
-
-    &.success {
-      background-color: $aside-success-bg;
-    }
-  }
-
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
-
-  aside.notice:before {
-    @extend %icon-info-sign;
-  }
-
-  aside.warning:before {
-    @extend %icon-exclamation-sign;
-  }
-
-  aside.success:before {
-    @extend %icon-ok-sign;
-  }
-
   .search-highlight {
     padding: 2px;
     margin: -2px;
@@ -675,4 +625,157 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// CUSTOM ELEMENT STYLE
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ *  In documentation, there is 3 differents
+ *  notices (notice : blue, warning : red, success : green) 
+ *  with icons as label.
+ *  Now, there is a new notice (prerequisite : blue).
+ *  Instead icons, there is text.
+ */
+
+.content {
+
+  aside {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+    margin-left: $main-padding;
+    margin-right: calc(50% + #{$main-padding});
+    background-color: $aside-notice-bg;
+
+    &:before {
+      display: block;
+      position: static;
+      color: white;
+      content: "Note";
+      background-color: $aside-notice-before-bg;
+      padding: 1em $main-padding;
+      margin-left: -$main-padding;
+      margin-right: -$main-padding;
+      margin-top: -1em;
+      margin-bottom: 1em;
+    }
+
+    &.notice {
+      background-color: $aside-notice-bg;
+
+      &:before {
+        background-color: $aside-notice-before-bg;
+      }
+
+    }
+
+    &.warning {
+      background-color: $aside-warning-bg;
+
+      &:before {
+        background-color: $aside-warning-before-bg;
+      }
+
+    }
+
+    &.success {
+      background-color: $aside-success-bg;
+
+      &:before {
+        background-color: $aside-success-before-bg;
+      }
+
+    }
+
+    &.prerequisite {
+      background-color: $aside-notice-bg;
+
+      &:before {
+        background-color: $aside-notice-before-bg;
+      }
+
+    }
+
+  }
+
+  aside:before {
+    vertical-align: middle;
+    padding-right: 0.5em;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  aside.notice:before {
+    content: "Note";
+  }
+
+  aside.warning:before {
+    content: "Warning";
+  }
+
+  aside.success:before {
+    content: "Success";
+  }
+
+  aside.prerequisite:before {
+    content: "Prerequisite";
+  }
+
+}
+
+/*  
+ *  > HTTP Request
+ *  In right column :
+ *  slate generate class for the code http (.err)
+ *  by default the text color is red
+ */
+
+.err {
+  color: white !important;
+}
+
+/*
+ *  > HTTP Request
+ *  In left column :
+ *  It was similar to others items.
+ *  Now, there is a bloc color that highlights it.
+ */
+
+#http-request,
+#http-request + p {
+  background-color: $background-http-request;
+}
+
+#http-request {
+  padding: 20px 30px 10px 30px;
+  margin-bottom: 0;
+} 
+
+#http-request + p {
+  padding: 0 30px 25px 30px;
+}
+
+/*
+ *  > URL Parameters
+ *  In left column :
+ *  It was similar to others items.
+ *  Now, there is a bloc color that highlights it.
+ */
+
+#url-parameters,
+#url-parameters + table {
+  background-color: $background-url-paramaters;
+}
+
+#url-parameters {
+  padding: 20px 30px 10px 30px;
+  margin-bottom: 0;
+} 
+
+#url-parameters + table {
+  padding: 0 30px 30px 30px;
 }

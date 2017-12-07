@@ -50,7 +50,6 @@ If a field name contains only numbers or is a keyword, it must be enclosed in ba
 
 The list of fields for a specific dataset can be obtained with the [dataset lookup API](#looking-up-a-dataset).
 
-
 ## Searching records
 
 > Get first 10 records
@@ -94,7 +93,6 @@ Parameter | Default | Description
 <aside>
 The value of both `start` and `rows` parameters must not exceed 10000. Use the export API to download all records.
 </aside>
-
 
 ## Aggregating records
 
@@ -142,7 +140,6 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-citie
     ]
 }
 ```
-
 
 > Invalid aggregation with a selected field not present in group_by
 

@@ -34,11 +34,7 @@ $lang-select-bg: #222 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
 $main-bg: #eaf2f6 !default;
-$aside-notice-bg: #8fbcd4 !default;
-$aside-warning-bg: #c97a7e !default;
-$aside-success-bg: #6ac174 !default;
 $search-notice-bg: #c97a7e !default;
-
 
 // TEXT COLORS
 ////////////////////
@@ -103,3 +99,21 @@ $search-box-border-color: #666 !default;
     word-break: break-all;
     hyphens: auto;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// CUSTOM COLOR VARIABLE
+////////////////////////////////////////////////////////////////////////////////
+
+// BACKGROUND-COLOR NOTICE
+////////////////////
+$aside-notice-bg: #a9cddf !default;
+$aside-warning-bg: #e4a5a9 !default;
+$aside-success-bg: #a2dfa8 !default;
+$aside-notice-before-bg: #2467af !default;
+$aside-warning-before-bg: #862f35 !default;
+$aside-success-before-bg: #3e8544 !default;
+
+// HTTP-REQUEST && URL-PARAMETERS
+////////////////////
+$background-url-paramaters: transparentize(#BCE2EF, 0.7) !default;
+$background-http-request: transparentize(rgb(221, 221, 221), 0.7) !default;

@@ -54,6 +54,7 @@ The `master` branch is automatically deployed to https://docs.opendatasoft.com/a
 * **2, not two**
 * **Neither we nor you** Use another phrasing
 * **Identifier rather than ID** One is understandable by everyone, the other only by seasoned developers
+* To use the notice with the balise `<aside>`, **If there is no class, there is a class by default like "notice". But there is four class : ("notice" : blue, "warning" : red, "success" : green, "prerequisite" : blue). Example : `<aside class="notice"> ... </aside>`.
 
 ### Objects and endpoints
 
