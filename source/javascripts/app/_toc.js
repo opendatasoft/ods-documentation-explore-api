@@ -126,8 +126,8 @@
       // scroll content below ods_header 
       $('a[href*="#"]').on('click', function (event) {
         event.preventDefault();
-        let hash = $(this).attr('href');
-        let target = $(hash).offset().top;
+        var hash = $(this).attr('href');
+        var target = $(hash).offset().top;
         $('html, body').animate({ scrollTop: target - 99 }, 0);
       });
 
