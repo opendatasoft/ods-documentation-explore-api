@@ -530,11 +530,12 @@ Operators | Description
 <div class=“clearfix”></div>
 ### Filter expression
 
-3 kinds of filter expression can be used in a `where` clause:
+4 kinds of filter expression can be used in a `where` clause:
 
 - boolean field filter
 - like filter
 - in filter
+- null filter
 
 <div class=“clearfix”></div>
 #### Boolean field filter
@@ -599,6 +600,24 @@ date_field IN [date'2017'..date'2018'] # Filter results such as date_field date 
 - on a numeric: `<field_literal> IN (]|[)<numeric_literal> (TO|..) <numeric_literal>(]|[)`
 - on a date: `<field_literal> IN (]|[)<date_literal> (TO|..) <date_literal>(]|[)`
 
+
+<div class=“clearfix”></div>
+#### Null filter
+
+> Example of a null filter expression
+
+```plain-text
+film_name is null      # match records where film_name is null
+film_name is not null  # match records where film_name is not null
+```
+
+A null field filter takes a field and restricts results only if the field values are null.
+The opposite filter, `is not null` takes a field and restricts results only if the field values are not null.
+
+##### Format:
+`<field_literal> is null`
+
+`<field_literal> is not null`
 
 ## Group by clause
 
