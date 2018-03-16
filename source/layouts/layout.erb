@@ -47,55 +47,57 @@ under the License.
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
     
-    <div class="ods__documentation-header">
+    <div class="ods-header">
     
-      <div class="ods__documentation-header-logo">
+      <div class="ods-header__logo">
         <button type="button" id="nav-button"> Menu </button>
-        <img src="../images/ODS_logo api blanc.svg" alt="ods-documentation-logo">
-        <button type="button" id="help-hub-button"> Help Hub </button>
+        <a href="/v2.html">
+          <img src="../images/ODS_logo api blanc.svg" alt="OpenDataSoft API documentation">
+        </a>
+        <button type="button" id="helphub-button"> Help Hub </button>
       </div>
 
-      <div class="ods__documentation-header-nav">
-        <div class="ods__documentation-header-nav-item">
-          <a href="">Plateform</a>
+      <div class="ods-header__nav">
+        <div class="ods-header__nav-item">
+          <a href="https://docs.opendatasoft.com/en/">Platform</a>
         </div>
-        <div class="ods__documentation-header-nav-item">
-          <a href="">Discovery</a>
+        <div class="ods-header__nav-item">
+          <a href="https://discovery.opendatasoft.com/pages/home/">Discovery</a>
         </div>
-        <div class="ods__documentation-header-nav-item">
-          <a href="">FAQ</a>
+        <div class="ods-header__nav-item">
+          <a href="https://docs.opendatasoft.com/en/faq.html">FAQ</a>
         </div>
-        <div class="ods__documentation-header-nav-item">
-          <a href="">Widget</a>
+        <div class="ods-header__nav-item">
+          <a href="https://opendatasoft.github.io/ods-widgets/docs/#/api">Widgets</a>
         </div>
-        <div class="ods__documentation-header-nav-item">
-          <a href="">Tutorial</a>
+        <div class="ods-header__nav-item">
+          <a href="https://opendatasoft.github.io/ods-widgets/docs/#/tutorial">Widgets Tutorial</a>
         </div>
-        <div class="ods__documentation-header-nav-item ods__documentation-header-nav-item-active">
-          <a href="">API</a>
+        <div class="ods-header__nav-item ods-header__nav-item--active">
+          <a href="https://docs.opendatasoft.com/en/using_api/index.html">API</a>
         </div>
       </div>
     
     </div>
 
-    <div class="ods__documentation-help-hub-sidebar">
-      <div class="ods__documentation-help-hub-sidebar-item">
-          <a href="">Plateform</a>
+    <div class="ods-helphub">
+      <div class="ods-helphub__item">
+          <a href="https://discovery.opendatasoft.com/pages/home/">Platform</a>
         </div>
-        <div class="ods__documentation-help-hub-sidebar-item">
-          <a href="">Discovery</a>
+        <div class="ods-helphub__item">
+          <a href="https://discovery.opendatasoft.com/pages/home/">Discovery</a>
         </div>
-        <div class="ods__documentation-help-hub-sidebar-item">
-          <a href="">FAQ</a>
+        <div class="ods-helphub__item">
+          <a href="https://docs.opendatasoft.com/en/faq.html">FAQ</a>
         </div>
-        <div class="ods__documentation-help-hub-sidebar-item">
-          <a href="">Widget</a>
+        <div class="ods-helphub__item">
+          <a href="https://opendatasoft.github.io/ods-widgets/docs/#/api">Widgets</a>
         </div>
-        <div class="ods__documentation-help-hub-sidebar-item">
-          <a href="">Tutorial</a>
+        <div class="ods-helphub__item">
+          <a href="https://opendatasoft.github.io/ods-widgets/docs/#/tutorial">Widgets Tutorial</a>
         </div>
-        <div class="ods__documentation-help-hub-sidebar-item ods__documentation-header-nav-item-active">
-          <a href="">API</a>
+        <div class="ods-helphub__item ods-header__nav-item--active">
+          <a href="https://docs.opendatasoft.com/en/using_api/index.html">API</a>
         </div>
     </div>
 
