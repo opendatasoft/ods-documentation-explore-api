@@ -23,7 +23,8 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
-html, body {
+html,
+body {
     color: $main-text;
     padding: 0;
     margin: 0;
@@ -45,7 +46,6 @@ html, body {
     left: 0;
     z-index: 50;
     background-color: $blue-light;
-    
     @media (min-width: $tablet-width) {
         display: flex;
         flex-direction: row;
@@ -53,21 +53,21 @@ html, body {
     }
 }
 
-.ods-header__logo {
+.ods-header__brand {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     height: 99px;
-    width: 100%;
-    
+    @media (max-width: $tablet-width - 1) {
+        width: 100%;
+    }
     @media (min-width: $tablet-width) {
-        height: 99px;
         width: auto;
-        padding-left: 40px;
+        padding-left: 41px;
     }
 }
 
-.ods-header__logo button {
+.ods-header__menu-toggle {
     border: none;
     margin: auto 0;
     background-color: white;
@@ -76,127 +76,122 @@ html, body {
     padding: 5px 10px;
     font-size: 16px;
     font-weight: 500;
-    
     &:focus {
         outline: none;
     }
-    
-    &.open {
-        background-color: $blue-hover;
-        color: white;
-    }
-    
-    &.ods-helphub__btn--active {
-        background-color: $blue-hover;
-        color: white;
-    }
-    
     @media (min-width: $tablet-width) {
         display: none;
     }
 }
 
-.ods-header__logo a {
-    padding-top: 12px;
-    
+.ods-header__menu-toggle--active {
+    background-color: $blue-hover;
+    color: white;
+}
+
+.ods-header__home-link {
+    @media (max-width: $tablet-width - 1) {
+        padding-top: 12px;
+    }
     @media (min-width: $tablet-width) {
         padding-top: 8px;
     }
 }
 
-.ods-header__logo a img {
-    height: 70px;
-    margin: auto 0;
-    
+.ods-header__logo {
+    margin: 10px 0;
+    @media (max-width: $tablet-width - 1) {
+        height: 70px;
+    }
     @media (min-width: $tablet-width) {
         height: 80px;
     }
 }
 
 .ods-header__nav {
-    display: none;
-    
-    @media (min-width: $tablet-width) {
-        display: flex;
-        margin-left: 103px;
-    }
-}
-
-.ods-helphub {
-    position: fixed;
     top: 100px;
     right: -300px;
-    height: 100%;
-    width: 300px;
-    padding-top: 40px;
+    height: 80%;
     background-color: $blue-light;
-    border-top: 1px solid transparentize($grey-dark, 0.6);
     z-index: 1000;
     display: flex;
-    flex-direction: column;
     transition: 0.5s;
-    
+    @media (max-width: $tablet-width - 1) {
+        position: fixed;
+        width: 300px;
+        padding-top: 40px;
+        flex-direction: column;
+        border-top: 1px solid transparentize($grey-dark, 0.6);
+    }
     @media (min-width: $tablet-width) {
-        display: none;
+        margin-left: 100px;
+        position: static;
+        width: auto;
+        padding-top: 10px;
+        flex-direction: row;
+        justify-content: space-around;
+        border: none;
     }
 }
 
-.ods-helphub__item {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.ods-helphub__item a {
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 5px;
-}
-
-.ods-helphub--active {
+.ods-header__nav--active {
     right: 0;
 }
 
-.ods-header__nav-item--active a {
-    border-bottom: 2px solid white;
-}
-
-@media (min-width: $tablet-width) {
-    .ods-header__nav-item {
+.ods-header__nav-item {
+    text-align: center;
+    @media (max-width: $tablet-width - 1) {
+        margin: 15px 0;
+    }
+    @media (min-width: $tablet-width) {
         margin: auto 20px;
         transition: 0.5s;
+        &:first-child {
+            margin-left: -1px;
+        }
+        &:last-child {
+            margin-right: 0px;
+        }
     }
-    
-    .ods-header__nav-item:first-child {
-        margin-left: 0px;
-    }
-    
-    .ods-header__nav-item:last-child {
-        margin-right: 0px;
-    }
-    
-    .ods-header__nav-item a {
+}
+
+.ods-header__nav-item-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    &:active,
+    &:focus,
+    &hover {
         color: white;
-        font-size: 18px;
         text-decoration: none;
+    }
+    @media (max-width: $tablet-width - 1) {
+        font-size: 16px;
+        padding: 5px;
+    }
+    @media (min-width: $tablet-width) {
+        font-size: 18px;
         padding: 5px 0;
         border-bottom: 2px solid transparent;
+        text-decoration: none;
+        &:hover,
+        &:focus,
+        &:active {
+            border-bottom: 2px solid white;
+            color: white;
+            text-decoration: none;
+        }
     }
-    
-    .ods-header__nav-item a:hover {
-        border-bottom: 2px solid white;
-    }
-    
-    .ods-header__nav-item--active a {
-        border-bottom: 2px solid white;
-    }
+}
+
+.ods-header__nav-item-link--active {
+    border-bottom: 2px solid white;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
-#toc > ul > li > a > span {
+#toc>ul>li>a>span {
     float: right;
     background-color: #2484FF;
     border-radius: 40px;
@@ -217,48 +212,37 @@ html, body {
     font-size: 14px;
     font-weight: 500;
     border-right: 1px solid transparentize($grey-dark, 0.6);
-    
     @media (max-width: $tablet-width) {
         left: -$nav-width;
-        
         &.open {
             left: 0;
         }
-    }
-    
-    // language selector for mobile devices
+    } // language selector for mobile devices
     .lang-selector {
         display: none;
-        
         @media (max-width: $phone-width) {
             display: block;
         }
-        
         a {
             padding-top: 0.5em;
             padding-bottom: 0.5em;
         }
-    }
-    
-    // This is the logo at the top of the ToC
+    } // This is the logo at the top of the ToC
     .toc-header {
         text-align: center;
         color: $nav-text;
         padding: 15px;
     }
-    
-    .toc-header > img {
+    .toc-header>img {
         display: block;
         max-width: 100%;
         width: 45px;
         height: auto;
         margin: 0 auto;
     }
-    
     .search {
         position: relative;
         margin: 5px -15px;
-    
         input {
             background: white;
             border: 1px solid transparentize($grey-dark, 0.6);
@@ -271,7 +255,6 @@ html, body {
             border-radius: 15px;
             font-weight: 400;
         }
-    
         &:before {
             position: absolute;
             top: 17px;
@@ -280,11 +263,10 @@ html, body {
             @extend %icon-search;
         }
     }
-    
-    img + .tocify, .lang-selector + .tocify {
+    img+.tocify,
+    .lang-selector+.tocify {
         margin-top: 0;
     }
-
     .search-results {
         margin-top: 0;
         box-sizing: border-box;
@@ -294,71 +276,58 @@ html, body {
         transition-property: height, margin;
         transition-duration: 180ms;
         transition-timing-function: ease-in-out;
-    
         &.visible {
             height: 30%;
             margin-bottom: 1em;
         }
-    
         li {
             margin: 1em $nav-padding;
             line-height: 1;
             color: $grey-dark;
         }
-    
         a {
             color: $grey-dark;
             text-decoration: none;
-    
             &:hover {
                 text-decoration: underline;
             }
         }
     }
-    
-    .tocify-item > a, .toc-footer li {
+    .tocify-item>a,
+    .toc-footer li {
         padding: 0 $nav-padding 0 $nav-padding;
         display: block;
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
-    
-    // The Table of Contents is composed of multiple nested
+    } // The Table of Contents is composed of multiple nested
     // unordered lists.  These styles remove the default
     // styling of an unordered list because it is ugly.
-    ul, li {
+    ul,
+    li {
         list-style: none;
         margin: 0;
         padding: 0;
         line-height: 28px;
     }
-    
     li {
         color: $grey-dark;
         transition-property: background;
         transition-timing-function: linear;
         transition-duration: 230ms;
     }
-    
     .toc-h1 {
         color: $grey-dark;
-    }
-    
-    // This is the currently selected ToC entry
+    } // This is the currently selected ToC entry
     .toc-link.active {
         background-color: $blue-light;
         color: white!important;
         border: 1px solid transparentize($grey-dark, 0.6);
-     
-        & > a {
+        &>a {
             color: white!important;
             font-weight: bold;
         }
-
-    }
-    
-    // this is parent links of the currently selected ToC entry
+    } // this is parent links of the currently selected ToC entry
     .toc-link.active-parent {
         background-color: $blue-light;
         font-weight: bold;
@@ -366,12 +335,10 @@ html, body {
         padding: 0 15px;
         color: white;
     }
-
     .toc-list-h2 {
         display: none;
         background-color: $blue-ultra-light;
     }
-
     .toc-h2 {
         padding-left: $nav-padding + $nav-indent;
         font-size: 14px;
@@ -380,21 +347,18 @@ html, body {
         border-bottom: 1px solid transparentize($grey-dark, 0.9);
         font-weight: 500;
     }
-
     .toc-footer {
         padding: 1em 0;
         margin-top: 1em;
         border-top: 1px dashed $nav-footer-border-color;
-        
-        li, a {
+        li,
+        a {
             color: $grey-dark;
             text-decoration: none;
         }
-        
         a:hover {
             text-decoration: underline;
         }
-        
         li {
             font-size: 0.8em;
             line-height: 1.7;
@@ -403,7 +367,8 @@ html, body {
     }
 }
 
-.toc-link, .toc-footer li {
+.toc-link,
+.toc-footer li {
     padding: 0 $nav-padding 0 $nav-padding;
     display: block;
     overflow-x: hidden;
@@ -427,12 +392,9 @@ html, body {
     min-height: 100%;
     top: 100px;
     padding-bottom: 1px;
-    
     @media (max-width: $tablet-width) {
         margin-left: 0;
-    } 
-    
-    // prevent margin overflow
+    } // prevent margin overflow
     // The dark box is what gives the code samples their dark background.
     // It sits essentially under the actual content block, which has a
     // transparent background.
@@ -445,17 +407,14 @@ html, body {
         right: 0;
         top: 0;
         bottom: 0;
-        
         @media (max-width: $phone-width) {
             display: none;
         }
     }
-    
     .lang-selector {
         position: fixed;
         z-index: 50;
         border-bottom: 5px solid $lang-select-active-bg;
-        
         @media (max-width: $phone-width) {
             display: none;
         }
@@ -466,7 +425,6 @@ html, body {
     background-color: $lang-select-bg;
     width: 100%;
     font-weight: bold;
-    
     &:after {
         content: '';
         clear: both;
@@ -482,12 +440,11 @@ html, body {
     padding: 0 10px;
     line-height: 30px;
     outline: 0;
-    
-    &:active, &:focus {
+    &:active,
+    &:focus {
         background-color: $lang-select-pressed-bg;
         color: $lang-select-pressed-text;
     }
-
     &.active {
         background-color: $lang-select-active-bg;
         color: $lang-select-active-text;
@@ -503,14 +460,23 @@ html, body {
     -webkit-transform: translateZ(0); // to place content above the dark box
     position: relative;
     z-index: 30;
-    
     &:after {
         content: '';
         display: block;
         clear: both;
     }
-
-    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > p, & > table, & > ul, & > ol, & > aside, & > dl {
+    &>h1,
+    &>h2,
+    &>h3,
+    &>h4,
+    &>h5,
+    &>h6,
+    &>p,
+    &>table,
+    &>ul,
+    &>ol,
+    &>aside,
+    &>dl {
         margin-right: $examples-width;
         padding: 0 2.1em;
         box-sizing: border-box;
@@ -518,16 +484,15 @@ html, body {
         width: 60%;
         @extend %left-col;
     }
-
-    & > ul, & > ol {
+    &>ul,
+    &>ol {
         padding: 0 5.2em;
-    }
-    
-    // the div is the tocify hidden div for placeholding stuff
-    & > h1, & > h2, & > div {
+    } // the div is the tocify hidden div for placeholding stuff
+    &>h1,
+    &>h2,
+    &>div {
         clear: both;
     }
-
     h1 {
         @extend %header-font;
         font-size: 25px;
@@ -538,17 +503,15 @@ html, body {
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         background-color: #fdfdfd;
-        
         @media (max-width: $phone-width) {
             padding: 1em 1.1em;
         }
     }
-
-    h1:first-child, div:first-child + h1 {
+    h1:first-child,
+    div:first-child+h1 {
         border-top-width: 0;
         margin-top: 0;
     }
-
     h2 {
         @extend %header-font;
         font-size: 19px;
@@ -557,106 +520,95 @@ html, body {
         border-top: 1px solid #ccc;
         padding: 1.2em 2.8em;
         background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
-        
         @media (max-width: $phone-width) {
             padding: 1em 1.4em;
         }
-    }
-    
-    // h2s right after h1s should bump right up
+    } // h2s right after h1s should bump right up
     // against the h1s.
-    h1 + h2, h1 + div + h2 {
+    h1+h2,
+    h1+div+h2 {
         margin-top: $h1-margin-bottom * -1;
         border-top: none;
     }
-
     h3 {
         padding: 0 3.5em;
     }
-
-    h3, h4, h5, h6 {
+    h3,
+    h4,
+    h5,
+    h6 {
         @extend %header-font;
         font-size: 15px;
         margin-top: 2.5em;
         margin-bottom: 0.8em;
     }
-
     h4 {
         padding: 0 5.4em;
     }
-
-    h4, h5, h6 {
+    h4,
+    h5,
+    h6 {
         font-size: 10px;
     }
-
-    h5, h6 {
+    h5,
+    h6 {
         padding-left: 50px;
     }
-
     hr {
         margin: 2em 0;
         border-top: 2px solid $examples-bg;
         border-bottom: 2px solid $main-bg;
     }
-
     table {
         margin-bottom: 1em;
         overflow: auto;
         padding: 0 3.8em;
-        th, td {
+        th,
+        td {
             text-align: left;
             vertical-align: top;
             line-height: 1.6;
-            
             code {
                 white-space: nowrap;
             }
         }
-        
         th {
             padding: 5px 10px;
             border-bottom: 1px solid #ccc;
             vertical-align: bottom;
         }
-        
         td {
             padding: 10px;
         }
-        
         tr:last-child {
             border-bottom: 1px solid #ccc;
         }
-        
-        tr:nth-child(odd) > td {
+        tr:nth-child(odd)>td {
             background-color: lighten($main-bg, 4.2%);
         }
-        
-        tr:nth-child(even) > td {
+        tr:nth-child(even)>td {
             background-color: lighten($main-bg, 2.4%);
         }
     }
-    
     dt {
         font-weight: bold;
     }
-    
     dd {
         margin-left: 15px;
     }
-    
     li {
         padding: 0 0.5em!important;
     }
-    
-    p, li, dt, dd {
+    p,
+    li,
+    dt,
+    dd {
         line-height: 1.6;
         padding: 0 3.8em;
     }
-    
     img {
         max-width: 100%;
     }
-    
     code {
         background-color: rgba(0, 0, 0, 0.05);
         padding: 3px;
@@ -664,12 +616,10 @@ html, body {
         @extend %break-words;
         @extend %code-font;
     }
-    
-    pre > code {
+    pre>code {
         background-color: transparent;
         padding: 0;
     }
-    
     aside {
         padding-top: 1em;
         padding-bottom: 1em;
@@ -678,38 +628,30 @@ html, body {
         background: $aside-notice-bg;
         line-height: 1.6;
         padding: 1em 3.8em;
-        
         p {
             padding: 0;
         }
-        
         &.warning {
             background-color: $aside-warning-bg;
         }
-        
         &.success {
             background-color: $aside-success-bg;
         }
     }
-    
     aside:before {
         vertical-align: middle;
         padding-right: 0.5em;
         font-size: 14px;
     }
-    
     aside.notice:before {
         @extend %icon-info-sign;
     }
-    
     aside.warning:before {
         @extend %icon-exclamation-sign;
     }
-    
     aside.success:before {
         @extend %icon-ok-sign;
     }
-    
     .search-highlight {
         padding: 2px;
         margin: -3px;
@@ -724,7 +666,8 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 .content {
-    pre, blockquote {
+    pre,
+    blockquote {
         background-color: $code-bg;
         color: #fff;
         margin: 0;
@@ -733,31 +676,26 @@ html, body {
         clear: right;
         box-sizing: border-box;
         @extend %right-col;
-        
         @media (max-width: $phone-width) {
             width: 100%;
         }
-        
-        & > p {
+        &>p {
             margin: 0;
         }
-        
         a {
             color: #fff;
             text-decoration: none;
             border-bottom: dashed 1px #ccc;
         }
     }
-    
     pre {
         @extend %code-font;
         padding-top: 2em;
         padding-bottom: 2em;
         padding: 2em $main-padding;
     }
-    
     blockquote {
-        & > p {
+        &>p {
             background-color: $code-annotation-bg;
             padding: $code-annotation-padding 2em;
             color: #eee;
@@ -774,7 +712,6 @@ html, body {
     #nav-button {
         display: block;
     }
-    
     .toc-link {
         padding-top: 0.3em;
         padding-bottom: 0.3em;
@@ -783,34 +720,45 @@ html, body {
 
 @media (max-width: $phone-width) {
     .content {
-        & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > p, & > table, & > ul, & > ol, & > aside, & > dl {
+        &>h1,
+        &>h2,
+        &>h3,
+        &>h4,
+        &>h5,
+        &>h6,
+        &>p,
+        &>table,
+        &>ul,
+        &>ol,
+        &>aside,
+        &>dl {
             padding: 1em 2em;
             width: 100%;
         }
-
         ul {
             padding: 0 4em;
         }
     }
-
     %left-col {
         margin-right: 0;
     }
-    
     %right-col {
         width: auto;
         float: none;
     }
-    
-    %right-col + %left-col {
+    %right-col+%left-col {
         margin-top: $main-padding;
     }
 }
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
     color: #909090;
 }
 
-.highlight, .highlight .w {
+.highlight,
+.highlight .w {
     background-color: $code-bg;
 }
