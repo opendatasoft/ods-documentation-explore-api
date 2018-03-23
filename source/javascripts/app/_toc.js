@@ -74,6 +74,9 @@
                 // TODO remove classnames
                 if ($best.data("title") == undefined) document.title = originalTitle;
                 else document.title = $best.data("title") + " – " + originalTitle;
+
+                // Add by ods, title write section in URL
+                if ($best.data("title") !== undefined) history.pushState(null, null, "#" + $best.data("title"));
             }
 
         };

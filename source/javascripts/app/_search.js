@@ -85,6 +85,14 @@
       unhighlight();
       searchResults.removeClass('visible');
     }
+
+    // scroll content below ods_header 
+    $('a[href*="#"]').on('click', function (event) {
+      event.preventDefault();
+      var hash = $(this).attr('href');
+      var target = $(hash).offset().top;
+      $('html, body').animate({ scrollTop: target - 99 }, 0);
+    });
   }
 
   function highlight() {
