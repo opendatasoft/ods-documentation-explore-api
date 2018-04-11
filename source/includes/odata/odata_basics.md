@@ -271,6 +271,8 @@ The server will ignore `$skip` results and then return the first `$top` items.
 
 When paging is applied, a link to the next results will be added at the end of the payload.
 
+Please note that the OData API does not allow a result window larger than 10000.
+
 ## Search
 
 ```http
