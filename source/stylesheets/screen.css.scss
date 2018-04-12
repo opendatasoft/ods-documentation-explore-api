@@ -133,6 +133,12 @@ body {
         border: none;
     }
 }
+//- IE 10 / 11
+@media all and (-ms-high-contrast: active), (-ms-high-contrast:none) {
+    .ods-header__nav {
+        margin-left: 153px;
+    }
+}
 
 .ods-header__nav--active {
     right: 0;
@@ -152,6 +158,12 @@ body {
         &:last-child {
             margin-right: 0px;
         }
+    }
+}
+//- IE 10 / 11
+@media all and (-ms-high-contrast: active), (-ms-high-contrast:none) {
+   .ods-header__nav-item {
+        margin-top: 25px;
     }
 }
 
