@@ -271,8 +271,9 @@ The server will ignore `$skip` results and then return the first `$top` items.
 
 When paging is applied, a link to the next results will be added at the end of the payload.
 
-Please note that the OData API only operates on the 10,000 first dataset results. So, for instance, you won't be able to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, you should use the OpenDataSoft Download API.
-
+<aside>
+    The OData API only operates on the 10,000 first dataset results. For instance, it isn’t possible to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, use <a href="/v1.html#records-download-api">the OpenDataSoft Download API</a>.
+</aside>
 
 
 ## Search
