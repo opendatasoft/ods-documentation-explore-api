@@ -3,7 +3,6 @@
 @import 'variables';
 @import 'icon-font';
 // @import 'rtl'; // uncomment to switch to RTL format
-
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
 
@@ -111,7 +110,7 @@ body {
 .ods-header__nav {
     top: 100px;
     right: -300px;
-    height: 80%;
+    height: 100%;
     background-color: $blue-light;
     z-index: 1000;
     display: flex;
@@ -121,20 +120,21 @@ body {
         width: 300px;
         padding-top: 40px;
         flex-direction: column;
-        border-top: 1px solid transparentize($grey-dark, 0.6);
+        border-top: 1px solid white;
     }
     @media (min-width: $tablet-width) {
         margin-left: 100px;
         position: static;
         width: auto;
-        padding-top: 10px;
         flex-direction: row;
         justify-content: space-around;
         border: none;
     }
 }
+
 //- IE 10 / 11
-@media all and (-ms-high-contrast: active), (-ms-high-contrast:none) {
+@media all and (-ms-high-contrast: active),
+(-ms-high-contrast:none) {
     .ods-header__nav {
         margin-left: 153px;
     }
@@ -148,6 +148,10 @@ body {
     text-align: center;
     @media (max-width: $tablet-width - 1) {
         margin: 15px 0;
+        line-height: 25px;
+        &:last-child {
+            margin-top: 30px;
+        }
     }
     @media (min-width: $tablet-width) {
         margin: auto 20px;
@@ -160,9 +164,11 @@ body {
         }
     }
 }
+
 //- IE 10 / 11
-@media all and (-ms-high-contrast: active), (-ms-high-contrast:none) {
-   .ods-header__nav-item {
+@media all and (-ms-high-contrast: active),
+(-ms-high-contrast:none) {
+    .ods-header__nav-item {
         margin-top: 25px;
     }
 }
@@ -193,6 +199,19 @@ body {
             color: white;
             text-decoration: none;
         }
+    }
+}
+
+.ods-header__redirect-helphub {
+    border: 1px solid transparent;
+    padding: 10px 30px;
+    background-color: white;
+    color: $blue-light;
+    border-radius: 4px;
+    &:hover {
+        background-color: $blue-hover;
+        color: white;
+        border: none;
     }
 }
 
@@ -330,13 +349,17 @@ body {
     }
     .toc-h1 {
         color: $grey-dark;
+        &:hover {
+            background-color: $blue-light;
+            color: white;
+        }
     } // This is the currently selected ToC entry
     .toc-link.active {
         background-color: $blue-light;
-        color: white!important;
+        color: white !important;
         border: 1px solid transparentize($grey-dark, 0.6);
         &>a {
-            color: white!important;
+            color: white !important;
             font-weight: bold;
         }
     } // this is parent links of the currently selected ToC entry
@@ -358,6 +381,11 @@ body {
         border-top: 1px solid transparent;
         border-bottom: 1px solid transparentize($grey-dark, 0.9);
         font-weight: 500;
+        &:hover {
+            background-color: $blue-light;
+            color: white;
+            border: 1px solid transparent;
+        }
     }
     .toc-footer {
         padding: 1em 0;
@@ -609,7 +637,7 @@ body {
         margin-left: 15px;
     }
     li {
-        padding: 0 0.5em!important;
+        padding: 0 0.5em !important;
     }
     p,
     li,
@@ -746,9 +774,6 @@ body {
         &>dl {
             padding: 1em 2em;
             width: 100%;
-        }
-        ul {
-            padding: 0 4em;
         }
     }
     %left-col {
