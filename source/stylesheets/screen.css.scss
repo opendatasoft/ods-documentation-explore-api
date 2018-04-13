@@ -208,6 +208,7 @@ body {
     background-color: white;
     color: $blue-light;
     border-radius: 4px;
+    white-space: nowrap;
     &:hover {
         background-color: $blue-hover;
         color: white;
