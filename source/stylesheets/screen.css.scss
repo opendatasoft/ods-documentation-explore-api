@@ -202,20 +202,6 @@ body {
     }
 }
 
-.ods-header__redirect-helphub {
-    border: 1px solid transparent;
-    padding: 10px 30px;
-    background-color: white;
-    color: $blue-light;
-    border-radius: 4px;
-    white-space: nowrap;
-    &:hover {
-        background-color: $blue-hover;
-        color: white;
-        border: none;
-    }
-}
-
 .ods-header__nav-item-link--active {
     border-bottom: 2px solid white;
 }
