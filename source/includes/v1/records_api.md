@@ -14,7 +14,7 @@ It also provides faceted search features on dataset records.
 
 Parameter            | Description
 -------------------- | -----------
-`dataset`            | Identifier of the dataset. Datasets that are hosted in the same domain may be queried simultaneously by repeating this parameter. This parameter is mandatory
+`dataset`            | Identifier of the dataset. This parameter is mandatory
 `q`                  | Full-text query performed on the result set
 `geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
 `geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
