@@ -175,7 +175,7 @@ It means that literal field in select clause outside aggregation function must b
 If a query contains multiple `group_by` clauses, returned groups are combined together.
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/aggregates`
+`GET /api/v2/catalog/datasets/<dataset_id>/aggregates`
 
 ##### URL Parameters
 
