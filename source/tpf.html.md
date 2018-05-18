@@ -10,10 +10,10 @@ toc_footers:
 
 includes:
   - tpf/introduction
+  - tpf/exports
+  - tpf/data
   - common/authentication
   - common/oauth2
-  - tpf/sparql
-  - tpf/data
 
 search: true
 ---
