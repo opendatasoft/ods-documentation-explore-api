@@ -1,6 +1,16 @@
 # Unique header generation
 require './lib/unique_head.rb'
 
+["v1", "v2", "wfs", "csw", "tpf", "odata"].each do |apis|
+  if apis == "v1" 
+    proxy "/ods-search-v1/#{apis}.html", "#{apis}.html", :locals => { :page_apis => apis }
+  elsif apis == "v2"
+    proxy "/ods-search-v2/#{apis}.html", "#{apis}.html", :locals => { :page_apis => apis }
+  else
+    proxy "/#{apis}/#{apis}.html", "#{apis}.html", :locals => { :page_apis => apis }
+  end
+end
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
