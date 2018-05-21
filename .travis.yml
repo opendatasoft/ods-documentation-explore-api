@@ -1,27 +1,22 @@
 sudo: false
 language: ruby
 rvm:
-- 2.4.0
+  - 2.4.0
 cache: bundler
 env:
   global:
-  - DEPLOY_PATH=/var/www/apidoc/explore
-  - DEPLOY_BETA_PATH=/var/www/betaapidoc/explore
-  - secure: "R0GmVzlAkuqWGq2+/ibLGDXCooCMie1fmhLGhuzejBJr5yyo6P6YqYeYGRFotuFzrsrkCnaBw31DLSDB4nu1CO5Wie/AVVepuYdBU2Oj72TilCN/JD96hCDAF6eghkAv18Ps0Lz2yGqdeTslBoBdEbWRITkddl8ZuO3G8seTB8nLclL9sB8G2KWJHHCApifL11yH5AaWxRx+1Vjwpmt7Dt7b0aMPbLbE3k5sgXfhWhpow138U7F2Fqidag4r9eKs2agzj4RuM/5mbX2ob1Y1vRo8lOrnP0+61RwtewIQ+H/E31d+RrNLbO/Vm1DErPgZSk14mGavEpIcrIUvgPrzekExbSKdjMgSl8BXP2QfpbYAHjGC8yxHvp1uSpUtSosdqNyj9CR1c8LuGhBDZWHoUgzi6SE4T6EJcwBTf8HFtf29F8BDu/+OMN3bYewXn9LR2colvl5haR3c/VdDQ9MRwCY3VyVgpWB92jkakdIoOZlyxO6wmtB1RR8zUROBx1kGX3wPd+a//yMHF0hWOqntdHdusqPI9KO8zzB4ZvVc1/28/o9oor71dok3J0Vj1IIjYh/dwWwNbDOUlrI3hwyrzCKqk+gmcOorFNUvWHVsQ9QY4OZRXNSS5OlXS9Wv2r3gnvq8klapOjyXM318imMQWDXMJ5aPUoGKq9nNUabP/0A="
-  - secure: "eunPXqsdrCtnoCosX3YWu5DQpG4jvMLZECvyuXBZJ+NSJH3wTyDSVI9V+zEoxejzhnvtxgieSfRCpQCMzrc4w6PL3T+lIBfaTlQn817kBn2hBq1rjVtqk24IBZoFQ0ZRY2+Lt1xNgtRHZCZlMzfC02ANd6+CPcFB1bzYokpBXa6bVhijRFqYli8J8MnS3WEjnSKc18D0ywLpcNJeoAPXBBAER7CzAgExYUlGgB1mXDCz/weGaHog4tsJwn/AKg7iaHWNGFnrUV13Bsxo56raiyC0j7zvNAjX0igwCFEOPPSG/wmD69a+76mDyUui36mfWjjgOpC0xBoYXbk8KX/vE/ahLBdyQlHUpBLaWBFx1z6AqSu9wfVevNW0j/ymw7Slrg+l/xMSAAUtHm/LA9VnkVP/dXx0AUbOwHdrLAeNcntV7FFaA50x3Pehn4HSpc0iBKAuD145UZndHDD1cR3ygkd2DPHlO2AMEIJUIR0QaeFNRRC5qQ4oxJy9T8oIRDCea2znaPv/UBzH9IxJqDNgvZP2WjN7DoueFbEnAtOUczB2W2AeHCZC6uZxgbSvcbna5TpQjIXZyjn9k/s6Pjpvff1MtztrOGT0hloBFTBZyB0bfZSBDbD+OtYAFOQB/zVxvUURsVkvcXdt1EV3CSwF+TTkfthJUTn86SmUKSHdjgU="
+    - DEPLOY_PROD_PATH=/var/www/help/apis/
+    - DEPLOY_BETA_PATH=/var/www/betahelp/apis/
+    - secure: "R0GmVzlAkuqWGq2+/ibLGDXCooCMie1fmhLGhuzejBJr5yyo6P6YqYeYGRFotuFzrsrkCnaBw31DLSDB4nu1CO5Wie/AVVepuYdBU2Oj72TilCN/JD96hCDAF6eghkAv18Ps0Lz2yGqdeTslBoBdEbWRITkddl8ZuO3G8seTB8nLclL9sB8G2KWJHHCApifL11yH5AaWxRx+1Vjwpmt7Dt7b0aMPbLbE3k5sgXfhWhpow138U7F2Fqidag4r9eKs2agzj4RuM/5mbX2ob1Y1vRo8lOrnP0+61RwtewIQ+H/E31d+RrNLbO/Vm1DErPgZSk14mGavEpIcrIUvgPrzekExbSKdjMgSl8BXP2QfpbYAHjGC8yxHvp1uSpUtSosdqNyj9CR1c8LuGhBDZWHoUgzi6SE4T6EJcwBTf8HFtf29F8BDu/+OMN3bYewXn9LR2colvl5haR3c/VdDQ9MRwCY3VyVgpWB92jkakdIoOZlyxO6wmtB1RR8zUROBx1kGX3wPd+a//yMHF0hWOqntdHdusqPI9KO8zzB4ZvVc1/28/o9oor71dok3J0Vj1IIjYh/dwWwNbDOUlrI3hwyrzCKqk+gmcOorFNUvWHVsQ9QY4OZRXNSS5OlXS9Wv2r3gnvq8klapOjyXM318imMQWDXMJ5aPUoGKq9nNUabP/0A="
+    - secure: "eunPXqsdrCtnoCosX3YWu5DQpG4jvMLZECvyuXBZJ+NSJH3wTyDSVI9V+zEoxejzhnvtxgieSfRCpQCMzrc4w6PL3T+lIBfaTlQn817kBn2hBq1rjVtqk24IBZoFQ0ZRY2+Lt1xNgtRHZCZlMzfC02ANd6+CPcFB1bzYokpBXa6bVhijRFqYli8J8MnS3WEjnSKc18D0ywLpcNJeoAPXBBAER7CzAgExYUlGgB1mXDCz/weGaHog4tsJwn/AKg7iaHWNGFnrUV13Bsxo56raiyC0j7zvNAjX0igwCFEOPPSG/wmD69a+76mDyUui36mfWjjgOpC0xBoYXbk8KX/vE/ahLBdyQlHUpBLaWBFx1z6AqSu9wfVevNW0j/ymw7Slrg+l/xMSAAUtHm/LA9VnkVP/dXx0AUbOwHdrLAeNcntV7FFaA50x3Pehn4HSpc0iBKAuD145UZndHDD1cR3ygkd2DPHlO2AMEIJUIR0QaeFNRRC5qQ4oxJy9T8oIRDCea2znaPv/UBzH9IxJqDNgvZP2WjN7DoueFbEnAtOUczB2W2AeHCZC6uZxgbSvcbna5TpQjIXZyjn9k/s6Pjpvff1MtztrOGT0hloBFTBZyB0bfZSBDbD+OtYAFOQB/zVxvUURsVkvcXdt1EV3CSwF+TTkfthJUTn86SmUKSHdjgU="
 install: bundle install
 script: bundle exec middleman build
 after_success:
-- openssl aes-256-cbc -K $encrypted_ceb20d029af5_key -iv $encrypted_ceb20d029af5_iv -in .travis.deploy.enc -out .travis.deploy -d
-- chmod 600 .travis.deploy
-- eval "$(ssh-agent -s)"
-- ssh-add .travis.deploy
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && rsync
-  -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_PATH"
-  2>/dev/null
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "develop" && rsync
-  -e "ssh -o StrictHostKeyChecking=no" -az --force --delete build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_BETA_PATH"
-  2>/dev/null
+  - openssl aes-256-cbc -K $encrypted_ceb20d029af5_key -iv $encrypted_ceb20d029af5_iv -in .travis.deploy.enc -out .travis.deploy -d
+  - chmod 600 .travis.deploy
+  # Modificate branch by develop
+  - 'test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "epic/documentation_template" && rsync -avz -e "ssh -i .travis.deploy -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete -P build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_BETA_PATH"'
+  - 'test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && rsync -avz -e "ssh -i .travis.deploy -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete -P build/ "$DEPLOY_USER"@"$DEPLOY_IP":"$DEPLOY_PROD_PATH"'
 notifications:
   slack:
     secure: pPbIMu31IDO5Poa/pKGF2gL1ED5sHGbpRlOvxbVHDqwN1yb/VGDaiOb78Hen4o8MClTzoJzACEJI2wa9GhD+hBMHQYFYSkg/G3rktKtKALCKIrnq8+633zwCFrBBlfzx3zqAtFZ374ozj4QE7XYwT8sOrywLDemz5Xyz9pXWklV3SEzBmEtgqc39cb5BnXMg+dEx72Wu4XQWMX13MF73/CbcgaL+VXywCky0sz0vEUeVAWkvYnsVFnQVjg4PXWKWqBPjL4ruPFTmSR+P7/NHdRwscObbT3SUrVhT0o0KQqBi6cmWnMYJFnVjDwqno937oerCgykqPbDTuNkIKpZjJ3cKdtSjK/rLj6jjym5nSgctTstM2CnilrgxnE/H9ScS5cG/3FypXs8+3HG6pZmbEfZGGlZ47zpPBwh1JCLWhfYyr1a8l+736OCWuQuZ9B3KAPg3+RGmA0Ccp9CMDOLiBukxyMlJgvs3XOijsKEhYELy9hKwpFwvl/3e7Lx12pe5ixXNAgcJTts3A/OF/HHd1Unj3Zt/lrNIXl1LTFC+8KCvBVTKC15huIf9+x713ypuHxNT319snEBzIkgghbAEDM39IsPlSIGgKIiZQ8EwfFOeegmvccB3ZIJatVhRJMui2XZE1GMki9ZR5moKjvCF81APmc0VUd8A3iAFDK/lo2s=
