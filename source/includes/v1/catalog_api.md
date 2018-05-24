@@ -25,8 +25,8 @@ Parameter         | Description
 `refine.<FACET>`  | Limit the result set to records where `FACET` has the specified value. It can be used several times for the same facet or for different facets
 `exclude.<FACET>` | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `sort`            | Sorts results by the specified field. By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort. Sorting is only available on numeric fields (int, double, date and datetime) and on text fields which have the `sortable`  annotation
-`rows`            | Number of results to return in a single call. The maximum number of rows returned is 1000. By default, 10 results are returned
-`start`           | Index of the first result to return (starting at 0). Use in conjunction with "rows" to implement paging
+`rows`            | Number of results to return in a single call. By default, `10` results are returned. While you can request for up to `10 000` results in a row, such requests are not optimal and can be throttled so you should consider splitting them into smaller ones.
+`start`           | Index of the first result to return (starting at 0). Use in conjunction with `rows to implement paging
 `pretty_print`    | If set to true (default is false), pretty prints JSON and JSONP output
 `format`          | Format of the response output. Can be `json` (default), `jsonp`, `csv` or `rss`
 `callback`        | JSONP callback (only in JSONP requests)
