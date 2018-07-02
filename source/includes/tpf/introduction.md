@@ -76,7 +76,7 @@ Parameter | Description | Optionality
 
 > a SPARQL query to retrieve roman emperors whose reign start after AD 14.
 
-```shell
+```turtle
 PREFIX roman: <https://public.opendatasoft.com/ld/ontologies/roman-emperors/>
 
 SELECT ?name WHERE {
