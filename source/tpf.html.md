@@ -9,10 +9,10 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - tpf/introduction
   - common/authentication
   - common/oauth2
-  - tpf/sparql
+  - tpf/introduction
+  - tpf/exports
   - tpf/data
 
 search: true
