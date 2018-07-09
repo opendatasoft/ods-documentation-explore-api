@@ -1,6 +1,6 @@
 # Triple Pattern Fragments API
 
-OpenDataSoft datasets can be queried using Triple Pattern Fragments (TPF). This is an approach for querying linked data described with Resource Description Framework (RDF) without using traditional SPARQL Endpoints. More informations on TPF [here](http://linkeddatafragments.org/).
+OpenDataSoft datasets can be queried using Triple Pattern Fragments (TPF). This is an approach for querying linked data described with Resource Description Framework (RDF) without using traditional SPARQL Endpoints. More information on TPF [here](http://linkeddatafragments.org/).
 
 ## Concepts
 

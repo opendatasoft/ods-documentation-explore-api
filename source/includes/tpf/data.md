@@ -89,7 +89,7 @@ Data resulting from this transformation describe dataset structure and contents 
 ```
 
 OpenDataSoft datasets RDF structure can be edited using the RDF Mapping language ([RML](http://rml.io/)).
-Editing the RML mapping of a dataset modify the RDF result returned by TPF api and RDF exports and update the `Classes` and `Properties` filters.
+Editing the RML mapping of a dataset modifies the RDF result returned by TPF API and RDF exports and updates the `Classes` and `Properties` filters.
 
 ### Classes and Properties filters
 
