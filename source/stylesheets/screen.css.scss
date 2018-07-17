@@ -693,6 +693,9 @@ body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 .content {
+    a {
+        word-break: break-all;
+    }
     pre,
     blockquote {
         background-color: $code-bg;
