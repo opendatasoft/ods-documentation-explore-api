@@ -693,7 +693,7 @@ body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 .content {
-    a {
+    a, p {
         word-break: break-all;
     }
     pre,
