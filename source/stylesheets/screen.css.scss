@@ -154,7 +154,7 @@ body {
         }
     }
     @media (min-width: $tablet-width) {
-        margin: auto 20px;
+        margin: 39px 20px;
         transition: 0.5s;
         &:first-child {
             margin-left: -1px;
@@ -219,7 +219,8 @@ body {
 .toc-wrapper {
     transition: left 0.3s ease-in-out;
     top: 100px;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     position: fixed;
     z-index: 30;
@@ -693,7 +694,8 @@ body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 .content {
-    a, p {
+    a,
+    p {
         word-break: break-all;
     }
     pre,
