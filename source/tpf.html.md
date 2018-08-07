@@ -8,10 +8,10 @@ toc_footers:
   - <a href='https://help.opendatasoft.com/'>OpenDataSoft documentation</a>
 
 includes:
-  - tpf/introduction
   - common/authentication
   - common/oauth2
-  - tpf/sparql
+  - tpf/introduction
+  - tpf/exports
   - tpf/data
 
 search: true

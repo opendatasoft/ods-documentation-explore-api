@@ -14,7 +14,7 @@ It also provides faceted search features on dataset records.
 
 Parameter            | Description
 -------------------- | -----------
-`dataset`            | Identifier of the dataset. Datasets that are hosted in the same domain may be queried simultaneously by repeating this parameter. This parameter is mandatory
+`dataset`            | Identifier of the dataset. This parameter is mandatory
 `q`                  | Full-text query performed on the result set
 `geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
 `geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
@@ -26,7 +26,7 @@ Parameter            | Description
 `format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
 `callback`           | JSONP or GEOJSONP callback
 `sort`               | Sorts results by the specified field (in `modified`, `issued`, `created` and `records_count`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort
-`rows`               | Number of results to return in a single call. The maximum number of rows returned is 1000. By default, 10 results are returned
+`rows`               | Number of results to return in a single call. By default, `10` results are returned. While you can request for up to `10 000` results in a row, such requests are not optimal and can be throttled so you should consider splitting them into smaller ones or use the Records Download API. Note also that the cumulated value of the parameters `start` and `rows` cannot go over `10 000`. It means that with the Records Search API, there's no way to access a result with a position greater than `10 000`. If however you need to do so, consider again using the Records Download API.
 `start`              | Index of the first result to return (starting at 0). Use in conjunction with "rows" to implement paging
 
 ## Record Lookup API
