@@ -14,6 +14,15 @@ License for the specific language governing permissions and limitations
 under the License.
 %>
 <% language_tabs = current_page.data.language_tabs || [] %>
+<% page_content = yield %>
+<%
+  if current_page.data.includes
+    current_page.data.includes.each do |include|
+      page_content += partial("includes/#{include}")
+    end
+  end
+%>
+
 <!doctype html>
 <html>
   <head>
@@ -37,16 +46,71 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
-    <a href="#" id="nav-button">
-      <span>
-        NAV
-        <%= image_tag('navbar.png') %>
-      </span>
-    </a>
-    <div class="tocify-wrapper">
+    
+    <div class="ods-header">
+    
+      <div class="ods-header__brand">
+        <button type="button"
+                class="ods-header__menu-toggle"
+                id="nav-button">
+                Menu
+        </button>
+        
+        <img class="ods-header__logo"
+              src="<%= image_path('ODS_logo_api_blanc.svg') %>"
+              alt="OpenDataSoft API documentation">
+
+        <button type="button"
+                class="ods-header__menu-toggle"
+                id="helphub-button">
+                Help Hub
+        </button>
+      </div>
+
+      <div class="ods-header__nav">
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link"
+              href="/">
+              Help Hub
+          </a>
+        </div>
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link"
+              href="/platform/en/">
+              Platform
+          </a>
+        </div>
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link"
+              href="https://discovery.opendatasoft.com/">
+              Discovery
+          </a>
+        </div>
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link"
+              href="/faq-glossary/en/">
+              FAQ
+          </a>
+        </div>
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link"
+              href="/widgets/">
+              Widgets
+          </a>
+        </div>
+        <div class="ods-header__nav-item">
+          <a class="ods-header__nav-item-link ods-header__nav-item-link--active"
+              href="/en/apis/">
+              APIs
+          </a>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="toc-wrapper">
+
       <div class="toc-header">
-        <%= image_tag "ods-logo.png" %>
-        <p>OpenDataSoft API Documentation</p>
         <% if current_page.data.search %>
           <div class="search">
             <input type="text" class="search" id="input-search" placeholder="Search">
@@ -54,19 +118,24 @@ under the License.
           <ul class="search-results"></ul>
         <% end %>
       </div>
-      <% if language_tabs.any? %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+
+      <div id="toc" class="toc-list-h1">
+        <% toc_data(page_content).each do |h1| %>
+          <li>
+            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content].to_s.parameterize %>"><%= h1[:content] %></a>
+            <% if h1[:children].length > 0 %>
+              <ul class="toc-list-h2">
+                <% h1[:children].each do |h2| %>
+                  <li>
+                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content].to_s.parameterize %>"><%= h2[:content] %></a>
+                  </li>
+                <% end %>
+              </ul>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <div id="toc">
+          </li>
+        <% end %>
       </div>
+
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>
@@ -74,15 +143,15 @@ under the License.
           <% end %>
         </ul>
       <% end %>
+
     </div>
+
     <div class="page-wrapper">
-      <div class="dark-box"></div>
+      
       <div class="content">
-        <%= yield %>
-        <% current_page.data.includes && current_page.data.includes.each do |include| %>
-          <%= partial "includes/#{include}" %>
-        <% end %>
+        <%= page_content %>
       </div>
+
       <div class="dark-box">
         <% if language_tabs.any? %>
           <div class="lang-selector">
@@ -96,6 +165,7 @@ under the License.
           </div>
         <% end %>
       </div>
+      
     </div>
   </body>
 </html>

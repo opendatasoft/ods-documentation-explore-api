@@ -1,3 +1,10 @@
+# Unique header generation
+require './lib/unique_head.rb'
+
+["ods-search-v1", "ods-search-v2", "wfs", "csw", "tpf", "odata"].each do |apis|
+  proxy "/#{apis}/index.html", "#{apis}.html", :locals => { :page_apis => apis }
+end
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
@@ -7,7 +14,8 @@ set :markdown,
     prettify: true,
     tables: true,
     with_toc_data: true,
-    no_intra_emphasis: true
+    no_intra_emphasis: true,
+    renderer: UniqueHeadCounter
 
 # Assets
 set :css_dir, 'stylesheets'
@@ -47,3 +55,7 @@ end
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567
+
+helpers do
+  require './lib/toc_data.rb'
+end
