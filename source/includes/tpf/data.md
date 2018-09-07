@@ -91,6 +91,16 @@ Data resulting from this transformation describe dataset structure and contents 
 OpenDataSoft datasets RDF structure can be edited using the RDF Mapping language ([RML](http://rml.io/)).
 Editing the RML mapping of a dataset modifies the RDF result returned by TPF API and RDF exports and updates the `Classes` and `Properties` filters.
 
+A dereferenceable URI returns informations about the resource identified by the URI. Dereferenceable URI's are one of the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data). OpenDataSoft proposes a service that makes URI's dereferenceable and always up to date. To use this service, resource URI have to fulfill the following template:
+
+https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...{FIELD_NAME}...{FIELD_NAME_2}...
+
+> An example of dereferenceable URI template
+
+```turtle
+rr:subjectMap rr:template "https://public.opendatasoft.com/ld/resources/roman-emperors/Emperor/{name}-{name_full}_{birth}"
+```
+
 ### Classes and Properties filters
 
 The `Classes` and `Properties` filters contain all the classes and properties used in the RML mapping of the dataset.
