@@ -470,16 +470,35 @@ GEOMETRY(field_name, GEOM'<geometry>', DISJOINT)
 GEOMETRY(field_name, GEOM'<geometry>', WITHIN)
 ```
 
-The geometry function limits the result set to a geographical area defined by a polygon.
+The geometry function limits the result set to a geographical area defined by a geometry.
 
-This polygon must be defined with both:
+This function only supports geo_shape field for the moment. [Polygon function](#polygon-function) can be used to filter on a geo_point field.
 
-- a [geometry literal](#geometry-literal)
+This function must be defined with both:
+
+- a [geometry literal](#geometry-literal). 
 - one of the following modes:
 
-  - `INTERSECT`: if the polygon intersects with the shape defined in the record
+  - `INTERSECTS`: if the polygon intersects with the shape defined in the record
   - `DISJOINT`: if the polygon is disjoint from the shape defined in the record
   - `WITHIN`: if the polygon encloses the shape defined in the record
+
+
+  <div class=“clearfix”></div>
+#### Polygon function
+
+> Polygon function examples
+
+```plain-text
+POLYGON(field_name, GEOM'<geometry>')
+```
+
+The polygon function limits the result set to a geographical area defined by a polygon.
+
+Field defined by `field_name` must be of type `geo_point`.
+
+The polygon must be defined with a [geometry literal](#geometry-literal).
+
 
 <div class=“clearfix”></div>
 #### Bbox function
