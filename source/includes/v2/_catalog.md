@@ -396,7 +396,7 @@ Export datasets in the [Project Open Data Metadata Schema v1.1](https://project-
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_de'
 ```
 
-Export datasets in the RDF format, using DCAT application specific to Germany.
+Export datasets in an RDF format, using DCAT application specific to Germany.
 
 <aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
 
@@ -412,7 +412,7 @@ Export datasets in the RDF format, using DCAT application specific to Germany.
 curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch'
 ```
 
-Export datasets in the RDF format, using DCAT application specific to Switzerland.
+Export datasets in an RDF format, using DCAT application specific to Switzerland.
 
 <aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
 
