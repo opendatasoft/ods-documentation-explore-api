@@ -286,6 +286,8 @@ A dataset catalog can be exported in 7 different formats:
 - TTL
 - RDF
 - Data.json
+- DCAT-AP DE
+- DCAT-AP CH
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports`
@@ -384,6 +386,38 @@ Export datasets in the [Project Open Data Metadata Schema v1.1](https://project-
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports/data.json`
+
+
+### Exporting a catalog in DCAT-AP DE
+
+> Export datasets in DCAT-AP DE format
+
+```shell
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_de'
+```
+
+Export datasets in the RDF format, using DCAT application specific to Germany.
+
+<aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
+
+##### HTTP Request
+`GET /api/v2/catalog/exports/dcat_ap_de`
+
+
+### Exporting a catalog in DCAT-AP CH
+
+> Export datasets in DCAT-AP CH format
+
+```shell
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch'
+```
+
+Export datasets in the RDF format, using DCAT application specific to Switzerland.
+
+<aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
+
+##### HTTP Request
+`GET /api/v2/catalog/exports/dcat_ap_ch`
 
 
 ## Looking up a dataset
