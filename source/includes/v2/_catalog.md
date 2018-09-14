@@ -277,7 +277,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/'
 
 The endpoint allows to download all datasets for a requested domain.
 
-A dataset catalog can be exported in 7 different formats:
+A dataset catalog can be exported in 9 different formats:
 
 - JSON
 - CSV
@@ -286,8 +286,8 @@ A dataset catalog can be exported in 7 different formats:
 - TTL
 - RDF
 - Data.json
-- DCAT-AP DE
-- DCAT-AP CH
+- DCAT-AP DE (on demand)
+- DCAT-AP CH (on demand)
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports`
