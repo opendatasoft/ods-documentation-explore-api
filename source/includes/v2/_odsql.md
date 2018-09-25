@@ -472,7 +472,7 @@ GEOMETRY(field_name, GEOM'<geometry>', WITHIN)
 
 The geometry function limits the result set to a geographical area defined by a geometry.
 
-This function only supports geo_shape field for the moment. [Polygon function](#polygon-function) can be used to filter on a geo_point field.
+This function only supports `geo_shape` fields. It should not be confused with the [polygon function](#polygon-function), which can be used on `geo_point` fields.
 
 This function must be defined with both:
 
