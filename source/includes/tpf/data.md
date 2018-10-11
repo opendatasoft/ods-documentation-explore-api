@@ -88,18 +88,20 @@ Data resulting from this transformation describe dataset structure and contents 
 
 ```
 
-OpenDataSoft datasets RDF structure can be edited using the RDF Mapping language ([RML](http://rml.io/)).
-Editing the RML mapping of a dataset modifies the RDF result returned by TPF API and RDF exports and updates the `Classes` and `Properties` filters.
+OpenDataSoft datasets RDF structure can be edited using the RDF Mapping Language ([RML](http://rml.io/)).
+Editing the RML mapping of a dataset modifies the RDF result returned by TPF API, RDF exports and updates the `Classes` and `Properties` filters.
 
-A dereferenceable URI returns informations about the resource identified by the URI. Dereferenceable URI's are one of the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data). OpenDataSoft proposes a service that makes URI's dereferenceable and always up to date. To use this service, resource URI have to fulfill the following template:
+OpenDataSoft provides an endpoint that makes the URIs for resources dereferencable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
 
-https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...{FIELD_NAME}...{FIELD_NAME_2}...
+An URI is said to be dereferencable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate URIs that uniquely describe a semantic resource on OpenDataSoft, and are guaranteed to lead to the corresponding, up-to-date data. Resource URIs have to follow the following format:
 
 > An example of dereferenceable URI template
 
 ```turtle
 rr:subjectMap rr:template "https://public.opendatasoft.com/ld/resources/roman-emperors/Emperor/{name}-{name_full}_{birth}"
 ```
+
+https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...{FIELD_NAME}...{FIELD_NAME_2}...
 
 ### Classes and Properties filters
 
