@@ -355,7 +355,7 @@ This function takes a numeric field literal. It returns the average (`avg`) of t
 envelope(geo_point) as convex_hull # Return the convex_hull for the geo_point field
 ```
 
-This function takes a geo_point field literal. It returns the convex_hull (`envelope`) of all the points of the geo_point field.
+This function takes a geo_point field literal. It returns the convex hull (`envelope`) of all the points of the geo_point field.
 
 <div class=“clearfix”></div>
 #### Percentile aggregation
