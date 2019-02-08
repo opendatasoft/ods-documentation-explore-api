@@ -16,94 +16,129 @@ Data resulting from this transformation describe dataset structure and contents 
 
 ## Edit Structure
 
-> An example of RML mapping in turtle format
+OpenDataSoft datasets RDF structure can be described using [YARRRML](http://rml.io/yarrrml/) the YAML representation of RML (RDF Mapping Language).
+Editing the RML mapping of a dataset modifies the structure and resources of the RDF dataset. Thus, it have an impact on RDF features such as TPF API, RDF exports, `Classes` filter, `Properties` filter, etc.
+This section explains how to create a YARRRML mapping for OpenDataSoft dataset.
 
-```turtle
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+### Running example
 
-<#RomanEmperor> rml:logicalSource [ rml:iterator "$.[*].fields" ;
-            rml:referenceFormulation ql:JSONPath ;
-            rml:source "roman-emperors@public" ] ;
-    rr:predicateObjectMap [ rr:objectMap [ rml:reference "$.name_full" ] ;
-            rr:predicate <http://www.w3.org/2000/10/swap/pim/contact#fullName> ],
-        [ rr:objectMap [ rml:reference "$.image" ] ;
-            rr:predicate <http://dbpedia.org/ontology/picture> ],
-        [ rr:objectMap [ rr:parentTriplesMap <#City> ] ;
-            rr:predicate <http://dbpedia.org/ontology/birthPlace> ],
-        [ rr:objectMap [ rr:parentTriplesMap <#Province> ] ;
-            rr:predicate <http://dbpedia.org/ontology/birthPlace> ],
-        [ rr:objectMap [ rml:reference "$.dynasty" ] ;
-            rr:predicate <http://dbpedia.org/ontology/dynasty> ],
-        [ rr:objectMap [ rml:reference "$.death" ;
-                    rr:datatype xsd:datetime ] ;
-            rr:predicate <http://data.archiveshub.ac.uk/def/dateDeath> ],
-        [ rr:objectMap [ rml:reference "$.cause" ] ;
-            rr:predicate <http://dbpedia.org/ontology/deathCause> ],
-        [ rr:objectMap [ rml:reference "$.killer" ] ;
-            rr:predicate <http://dbpedia.org/ontology/killedBy> ],
-        [ rr:objectMap [ rml:reference "$.notes" ] ;
-            rr:predicate <http://www.w3.org/2000/01/rdf-schema#comment> ],
-        [ rr:objectMap [ rml:reference "$.reign_start" ;
-                    rr:datatype xsd:datetime ] ;
-            rr:predicate <http://dbpedia.org/ontology/startReign> ],
-        [ rr:objectMap [ rml:reference "$.name" ] ;
-            rr:predicate <http://purl.org/ontology/wo/name> ],
-        [ rr:objectMap [ rml:reference "$.birth" ;
-                    rr:datatype xsd:datetime ] ;
-            rr:predicate <http://data.archiveshub.ac.uk/def/dateBirth> ],
-        [ rr:objectMap [ rml:reference "$.era" ] ;
-            rr:predicate <http://dbpedia.org/ontology/era> ],
-        [ rr:objectMap [ rml:reference "$.reign_end" ;
-                    rr:datatype xsd:datetime ] ;
-            rr:predicate <http://dbpedia.org/ontology/endReign> ],
-        [ rr:objectMap [ rml:reference "$.name" ] ;
-            rr:predicate rdfs:label ] ;
-    rr:subjectMap [ rr:class <http://dbpedia.org/ontology/RomanEmperor> ;
-            rr:class <http://xmlns.com/foaf/0.1/Person> ;
-            rr:template "http://dbpedia.org/resource/{name}" ] .
+To illustrate how RML mapping works, [roman-emperors](https://data.opendatasoft.com/explore/dataset/roman-emperors%40public/table) dataset will be used as an example. It contains informations about roman emperors from 26 BC to 395 AD.
 
-<#City> rml:logicalSource [ rml:iterator "$.[*].fields" ;
-            rml:referenceFormulation ql:JSONPath ;
-            rml:source "roman-emperors@public" ] ;
-    rr:predicateObjectMap [ rr:objectMap [ rml:reference "$.birth_cty" ] ;
-            rr:predicate rdfs:label ] ;
-    rr:subjectMap [ rr:class <http://purl.org/ontology/places#City> ;
-            rr:class <http://schema.org/Place> ;
-            rr:template "http://dbpedia.org/resource/{birth_cty}" ] .
+### RML rules
 
-<#Province> rml:logicalSource [ rml:iterator "$.[*].fields" ;
-            rml:referenceFormulation ql:JSONPath ;
-            rml:source "roman-emperors@public" ] ;
-    rr:predicateObjectMap [ rr:objectMap [ rml:reference "$.birth_prv" ] ;
-            rr:predicate rdfs:label ] ;
-    rr:subjectMap [ rr:class <http://purl.org/ontology/places#Province> ;
-            rr:class <http://schema.org/Place> ;
-            rr:template "http://dbpedia.org/resource/{birth_prv}" ] .
+A RML mapping contains rules that define how resources of a RDF dataset are generated from an OpenDataSoft dataset.
+In other words, it defines how each record is translated into triples.
 
+There is 3 type of rules that define:
+* How the IRI of resources are generated
+* What are the classes of the resources
+* What are the predicates and objects of the resource
+
+### Start a YARRRML mapping
+
+> A RML mapping that will describe 3 resources
+
+```yaml
+mappings:
+  person:
+  city:
+  province:
 ```
 
-OpenDataSoft datasets RDF structure can be edited using the RDF Mapping Language ([RML](http://rml.io/)).
-Editing the RML mapping of a dataset modifies the RDF result returned by TPF API, RDF exports and updates the `Classes` and `Properties` filters.
+YARRRML documents start with a `mappings` element.
+Child elements of 'mappings' identify distinct resource that will be generated.
+Chosen keys have no influence on mapping as long as they are unique.
 
-OpenDataSoft provides an endpoint that makes the URIs for resources dereferencable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
+<aside>
+In YARRRML documents, indentation defines parent and child elements.
+</aside>
 
-An URI is said to be dereferencable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate URIs that uniquely describe a semantic resource on OpenDataSoft, and are guaranteed to lead to the corresponding, up-to-date data. Resource URIs have to follow the following format:
+### How to define IRI of resources
 
-> An example of dereferenceable URI template
+> A rule defining how the IRI of the resources representing persons will be generated. An IRI will be generated for each Emperors that have a distinct name.
 
-```turtle
-rr:subjectMap rr:template "https://public.opendatasoft.com/ld/resources/roman-emperors/Emperor/{name}-{name_full}_{birth}"
+```yaml
+mappings:
+  person:
+    subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/$(name)
 ```
 
-https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...{FIELD_NAME}...{FIELD_NAME_2}...
+> An example of 2 IRIs generated by the previous rule.
 
-### Classes and Properties filters
+```ttl
+<https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/Augustus>
+<https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/Nero>
+```
+
+the `subject` child element of a resource element is used to define how
+IRI of the corresponding resource is generated.
+
+Value of the subject key is a template. A template is an IRI that can contain references to fields of the dataset.
+A reference is `$(field_name)` where `field_name` is the name of a field of the dataset.
+
+<aside>
+Note that reference are not mandatory in template. Template can also contains only a reference to a field if values of that field are IRIs.
+</aside>
+
+OpenDataSoft provides an endpoint that makes the IRIs for resources dereferencable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
+
+An IRI is said to be dereferencable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on OpenDataSoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
+
+`https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...``
+
+Where `{DOMAIN_ID}` is the id of a domain containing the dataset, `{DATASET_ID}` is the id of the dataset on the domain `{DOMAIN_ID}` and `{RESOURCE_CLASS}` is a word representing the class of the resource.
+
+### How to define the class of a resource
+
+> An example of predicateobjects rules that associate 2 classes for a resource
+
+```yaml
+mappings:
+  person:
+    subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/$(name)
+    predicateobjects:
+    - [a, 'http://schema.org/Person']
+    - [a, 'http://xmlns.com/foaf/0.1/Person']
+```
+
+# OLD DOC
+
+
+
+
+
+> An example of complete RML mapping in YARRRML syntax
+
+```yaml
+mappings:
+  person:
+    subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/$(name)
+    predicateobjects:
+    - [a, 'http://schema.org/Person']
+    - [a, 'http://xmlns.com/foaf/0.1/Person']
+    - ['http://www.w3.org/2000/01/rdf-schema#label', $(name)]
+    - ['http://purl.org/vocab/bio/0.1/position', 'Emperor', en~lang]
+    - ['http://dbpedia.org/ontology/deathDate', $(death), 'http://www.w3.org/2001/XMLSchema#datetime']
+    - ['http://dbpedia.org/ontology/birthDate', $(birth), 'http://www.w3.org/2001/XMLSchema#datetime']
+    - ['http://dbpedia.org/ontology/birthPlace', city]
+    - ['http://dbpedia.org/ontology/birthPlace', province]
+  city:
+    subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/City/$(birth_cty)
+    predicateobjects:
+    - [a, 'http://schema.org/City']
+    - [a, 'http://schema.org/Place']
+    - [a, 'http://rdfs.co/juso/SpatialThing']
+    - ['http://www.w3.org/2000/01/rdf-schema#label', $(birth_cty)]
+  province:
+    subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Province/$(birth_prv)
+    predicateobjects:
+    - [a, 'http://dbpedia.org/ontology/Province']
+    - [a, 'http://schema.org/Place']
+    - [a, 'http://rdfs.co/juso/SpatialThing']
+    - ['http://www.w3.org/2000/01/rdf-schema#label', $(birth_prv)]
+```
+
+## Classes and Properties filters
 
 The `Classes` and `Properties` filters contain all the classes and properties used in the RML mapping of the dataset.
 They can be used to search datasets representing a specific concept such as Persons, Cars or properties such as age or fuel consumption.
