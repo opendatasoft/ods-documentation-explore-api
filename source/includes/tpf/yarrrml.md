@@ -2,19 +2,20 @@
 
 RML (RDF Mapping Language) is used by the OpenDataSoft platform to describe how a dataset should be represented in RDF.
 
-This section explains how to create a RML mapping using [YARRRML](http://rml.io/yarrrml/).
+This section explains how to create an RML mapping using [YARRRML](http://rml.io/yarrrml/).
 YARRRML is a representation of RML using the YAML syntax.
 
 ## Running example
 
-To illustrate how RML mapping works, [roman-emperors](https://data.opendatasoft.com/explore/dataset/roman-emperors%40public/table) dataset will be used as an example. It contains informations about roman emperors from 26 BC to 395 AD.
+To illustrate how RML mapping works, [roman-emperors](https://data.opendatasoft.com/explore/dataset/roman-emperors%40public/table) dataset 
+will be used as an example. It contains information about Roman emperors from 26 BC to 395 AD.
 
 ## RML rules
 
-A RML mapping contains rules that define how facts of a RDF dataset are generated from an OpenDataSoft dataset.
+An RML mapping contains rules that define how facts of an RDF dataset are generated from an OpenDataSoft dataset.
 In other words, it defines how each record is translated into triples (subject of a resource, predicate, object).
 
-There is 3 types of rule that define:
+There are 3 types of rules that define:
 
 * How IRIs of resources are generated
 * What are the classes of the resources
@@ -22,7 +23,7 @@ There is 3 types of rule that define:
 
 ## Start a YARRRML mapping
 
-> A RML mapping that will describe 3 resources
+> An RML mapping that will describe 3 resources
 
 ```yaml
 mappings:
@@ -36,7 +37,7 @@ Child elements of 'mappings' are called `mapping keys`. They identify all resour
 Chosen keys have no influence on mapping as long as they are unique.
 
 <aside>
-In YARRRML documents, indentation is mandatory because it defines parents and childs elements.
+In YARRRML documents, indentation is mandatory because it defines parent and child elements.
 </aside>
 
 ## Define the IRI of a resource
@@ -56,7 +57,7 @@ mappings:
 <https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/Nero>
 ```
 
-The `subject` child element of a `mapping key` is used to define how
+The `subject` child element of a `mapping key` is used to define how the
 IRI of the corresponding resource is generated.
 
 Value of the subject key is a template.
@@ -70,12 +71,12 @@ will be merged as one.
 
 <aside>
 Note that references are not mandatory in template.
-Conversely, template can also contains only a reference to a field. It can be useful if the values of that field already contains valid IRIs.
+Conversely, template can also contains only a reference to a field. It can be useful if the values of that field already contain valid IRIs.
 </aside>
 
 ### Use OpenDataSoft platform as an IRI provider
 
-> An example of dereferencable OpenDataSoft IRI
+> An example of dereferenceable OpenDataSoft IRI
 
 ```yaml
 mappings:
@@ -83,9 +84,9 @@ mappings:
     subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/$(name)
 ```
 
-OpenDataSoft provides an endpoint that makes the IRIs for resources dereferencable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
+OpenDataSoft provides an endpoint that makes the IRIs for resources dereferenceable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
 
-An IRI is said to be dereferencable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on OpenDataSoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
+An IRI is said to be dereferenceable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on OpenDataSoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
 
 `https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...``
 
@@ -122,7 +123,7 @@ To define the class of a resource,
 `a` is a commonly used shortcut for `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`.
 </aside>
 
-## Define others predicates and objects
+## Define other predicates and objects
 
 > An example of a reference literal stating that the label identifying an emperor is the value in the field name
 
@@ -176,11 +177,11 @@ A reference literal is a string value that contain references to fields of the d
 
 A reference is a string `$(field_name)` where `field_name` is the name of a field in the dataset.
 
-During the RDF tranformation of a record, if literal contains references, each reference is replaced by the value of the field referenced.
+During the RDF transformation of a record, if literal contains references, each reference is replaced by the value of the field referenced.
 
-A constant literal is any literal that does not contains reference to fields of the dataset.
+A constant literal is any literal that does not contain reference to fields of the dataset.
 
-When literal is a constant, the same literal is generated for each resources.
+When literal is a constant, the same literal is generated for all resources.
 
 <aside>
 Note that reference literal can be a concatenation of references and constants such as "$(name) the great"
@@ -257,7 +258,7 @@ mappings:
 A link between two resources is an array `[predicate, object]` where `predicate` is the IRI of the property that links the resources and `object`
 a key of another resource used in the `mappings` parent element.
 
-## More informations
+## More information
 
 > A complete example of RML mapping in YARRRML syntax
 
@@ -314,7 +315,7 @@ mappings:
 ```
 
 This section shows a complete example of an RML mapping for [roman-emperors](https://data.opendatasoft.com/explore/dataset/roman-emperors%40public/table) dataset.
-It also provides more informations about YARRRML and useful tools that facilitate the creation of a RML mapping.
+It also provides more information about YARRRML and useful tools that facilitate the creation of an RML mapping.
 
 ### keys shortcuts
 
@@ -325,8 +326,8 @@ YARRRML allows multiple shortcut versions of keys to be used:
 
 ### Tools
 
-Creating a RML mapping for a dataset is not an easy task. However, multiple tools can be really helpful in that process.
+Creating an RML mapping for a dataset is not an easy task. However, multiple tools can be really helpful in that process.
 
 [The Linked Open Vocabulary](https://lov.linkeddata.es/dataset/lov/) is a great initiative. It proposes a search engine for vocabularies, properties and classes.
 
-[OpenDataSoft Chatbot (beta)](https://chatbot.opendatasoft.com) is a chatbot that helps user generating a RML mapping for an OpenDataSoft dataset.
+[OpenDataSoft Chatbot (beta)](https://chatbot.opendatasoft.com) is a chatbot that helps users generate an RML mapping for an OpenDataSoft dataset.

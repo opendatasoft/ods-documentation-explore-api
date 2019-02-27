@@ -17,7 +17,7 @@ Data resulting from this transformation describe dataset structure and contents 
 ## Edit Structure
 
 OpenDataSoft datasets RDF structure can be described using [YARRRML](http://rml.io/yarrrml/) the YAML representation of RML (RDF Mapping Language).
-Editing the RML mapping of a dataset modifies the structure and resources of the RDF dataset. Thus, it have an impact on RDF features such as TPF API, RDF exports, `Classes` filter, `Properties` filter, etc.
+Editing the RML mapping of a dataset modifies the structure and resources of the RDF dataset. Thus, it has an impact on RDF features such as TPF API, RDF exports, `Classes` filter, `Properties` filter, etc.
 
 ### Classes and Properties filters
 
