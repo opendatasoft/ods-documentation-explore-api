@@ -253,7 +253,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
-`format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
+`format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
 `callback`           | JSONP or GEOJSONP callback
 
 ### Clustering parameters
