@@ -218,7 +218,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
-`format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
+`format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
 `callback`           | JSONP or GEOJSONP callback
 
 ## Records Geo Clustering API
@@ -248,12 +248,8 @@ Parameter            | Description
 `q`                  | Full-text query performed on the result set
 `geofilter.distance` | Limit the result set to a geographical area defined by a circle center (WGS84) and radius (in meters): `latitude, longitude, distance`
 `geofilter.polygon`  | Limit the result set to a geographical area defined by a polygon (points expressed in WGS84): `((lat1, lon1), (lat2, lon2), (lat3, lon3))`
-`facet`              | Activate faceting on the specified field. This parameter can be used multiple times to simultaneously activate several facets. By default, faceting is disabled. Example: `facet=city`
 `refine.<FACET>`     | Limit the result set to records where `FACET` has the specified value. It can be used several times for the same facet or for different facets
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
-`fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
-`pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
-`format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
 `callback`           | JSONP or GEOJSONP callback
 
 ### Clustering parameters
