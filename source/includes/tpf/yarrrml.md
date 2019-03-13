@@ -88,7 +88,7 @@ OpenDataSoft provides an endpoint that makes the IRIs for resources dereferencea
 
 An IRI is said to be dereferenceable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on OpenDataSoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
 
-`https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...``
+`https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...`
 
 Where `{DOMAIN_ID}` is the id of a domain containing the dataset, `{DATASET_ID}` is the id of the dataset on the domain `{DOMAIN_ID}` and `{RESOURCE_CLASS}` is a word representing the class of the resource.
 
