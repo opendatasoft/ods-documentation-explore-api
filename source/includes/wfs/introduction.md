@@ -1,13 +1,13 @@
 # WFS API
 
-OpenDataSoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
+Opendatasoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
 requests for geographical features.
 
-The OpenDataSoft platform uses the WFS specification version 1.1.0.
+The Opendatasoft platform uses the WFS specification version 1.1.0.
 
 ## Operations supported
 
-OpenDataSoft platform implements three operations defined by the WFS standard:
+Opendatasoft platform implements three operations defined by the WFS standard:
 
 Operation | Description
 --------- | -----------

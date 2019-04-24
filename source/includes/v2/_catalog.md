@@ -398,7 +398,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_de'
 
 Export datasets in an RDF format, using DCAT application specific to Germany.
 
-<aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
+<aside>This export format is not available by default: contact Opendatasoft for its activation.</aside>
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports/dcat_ap_de`
@@ -414,7 +414,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch'
 
 Export datasets in an RDF format, using DCAT application specific to Switzerland.
 
-<aside>This export format is not available by default: contact OpenDataSoft for its activation.</aside>
+<aside>This export format is not available by default: contact Opendatasoft for its activation.</aside>
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports/dcat_ap_ch`

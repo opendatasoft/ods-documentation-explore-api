@@ -1,6 +1,6 @@
 # Search API v1
 
-OpenDataSoft datasets are accessible by developers through an HTTP REST API.
+Opendatasoft datasets are accessible by developers through an HTTP REST API.
 
 The domain <https://examples.opendatasoft.com> will be used to illustrate examples given in the following documentation.
 
@@ -54,7 +54,7 @@ The following authentication modes are available:
 
 - **HTTP Basic authentication:** via an account login and password ([https://en.wikipedia.org/wiki/Basic_access_authentication](https://en.wikipedia.org/wiki/Basic_access_authentication))
 - **API key authentication:** via an API key generated from [the account settings page](https://docs.opendatasoft.com/en/using_api/authentication.html#finding-and-generating-api-keys)
-- **Session authentication:** API calls performed from a browser will authenticate logged users via the OpenDataSoft session cookie
+- **Session authentication:** API calls performed from a browser will authenticate logged users via the Opendatasoft session cookie
 
 ## Quotas
 

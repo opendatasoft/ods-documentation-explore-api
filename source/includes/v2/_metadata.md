@@ -6,7 +6,7 @@ Each metadata belongs to a metadata template. There are 3 different types of met
 
 - `basic`: metadata that users can see. For example, `basic` metadata include the dataset title, the license attached to it data, etc.
 - `interop` (for interoperability): metadata usually described in specific standards (e.g. DCAT, INSPIRE), intended for automatic usage by other systems, for interoperability purpose or for regulatory compliance.
-- `extra`: metadata intended for specific applications, and not expected to be used by users directly. For example, `extra` metadata contain information about default visualizations on the OpenDataSoft portal.
+- `extra`: metadata intended for specific applications, and not expected to be used by users directly. For example, `extra` metadata contain information about default visualizations on the Opendatasoft portal.
 
 
 ## Listing metadata template types
