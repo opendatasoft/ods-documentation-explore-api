@@ -1,7 +1,9 @@
 @charset "utf-8";
 @import 'normalize';
+@import 'ods-variables';
 @import 'variables';
 @import 'icon-font';
+
 // @import 'rtl'; // uncomment to switch to RTL format
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -22,15 +24,17 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
-html,
 body {
     color: $main-text;
     padding: 0;
     margin: 0;
-    @extend %default-font;
+    // @extend %default-font;
     background-color: $main-bg;
     height: 100%;
     -webkit-text-size-adjust: none;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     /* Never autoresize text */
 }
 
@@ -38,13 +42,13 @@ body {
 // ODS DOCUMENTATION HEADER
 ////////////////////////////////////////////////////////////////////////////////
 .ods-header {
-    height: 100px;
+    height: $header-height;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 50;
-    background-color: $blue-light;
+    background-color: $identity-300;
     @media (min-width: $tablet-width) {
         display: flex;
         flex-direction: row;
@@ -56,13 +60,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 99px;
     @media (max-width: $tablet-width - 1) {
         width: 100%;
     }
     @media (min-width: $tablet-width) {
         width: auto;
-        padding-left: 41px;
+        padding-left: 40px;
+        height: 100%;
     }
 }
 
@@ -98,20 +102,25 @@ body {
 }
 
 .ods-header__logo {
-    margin: 10px 0;
-    @media (max-width: $tablet-width - 1) {
-        height: 70px;
-    }
-    @media (min-width: $tablet-width) {
-        height: 80px;
+    margin: auto 0;
+
+    img {
+        vertical-align: middle;
+
+        @media (max-width: $tablet-width - 1) {
+            height: 30px;
+        }
+        @media (min-width: $tablet-width) {
+            height: 30px;
+        }
     }
 }
 
 .ods-header__nav {
-    top: 100px;
+    top: $header-height;
     right: -300px;
     height: 100%;
-    background-color: $blue-light;
+    background-color: $identity-300;
     z-index: 1000;
     display: flex;
     transition: 0.5s;
@@ -123,7 +132,7 @@ body {
         border-top: 1px solid white;
     }
     @media (min-width: $tablet-width) {
-        margin-left: 100px;
+        margin-left: $spacing-400;
         position: static;
         width: auto;
         flex-direction: row;
@@ -154,13 +163,10 @@ body {
         }
     }
     @media (min-width: $tablet-width) {
-        margin: 39px 20px;
+        margin: auto $spacing-50 auto 0;
         transition: 0.5s;
         &:first-child {
-            margin-left: -1px;
-        }
-        &:last-child {
-            margin-right: 0px;
+            margin-left: 0;
         }
     }
 }
@@ -177,6 +183,9 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 400;
+    text-transform: uppercase;
+    padding: 8px;
+
     &:active,
     &:focus,
     &:hover {
@@ -184,18 +193,17 @@ body {
         text-decoration: none;
     }
     @media (max-width: $tablet-width - 1) {
-        font-size: 16px;
-        padding: 5px;
+        // font-size: 16px;
+        // padding: 5px;
     }
     @media (min-width: $tablet-width) {
-        font-size: 18px;
-        padding: 5px 0;
-        border-bottom: 2px solid transparent;
+        font-size: $font-size-100;
+        line-height: $line-height-100;
         text-decoration: none;
+        border-radius: 4px;
         &:hover,
         &:focus,
         &:active {
-            border-bottom: 2px solid white;
             color: white;
             text-decoration: none;
         }
@@ -203,7 +211,7 @@ body {
 }
 
 .ods-header__nav-item-link--active {
-    border-bottom: 2px solid white;
+    background-color: $identity-200;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -218,7 +226,7 @@ body {
 
 .toc-wrapper {
     transition: left 0.3s ease-in-out;
-    top: 100px;
+    top: $header-height;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
@@ -418,7 +426,7 @@ body {
     z-index: 10;
     background-color: white;
     min-height: 100%;
-    top: 100px;
+    top: $header-height;
     padding-bottom: 1px;
     @media (max-width: $tablet-width) {
         margin-left: 0;
@@ -429,7 +437,7 @@ body {
     // I know, it's hackish, but it's the simplist way to make the left
     // half of the content always this background color.
     .dark-box {
-        width: 40%;
+        width: $examples-width;
         background-color: $examples-bg;
         position: absolute;
         right: 0;
@@ -488,6 +496,7 @@ body {
     -webkit-transform: translateZ(0); // to place content above the dark box
     position: relative;
     z-index: 30;
+    padding: $spacing-300 0 $spacing-300 $spacing-400;
     &:after {
         content: '';
         display: block;
@@ -505,16 +514,16 @@ body {
     &>ol,
     &>aside,
     &>dl {
-        margin-right: $examples-width;
-        padding: 0 2.1em;
+        margin-right: calc(#{$examples-width} + #{$spacing-400});
+        // padding: 0 2.1em;
         box-sizing: border-box;
         display: block;
-        width: 60%;
-        @extend %left-col;
+        // width: 60%;
+        // @extend %left-col;
     }
-    &>ul,
-    &>ol {
-        padding: 0 5.2em;
+    ul,
+    ol {
+        padding: 0 $spacing-200;
     } // the div is the tocify hidden div for placeholding stuff
     &>h1,
     &>h2,
@@ -523,14 +532,11 @@ body {
     }
     h1 {
         @extend %header-font;
-        font-size: 25px;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        margin-bottom: $h1-margin-bottom;
-        margin-top: 2em;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        background-color: #fdfdfd;
+        font-size: 2.074rem;
+        line-height: 1.4;
+        padding: 0;
+        margin-bottom: $spacing-200;
+        color: $light-700;
         @media (max-width: $phone-width) {
             padding: 1em 1.1em;
         }
@@ -542,12 +548,12 @@ body {
     }
     h2 {
         @extend %header-font;
-        font-size: 19px;
-        margin-top: 4em;
-        margin-bottom: 0;
-        border-top: 1px solid #ccc;
-        padding: 1.2em 2.8em;
-        background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+        font-size: 1.728rem;
+        line-height: 1.3;
+        margin-top: $spacing-400;
+        margin-bottom: $spacing-200;
+        padding: 0;
+        color: $light-700;
         @media (max-width: $phone-width) {
             padding: 1em 1.4em;
         }
@@ -555,28 +561,30 @@ body {
     // against the h1s.
     h1+h2,
     h1+div+h2 {
-        margin-top: $h1-margin-bottom * -1;
+        margin-top: $spacing-200 * -1;
         border-top: none;
     }
     h3 {
-        padding: 0 3.5em;
+        font-size: 1.44rem;
+        line-height: 1.2;
+        padding: 0;
+        color: $light-700;
     }
-    h3,
-    h4,
+    h4 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        padding: 0;
+        color: $light-700;
+    }
     h5,
     h6 {
         @extend %header-font;
-        font-size: 15px;
-        margin-top: 2.5em;
-        margin-bottom: 0.8em;
-    }
-    h4 {
-        padding: 0 5.4em;
-    }
-    h4,
-    h5,
-    h6 {
-        font-size: 10px;
+        font-size: 1.2rem;
+        line-height: 1.3;
+        padding: 0;
+        color: $light-700;
+        margin-top: $spacing-300;
+        margin-bottom: $spacing-200;
     }
     h5,
     h6 {
@@ -588,9 +596,8 @@ body {
         border-bottom: 2px solid $main-bg;
     }
     table {
-        margin-bottom: 1em;
+        margin-bottom: $spacing-100;
         overflow: auto;
-        padding: 0 3.8em;
         th,
         td {
             text-align: left;
@@ -601,15 +608,13 @@ body {
             }
         }
         th {
-            padding: 5px 10px;
-            border-bottom: 1px solid #ccc;
+            padding: $spacing-50 $spacing-100;
+            border-bottom: 1px solid $light-500;
             vertical-align: bottom;
+            color: $light-700;
         }
         td {
-            padding: 10px;
-        }
-        tr:last-child {
-            border-bottom: 1px solid #ccc;
+            padding: $spacing-100;
         }
         tr:nth-child(odd)>td {
             background-color: lighten($main-bg, 4.2%);
@@ -625,22 +630,19 @@ body {
         margin-left: 15px;
     }
     li {
-        padding: 0 0.5em !important;
+        padding: 0 !important;
+        margin-bottom: $spacing-50;
     }
-    p,
-    li,
-    dt,
-    dd {
-        line-height: 1.6;
-        padding: 0 3.8em;
+    p {
+        margin-bottom: $spacing-100;
     }
     img {
         max-width: 100%;
     }
     code {
         background-color: rgba(0, 0, 0, 0.05);
-        padding: 3px;
-        border-radius: 3px;
+        padding: $spacing-50;
+        border-radius: 4px;
         @extend %break-words;
         @extend %code-font;
     }
@@ -649,13 +651,10 @@ body {
         padding: 0;
     }
     aside {
-        padding-top: 1em;
-        padding-bottom: 1em;
-        margin-top: 1.5em;
-        margin-bottom: 1.5em;
+        padding: $spacing-200;
+        margin-top: $spacing-200;
+        margin-bottom: $spacing-200;
         background: $aside-notice-bg;
-        line-height: 1.6;
-        padding: 1em 3.8em;
         p {
             padding: 0;
         }
@@ -694,6 +693,14 @@ body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 .content {
+    a {
+        color: $identity-300;
+        text-decoration: none;
+        &:hover {
+            color: $identity-300;
+            text-decoration: underline;
+        }
+    }
     a,
     p {
         word-break: break-word;
@@ -703,7 +710,7 @@ body {
         background-color: $code-bg;
         color: #fff;
         margin: 0;
-        width: 40%;
+        width: $examples-width;
         float: right;
         clear: right;
         box-sizing: border-box;
@@ -722,14 +729,14 @@ body {
     }
     pre {
         @extend %code-font;
-        padding-top: 2em;
-        padding-bottom: 2em;
-        padding: 2em $main-padding;
+        padding-top: $spacing-100;
+        padding-bottom: $spacing-100;
+        padding: $spacing-100 $main-padding;
     }
     blockquote {
         &>p {
             background-color: $code-annotation-bg;
-            padding: $code-annotation-padding 2em;
+            padding: $code-annotation-padding $spacing-100;
             color: #eee;
         }
     }

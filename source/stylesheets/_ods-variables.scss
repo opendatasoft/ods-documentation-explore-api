@@ -1,0 +1,51 @@
+$header-height: 80px;
+
+
+$identity-100: #00C7B1; // our main green color
+$identity-200: #142E7B; // blue for secondary buttons and elements
+$identity-300: #0086D6; // blue for links, usages to be define
+$identity-400: #EFB71B; // color for alert (yellow)
+$identity-500: #CE0037; // color for errors and critical information (red)
+$identity-600: #4BC467; // color for success (green)
+
+$light-700: #000000; // using for title, shadow (with opacity of course)
+$light-600: #565656; // using for text
+$light-500: #898D92; // using for secondary text, placeholder,  tertiary button...
+$light-400: #CBD2DB; // using for form components border
+$light-300: #DEE5EF; // using for secondary border, separator
+$light-200: #F6F8FB; // using for body background
+$light-100: #FFFFFF; // using for card background
+
+
+$spacing-500: 104px; // 8vw
+$spacing-400:  65px; // 5vw
+$spacing-300:  39px; // 3vw
+$spacing-200:  26px; // 2vw
+$spacing-100:  13px; // 1vw
+$spacing-50:    4px; //0.33vw
+
+
+$font-size-base: 15px;
+$line-height-base: 1.4;
+
+$font-size-100: 0.733rem; // 11px
+$line-height-100: 1.5; // 17px
+$font-size-200: 0.833rem; // 13px
+$line-height-200: 1.4; // 18px
+$font-size-300: 1rem; // 15px
+$line-height-300: 1.4; // 21px
+
+%font-size-100 {
+    font-size: $font-size-100;
+    line-height: $line-height-100;
+}
+
+%font-size-200 {
+    font-size: $font-size-200;
+    line-height: $line-height-200;
+}
+
+%font-size-300 {
+    font-size: $font-size-300;
+    line-height: $line-height-300;
+}
