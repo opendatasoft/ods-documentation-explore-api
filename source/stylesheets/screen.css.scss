@@ -75,9 +75,12 @@ body {
     border: none;
     margin: auto 0;
     background-color: white;
-    color: $light-600;
+    color: $identity-300;
     border-radius: 4px;
     padding: $spacing-50 $spacing-100;
+    font-size: $font-size-200;
+    line-height: $line-height-200;
+
     &:focus {
         outline: none;
     }
@@ -128,7 +131,6 @@ body {
         width: 300px;
         padding-top: $spacing-300;
         flex-direction: column;
-        border-top: 1px solid white;
     }
     @media (min-width: $tablet-width) {
         margin-left: $spacing-400;
@@ -155,8 +157,10 @@ body {
 .ods-header__nav-item {
     text-align: center;
     @media (max-width: $tablet-width - 1) {
-        margin: $spacing-100 0;
-        line-height: 25px;
+        margin: $spacing-200 0 0 0;
+        &:first-child {
+            margin-top: 0;
+        }
     }
     @media (min-width: $tablet-width) {
         margin: auto $spacing-50 auto 0;
@@ -276,12 +280,16 @@ body {
             box-sizing: border-box;
             width: 100%;
             outline: none;
-            color: $light-500;
+            color: $light-600;
             border-radius: 2px;
             font-weight: 400;
             height: 32px;
             line-height: 32px;
             font-size: $font-size-200;
+
+            &::placeholder {
+                color: $light-500;
+            }
         }
         // &:before {
         //     position: absolute;
