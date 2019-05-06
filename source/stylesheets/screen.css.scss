@@ -62,6 +62,7 @@ body {
     justify-content: space-around;
     @media (max-width: $tablet-width - 1) {
         width: 100%;
+        height: 100%;
     }
     @media (min-width: $tablet-width) {
         width: auto;
@@ -74,11 +75,9 @@ body {
     border: none;
     margin: auto 0;
     background-color: white;
-    color: $blue-light;
+    color: $light-600;
     border-radius: 4px;
-    padding: 5px 10px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: $spacing-50 $spacing-100;
     &:focus {
         outline: none;
     }
@@ -88,7 +87,7 @@ body {
 }
 
 .ods-header__menu-toggle--active {
-    background-color: $blue-hover;
+    background-color: $identity-200;
     color: white;
 }
 
@@ -127,7 +126,7 @@ body {
     @media (max-width: $tablet-width - 1) {
         position: fixed;
         width: 300px;
-        padding-top: 40px;
+        padding-top: $spacing-300;
         flex-direction: column;
         border-top: 1px solid white;
     }
@@ -156,11 +155,8 @@ body {
 .ods-header__nav-item {
     text-align: center;
     @media (max-width: $tablet-width - 1) {
-        margin: 15px 0;
+        margin: $spacing-100 0;
         line-height: 25px;
-        &:last-child {
-            margin-top: 30px;
-        }
     }
     @media (min-width: $tablet-width) {
         margin: auto $spacing-50 auto 0;
@@ -185,12 +181,16 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     padding: 8px;
+    border-radius: 4px;
+    font-size: $font-size-100;
+    line-height: $line-height-100;
 
     &:active,
     &:focus,
     &:hover {
         color: white;
         text-decoration: none;
+        background-color: $identity-200;
     }
     @media (max-width: $tablet-width - 1) {
         // font-size: 16px;
@@ -225,6 +225,7 @@ body {
 }
 
 .toc-wrapper {
+    box-sizing: content-box;
     transition: left 0.3s ease-in-out;
     top: $header-height;
     overflow-y: scroll;
@@ -234,11 +235,10 @@ body {
     z-index: 30;
     left: 0;
     bottom: 0;
-    width: $nav-width;
+    width: $nav-width - ($spacing-200 * 2);
+    padding: $spacing-200 ;
     background-color: white;
-    font-size: 14px;
-    font-weight: 500;
-    border-right: 1px solid transparentize($grey-dark, 0.6);
+    box-shadow: 1px 0 0 0 $light-300;
     @media (max-width: $tablet-width) {
         left: -$nav-width;
         &.open {
@@ -258,7 +258,7 @@ body {
     .toc-header {
         text-align: center;
         color: $nav-text;
-        padding: 15px;
+        margin-bottom: $spacing-300;
     }
     .toc-header>img {
         display: block;
@@ -269,26 +269,27 @@ body {
     }
     .search {
         position: relative;
-        margin: 5px -15px;
         input {
             background: white;
-            border: 1px solid transparentize($grey-dark, 0.6);
-            padding: 6px 20px;
+            border: 1px solid $light-400;
+            padding: 0 13px;
             box-sizing: border-box;
-            margin: 5px $nav-padding;
-            width: $nav-width - 30;
+            width: 100%;
             outline: none;
-            color: $grey-dark;
-            border-radius: 15px;
+            color: $light-500;
+            border-radius: 2px;
             font-weight: 400;
+            height: 32px;
+            line-height: 32px;
+            font-size: $font-size-200;
         }
-        &:before {
-            position: absolute;
-            top: 17px;
-            left: $nav-padding;
-            color: $grey-dark;
-            @extend %icon-search;
-        }
+        // &:before {
+        //     position: absolute;
+        //     top: 17px;
+        //     left: $nav-padding;
+        //     color: $grey-dark;
+        //     @extend %icon-search;
+        // }
     }
     img+.tocify,
     .lang-selector+.tocify {
@@ -321,8 +322,11 @@ body {
         }
     }
     .tocify-item>a,
+    .toc-footer {
+        display: none;
+    }
     .toc-footer li {
-        padding: 0 $nav-padding 0 $nav-padding;
+        padding: 0;
         display: block;
         overflow-x: hidden;
         white-space: nowrap;
@@ -335,54 +339,50 @@ body {
         list-style: none;
         margin: 0;
         padding: 0;
-        line-height: 28px;
     }
     li {
-        color: $grey-dark;
-        transition-property: background;
-        transition-timing-function: linear;
-        transition-duration: 230ms;
+        color: $light-600;
     }
     .toc-h1 {
-        color: $grey-dark;
+        color: $light-600;
+        margin-top: $spacing-200;
+        font-size: $font-size-100;
+        line-height: $line-height-100;
+        text-transform: uppercase;
+        font-weight: 400;
+
         &:hover {
-            background-color: $blue-light;
-            color: white;
+            color: $identity-300;
         }
     } // This is the currently selected ToC entry
     .toc-link.active {
-        background-color: $blue-light;
-        color: white !important;
-        border: 1px solid transparentize($grey-dark, 0.6);
+        color: $identity-300 !important;
         &>a {
-            color: white !important;
-            font-weight: bold;
+            color: $identity-300 !important;
         }
     } // this is parent links of the currently selected ToC entry
     .toc-link.active-parent {
-        background-color: $blue-light;
-        font-weight: bold;
-        border-top: 1px solid transparentize($grey-dark, 0.9);
-        padding: 0 15px;
-        color: white;
+        color: $identity-300;
     }
     .toc-list-h2 {
         display: none;
-        background-color: $blue-ultra-light;
     }
     .toc-h2 {
-        padding-left: $nav-padding + $nav-indent;
-        font-size: 14px;
-        color: $grey-dark;
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparentize($grey-dark, 0.9);
-        font-weight: 500;
+        padding-left: $spacing-100;
+        margin-top: $spacing-100;
+        font-size: $font-size-100;
+        line-height: $line-height-100;
+        text-transform: uppercase;
+        font-weight: 400;
+
         &:hover {
-            background-color: $blue-light;
-            color: white;
-            border: 1px solid transparent;
+            color: $identity-300;
         }
     }
+    .toc-list-h2.active {
+        border-left: 1px solid $light-300;
+    }
+
     .toc-footer {
         padding: 1em 0;
         margin-top: 1em;
@@ -405,16 +405,13 @@ body {
 
 .toc-link,
 .toc-footer li {
-    padding: 0 $nav-padding 0 $nav-padding;
+    padding: 0;
     display: block;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
-    color: $nav-text;
-    transition-property: background;
-    transition-timing-function: linear;
-    transition-duration: 130ms;
+    color: $light-600;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -586,10 +583,6 @@ body {
         margin-top: $spacing-300;
         margin-bottom: $spacing-200;
     }
-    h5,
-    h6 {
-        padding-left: 50px;
-    }
     hr {
         margin: 2em 0;
         border-top: 2px solid $examples-bg;
@@ -655,14 +648,19 @@ body {
         margin-top: $spacing-200;
         margin-bottom: $spacing-200;
         background: $aside-notice-bg;
+        border: 1px solid transparentize($identity-300, .6);
+        border-radius: 4px;
+
         p {
             padding: 0;
         }
         &.warning {
             background-color: $aside-warning-bg;
+            border: 1px solid transparentize($identity-400, .6);
         }
         &.success {
             background-color: $aside-success-bg;
+            border: 1px solid transparentize($identity-600, .6);
         }
     }
     aside:before {
