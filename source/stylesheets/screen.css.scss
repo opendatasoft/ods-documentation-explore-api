@@ -24,6 +24,11 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
+html {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+}
+
 body {
     color: $main-text;
     padding: 0;
@@ -66,7 +71,7 @@ body {
     }
     @media (min-width: $tablet-width) {
         width: auto;
-        padding-left: 40px;
+        padding-left: $spacing-300;
         height: 100%;
     }
 }
@@ -77,7 +82,7 @@ body {
     background-color: white;
     color: $identity-300;
     border-radius: 4px;
-    padding: $spacing-50 $spacing-100;
+    padding: $spacing-50*2;
     font-size: $font-size-200;
     line-height: $line-height-200;
 
@@ -110,10 +115,10 @@ body {
         vertical-align: middle;
 
         @media (max-width: $tablet-width - 1) {
-            height: 30px;
+            height: 26px;
         }
         @media (min-width: $tablet-width) {
-            height: 30px;
+            height: 26px;
         }
     }
 }
@@ -138,6 +143,7 @@ body {
         width: auto;
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
         border: none;
     }
 }
@@ -156,6 +162,10 @@ body {
 
 .ods-header__nav-item {
     text-align: center;
+    font-size: $font-size-100;
+    line-height: $line-height-100;
+    letter-spacing: 0.8px;
+
     @media (max-width: $tablet-width - 1) {
         margin: $spacing-200 0 0 0;
         &:first-child {
@@ -163,7 +173,7 @@ body {
         }
     }
     @media (min-width: $tablet-width) {
-        margin: auto $spacing-50 auto 0;
+        margin: 0 $spacing-50 0 0;
         transition: 0.5s;
         &:first-child {
             margin-left: 0;
@@ -186,8 +196,6 @@ body {
     text-transform: uppercase;
     padding: 8px;
     border-radius: 4px;
-    font-size: $font-size-100;
-    line-height: $line-height-100;
 
     &:active,
     &:focus,
