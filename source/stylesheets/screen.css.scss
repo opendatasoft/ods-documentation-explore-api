@@ -360,7 +360,7 @@ body {
         color: $light-600;
     }
     .toc-h1 {
-        color: $light-600;
+        color: $light-700;
         margin-top: $spacing-200;
         font-size: $font-size-100;
         line-height: $line-height-100;
@@ -396,7 +396,7 @@ body {
         }
     }
     .toc-list-h2.active {
-        border-left: 1px solid $light-300;
+        // border-left: 1px solid $light-300;
     }
 
     .toc-footer {
