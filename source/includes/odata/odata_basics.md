@@ -5,16 +5,16 @@
 ### Service address
 
 In this documentation, we will use the words "service root" or "service document" to refer to the base address of the OData
-service. For the OpenDataSoft platform, this URL can be found on the `/api/odata` path, relative to the platform
+service. For the Opendatasoft platform, this URL can be found on the `/api/odata` path, relative to the platform
 hostname. Unless stated otherwise, all addresses in the rest of this documentation are relative to the service root.
 
 ### HTTP Method
 
-The OpenDataSoft OData service currently is read only, hence the only allowed method is GET.
+The Opendatasoft OData service currently is read only, hence the only allowed method is GET.
 
 ## Versions
 
-The OpenDataSoft platform supports versions 3.0 and 4.0 of the OData protocol. Versions requirements can be
+The Opendatasoft platform supports versions 3.0 and 4.0 of the OData protocol. Versions requirements can be
 communicated to the service via the following six headers:
 
 Header | Description
@@ -272,7 +272,7 @@ The server will ignore `$skip` results and then return the first `$top` items.
 When paging is applied, a link to the next results will be added at the end of the payload.
 
 <aside>
-    The OData API only operates on the 10,000 first dataset results. For instance, it isn’t possible to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, use <a href="v1.html#records-download-api">the OpenDataSoft Download API</a>.
+    The OData API only operates on the 10,000 first dataset results. For instance, it isn’t possible to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, use <a href="v1.html#records-download-api">the Opendatasoft Download API</a>.
 </aside>
 
 

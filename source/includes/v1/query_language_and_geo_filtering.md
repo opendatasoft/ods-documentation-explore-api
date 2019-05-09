@@ -1,6 +1,6 @@
 # Query Language and Geo Filtering
 
-Filtering features are built in the core of OpenDataSoft API engine. Many of the previously listed APIs can take as a
+Filtering features are built in the core of Opendatasoft API engine. Many of the previously listed APIs can take as a
 parameter filters for constraining the list of returned datasets or records.
 
 Note that a given filtering context can simply be copied from one API to another. For example, you can easily build a
@@ -9,7 +9,7 @@ search, facets and geo filtering, and then allowing them to download these recor
 
 ## Query language
 
-The OpenDataSoft query language makes it possible to express complex boolean conditions as a filtering context.
+The Opendatasoft query language makes it possible to express complex boolean conditions as a filtering context.
 
 The user query can most of the time be expressed through the `q` HTTP parameter.
 
