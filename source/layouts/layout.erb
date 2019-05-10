@@ -56,9 +56,9 @@ under the License.
                 Menu
         </button>
         
-        <a href="/en/apis/">
-          <img class="ods-header__logo"
-                src="<%= image_path('ODS_logo_api_blanc.svg') %>"
+        <a href="/en/apis/" class="ods-header__logo">
+          <img
+                src="<%= image_path('ods-logo-helphub.svg') %>"
                 alt="Opendatasoft API documentation">
         </a>
 
@@ -121,7 +121,7 @@ under the License.
       <div class="toc-header">
         <% if current_page.data.search %>
           <div class="search">
-            <input type="text" class="search" id="input-search" placeholder="Search">
+            <input type="text" class="search" id="input-search" placeholder="Search documentation">
           </div>
           <ul class="search-results"></ul>
         <% end %>
