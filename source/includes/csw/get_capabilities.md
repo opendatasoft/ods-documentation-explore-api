@@ -54,4 +54,4 @@ Section name | Contents
 `ServiceIdentification` |	Metadata about the CSW implementation.
 `ServiceProvider` |	Metadata about the organization offering the CSW service.
 `OperationsMetadata` |	Metadata about the CSW operations offered by a the CSW implementation.
-`Filter_Capabilities` |	Metadata about the filter capabilities of the server. The OpenDataSoft CSW currently does not support filters.
+`Filter_Capabilities` |	Metadata about the filter capabilities of the server. The Opendatasoft CSW currently does not support filters.

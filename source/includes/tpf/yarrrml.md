@@ -1,6 +1,6 @@
 # RML Mapping
 
-RML (RDF Mapping Language) is used by the OpenDataSoft platform to describe how a dataset should be represented in RDF.
+RML (RDF Mapping Language) is used by the Opendatasoft platform to describe how a dataset should be represented in RDF.
 
 This section explains how to create an RML mapping using [YARRRML](http://rml.io/yarrrml/).
 YARRRML is a representation of RML using the YAML syntax.
@@ -12,7 +12,7 @@ will be used as an example. It contains information about Roman emperors from 26
 
 ## RML rules
 
-An RML mapping contains rules that define how facts of an RDF dataset are generated from an OpenDataSoft dataset.
+An RML mapping contains rules that define how facts of an RDF dataset are generated from an Opendatasoft dataset.
 In other words, it defines how each record is translated into triples (subject of a resource, predicate, object).
 
 There are 3 types of rules that define:
@@ -74,9 +74,9 @@ Note that references are not mandatory in template.
 Conversely, template can also contains only a reference to a field. It can be useful if the values of that field already contain valid IRIs.
 </aside>
 
-### Use OpenDataSoft platform as an IRI provider
+### Use Opendatasoft platform as an IRI provider
 
-> An example of dereferenceable OpenDataSoft IRI
+> An example of dereferenceable Opendatasoft IRI
 
 ```yaml
 mappings:
@@ -84,9 +84,9 @@ mappings:
     subject: https://data.opendatasoft.com/ld/resources/roman-emperors@public/Person/$(name)
 ```
 
-OpenDataSoft provides an endpoint that makes the IRIs for resources dereferenceable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
+Opendatasoft provides an endpoint that makes the IRIs for resources dereferenceable according to the [Principles of Linked Data](https://en.wikipedia.org/wiki/Linked_data).
 
-An IRI is said to be dereferenceable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on OpenDataSoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
+An IRI is said to be dereferenceable if it can be accessed to get more information about the resource it identifies. In other words, this endpoint enables to generate IRIs that uniquely describe a semantic resource on Opendatasoft, and leads to the corresponding, up-to-date data as long as resource IRIs start with:
 
 `https://{DOMAIN_ID}.opendatasoft.com/ld/resources/{DATASET_ID}/{RESOURCE_CLASS}/...`
 
@@ -330,4 +330,4 @@ Creating an RML mapping for a dataset is not an easy task. However, multiple too
 
 [The Linked Open Vocabulary](https://lov.linkeddata.es/dataset/lov/) is a great initiative. It proposes a search engine for vocabularies, properties and classes.
 
-[OpenDataSoft Chatbot (beta)](https://chatbot.opendatasoft.com) is a chatbot that helps users generate an RML mapping for an OpenDataSoft dataset.
+[Opendatasoft Chatbot (beta)](https://chatbot.opendatasoft.com) is a chatbot that helps users generate an RML mapping for an Opendatasoft dataset.

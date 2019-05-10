@@ -1,9 +1,9 @@
 # RDF exports
 
-OpenDataSoft datasets can be exported in multiple RDF formats. More information on RDF [here](https://en.wikipedia.org/wiki/Resource_Description_Framework).
+Opendatasoft datasets can be exported in multiple RDF formats. More information on RDF [here](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
 ## RDF serialization formats
-OpenDataSoft RDF datasets are available in 4 serialization formats:
+Opendatasoft RDF datasets are available in 4 serialization formats:
 
 Format name | Description | Syntax specification
 --------- | ----------- | -----------

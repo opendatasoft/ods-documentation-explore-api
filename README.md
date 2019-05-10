@@ -1,4 +1,4 @@
-# OpenDataSoft Management API Documentation
+# Opendatasoft Management API Documentation
 
 https://docs.opendatasoft.com/api/
 

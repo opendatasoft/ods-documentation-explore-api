@@ -1,11 +1,11 @@
 ---
-title: OpenDataSoft - CSW API documentation
+title: Opendatasoft - CSW API documentation
 
 language_tabs:
   - shell
 
 toc_footers:
-  - <a href='https://help.opendatasoft.com/'>OpenDataSoft documentation</a>
+  - <a href='https://help.opendatasoft.com/'>Opendatasoft documentation</a>
 
 includes:
   - csw/introduction
