@@ -1,8 +1,8 @@
 # ODSQL
 
-Filtering features are built in the core of OpenDataSoft API engine.
+Filtering features are built in the core of Opendatasoft API engine.
 
-The OpenDataSoft Query Language (ODSQL) makes it possible to express complex queries as a filtering context for datasets or records, but also to build aggregations or computed fields.
+The Opendatasoft Query Language (ODSQL) makes it possible to express complex queries as a filtering context for datasets or records, but also to build aggregations or computed fields.
 
 Note that a given filtering context can simply be copied from one API to another. For example, it is possible to build a user interface which first allows the user to visually select the records they are are interested in, using full text search, facets and geo filtering ; and then allowing them to download these records with the same filtering context.
 

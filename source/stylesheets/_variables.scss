@@ -32,15 +32,15 @@ $lang-select-bg: #1E2224 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
 $main-bg: #F3F7F9 !default;
-$aside-notice-bg: #8fbcd4 !default;
-$aside-warning-bg: #c97a7e !default;
-$aside-success-bg: #6ac174 !default;
-$search-notice-bg: #c97a7e !default;
+$aside-notice-bg: transparentize($identity-300, .9) !default;
+$aside-warning-bg: transparentize($identity-400, .9) !default;
+$aside-success-bg: transparentize($identity-600, .9) !default;
+$search-notice-bg: transparentize($identity-500, .9) !default;
 // TEXT COLORS
 ////////////////////
-$main-text: #333 !default; // main content text color
-$nav-text: #fff !default;
-$nav-active-text: #fff !default;
+$main-text: $light-600 !default; // main content text color
+$nav-text: $light-100 !default;
+$nav-active-text: $light-100 !default;
 $nav-active-parent-text: #fff !default; // parent links of the current section
 $lang-select-text: #fff !default; // color of unselected language tab text
 $lang-select-active-text: #fff !default; // color of selected language tab text
@@ -48,14 +48,14 @@ $lang-select-pressed-text: #fff !default; // color of language tab text when mou
 // SIZES
 ////////////////////
 $nav-width: 300px !default; // width of the navbar
-$examples-width: 50% !default; // portion of the screen taken up by code examples
+$examples-width: 33vw !default; // portion of the screen taken up by code examples
 $logo-margin: 0px !default; // margin below logo
-$main-padding: 28px !default; // padding to left and right of content & examples
-$nav-padding: 15px !default; // padding to left and right of navbar
-$nav-v-padding: 10px !default; // padding used vertically around search boxes and results
-$nav-indent: 10px !default; // extra padding for ToC subitems
-$code-annotation-padding: 13px !default; // padding inside code annotations
-$h1-margin-bottom: 21px !default; // padding under the largest header tags
+$main-padding: $spacing-200 !default; // padding to left and right of content & examples
+$nav-padding: $spacing-100 !default; // padding to left and right of navbar
+$nav-v-padding: $spacing-100 !default; // padding used vertically around search boxes and results
+$nav-indent: $spacing-100 !default; // extra padding for ToC subitems
+$code-annotation-padding: $spacing-100 !default; // padding inside code annotations
+$h1-margin-bottom: $spacing-200 !default; // padding under the largest header tags
 $tablet-width: 992px !default; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width !default; // min width before reverting to mobile size
 // FONTS
@@ -63,22 +63,22 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 %default-font {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     @media (max-width: $tablet-width - 1) {
-        font-size: 16px;
+        font-size: 15px;
     }
     @media (min-width: $tablet-width) {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
 %header-font {
     @extend %default-font;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 %code-font {
     font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: $font-size-200;
+    line-height: $line-height-200;
 }
 
 // OTHER

@@ -6,7 +6,7 @@
 https://examples.opendatasoft.com/api/v2
 ```
 
-The OpenDataSoft search API v2 is organized around REST. It provides access to all the data available through the platform in a coherent, hierarchical way.
+The Opendatasoft search API v2 is organized around REST. It provides access to all the data available through the platform in a coherent, hierarchical way.
 
 - Only the HTTP `GET` method is supported.
 - All API endpoints return JSON.

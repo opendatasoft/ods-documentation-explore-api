@@ -1,6 +1,6 @@
 # Microsoft Excel integration
 
-The OpenDataSoft OData service makes it possible to gather data directly from Microsoft Excel without any programming
+The Opendatasoft OData service makes it possible to gather data directly from Microsoft Excel without any programming
 knowledge.
 
 There are 3 ways to proceed:
@@ -17,7 +17,7 @@ Here are the steps that will allow you to import data through the Excel native O
 
 ![Data sources supported natively by Microsoft Excel.](odata/data1.png)
 
-* To import data from OpenDataSoft OData service, open Microsoft Excel and click the "DATA" tab. Once done, click
+* To import data from Opendatasoft OData service, open Microsoft Excel and click the "DATA" tab. Once done, click
   "From Other Source". This should let you see the list of supported data sources. Select "From OData Feed".
 
 ![Data feed connection form.](odata/data2.png)
@@ -67,7 +67,7 @@ Here are the steps that will allow you to import data through PowerPivot for Mic
 
 ![Data feed connection window.](odata/ppivot5.png)
 
-* In the import window that was opened, enter the OpenDataSoft OData service in the address bar.
+* In the import window that was opened, enter the Opendatasoft OData service in the address bar.
 
 ![Table selection window.](odata/ppivot6.png)
 
@@ -110,7 +110,7 @@ Here are the steps that will allow you to import data through Power Query for Mi
 
 ![OData data source selection window.](odata/pquery2.png)
 
-* In this window, enter the OpenDataSoft OData service URL and click "OK".
+* In this window, enter the Opendatasoft OData service URL and click "OK".
 
 ![Power Query navigation window.](odata/pquery3.png)
 

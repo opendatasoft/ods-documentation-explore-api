@@ -34,7 +34,7 @@ The search API v2 can access data from 3 different sources, depending on the typ
 
 - `catalog`: to search data published on a requested domain
 - `monitoring`: to access monitoring data from a requested domain
-- `opendatasoft`: to search in the public OpenDataSoft catalog
+- `opendatasoft`: to search in the public Opendatasoft catalog
 
 Every call from the [catalog](#catalog) or [dataset](#dataset) APIs will be performed on the chosen data source.
 
@@ -76,15 +76,15 @@ The monitoring API gives access to the data of one specific dataset containing t
 </aside>
 
 
-## OpenDataSoft source
+## Opendatasoft source
 
-> Get a list of all public datasets on OpenDataSoft Data Hub
+> Get a list of all public datasets on Opendatasoft Data Hub
 
 ```shell
 curl 'https://examples.opendatasoft.com/api/v2/opendatasoft/datasets'
 ```
 
-The OpenDataSoft allows to search and work on all available public datasets from the OpenDataSoft data network.
+The Opendatasoft allows to search and work on all available public datasets from the Opendatasoft data network.
 
 <aside>
 The HTTP request below returns the same datasets as `https//data.opendatasoft.com/api/v2/catalog`.

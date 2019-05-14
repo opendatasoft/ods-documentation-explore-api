@@ -1,12 +1,12 @@
 # CSW API
 
-OpenDataSoft datasets can be accessed through a Catalog Service for the Web (CSW) API. This is a standard for exposing a catalogue of geospatial records in XML.
+Opendatasoft datasets can be accessed through a Catalog Service for the Web (CSW) API. This is a standard for exposing a catalogue of geospatial records in XML.
 
-The OpenDataSoft platform uses the CSW specification version 2.0.2.
+The Opendatasoft platform uses the CSW specification version 2.0.2.
 
 ## Operations supported
 
-OpenDataSoft platform implements four operations defined by the CSW standard:
+Opendatasoft platform implements four operations defined by the CSW standard:
 
 Operation | Description
 --------- | -----------
