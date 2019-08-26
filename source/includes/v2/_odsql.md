@@ -478,8 +478,8 @@ There are 3 filter functions:
 > Distance function examples
 
 ```plain-text
-DISTANCE(field_name, GEOM'<geometry>', 1 km)
-DISTANCE(field_name, GEOM'<geometry>', 100 yd)
+distance(field_name, GEOM'<geometry>', 1km)
+distance(field_name, GEOM'<geometry>', 100yd)
 ```
 
 The distance function limits the result set to a geographical area defined by a circle. This circle must be defined by its center and a distance.
@@ -501,9 +501,9 @@ The distance function limits the result set to a geographical area defined by a 
 > Geometry function examples
 
 ```plain-text
-GEOMETRY(field_name, GEOM'<geometry>', INTERSECT)
-GEOMETRY(field_name, GEOM'<geometry>', DISJOINT)
-GEOMETRY(field_name, GEOM'<geometry>', WITHIN)
+geometry(field_name, GEOM'<geometry>', INTERSECT)
+geometry(field_name, GEOM'<geometry>', DISJOINT)
+geometry(field_name, GEOM'<geometry>', WITHIN)
 ```
 
 The geometry function limits the result set to a geographical area defined by a geometry.
@@ -526,7 +526,7 @@ This function must be defined with both:
 > Polygon function examples
 
 ```plain-text
-POLYGON(field_name, GEOM'<geometry>')
+polygon(field_name, GEOM'<geometry>')
 ```
 
 The polygon function limits the result set to a geographical area defined by a polygon.
