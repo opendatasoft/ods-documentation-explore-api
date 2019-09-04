@@ -19,7 +19,7 @@ Go to the tab named **My API keys** to see your existing API keys, revoke them a
 ![Account's API keys page](common/authentication__my-api-keys.png)
 
 <aside>
-Every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys.
+By default, every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys. For advanced usages, API key permissions can be edited using the [API key management API](https://help.opendatasoft.com/management-api/#api-keys)
 </aside>
 
 ## Providing API keys within requests
