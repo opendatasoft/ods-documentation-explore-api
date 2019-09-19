@@ -385,7 +385,7 @@ This function takes a numeric field literal. It returns the median (`median`) of
 > Where clause with boolean operators
 
 ```plain-text
-my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, geom'POINT(1 1)', 1 km)
+my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, geom'POINT(1 1)', 1km)
 ```
 
 > This where clause filters results where numeric_field > 10 and (my_text_field contains the word `paris` or distance between my_geo_field and the point with 1,1 as lat,lon is under 1 kilometer)
@@ -542,7 +542,7 @@ The polygon must be defined with a [geometry literal](#geometry-literal).
 > Bbox function example
 
 ```plain-text
-BBOX(field_name, GEOM'<geometry>', GEOM'<geometry>')
+bbox(field_name, GEOM'<geometry>', GEOM'<geometry>')
 ```
 
 The bbox function limits the result set to a rectangular box.
