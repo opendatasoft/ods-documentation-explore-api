@@ -184,7 +184,7 @@ given facet. To do so, use the following API parameter: `exclude.FACETNAME=FACET
 
 For example: <https://public.opendatasoft.com/api/datasets/1.0/search?exclude.modified=2013>
 
-Only results that have not been modified in 2011 will be returned.
+Only results that have not been modified in 2013 will be returned.
 
 ## Disjunctive faceting
 
