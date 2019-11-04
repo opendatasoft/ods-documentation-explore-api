@@ -5,7 +5,6 @@ An authenticated user can be granted access to restricted datasets and benefit f
 For the platform to authenticate a user, you need to either:
 
 * be logged in a portal so a session cookie authenticating your user is passed along your API calls
-* provide your username and password as HTTP Basic authentication tokens
 * provide an **API key** as a request parameter
 
 ## Finding and generating API keys
