@@ -23,7 +23,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
-`format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`, `geojson`, `geojsonp`
+`format`             | Format of the response output. Can be `json` (default), `jsonp`, `geojson`, `geojsonp`, `rss`, `atom`
 `callback`           | JSONP or GEOJSONP callback
 `sort`               | Sorts results by the specified field (e.g. `record_timestamp`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort. Sorting is only available on numeric fields (Integer, Decimal), date fields (Date, DateTime) and on text fields which have the sortable annotation
 `rows`               | Number of results to return in a single call. By default, `10` results are returned. While you can request for up to `10 000` results in a row, such requests are not optimal and can be throttled so you should consider splitting them into smaller ones or use the Records Download API. Note also that the cumulated value of the parameters `start` and `rows` cannot go over `10 000`. It means that with the Records Search API, there's no way to access a result with a position greater than `10 000`. If however you need to do so, consider again using the Records Download API.
@@ -95,6 +95,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
 `callback`           | JSONP callback (only in JSONP requests)
 
 #### Aggregation parameters
@@ -219,6 +220,7 @@ Parameter            | Description
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
 `callback`           | JSONP or GEOJSONP callback
 
 ## Records Geo Clustering API
