@@ -95,7 +95,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`
-`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or the tabulation character `%09`.
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
 `callback`           | JSONP callback (only in JSONP requests)
 
 #### Aggregation parameters
@@ -220,7 +220,7 @@ Parameter            | Description
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
-`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or the tabulation character `%09`.
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
 `callback`           | JSONP or GEOJSONP callback
 
 ## Records Geo Clustering API
