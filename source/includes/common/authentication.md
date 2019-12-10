@@ -5,7 +5,7 @@ An authenticated user can be granted access to restricted datasets and benefit f
 For the platform to authenticate a user, you need to either:
 
 * be logged in a portal so a session cookie authenticating your user is passed along your API calls
-* provide an **API key** as a request parameter
+* provide an **API key** as a request parameter or header
 
 ## Finding and generating API keys
 
@@ -31,7 +31,7 @@ By default, every API key authenticates requests as coming from your user, which
 < HTTP/1.0 401 Unauthorized
 ```
 
-> Request authenticated with an API key
+> Request authenticated with an API key in request parameter
 
 ``` http
 > GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
@@ -56,7 +56,33 @@ By default, every API key authenticates requests as coming from your user, which
 }
 ```
 
-API keys are passed along requests through the query parameter `apikey`.
+> Request authenticated with an API key in Authorization header
+
+``` http
+> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
+Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
+
+< HTTP/1.0 200 OK
+```
+
+``` json
+{
+    "total_count": 4,
+    "links": [{
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "rel": "self"
+    }, {
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "rel": "first"
+    }, {
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "rel": "last"
+    }],
+    "datasets": [...]
+}
+```
+
+API keys can be passed along requests through the query parameter `apikey` or through the `Authorization` header.
 
 For example, accessing a private portal's catalog unauthenticated will return a `401 Unauthorized` error.
 
