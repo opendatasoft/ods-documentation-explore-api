@@ -118,6 +118,8 @@ It is not possible to retrieve all datasets from a domain with this API. To do t
 Parameter | Default | Description
 --------- | ------- | -----------
 `where` | None | Filter expression used to restrict returned datasets ([ODSQL documentation](#where-clause))
+`refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
+`exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
 `start` | 0 | Index of the first item to return
 `rows` | 10 | Number of items to return. Max value: 100
 `include_app_metas` | false | Explicitely request application metadata for each datasets
