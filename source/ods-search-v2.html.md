@@ -15,6 +15,7 @@ includes:
   - v2/metadata
   - v2/catalog
   - v2/dataset
+  - v2/facets
   - v2/odsql
 search: true
 ---
