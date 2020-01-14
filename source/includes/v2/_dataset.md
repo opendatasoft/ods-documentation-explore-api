@@ -280,7 +280,7 @@ Parameter | Default | Description
 > Export records in xls format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/xls'
 ```
 
 Export records to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
@@ -307,7 +307,7 @@ Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile)
 > Export records in turle rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/turtle'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/turtle'
 ```
 
 ##### HTTP Request
@@ -319,7 +319,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/turtle'
 > Export records in rdf-xml format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdfxml'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/rdfxml'
 ```
 
 ##### HTTP Request
@@ -331,7 +331,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdfxml'
 > Export records in n3 rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/n3'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/n3'
 ```
 
 ##### HTTP Request
@@ -342,7 +342,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/n3'
 > Export records in json-ld rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/jsonld'
+curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/jsonld'
 ```
 
 ##### HTTP Request
