@@ -91,22 +91,46 @@ Date formats can be specified in different formats: simple (`YYYY[[/mm]/dd]`) or
 
 ### Query language functions
 
-> Return all records where `birthdate` is greater or equal to the current datetime:
+> Return records in `birthdate` field that are smaller or equal to the current datetime:
 
 ```text
-birthdate >= #now()
+birthdate <= #now()
 ```
 
-> Return records where `birthdate` is not set:
+> Return empty records in `birthdate` field:
 
 ```text
 #null(birthdate)
 ```
 
-> Return records where `firstname` contains exactly "Marie":
+> Return records in `firstname` field that contain "Marie":
 
 ```text
 #exact(firstname, "Marie")
+```
+
+> Return records in `firstname` field that start with "Mar":
+
+```text
+#startswith(firstname, "Mar")
+```
+
+> Return records in `location` field which point is maximum 1 meter away from "48.864923, 2.382842":
+
+```text
+#distance(location, "48.864923, 2.382842", 1)
+```
+
+> Return records in `location` field that are within the given polygon:
+
+```text
+#polygon(location, “(48.36208891167685,-5.053710937499999),(51.03310377200486,2.0654296875),(48.88494684672119,8.3056640625),(44.04653631510921,7.55859375),(42.21875444410035,2.8125),(43.18755555543226,-1.9775390625),(48.36208891167685,-5.053710937499999)“)
+```
+
+> Return records in `coordinates` field which value is a polygon:
+
+```text
+#geometry(coordinates, “polygon”)
 ```
 
 Advanced functions can be used in the query language. Function names need to be prefixed with a sharp (`#`) sign.
@@ -116,6 +140,10 @@ Function name | Description
 `now`         | Return the current date. This function should be called as a query value for a field
 `null`        | Search for records where no value is defined for the given field
 `exact`       | Search for records with a field exactly matching a given value
+`startswith`  | Search for records with a field starting with a given value
+`distance`    | Search for records within a given distance from a given point
+`polygon`     | Search for records within a given polygon
+`geometry`    | Search for records which value (point, polygon) is a given type
 
 #### Available parameters for the `#now` function
 
