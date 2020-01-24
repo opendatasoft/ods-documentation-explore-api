@@ -279,7 +279,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/'
 
 The endpoint allows to download all datasets for a requested domain.
 
-A dataset catalog can be exported in 9 different formats:
+A dataset catalog can be exported in different formats:
 
 - JSON
 - CSV
@@ -290,6 +290,8 @@ A dataset catalog can be exported in 9 different formats:
 - Data.json
 - DCAT-AP DE (on demand)
 - DCAT-AP CH (on demand)
+- DCAT-AP SE (on demand)
+- DCAT-AP SP (on demand)
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports`
@@ -420,6 +422,38 @@ Export datasets in an RDF format, using DCAT application specific to Switzerland
 
 ##### HTTP Request
 `GET /api/v2/catalog/exports/dcat_ap_ch`
+
+
+### Exporting a catalog in DCAT-AP SE
+
+> Export datasets in DCAT-AP SE format
+
+```shell
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_se'
+```
+
+Export datasets in an RDF format, using DCAT application specific to Sweden.
+
+<aside>This export format is not available by default: contact Opendatasoft for its activation.</aside>
+
+##### HTTP Request
+`GET /api/v2/catalog/exports/dcat_ap_se`
+
+
+### Exporting a catalog in DCAT-AP SP
+
+> Export datasets in DCAT-AP SP format
+
+```shell
+curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_sp'
+```
+
+Export datasets in an RDF format, using DCAT application specific to Spain.
+
+<aside>This export format is not available by default: contact Opendatasoft for its activation.</aside>
+
+##### HTTP Request
+`GET /api/v2/catalog/exports/dcat_ap_sp`
 
 
 ## Looking up a dataset
