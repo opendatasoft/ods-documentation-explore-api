@@ -804,3 +804,34 @@ The count of pattern letters determine the format.
 ##### Format:
 `group_by=date_format(<string_literal>)`
 in which `<string_literal>` contains a date format
+
+## Order by clause
+
+> Order by examples
+```python
+group_by=city & order_by=city ASC # Will cities alphabetically
+group_by=city & order_by=count(*) DESC # Will order each city by its number of records
+select=count(*) as population_count & group_by=city  & order_by=population_count DESC # Same as previous but using a label
+group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC # Order by city and then by year of birth
+```
+
+The **Order by** clause can be used to sort the results of an aggregation.
+
+The parameter `order_by` will add an order by clause to your API query.
+It accepts a list of comma-separated expressions followed by a direction (ASC for ascending or DESC for descending).
+
+### Format:
+
+`order_by = expression [ ASC | DESC ], ...`
+
+An order_by _expression_ can be :
+
+- a field
+- an aggregation function
+
+The _direction_, if not specified, is by default ASC (ascending).
+
+<aside>
+When ordering by both aggregations and fields, we only support the aggregation order in head of list.
+For example : <code>order_by = avg(age), gender</code> will work, but <code>order_by = gender, avg(age)</code> will return an error.
+</aside>
