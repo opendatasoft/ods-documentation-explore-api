@@ -134,17 +134,17 @@ Supported geometry expressions are:
 
 A scalar function can be used in [select arithmetic expressions](#arithmetic-select-expression) or [filter expressions](#filter-expression).
 
-Function|Parameters|Description|Limitation
---------|-----------|----------|----------
-`length`|string literal or string field literal|Returns the number of characters|
-`now`|no parameter|Returns the current date|Only works on filter expressions
-`year`|date field literal|Returns the year of the field literal|
-`month`|date field literal|Returns the month of the field literal|
-`day`|date field literal|Returns the day of the field literal|
-`hour`|date field literal|Returns the hour of the field literal|
-`minute`|date field literal|Returns the minute of the field literal|
-`second`|date field literal|Returns the second of the field literal|
-`date_format`|date field literal|Returns the formatted date (see [Group by date format](#group-by-date-format) for examples)|
+| Function      | Parameters                             | Description                                                                                 | Limitation                       |
+| ------------- | -------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------- |
+| `length`      | string literal or string field literal | Returns the number of characters                                                            |
+| `now`         | no parameter                           | Returns the current date                                                                    | Only works on filter expressions |
+| `year`        | date field literal                     | Returns the year of the field literal                                                       |
+| `month`       | date field literal                     | Returns the month of the field literal                                                      |
+| `day`         | date field literal                     | Returns the day of the field literal                                                        |
+| `hour`        | date field literal                     | Returns the hour of the field literal                                                       |
+| `minute`      | date field literal                     | Returns the minute of the field literal                                                     |
+| `second`      | date field literal                     | Returns the second of the field literal                                                     |
+| `date_format` | date field literal                     | Returns the formatted date (see [Group by date format](#group-by-date-format) for examples) |
 
 <div class=“clearfix”></div>
 ### Reserved keywords in ODSQL clauses
@@ -561,25 +561,25 @@ This rectangular box is defined by its top left and its bottom right coordinates
 <div class=“clearfix”></div>
 #### Text comparison filter
 
-Operators | Description
---------- | -----------
-`:`,`=` | Perform an exact query (not tokenized and not normalized) on the specified field
+| Operators | Description                                                                      |
+| --------- | -------------------------------------------------------------------------------- |
+| `:`,`=`   | Perform an exact query (not tokenized and not normalized) on the specified field |
 
 <div class=“clearfix”></div>
 #### Numeric comparison filter
 
-Operators | Description
---------- | -----------
-`:`,`=` | Match a numeric value
-`>`,`<`,`>=`,`<=` | Return results whose field values are larger, smaller, larger or equal, smaller or equal to the given value
+| Operators         | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| `:`,`=`           | Match a numeric value                                                                                       |
+| `>`,`<`,`>=`,`<=` | Return results whose field values are larger, smaller, larger or equal, smaller or equal to the given value |
 
 <div class=“clearfix”></div>
 #### Date comparison filter
 
-Operators | Description
---------- | -----------
-`:`,`=` | Match a date value
-`>`,`<`,`>=`,`<=` | Return results whose field date are after or before the given value.
+| Operators         | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| `:`,`=`           | Match a date value                                                   |
+| `>`,`<`,`>=`,`<=` | Return results whose field date are after or before the given value. |
 
 
 <div class=“clearfix”></div>
@@ -789,15 +789,15 @@ hour(date_field) # Create a group for each different hours in date_field values
 
 Group by date functions allow to group data on a date field by a specific unit of time.
 
-Function name | Description
-------------- | -----------
-`year` | Groups by year
-`month` | Groups by month
-`day` | Groups by day
-`hour` | Groups by hour
-`minute` | Groups by minute
-`second` | Groups by second
-`millisecond` | Groups by millisecond
+| Function name | Description           |
+| ------------- | --------------------- |
+| `year`        | Groups by year        |
+| `month`       | Groups by month       |
+| `day`         | Groups by day         |
+| `hour`        | Groups by hour        |
+| `minute`      | Groups by minute      |
+| `second`      | Groups by second      |
+| `millisecond` | Groups by millisecond |
 
 ##### Format:
 `group_by=<date_function>(<field_literal>)`
@@ -821,31 +821,31 @@ Every character between a-z and A-Z is considered to be a pattern representing a
 
 The formats below are available for a date format expression. They come from [joda time documentation](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html).
 
-Symbol | Meaning | Presentation | Examples
------- | ------- | ------------ | --------
-G | era | text | AD
-C | century of era (>=0) | number | 20
-Y | year of era (>=0) | year | 1996
-x | weekyear | year | 1996
-w | week of weekyear | number | 27
-e | day of week | number | 2
-E | day of week | text | Tuesday; Tue
-y | year | year | 1996
-D | day of year | number | 189
-M | month of year | month | July; Jul; 07
-d | day of month | number | 10
-a | halfday of day | text | PM
-K | hour of halfday (0~11) | number | 0
-h | clockhour of halfday (1~12) | number | 12
-H | hour of day (0~23) | number | 0
-k | clockhour of day (1~24) | number | 24
-m | minute of hour | number | 30
-s | second of minute | number | 55
-S | fraction of second | number | 978
-z | time zone | text | Pacific Standard Time; PST
-Z | time zone offset/id | zone | -0800; -08:00; America/Los_Angeles
-' | escape for text | delimiter
-'' | single quote | literal | '
+| Symbol | Meaning                     | Presentation | Examples                           |
+| ------ | --------------------------- | ------------ | ---------------------------------- |
+| G      | era                         | text         | AD                                 |
+| C      | century of era (>=0)        | number       | 20                                 |
+| Y      | year of era (>=0)           | year         | 1996                               |
+| x      | weekyear                    | year         | 1996                               |
+| w      | week of weekyear            | number       | 27                                 |
+| e      | day of week                 | number       | 2                                  |
+| E      | day of week                 | text         | Tuesday; Tue                       |
+| y      | year                        | year         | 1996                               |
+| D      | day of year                 | number       | 189                                |
+| M      | month of year               | month        | July; Jul; 07                      |
+| d      | day of month                | number       | 10                                 |
+| a      | halfday of day              | text         | PM                                 |
+| K      | hour of halfday (0~11)      | number       | 0                                  |
+| h      | clockhour of halfday (1~12) | number       | 12                                 |
+| H      | hour of day (0~23)          | number       | 0                                  |
+| k      | clockhour of day (1~24)     | number       | 24                                 |
+| m      | minute of hour              | number       | 30                                 |
+| s      | second of minute            | number       | 55                                 |
+| S      | fraction of second          | number       | 978                                |
+| z      | time zone                   | text         | Pacific Standard Time; PST         |
+| Z      | time zone offset/id         | zone         | -0800; -08:00; America/Los_Angeles |
+| '      | escape for text             | delimiter    |
+| ''     | single quote                | literal      | '                                  |
 
 The count of pattern letters determine the format.
 
@@ -859,3 +859,38 @@ The count of pattern letters determine the format.
 ##### Format:
 `group_by=date_format(<string_literal>)`
 in which `<string_literal>` contains a date format
+
+## Order by clause
+
+> Order by examples
+
+```python
+group_by=city & order_by=city ASC # Will cities alphabetically
+
+group_by=city & order_by=count(*) DESC # Will order each city by its number of records
+
+select=count(*) as population_count & group_by=city  & order_by=population_count DESC # Same as previous but using a label
+
+group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC # Order by city and then by year of birth
+```
+
+The **Order by** clause can be used to sort the results of an aggregation.
+
+The parameter `order_by` will add an order by clause to your API query.
+It accepts a list of comma-separated expressions followed by a direction (ASC for ascending or DESC for descending).
+
+### Format:
+
+`order_by = expression [ ASC | DESC ], ...`
+
+An order_by _expression_ can be :
+
+- a field
+- an aggregation function
+
+The _direction_, if not specified, is by default ASC (ascending).
+
+<aside>
+When ordering by both aggregations and fields, we only support the aggregation order in head of list.
+For example : <code>order_by = avg(age), gender</code> will work, but <code>order_by = gender, avg(age)</code> will return an error.
+</aside>
