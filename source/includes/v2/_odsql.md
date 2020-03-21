@@ -808,11 +808,12 @@ in which `<string_literal>` contains a date format
 ## Order by clause
 
 > Order by examples
-```python
-group_by=city & order_by=city ASC # Will order cities alphabetically
-group_by=city & order_by=count(*) DESC # Will order each city by its number of records
-select=count(*) as population_count & group_by=city  & order_by=population_count DESC # Same as previous but using a label
-group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC # Order by city and then by year of birth
+
+```sql
+group_by=city & order_by=city ASC -- Will order cities alphabetically
+group_by=city & order_by=count(*) DESC -- Will order each city by its number of records
+select=count(*) as population_count & group_by=city  & order_by=population_count DESC -- Same as previous but using a label
+group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC -- Order by city and then by year of birth
 ```
 
 The **Order by** clause can be used to sort the results of an aggregation.
