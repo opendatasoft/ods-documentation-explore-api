@@ -809,30 +809,33 @@ in which `<string_literal>` contains a date format
 
 > Order by examples
 
-```sql
-group_by=city & order_by=city ASC -- Will order cities alphabetically
-group_by=city & order_by=count(*) DESC -- Will order each city by its number of records
-select=count(*) as population_count & group_by=city  & order_by=population_count DESC -- Same as previous but using a label
-group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC -- Order by city and then by year of birth
+```plain-text
+group_by=city & order_by=city ASC # Order cities alphabetically
+group_by=city & order_by=count(*) DESC # Order each city by its number of records
+select=count(*) as population_count & group_by=city  & order_by=population_count DESC # Order each city by its number of records, using a label
+group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC # Order by city and then by year of birth
 ```
 
-The **Order by** clause can be used to sort the results of an aggregation.
+The order by clause can be used to sort the results of an aggregation.
 
-The parameter `order_by` will add an order by clause to your API query.
-It accepts a list of comma-separated expressions followed by a direction (ASC for ascending or DESC for descending).
+The parameter `order_by` adds an order by clause to an API query.
+It accepts a list of comma-separated expressions followed by a direction:
+
+- ASC for ascending
+- DESC for descending
 
 ### Format:
 
 `order_by = expression [ ASC | DESC ], ...`
 
-An order_by _expression_ can be :
+An order by expression can be :
 
 - a field
 - an aggregation function
 
-The _direction_, if not specified, is by default ASC (ascending).
+The direction, if not specified, is by default ASC (ascending).
 
 <aside>
-When ordering by both aggregations and fields, we only support the aggregation order in head of list.
-For example : <code>order_by = avg(age), gender</code> will work, but <code>order_by = gender, avg(age)</code> will return an error.
+When ordering by both aggregations and fields, the aggregation order must be in head of the list.
+For example : <code>order_by = avg(age), gender</code> works, but <code>order_by = gender, avg(age)</code> returns an error.
 </aside>
