@@ -44,10 +44,10 @@ There are 7 types of literal:
 
 > Example of field literal
 
-```plain-text
-my_field > 10  # my_field is a string literal
-`12` > 10      # without back-quotes 12 is considered as a numeric literal
-`and`: "value" # AND is a keyword
+```sql
+my_field > 10  -- my_field is a string literal
+`12` > 10      -- without back-quotes 12 is considered as a numeric literal
+`and`: "value" -- AND is a keyword
 ```
 
 A field literals is a literal not enclosed in quotes. It can only contain alphanumeric characters or underscores.
@@ -61,7 +61,7 @@ If a field name contains only numbers or is a keyword, it must be enclosed in ba
 
 > Example of string literal
 
-```plain-text
+```sql
 "Word"
 "Multiple words"
 'Using single quotes'
@@ -74,7 +74,7 @@ A string literal is a literal enclosed in either single or double quotes.
 
 > Example of number literal
 
-```plain-text
+```sql
 100
 5.8
 my_field > 108.7
@@ -87,7 +87,7 @@ A number literal is either an integer or a decimal value. It is not enclosed in 
 
 > Example of date literal
 
-```plain-text
+```sql
 date'2017-04-03T08:02'
 date'2018/04/01'
 ```
@@ -104,7 +104,7 @@ A valid date can be:
 
 > Example of boolean literal
 
-```plain-text
+```sql
 my_boolean_field is TRUE
 my_boolean_field: FALSE
 ```
@@ -116,7 +116,7 @@ A boolean literal can either be a TRUE or a FALSE keyword (case insensitive). It
 
 > Example of geometry literal
 
-```plain-text
+```sql
 distance(my_geo_field, geom'POINT(1 1)', 10km)
 geometry(my_geo_field, geom'{"type": "Polygon","coordinates":[[[100.0, 0.0],[101.0, 0.0],[101.0, 1.0],[100.0, 1.0],[100.0,0.0]]]}')
 ```
@@ -151,9 +151,9 @@ Function|Parameters|Description|Limitation
 
 > `not` is a reserved keywords and must be escaped with back-quotes if referred as field literal
 
-```plain-text
-my_field_literal is not true # my_field_literal is not a reserved keyword, no need to escape it
-`not` is not true # not is a reserved keyword and must be escaped
+```sql
+my_field_literal is not true -- my_field_literal is not a reserved keyword, no need to escape it
+`not` is not true -- not is a reserved keyword and must be escaped
 ```
 
 Reserved keywords can be used inside clauses for building ODSQL expressions.
@@ -224,10 +224,10 @@ A select expression can be:
 
 > Examples of select field literal
 
-```plain-text
-*                           # Select all fields
-field1, field2, field3      # Only select field1, field2 and field3
-field1 AS my_field, field2  # Renaming field1 as my_field and select field2
+```sql
+*                           -- Select all fields
+field1, field2, field3      -- Only select field1, field2 and field3
+field1 AS my_field, field2  -- Renaming field1 as my_field and select field2
 ```
 
 A select field literal is the simplest form of select expression. It takes a field literal that must be returned in the result.
@@ -242,10 +242,10 @@ If a select expression is used in conjunction with a `group by` clause, the sele
 
 > Example of include/exclude
 
-```plain-text
-include(pop) # will only include fields which name is pop
-exclude(pop) # will exclude fields which name is pop
-include(pop*) # Will include fields beginning with pop
+```sql
+include(pop) -- will only include fields which name is pop
+exclude(pop) -- will exclude fields which name is pop
+include(pop*) -- Will include fields beginning with pop
 ```
 
 Include and exclude are functions that accept fields names.
@@ -260,11 +260,11 @@ Fields can contain a wildcard suffix (the `*` character). In that case, the incl
 
 > Example of include/exclude
 
-```plain-text
-2 as const_2 # Creates a field `const_2` containing the value `2`
-2 * population as double_population # Create a field `double_population` containing the double of population field
-"hello" as hello # Creates a field containing "hello" value
-length(country_name) # Get length (number of characters) of country_name field values
+```sql
+2 as const_2 -- Creates a field `const_2` containing the value `2`
+2 * population as double_population -- Create a field `double_population` containing the double of population field
+"hello" as hello -- Creates a field containing "hello" value
+length(country_name) -- Get length (number of characters) of country_name field values
 ```
 
 An arithmetic select expression accepts simple arithmetic operations. It accepts field literals, constant numeric or text values and [scalar functions](#scalar-functions). More complex arithmetic expressions can be formed by connecting these elements with arithmetic operators:
@@ -278,9 +278,9 @@ An arithmetic select expression accepts simple arithmetic operations. It accepts
 
 > Examples of aggregation expression
 
-```plain-text
-SUM(population) as sum_population # Will compute the sum of all values for the field `population` returned as sum_population
-COUNT(*) # Return number of elements
+```sql
+SUM(population) as sum_population -- Will compute the sum of all values for the field `population` returned as sum_population
+COUNT(*) -- Return number of elements
 ```
 
 Like in the SQL language, a `select` can also express an aggregation expression.
@@ -297,9 +297,9 @@ Available aggregation functions are:
 
 > Examples of count aggregation
 
-```plain-text
-COUNT(*) # Return number of elements
-count(population) as population_count_not_empty # Return number of elements where `population` field is not empty
+```sql
+COUNT(*) -- Return number of elements
+count(population) as population_count_not_empty -- Return number of elements where `population` field is not empty
 ```
 
 This function computes numbers of elements.
@@ -314,8 +314,8 @@ It accepts the following parameters:
 
 > Examples of max aggregation
 
-```plain-text
-max(population) as max_population # Return max value for population field
+```sql
+max(population) as max_population -- Return max value for population field
 ```
 
 This function takes a numeric field literal. It returns the maximum value (`max`) of this field.
@@ -325,8 +325,8 @@ This function takes a numeric field literal. It returns the maximum value (`max`
 
 > Examples of min aggregation
 
-```plain-text
-min(population) as min_population # Return min value for population field
+```sql
+min(population) as min_population -- Return min value for population field
 ```
 
 This function takes a numeric field literal. It returns the minimum value (`min`) of this field.
@@ -337,8 +337,8 @@ This function takes a numeric field literal. It returns the minimum value (`min`
 
 > Examples of avg aggregation
 
-```plain-text
-avg(population) as avg_population # Return the average of the population
+```sql
+avg(population) as avg_population -- Return the average of the population
 ```
 
 This function takes a numeric field literal. It returns the average (`avg`) of this field.
@@ -348,7 +348,7 @@ This function takes a numeric field literal. It returns the average (`avg`) of t
 
 > Where clause with boolean operators
 
-```plain-text
+```sql
 my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, geom'POINT(1 1)', 1km)
 ```
 
@@ -372,12 +372,12 @@ Where expressions can be combined with boolean operators (see **Boolean operatio
 
 > Boolean operators
 
-```plain-text
+```sql
 my_boolean_field OR my_numeric_field > 50 and my_date_field > date'1972'
-# Results can have my_boolean_field to true. They can also have my_numeric_field greater than 50 and my_date_field older than 1972
+-- Results can have my_boolean_field to true. They can also have my_numeric_field greater than 50 and my_date_field older than 1972
 
 (my_boolean_field OR my_numeric_field > 50) and my_date_field > date'1972'
-# Results must have my_date_field older than 1972. They also must have my_boolean_field to true or my_numeric_field greater than 50
+-- Results must have my_date_field older than 1972. They also must have my_boolean_field to true or my_numeric_field greater than 50
 ```
 
 Where expressions can use boolean operators to express boolean filter.
@@ -398,7 +398,7 @@ In order to change operator precedence, it is possible to use parenthesis in the
 
 > Examples for search query
 
-```plain-text
+```sql
 "tree"
 "tree" AND "flower"
 "tree" OR "car"
@@ -408,15 +408,15 @@ NOT "dog"
 
 > Examples of search query with multiple words
 
-```plain-text
-"film"           # returns results that contain film
-"action movies"  # returns results that contain action and movies.
+```sql
+"film"           -- returns results that contain film
+"action movies"  -- returns results that contain action and movies.
 ```
 
 > Example of wildcarded search query
 
-```plain-text
-"film*"      # returns results that contain film, films, filmography, etc.
+```sql
+"film*"      -- returns results that contain film, films, filmography, etc.
 ```
 
 Filter search queries are queries that don’t refer to fields, they only contain quoted strings and boolean operators. Filter search queries perform full-text searches on all visible fields of each record and return matching rows.
@@ -441,7 +441,7 @@ There are 3 filter functions:
 
 > Distance function examples
 
-```plain-text
+```sql
 distance(field_name, GEOM'<geometry>', 1km)
 distance(field_name, GEOM'<geometry>', 100yd)
 ```
@@ -464,7 +464,7 @@ The distance function limits the result set to a geographical area defined by a 
 
 > Geometry function examples
 
-```plain-text
+```sql
 geometry(field_name, GEOM'<geometry>', INTERSECT)
 geometry(field_name, GEOM'<geometry>', DISJOINT)
 geometry(field_name, GEOM'<geometry>', WITHIN)
@@ -486,7 +486,7 @@ This polygon must be defined with both:
 
 > Bbox function example
 
-```plain-text
+```sql
 bbox(field_name, GEOM'<geometry>', GEOM'<geometry>')
 ```
 
@@ -542,9 +542,9 @@ Operators | Description
 
 > Example of a boolean field filter
 
-```plain-text
-my_boolean_field          # Filters results where boolean_field is true
-my_boolean_field is false # Filters results where boolean_field is false
+```sql
+my_boolean_field          -- Filters results where boolean_field is true
+my_boolean_field is false -- Filters results where boolean_field is false
 ```
 
 A boolean field filter takes a boolean field and restricts results only if the boolean value is `true`.
@@ -566,9 +566,9 @@ in which `<field_literal>` must be a valid boolean field
 
 > Example of a like expression
 
-```plain-text
-film_name like "star"      # matches `star wars` and `Star Trek`
-film_name like "star wars" # match fields containing `star` and `wars`
+```sql
+film_name like "star"      -- matches `star wars` and `Star Trek`
+film_name like "star wars" -- match fields containing `star` and `wars`
 ```
 
 A like filter restricts results to field literal values containing a defined string literal.
@@ -581,16 +581,16 @@ A like filter restricts results to field literal values containing a defined str
 
 > `In filter` on numeric
 
-```plain-text
-numeric_field IN [1..10] # Filter results such as 1 <= numeric_field <= 10
-numeric_field IN ]1..10[ # Filter results such as 1 < numeric_field < 10
-numeric_field: [1..10]   # Use `:` instead of `IN` operator
+```sql
+numeric_field IN [1..10] -- Filter results such as 1 <= numeric_field <= 10
+numeric_field IN ]1..10[ -- Filter results such as 1 < numeric_field < 10
+numeric_field: [1..10]   -- Use `:` instead of `IN` operator
 ```
 
 > `In filter` on date
 
-```plain-text
-date_field IN [date'2017'..date'2018'] # Filter results such as date_field date is between year 2017 and 2018
+```sql
+date_field IN [date'2017'..date'2018'] -- Filter results such as date_field date is between year 2017 and 2018
 ```
 
 `In filters` results are based on a numeric or a date range. `In filters` only work on a field literal.
@@ -606,9 +606,9 @@ date_field IN [date'2017'..date'2018'] # Filter results such as date_field date 
 
 > Example of a null filter expression
 
-```plain-text
-film_name is null      # match records where film_name is null
-film_name is not null  # match records where film_name is not null
+```sql
+film_name is null      -- match records where film_name is null
+film_name is not null  -- match records where film_name is not null
 ```
 
 A null field filter takes a field and restricts results only if the field values are null.
@@ -623,13 +623,13 @@ The opposite filter, `is not null` takes a field and restricts results only if t
 
 > Simple group by expression with label
 
-```plain-text
+```sql
 group_by=my_field as myfield
 ```
 
 > multiple group by expressions with label
 
-```plain-text
+```sql
 group_by=my_field1,my_field2 as my_field
 ```
 
@@ -657,7 +657,7 @@ A group by expression can be:
 
 > Simple group by field
 
-```plain-text
+```sql
 group_by=my_field
 ```
 
@@ -672,10 +672,10 @@ A group by field expression allows to group specified field values. It creates a
 
 > group by static range examples
 
-```plain-text
-RANGE(population, ]10, 50, 100[) # Creates 4 groups: *-10, 10-50, 50-100 and 100-*
-RANGE(population, [20.5[)        # Creates 1 group: 20.5-*
-RANGE(population, [1,2,3])       # Creates 2 groups: 1-2 and 2-3
+```sql
+RANGE(population, ]10, 50, 100[) -- Creates 4 groups: *-10, 10-50, 50-100 and 100-*
+RANGE(population, [20.5[)        -- Creates 1 group: 20.5-*
+RANGE(population, [1,2,3])       -- Creates 2 groups: 1-2 and 2-3
 ```
 
 The static range function takes 2 parameters:
@@ -695,8 +695,8 @@ in which `<field_literal>` must be a numeric field
 
 > group by equi range examples
 
-```plain-text
-RANGE(population, EQUI(5, 10, 30))  # 5 is step value. 10 is the lower bound and 30 The higher bound.
+```sql
+RANGE(population, EQUI(5, 10, 30))  -- 5 is step value. 10 is the lower bound and 30 The higher bound.
 ```
 > Creates the following group:
 ```markdown
@@ -727,9 +727,9 @@ in which `<field_literal>` must be a numeric field
 
 > group by date examples
 
-```plain-text
-year(date_field) # Create a group for each different years in date_field values
-hour(date_field) # Create a group for each different hours in date_field values
+```sql
+year(date_field) -- Create a group for each different years in date_field values
+hour(date_field) -- Create a group for each different hours in date_field values
 ```
 
 Group by date functions allow to group data on a date field by a specific unit of time.
@@ -754,9 +754,9 @@ in which `<field_literal>` must be a datetime field
 
 > group by date format examples
 
-```plain-text
-date_format(date_field, "YYYY-MM-dd'T'HH") # Creates a group for each minutes in date_field and returning date with an pseudo ISO 8061 format
-date_format(date_field, "w") # Create a group for each different week in date_field
+```sql
+date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each minutes in date_field and returning date with an pseudo ISO 8061 format
+date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
 A group by date format expression allows to group by a custom date format.
@@ -809,11 +809,11 @@ in which `<string_literal>` contains a date format
 
 > Order by examples
 
-```plain-text
-group_by=city & order_by=city ASC # Order cities alphabetically
-group_by=city & order_by=count(*) DESC # Order each city by its number of records
-select=count(*) as population_count & group_by=city  & order_by=population_count DESC # Order each city by its number of records, using a label
-group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC # Order by city and then by year of birth
+```sql
+group_by=city & order_by=city ASC -- Order cities alphabetically
+group_by=city & order_by=count(*) DESC -- Order each city by its number of records
+select=count(*) as population_count & group_by=city  & order_by=population_count DESC -- Order each city by its number of records, using a label
+group_by=city, year(birth_date) as birth_year & order_by=city DESC, birth_year ASC -- Order by city and then by year of birth
 ```
 
 The order by clause can be used to sort the results of an aggregation.
