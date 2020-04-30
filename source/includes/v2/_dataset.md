@@ -181,13 +181,14 @@ If a query contains multiple `group_by` clauses, returned groups are combined to
 
 ##### URL Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-`where` | None | Filter expression used to restrict returned datasets (see [where clause in ODSQL documentation](#where-clause))
-`select` | None | Select clause for aggregation (see [select clause in ODSQL documentation](#select-clause))
-`group_by` | None | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
-`timezone` | UTC | Timezone applied on datetime fields in query and response
-`limit` | None | Number of items to return
+Parameter  | Default | Description
+---------  | ------- | -----------
+`select`   | None    | Select clause for aggregation (see [select clause in ODSQL documentation](#select-clause))
+`where`    | None    | Filter expression used to restrict returned datasets (see [where clause in ODSQL documentation](#where-clause))
+`group_by` | None    | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
+`order_by` | None    | Order by clause for aggregation (see [order_by clause in ODSQL documentation](#order-by-clause))
+`timezone` | UTC     | Timezone applied on datetime fields in query and response
+`limit`    | None    | Number of items to return
 
 
 ## Exporting records
