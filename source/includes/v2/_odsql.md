@@ -765,9 +765,8 @@ RANGE(population, EQUI(5, 10, 30))  -- 5 is step value. 10 is the lower bound an
 
 An equi range function can be used in a [static range function](#group-by-static-range) replacing the static range parameter.
 
-The equi range function takes 4 parameters:
+The equi range function takes 3 parameters:
 
-- a field name
 - a step value
 - a lower bound
 - a higher bound
