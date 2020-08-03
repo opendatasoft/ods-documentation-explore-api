@@ -10,10 +10,10 @@ Note that a given filtering context can simply be copied from one API to another
 
 The ODSQL is split into 5 different kinds of clauses:
 
-- the `select` clause: it allows to choose the returned fields, to give them an alias, or to manipulate them with functions like count, sum, min, max, etc.
+- the `select` clause: it allows choosing the returned fields, to give them an alias, or to manipulate them with functions like count, sum, min, max, etc.
 - the `where` clause: it acts as a filter for the returned datasets or records, thanks to boolean operations, filter functions, arithmetic expressions, etc.
-- the `group by` clause: it allows to aggregate rows together based on fields, numeric ranges, or dates
-- the `order by` and `limit` clauses: they allow to choose the order and quantity of rows received as a response
+- the `group by` clause: it allows aggregating rows together based on fields, numeric ranges, or dates
+- the `order by` and `limit` clauses: they allow choosing the order and quantity of rows received as a response
 
 These clauses are used as parameters in the Search API v2 for searching, aggregating and exporting datasets and records. Depending on the used endpoint, some features of the query language are available or not in the request.
 
@@ -201,12 +201,12 @@ List of reserved keywords:
 
 The select clause can be used in records search APIs as the parameter `select`.
 
-The select clause allows to:
-- choose the fields that will be returned for each row
-- transform fields using arithmetic
-- rename fields
-- add computed virtual fields to fields
-- include or exclude fields based on a pattern
+The select clause allows :
+- choosing the fields that will be returned for each row,
+- transforming fields using arithmetic,
+- renaming fields,
+- adding computed virtual fields to fields,
+- including or excluding fields based on a pattern.
 
 A select clause is composed of a single select expression or a list of comma-separated expressions.
 
@@ -392,7 +392,7 @@ my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, g
 
 The where clause can be used in the whole search API as the parameter `where`.
 
-The where clause allows to filter rows with a combination of where expressions.
+The where clause allows one to filter rows with a combination of where expressions.
 
 A where expression can be:
 
@@ -716,7 +716,7 @@ A group by expression can be:
 group_by=my_field
 ```
 
-A group by field expression allows to group specified field values. It creates a group for each different field value.
+A group by field expression allows the grouping of specified field values. It creates a group for each different field value.
 
 ##### Format:
 `group_by=<field_literal>`
@@ -786,7 +786,7 @@ year(date_field) -- Create a group for each different years in date_field values
 hour(date_field) -- Create a group for each different hours in date_field values
 ```
 
-Group by date functions allow to group data on a date field by a specific unit of time.
+Group by date functions allow grouping data on a date field by a specific unit of time.
 
 Function name | Description
 ------------- | -----------
@@ -813,7 +813,7 @@ date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each minutes i
 date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
-A group by date format expression allows to group by a custom date format.
+A group by date format expression allows grouping by a custom date format.
 
 A `date format` is a string enclosed in double-quotes.
 Every character between a-z and A-Z is considered to be a pattern representing a date unit. In order to use these characters as simple characters and not pattern, they must be enclosed in single-quotes.
