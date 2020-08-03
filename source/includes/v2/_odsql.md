@@ -809,7 +809,7 @@ in which `<field_literal>` must be a datetime field
 > group by date format examples
 
 ```sql
-date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each minutes in date_field and returning date with an pseudo ISO 8061 format
+date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each hour in date_field and return date with a pseudo ISO 8061 format
 date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
