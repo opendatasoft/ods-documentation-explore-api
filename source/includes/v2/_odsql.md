@@ -846,12 +846,44 @@ Z | time zone offset/id | zone | -0800; -08:00; America/Los_Angeles
 ' | escape for text | delimiter
 '' | single quote | literal | '
 
-The count of pattern letters determine the format.
+Each pattern letter may be repeated to change the displayed value.
+The meaning of such a repetition depends on the type of value returned :
 
 - Text: if the number of pattern letters is 4 or more, the full form is used; otherwise a short or abbreviated form is used if available.
+
+> Example:
+```sql
+date_format(date_field, 'E') -- Returns the abbreviated day of week, e.g. "Tue"
+date_format(date_field, 'EEEE') -- Returns the day of week, e.g. "Tuesday"
+```
+
 - Number: the minimum number of digits. Shorter numbers are zero-padded to this amount.
+
+> Example, where `date_field` = '02:00`
+```sql
+date_format(date_field, 'H') -- Returns '2'
+date_format(date_field, 'HH') -- Returns '02'
+```
+
 - Year: numeric presentation for year and weekyear fields are handled specially. For example, if the count of 'y' is 2, the year will be displayed as the zero-based year of the century, which is 2 digits.
+
+> Example, where `date_field` = '1902-01-01`
+```sql
+date_format(date_field, 'y') -- Returns '1902'
+date_format(date_field, 'yy') -- Returns '02'
+date_format(date_field, 'yyyy') -- Returns '1902'
+```
+
 - Month: 3 or over, use text, otherwise use number.
+
+> Example, where `date_field` = '1902-01-01`
+```sql
+date_format(date_field, 'M') -- Returns '1'
+date_format(date_field, 'MM') -- Returns '01'
+date_format(date_field, 'MMM') -- Returns 'jan.'
+date_format(date_field, 'MMMM') -- Returns 'january'
+```
+
 - Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 'ZZZ' or more outputs the zone id.
 - Zone names: time zone names ('z') cannot be parsed.
 
