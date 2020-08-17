@@ -89,12 +89,12 @@ Parameter | Default | Description
 `refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
 `start` | 0 | Index of the first item to return
-`rows` | 10 | Number of items to return. Max value: 100
+`rows` | 10 | Number of items to return.
 `include_app_metas` | false | Explicitely request application metadata for each dataset
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-The value of both `start` and `rows` parameters must not exceed 10000. Use the export API to download all records.
+The sum of `start` and `rows` parameters must not exceed 10000. Use the export API to download all records.
 </aside>
 
 
