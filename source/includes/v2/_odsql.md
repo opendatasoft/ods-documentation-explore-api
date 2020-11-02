@@ -291,6 +291,9 @@ Available aggregation functions are:
 - max (maximum)
 - min (minimum)
 - avg (average)
+- envelope
+- percentile
+- median
 
 <div class=“clearfix”></div>
 #### Count aggregation
@@ -342,6 +345,39 @@ avg(population) as avg_population -- Return the average of the population
 ```
 
 This function takes a numeric field literal. It returns the average (`avg`) of this field.
+
+<div class=“clearfix”></div>
+#### Envelope aggregation
+
+> Examples of envelope aggregation
+
+```plain-text
+envelope(geo_point) as convex_hull # Return the convex_hull for the geo_point field
+```
+
+This function takes a geo_point field literal. It returns the convex hull (`envelope`) of all the points of the geo_point field.
+
+<div class=“clearfix”></div>
+#### Percentile aggregation
+
+> Examples of percentile aggregation
+
+```plain-text
+percentile(age, 1) as first_percentile # Return the first percentile of the age field
+```
+
+This function takes a numeric field literal and a percentile. It returns the nth percentile (`percentile`) of this field. Percentile must be a decimal value between `0` and `100`.
+
+<div class=“clearfix”></div>
+#### Median aggregation
+
+> Examples of median aggregation
+
+```plain-text
+median(age) as med # Return the median of the age field
+```
+
+This function takes a numeric field literal. It returns the median (`median`) of this field. Since the median is in fact the 50th percentile, it is a shortcut for `percentile(field, 50)`.
 
 
 ## Where clause
@@ -470,16 +506,35 @@ geometry(field_name, GEOM'<geometry>', DISJOINT)
 geometry(field_name, GEOM'<geometry>', WITHIN)
 ```
 
-The geometry function limits the result set to a geographical area defined by a polygon.
+The geometry function limits the result set to a geographical area defined by a geometry.
 
-This polygon must be defined with both:
+This function only supports `geo_shape` fields. It should not be confused with the [polygon function](#polygon-function), which can be used on `geo_point` fields.
 
-- a [geometry literal](#geometry-literal)
+This function must be defined with both:
+
+- a [geometry literal](#geometry-literal). 
 - one of the following modes:
 
-  - `INTERSECT`: if the polygon intersects with the shape defined in the record
+  - `INTERSECTS`: if the polygon intersects with the shape defined in the record
   - `DISJOINT`: if the polygon is disjoint from the shape defined in the record
   - `WITHIN`: if the polygon encloses the shape defined in the record
+
+
+  <div class=“clearfix”></div>
+#### Polygon function
+
+> Polygon function examples
+
+```plain-text
+polygon(field_name, GEOM'<geometry>')
+```
+
+The polygon function limits the result set to a geographical area defined by a polygon.
+
+Field defined by `field_name` must be of type `geo_point`.
+
+The polygon must be defined with a [geometry literal](#geometry-literal).
+
 
 <div class=“clearfix”></div>
 #### Bbox function

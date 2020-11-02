@@ -46,16 +46,16 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
-    
+
     <div class="ods-header">
-    
+
       <div class="ods-header__brand">
         <button type="button"
                 class="ods-header__menu-toggle"
                 id="nav-button">
                 Menu
         </button>
-        
+
         <a href="/en/apis/" class="ods-header__logo">
           <img
                 src="<%= image_path('ods-logo-helphub.svg') %>"
@@ -108,12 +108,12 @@ under the License.
         </div>
         <div class="ods-header__nav-item">
           <a class="ods-header__nav-item-link"
-              href="/tutorials/en/">
-              Tutorials
+            href="https://academy.opendatasoft.com/page/homepage">
+            Academy
           </a>
         </div>
       </div>
-    
+
     </div>
 
     <div class="toc-wrapper">
@@ -155,7 +155,7 @@ under the License.
     </div>
 
     <div class="page-wrapper">
-      
+
       <div class="content">
         <%= page_content %>
       </div>
@@ -173,7 +173,7 @@ under the License.
           </div>
         <% end %>
       </div>
-      
+
     </div>
   </body>
 </html>
