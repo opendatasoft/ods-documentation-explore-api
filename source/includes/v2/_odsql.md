@@ -10,10 +10,10 @@ Note that a given filtering context can simply be copied from one API to another
 
 The ODSQL is split into 5 different kinds of clauses:
 
-- the `select` clause: it allows to choose the returned fields, to give them an alias, or to manipulate them with functions like count, sum, min, max, etc.
+- the `select` clause: it allows choosing the returned fields, to give them an alias, or to manipulate them with functions like count, sum, min, max, etc.
 - the `where` clause: it acts as a filter for the returned datasets or records, thanks to boolean operations, filter functions, arithmetic expressions, etc.
-- the `group by` clause: it allows to aggregate rows together based on fields, numeric ranges, or dates
-- the `order by` and `limit` clauses: they allow to choose the order and quantity of rows received as a response
+- the `group by` clause: it allows aggregating rows together based on fields, numeric ranges, or dates
+- the `order by` and `limit` clauses: they allow choosing the order and quantity of rows received as a response
 
 These clauses are used as parameters in the Search API v2 for searching, aggregating and exporting datasets and records. Depending on the used endpoint, some features of the query language are available or not in the request.
 
@@ -201,12 +201,12 @@ List of reserved keywords:
 
 The select clause can be used in records search APIs as the parameter `select`.
 
-The select clause allows to:
-- choose the fields that will be returned for each row
-- transform fields using arithmetic
-- rename fields
-- add computed virtual fields to fields
-- include or exclude fields based on a pattern
+The select clause allows :
+- choosing the fields that will be returned for each row,
+- transforming fields using arithmetic,
+- renaming fields,
+- adding computed virtual fields to fields,
+- including or excluding fields based on a pattern.
 
 A select clause is composed of a single select expression or a list of comma-separated expressions.
 
@@ -392,7 +392,7 @@ my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, g
 
 The where clause can be used in the whole search API as the parameter `where`.
 
-The where clause allows to filter rows with a combination of where expressions.
+The where clause allows one to filter rows with a combination of where expressions.
 
 A where expression can be:
 
@@ -716,7 +716,7 @@ A group by expression can be:
 group_by=my_field
 ```
 
-A group by field expression allows to group specified field values. It creates a group for each different field value.
+A group by field expression allows the grouping of specified field values. It creates a group for each different field value.
 
 ##### Format:
 `group_by=<field_literal>`
@@ -765,9 +765,8 @@ RANGE(population, EQUI(5, 10, 30))  -- 5 is step value. 10 is the lower bound an
 
 An equi range function can be used in a [static range function](#group-by-static-range) replacing the static range parameter.
 
-The equi range function takes 4 parameters:
+The equi range function takes 3 parameters:
 
-- a field name
 - a step value
 - a lower bound
 - a higher bound
@@ -787,7 +786,7 @@ year(date_field) -- Create a group for each different years in date_field values
 hour(date_field) -- Create a group for each different hours in date_field values
 ```
 
-Group by date functions allow to group data on a date field by a specific unit of time.
+Group by date functions allow grouping data on a date field by a specific unit of time.
 
 Function name | Description
 ------------- | -----------
@@ -810,11 +809,11 @@ in which `<field_literal>` must be a datetime field
 > group by date format examples
 
 ```sql
-date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each minutes in date_field and returning date with an pseudo ISO 8061 format
+date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each hour in date_field and return date with a pseudo ISO 8061 format
 date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
-A group by date format expression allows to group by a custom date format.
+A group by date format expression allows grouping by a custom date format.
 
 A `date format` is a string enclosed in double-quotes.
 Every character between a-z and A-Z is considered to be a pattern representing a date unit. In order to use these characters as simple characters and not pattern, they must be enclosed in single-quotes.
@@ -847,12 +846,44 @@ Z | time zone offset/id | zone | -0800; -08:00; America/Los_Angeles
 ' | escape for text | delimiter
 '' | single quote | literal | '
 
-The count of pattern letters determine the format.
+Each pattern letter may be repeated to change the displayed value.
+The meaning of such a repetition depends on the type of value returned :
 
 - Text: if the number of pattern letters is 4 or more, the full form is used; otherwise a short or abbreviated form is used if available.
+
+> Example:
+```sql
+date_format(date_field, 'E') -- Returns the abbreviated day of week, e.g. "Tue"
+date_format(date_field, 'EEEE') -- Returns the day of week, e.g. "Tuesday"
+```
+
 - Number: the minimum number of digits. Shorter numbers are zero-padded to this amount.
+
+> Example, where `date_field` = '02:00`
+```sql
+date_format(date_field, 'H') -- Returns '2'
+date_format(date_field, 'HH') -- Returns '02'
+```
+
 - Year: numeric presentation for year and weekyear fields are handled specially. For example, if the count of 'y' is 2, the year will be displayed as the zero-based year of the century, which is 2 digits.
+
+> Example, where `date_field` = '1902-01-01`
+```sql
+date_format(date_field, 'y') -- Returns '1902'
+date_format(date_field, 'yy') -- Returns '02'
+date_format(date_field, 'yyyy') -- Returns '1902'
+```
+
 - Month: 3 or over, use text, otherwise use number.
+
+> Example, where `date_field` = '1902-01-01`
+```sql
+date_format(date_field, 'M') -- Returns '1'
+date_format(date_field, 'MM') -- Returns '01'
+date_format(date_field, 'MMM') -- Returns 'jan.'
+date_format(date_field, 'MMMM') -- Returns 'january'
+```
+
 - Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 'ZZZ' or more outputs the zone id.
 - Zone names: time zone names ('z') cannot be parsed.
 
