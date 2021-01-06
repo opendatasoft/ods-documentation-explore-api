@@ -215,7 +215,7 @@ Records can be exported in 10 different formats:
 - JSON-LD RDF
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports`
 
 
 ### Exporting records in JSON
@@ -227,7 +227,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/json`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/json`
 
 ### Exporting records in GeoJSON
 
@@ -238,7 +238,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/geojson`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/geojson`
 
 Export records to a [GeoJSON format](http://geojson.org/).
 
@@ -251,7 +251,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/jsonl`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/jsonl`
 
 Export records to a [NDJSON](http://ndjson.org/) (Json lines) format.
 The JSONlines format returns a record by line. It can be useful for streaming operations.
@@ -267,7 +267,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 Export records to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/csv`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/csv`
 
 ##### URL Parameters
 
@@ -287,7 +287,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 Export records to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/xls`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/xls`
 
 
 ### Exporting records in Shapefile
@@ -301,7 +301,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile).
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/shp`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/shp`
 
 ### Exporting records in Turtle RDF
 
@@ -312,7 +312,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/turtle`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/turtle`
 
 
 ### Exporting records in RDF-XML
@@ -324,7 +324,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/rdfxml`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/rdfxml`
 
 
 ### Exporting records in N3 RDF
@@ -336,7 +336,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/n3`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/n3`
 
 ### Exporting records in JSON-LD RDF
 
@@ -347,7 +347,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 ```
 
 ##### HTTP Request
-`GET /api/v2/catalog/<dataset_id>/exports/jsonld`
+`GET /api/v2/catalog/datasets/<dataset_id>/exports/jsonld`
 
 
 ## Looking up a record
