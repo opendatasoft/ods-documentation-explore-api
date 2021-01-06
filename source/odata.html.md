@@ -12,6 +12,5 @@ includes:
   - common/authentication
   - common/oauth2
   - odata/odata_basics
-  - odata/excel_integration
 search: true
 ---
