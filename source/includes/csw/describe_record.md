@@ -29,15 +29,15 @@ POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 The `DescribeRecord` operation allows clients to discover elements of the information model supported by the
-catalogue service.
+catalog service.
 
 ### Parameters
 
 This is the list of the supported parameters specific to the `DescribeRecord` operation. You should also take into
-consideration the common parameters. [See more](parameters).
+consideration the common [parameters](#parameters).
 
 The existing parameters in the CSW standard which are not listed in this table are currently not supported.
 
 Parameter | Description | Optionality and use
 --------- | ----------- | -------------------
-`TypeName` | Unordered list of zero or more type names that are to be described by the catalogue. | Optional. When omitted, return all types known.
+`TypeName` | Unordered list of zero or more type names that are to be described by the catalog. | Optional. When omitted, return all types known.

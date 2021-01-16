@@ -26,13 +26,13 @@ POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
   </GetRecordById>
 ```
 
-The `GetRecordById` operation allows clients to retrieve the representation of catalogue records using their
+The `GetRecordById` operation allows clients to retrieve the representation of catalog records using their
 identifier. The response is an XML document and the output schema can be specified.
 
 ### Parameters
 
 This is the list of the supported parameters specific to the `GetRecordById` operation. You should also take into
-consideration the common parameters. [See more](#parameters).
+consideration the common [parameters](#parameters).
 
 The existing parameters in the CSW standard which are not listed in this table are currently not supported.
 

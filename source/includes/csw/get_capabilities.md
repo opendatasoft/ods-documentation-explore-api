@@ -35,14 +35,14 @@ containing the information.
 ### Parameters
 
 This is the list of the supported parameters specific to the `GetCapabilities` operation. You should also take into
-consideration the common parameters. [See more](#parameters).
+consideration the common [parameters](#parameters).
 
-The existing parameters in the CSW standard which are not listed in this table are currently not supported.
+The existing parameters in the CSW standard that are not listed in this table are currently not supported.
 
 Parameter | Description | Optionality and use
 --------- | ----------- | -------------------
-`Sections` |	Unordered list of zero or more names of sections of service metadata document to be returned in service metadata document. | Optional. When omitted, return complete service metadata document.
-`AcceptVersions` | Prioritized sequence of one or more specification versions accepted by client, with preferred versions listed first.	| Optional. When omitted, return latest supported version.
+`Sections` |	Unordered list of zero or more names of sections of service metadata document to be returned in service metadata document. | Optional. When omitted, returns the complete service metadata document.
+`AcceptVersions` | Prioritized sequence of one or more specification versions accepted by client, with preferred versions listed first.	| Optional. When omitted, returns the latest supported version.
 
 ### Sections
 
