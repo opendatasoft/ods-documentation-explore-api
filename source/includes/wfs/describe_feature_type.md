@@ -31,8 +31,8 @@ The `DescribeFeatureType` operation generates a schema description of features t
 This is the list of the supported parameters specific to the `DescribeFeatureType` operation. You should also take into
 consideration the common parameters. [See more](#parameters)
 
-The existing parameters in the WFS standard which are not listed in this table are currently not supported.
+The existing parameters in the WFS standard that are not listed in this table are currently not supported.
 
 Parameter | Description | Optionality and use
 --------- | ----------- | -------------------
-`TypeName` | A comma separated list of feature types to describe. If no value is specified that is to be interpreted as all <br> feature types. | Optional. When omitted, return all types known.
+`TypeName` | A comma-separated list of feature types to describe. | Optional. When omitted, return all feature types known.
