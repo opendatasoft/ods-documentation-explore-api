@@ -4,13 +4,13 @@
 `ElementSetName` parameters
 
 ```http
-GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecords&resulttype=results&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&typenames=csw:Record HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=GetRecords&resulttype=results&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&typenames=csw:Record HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 ```xml

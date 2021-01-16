@@ -4,13 +4,13 @@
 > `DescribeRecord` operation with the optional `TypeName` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/csw?service=CSW&request=DescribeRecord&typename=csw:Record HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=DescribeRecord&typename=csw:Record HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 ```xml

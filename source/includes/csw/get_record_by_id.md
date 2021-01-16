@@ -3,13 +3,13 @@
 > `GetRecordById` operation with the optional `outputSchema` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=world-heritage-unesco-list HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=roman-emperors HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 ```xml
@@ -22,7 +22,7 @@ POST https://examples.opendatasoft.com/api/csw HTTP/1.1
       xmlns="http://www.opengis.net/cat/csw/2.0.2"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2/csw/2.0.2/CSW-discovery.xsd">
-      <Id>world-heritage-unesco-list</Id>
+      <Id>roman-emperors</Id>
   </GetRecordById>
 ```
 

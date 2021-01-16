@@ -5,13 +5,13 @@
 > Example GET request
 
 ```http
-GET https://examples.opendatasoft.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider HTTP/1.1
 ```
 
 > Example POST request
 
 ```http
-POST https://examples.opendatasoft.com/api/csw HTTP/1.1
+POST hhttps://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 ```xml

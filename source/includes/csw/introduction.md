@@ -21,13 +21,12 @@ Operation | Description
 > Service entry address
 
 ```http
-GET https://examples.opendatasoft.com/api/csw HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the domain `https://examples.opendatasoft.com` as an example but you should replace it
-by your custom domain name.
+The domain `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
 
 The CSW API supports both `GET` and `POST` HTTP methods.
 
