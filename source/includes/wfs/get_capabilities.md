@@ -5,13 +5,13 @@
 > `GetCapabilities` operation with the optional `Sections` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
 ```
 
 ```xml

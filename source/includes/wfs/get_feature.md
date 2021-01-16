@@ -3,13 +3,13 @@
 > `GetFeature` operation with the optional `PropertyName` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&typename=ods:world-heritage-unesco-list&propertyname=ods:world-heritage-unesco-list/geo_shape HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
 ```
 
 ```xml
@@ -22,8 +22,8 @@ POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
   xmlns:myns="http://www.someserver.com/myns"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.opengis.net/wfs ../wfs/1.1.0/WFS.xsd">
-  <wfs:Query typeName="ods:world-heritage-unesco-list">
-      <wfs:PropertyName>geo_shape</wfs:PropertyName>
+  <wfs:Query typeName="ods:roman-emperors">
+      <wfs:PropertyName>name</wfs:PropertyName>
   </wfs:Query>
 </wfs:GetFeature>
 ```

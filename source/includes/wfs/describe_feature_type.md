@@ -3,13 +3,13 @@
 > `DescribeFeatureType` operation with the optional `TypeName` parameter
 
 ```http
-GET https://examples.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&typeName=ods:world-heritage-unesco-list HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&typeName=ods:roman-emperors HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
+POST documentation-resources.opendatasoft/api/wfs HTTP/1.1
 ```
 
 ```xml
@@ -20,7 +20,7 @@ POST https://examples.opendatasoft.com/api/wfs HTTP/1.1
     xmlns="http://www.opengis.net/wfs"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.opengis.net/wfs ../wfs/1.1.0/WFS.xsd">
-    <TypeName>ods:world-heritage-unesco-list</TypeName>
+    <TypeName>ods:roman-emperors</TypeName>
 </DescribeFeatureType>
 ```
 
