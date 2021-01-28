@@ -1,6 +1,6 @@
 # Sources
 
-> Retrieve a list of available sources on `public` domain
+> Retrieve a list of available sources on the `documentation-resource` domain
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/'
@@ -46,7 +46,7 @@ For now, the metadata API only works on the catalog data source.
 
 ## Catalog source
 
-> Get a list of published datasets on `public` domain
+> Get a list of published datasets on the `documentation-resource` domain
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets'
@@ -60,7 +60,7 @@ The catalog source works on the published dataset of a requested domain. Use thi
 
 ## Monitoring source
 
-> Get a list of monitoring datasets on `public` domain
+> Get a list of monitoring datasets on the `documentation-resource` domain
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/monitoring/datasets'
@@ -79,16 +79,16 @@ The monitoring API gives access to the data of one specific dataset containing t
 
 ## Opendatasoft source
 
-> Get a list of all public datasets on Opendatasoft's Data Network
+> Get a list of all public datasets on the Opendatasoft Data Network
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/opendatasoft/datasets'
 ```
 
-The Opendatasoft allows to search and work on all available public datasets from the Opendatasoft data network.
+The Opendatasoft source allows to search and work on all available public datasets from the Opendatasoft Data Network.
 
 <aside>
-The HTTP request below returns the same datasets as https//data.opendatasoft.com/api/v2/catalog.
+The following HTTP request returns the same datasets as https//data.opendatasoft.com/api/v2/catalog.
 </aside>
 
 ##### HTTP Request

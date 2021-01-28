@@ -41,7 +41,7 @@ The catalog API allows to:
 - export the datasets of a chosen domain's catalog
 - lookup a dataset from a domain's catalog
 
-Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters however accept field literals, which are documented right below. We recommend reading the **Field literal in catalog queries** section before diving into the catalog API.
+Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters accept field literals. We recommend reading the **Field literal in catalog queries** section before diving into the catalog API.
 
 
 ##### Field literal in catalog queries
@@ -62,7 +62,7 @@ Field name | Description
 ---------- | -----------
 `datasetid` | Human readable dataset identifier
 `has_records` | Boolean field indicating if a dataset contains records
-`features` | List of dataset features. Possible values: calendar, geo, image, apiproxy, timeserie and aggregate
+`features` | List of dataset features. Possible values: `calendar`, `geo`, `image`, `apiproxy`, `timeserie`, and `aggregate`
 
 ###### Dataset metadata
 
@@ -73,7 +73,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?w
 # Since modified is a `basic` metadata, `where` expression can be simplified to `modified>2015`
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where=modified>2020'
 
-# Get datasets that have been downloaded more than a 100 times
+# Get datasets that have been downloaded more than 100 times
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
@@ -122,7 +122,7 @@ Parameter | Default | Description
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
 `start` | 0 | Index of the first item to return
 `rows` | 10 | Number of items to return. Max value: 100
-`include_app_metas` | false | Explicitely request application metadata for each datasets
+`include_app_metas` | false | Explicitly request application metadata for each datasets
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
@@ -360,7 +360,7 @@ A dataset catalog can be exported in different formats:
 
 ### Exporting a catalog in JSON
 
-> Export datasets in json format
+> Export datasets in JSON format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/json'
@@ -371,7 +371,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/js
 
 ### Exporting a catalog in CSV
 
-> Export datasets in csv format using **,** as delimiter
+> Export datasets in CSV format using **,** as delimiter
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
@@ -391,7 +391,7 @@ Parameter | Default | Description
 
 ### Exporting a catalog in XLS
 
-> Export datasets in xls format
+> Export datasets in XLS format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/xls'
@@ -404,7 +404,7 @@ Export datasets to an XLS format using [SpreadsheetML specification](https://en.
 
 ### Exporting a catalog in RSS
 
-> Export datasets in rss format
+> Export datasets in RSS format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/rss'
@@ -415,7 +415,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/rs
 
 ### Exporting a catalog in TTL
 
-> Export datasets in turle rdf format
+> Export datasets in Turtle RDF format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/ttl'
@@ -428,7 +428,7 @@ Export datasets to a Turtle RDF format using [DCAT application for data portals 
 
 ### Exporting a catalog in RDF
 
-> Export datasets in rdf-xml format
+> Export datasets in RDF/XML format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/rdf'

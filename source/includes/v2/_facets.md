@@ -1,14 +1,14 @@
 # Facets
 
-A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as facet: associated values for this facet could be `English` or `French`.
+A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as a facet: associated values for this facet could be `English` or `French`.
 
-In an Opendatasoft portal, facets are especially used for building the left filtering column of both the datasets catalog and dataset records exploration pages.
+In an Opendatasoft portal, facets are specially used for building the left filtering column of both the datasets catalog and dataset records exploration pages.
 
 ## Enumerating facets values
 
 Enumerating facets values allows to discover the existing values for a facet.
 
-For example, an API call to enumerate facets in a catalog can show that there are 12 datasets in English, and 1 in French.
+For example, an API call to enumerate facets in a catalog can show that there are 12 datasets in English and 1 in French.
 
 ### Catalog
 
@@ -142,7 +142,7 @@ Parameter  | Default | Multiple | Description
 
 Filtering facets values allows to limit the result set, either by refining or excluding.
 
-For example, an API call that enumerates the facets in a catalog can be refined to limit the result set to English datasets only. The subsequent call will show that among the 12 datasets of the catalog that are in English, only one dataset deals with environment. It could then be possible to exclude this dataset, etc.
+For example, an API call that enumerates the facets in a catalog can be refined to limit the result set to English datasets only. The subsequent call will show that among the 12 datasets of the catalog that are in English, only one dataset deals with the environment. It could then be possible to exclude this dataset, etc.
 
 ### Refine
 

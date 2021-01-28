@@ -9,7 +9,7 @@ The dataset API allows to work on these records. More specifically, the dataset 
 - export records from a chosen dataset
 - lookup a specific record from a chosen dataset
 
-Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters however accept field literals, which are documented right below. We recommend reading the **Field literal in dataset queries** section before diving into the dataset API.
+Each endpoint above is documented in its own section, along with its available parameters. Some of these parameters accept field literals. We recommend reading the **Field literal in dataset queries** section before diving into the dataset API.
 
 ##### Field literal in dataset queries
 
@@ -42,7 +42,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=name'
 ```
 
-Any field name from a dataset can be used as [field literal](#field-literal) in query parameters.
+Any field name from a dataset can be used as a [field literal](#field-literal) in query parameters.
 
 <aside>
 If a field name contains only numbers or is a keyword, it must be enclosed in back-quotes.
@@ -53,7 +53,7 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 
 ## Searching records
 
-> Get first 10 records
+> Get the first 10 records
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10'
@@ -90,7 +90,7 @@ Parameter | Default | Description
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
 `start` | 0 | Index of the first item to return
 `rows` | 10 | Number of items to return.
-`include_app_metas` | false | Explicitely request application metadata for each dataset
+`include_app_metas` | false | Explicitly request application metadata for each dataset
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
@@ -125,7 +125,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
 ```
 
-> Returns an array with an object for each `feature` containing feature's name and number of datasets
+> Returns an array with an object for each `feature` containing the feature's name and number of datasets
 
 ```json
 {
@@ -178,7 +178,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Aggregation with an multiple group_by
 
 ```shell
-# Retrieve number of cities with more than 5,000 inhabitatnts grouped by time zone and country code
+# Retrieve the number of cities with more than 5,000 inhabitants grouped by time zone and country code
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=timezone,country_code,count(*)&group_by=timezone,country_code'
 ```
 
@@ -223,8 +223,8 @@ An aggregation query returns a JSON array containing an object for each group cr
 Each JSON object contains a key/value pair for each `select` instruction.
 However, without the `group_by` parameter, it returns an array with only one object.
 
-`select` parameter can only be composed of aggregation function or by aggregated value.
-It means that literal field in select clause outside aggregation function must be present in `group_by` clauses.
+The `select` parameter can only be composed of an aggregation function or by aggregated value.
+It means that a literal field in a select clause outside aggregation function must be present in `group_by` clauses.
 
 If a query contains multiple `group_by` clauses, returned groups are combined together.
 
@@ -296,7 +296,7 @@ Export records to a [GeoJSON format](http://geojson.org/).
 
 ### Exporting records in JSON Lines
 
-> Export records in json lines format
+> Export records in JSON Lines format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonl'
@@ -305,12 +305,12 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 ##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>/exports/jsonl`
 
-Export records to a [NDJSON](http://ndjson.org/) (Json lines) format.
+Export records to a [NDJSON](http://ndjson.org/) (JSON Lines) format.
 The JSONlines format returns a record by line. It can be useful for streaming operations.
 
 ### Exporting records in CSV
 
-> Export records in csv format using **,** as delimiter
+> Export records in CSV format using **,** as delimiter
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/csv?delimiter=,'
@@ -330,7 +330,7 @@ Parameter | Default | Description
 
 ### Exporting records in XLS
 
-> Export records in xls format
+> Export records in XLS format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/xls'
@@ -357,7 +357,7 @@ Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile)
 
 ### Exporting records in Turtle RDF
 
-> Export records in turle rdf format
+> Export records in Turtle RDF format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/turtle'
@@ -367,9 +367,9 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 `GET /api/v2/catalog/datasets/<dataset_id>/exports/turtle`
 
 
-### Exporting records in RDF-XML
+### Exporting records in RDF/XML
 
-> Export records in rdf-xml format
+> Export records in RDF/XML format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/rdfxml'
@@ -381,7 +381,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 ### Exporting records in N3 RDF
 
-> Export records in n3 rdf format
+> Export records in N3 RDF format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/n3'
@@ -392,7 +392,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 ### Exporting records in JSON-LD RDF
 
-> Export records in json-ld rdf format
+> Export records in JSON-LD RDF format
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonld'
@@ -404,7 +404,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 ## Looking up a record
 
-> Lookup airbnb-listings dataset
+> Lookup GeoNames dataset
 
 ```shell
 
