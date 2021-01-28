@@ -393,5 +393,6 @@ Parameter            | Description
 -------------------- | -----------
 `clusterprecision`   | The desired precision level, depending on the current map zoom level (for example, the Leaflet zoom level). This parameter is mandatory
 `shapeprecision`     | The precision of the returned cluster envelope. The sum of clusterprecision and shapeprecision must not exceed 29
+`clusterdistance`   | The distance from the cluster center (the radius). This parameter is mandatory
 `clustermode`        | The desired clustering mode. Supported values are `polygon` (default) and `heatmap`
 `y.<SERIE>.func`, `y.<SERIE>.expr` | This API also accepts a series definition as described in the record analysis API. If a serie is defined, the aggregation will be performed using the values of the series.
