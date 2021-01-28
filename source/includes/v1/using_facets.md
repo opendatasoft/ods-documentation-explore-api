@@ -3,7 +3,7 @@
 A facet can be considered as a valued tag associated with a record. For instance, let's say a dataset has a facet
 "City". A record in this dataset could have the value "Paris" for the "City" facet.
 
-Facets are for instance used for building the left navigation column, both for dataset catalog exploration page and
+Facets are, for instance, used for building the left navigation column, both for dataset catalog exploration page and
 dataset records exploration page.
 
 Facets are especially useful to implement guided navigation in large result sets.
@@ -54,8 +54,8 @@ Facet Name           | Description
 }
 ```
 
-In the records API, facets are defined at field level. A field facet can be available depending on the data producer
-choices. Fields (retrieved for instance from the Dataset Lookup API) for which faceting is available can be easily
+In the records API, facets are defined at the field level. A field facet can be available depending on the data producer
+choices. Fields (retrieved, for instance, from the Dataset Lookup API) for which faceting is available can be easily
 identified as shown in the example on the right.
 
 When faceting is enabled, facets are returned in the response after the result set.
@@ -95,7 +95,7 @@ the query context.
 ]
 ```
 
-Facets are hierarchical, for instance, a year facet will contain months facets and a month facet will contain days
+Facets are hierarchical. For instance, a year facet will contain months facets, and a month facet will contain days
 facets.
 
 > Example of a facet with all its attributes

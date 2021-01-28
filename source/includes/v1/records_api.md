@@ -25,8 +25,8 @@ Parameter            | Description
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `json` (default), `jsonp`, `geojson`, `geojsonp`, `rss`, `atom`
 `callback`           | JSONP or GEOJSONP callback
-`sort`               | Sorts results by the specified field (e.g. `record_timestamp`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort. Sorting is only available on numeric fields (Integer, Decimal), date fields (Date, DateTime) and on text fields which have the sortable annotation
-`rows`               | Number of results to return in a single call. By default, `10` results are returned. While you can request for up to `10 000` results in a row, such requests are not optimal and can be throttled so you should consider splitting them into smaller ones or use the Records Download API. Note also that the cumulated value of the parameters `start` and `rows` cannot go over `10 000`. It means that with the Records Search API, there's no way to access a result with a position greater than `10 000`. If however you need to do so, consider again using the Records Download API.
+`sort`               | Sorts results by the specified field (for example, `record_timestamp`). By default, the sort is descending. A minus sign `-` may be used to perform an ascending sort. Sorting is only available on numeric fields (Integer, Decimal), date fields (Date, DateTime), and on text fields that have the sortable annotation
+`rows`               | Number of results to return in a single call. By default, `10` results are returned. While you can request up to `10 000` results in a row, such requests are not optimal and can be throttled. So, you should consider splitting them into smaller ones or use the Records Download API. Note also that the cumulated value of the parameters `start` and `rows` cannot go over `10 000`. It means that with the Records Search API, there's no way to access a result with a position greater than `10 000`. If you need to do so, consider again using the Records Download API.
 `start`              | Index of the first result to return (starting at 0). Use in conjunction with "rows" to implement paging
 
 ## Record Lookup API
@@ -95,7 +95,7 @@ GET /api/records/1.0/analyze HTTP/1.1
 
 This API provides powerful analytics features over a set of selected records.
 
-It returns analyzed results in light and easy to parse format which can used as an input of modern charting libraries such as **Highchart.js** or **D3.js**.
+It returns analyzed results in light and easy to parse format, which can be used as an input of modern charting libraries such as **Highchart.js** or **D3.js**.
 
 ### Parameters
 
@@ -166,7 +166,7 @@ Parameter            | Description
 `exclude.<FACET>`    | Exclude records where `FACET` has the specified value from the result set. It can be used several times for the same facet or for different facets
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `json` (default), `jsonp`, `csv`
-`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters may require URL encoding.
 `callback`           | JSONP callback (only in JSONP requests)
 
 #### Aggregation parameters
@@ -202,13 +202,13 @@ https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?datase
 Parameter            | Description
 -------------------- | -----------
 `x`                  | Field on which the data aggregation will be based. This parameter is mandatory. It allows for analyzing a subset of data according to the different values of the fields. The behavior may vary according to the field type. For **Date** and **DateTime** fields, the slices are built from the dates using the level of aggregation defined through the `precision`  and `periodic`  parameters. For other field types, the actual field values are used as x values
-`y.<SERIE>.func`     | The definition of the analysis aggregation function. Multiple series can be computed at once, simply name this parameter with an arbitrary serie name that you may reuse for specifying the associated aggregated expression. The list of available aggregation functions is: `COUNT` , `AVG` , `SUM` , `MIN` , `MAX` , `STDDEV` , `SUMSQUARES` . These functions return the result of their execution on the expression provided in y.<SERIE>.expr (or simply the number of records for the `COUNT`  function) for each value of x
-`y.<SERIE>.expr`     | Defines the value to be aggregated. This parameter is mandatory for every aggregation function but the `COUNT`  function. The <SERIES> parameter must have the same name as the one used for the required corresponding aggregation function. The parameter may contain the name of a numeric field in the Dataset (**Int** or **Double**), or a mathematical expression (see below to get more details on the expression language).
+`y.<SERIE>.func`     | The definition of the analysis aggregation function. Multiple series can be computed at once. Simply name this parameter with an arbitrary series name that you may reuse for specifying the associated aggregated expression. The list of available aggregation functions is: `COUNT` , `AVG` , `SUM` , `MIN` , `MAX` , `STDDEV` , `SUMSQUARES` . These functions return the result of their execution on the expression provided in y.<SERIE>.expr (or simply the number of records for the `COUNT`  function) for each value of x
+`y.<SERIE>.expr`     | Defines the value to be aggregated. This parameter is mandatory for every aggregation function but the `COUNT`  function. The <SERIES> parameter must have the same name as the one used for the required corresponding aggregation function. The parameter may contain the name of a numeric field in the Dataset (**Int** or **Double**) or a mathematical expression (see below to get more details on the expression language).
 `y.<SERIE>.cumulative` | This parameter accepts values `true`  and `false`  (default). If the parameter is set to true, the results of a series are recursively summed up (`serie(x) = serie(x) + serie(x-1)` )
-`maxpoints`            | Limits the maximum number of results returned in the serie. By default there is no limit
+`maxpoints`            | Limits the maximum number of results returned in the serie. By default, there is no limit.
 `periodic`             | Used only in cases in which x is of type **Date** or **DateTime**. It defines the level at which aggregation is done. Possible values are `year`  (default), `month` , `week` , `weekday` , `day` , `hour` , `minute` . This parameter will allow you, for instance, to compute aggregations on months across all years. For instance, with a value set to `weekday` , the output will be: `[{"x": {"weekday":0},"series1": 12}, {"x": {"weekday":1},"series1": 30}]` . When `weekday`  is used, the generated value range from 0 to 6 where 0 corresponds to Monday and 6 to Sunday
-`precision`            | Used only in cases in which X is of type **Date** or **DateTime**. It defines the precision of the aggregation. Possible values are `year` , `month` , `week` , `day`  (default), `hour` , `minute` . If `weekday`  is provided as a `periodic`  parameter, the `precision`  parameter is ignored. This parameter shall respect the `precision`  annotation of the field. If the field is annotated with a precision set to `day` , the serie precision can at maximum be set to `day`
-`sort`                 | Sorts the aggregation values according to the specified series, or to the x parameter. By default, the values are sorted in descending order, according to the x parameter. A minus sign ('-') can however be prepended to the argument to make an ascending sort
+`precision`            | Used only in cases in which X is of type **Date** or **DateTime**. It defines the precision of the aggregation. Possible values are `year` , `month` , `week` , `day`  (default), `hour` , `minute` . If `weekday`  is provided as a `periodic`  parameter, the `precision`  parameter is ignored. This parameter shall respect the `precision`  annotation of the field. If the field is annotated with a precision set to `day` , the series precision can at maximum be set to `day`.
+`sort`                 | Sorts the aggregation values according to the specified series or to the x parameter. By default, the values are sorted in descending order, according to the x parameter. A minus sign ('-') can be prepended to the argument to make an ascending sort
 
 ### Expression language
 
@@ -253,7 +253,7 @@ GET /api/records/1.0/download HTTP/1.1
 ```
 
 This API provides an efficient way to download a large set of records out of a dataset. The HTTP
-answer is streamed which makes it possible to optimize the memory consumption client side.
+answer is streamed, which makes it possible to optimize the memory consumption client side.
 
 ### Parameters
 
@@ -269,7 +269,7 @@ Parameter            | Description
 `fields`             | Restricts field to retrieve. This parameter accepts multiple field names separated by commas. Example: `fields=field1,field2,field3`
 `pretty_print`       | If set to true (default is false), pretty prints JSON and JSONP output
 `format`             | Format of the response output. Can be `csv` (default), `json`, `jsonp`, `geojson`, `geojsonp`
-`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters however may require URL encoding.
+`csv_separator`      | If the `format` is `csv`, defines the delimiter used. Can be `;` (default), `,`, <code>&#124;</code>, or any ASCII character. Special characters may require URL encoding.
 `callback`           | JSONP or GEOJSONP callback
 
 ## Records Geo Clustering API
@@ -394,4 +394,4 @@ Parameter            | Description
 `clusterprecision`   | The desired precision level, depending on the current map zoom level (for example, the Leaflet zoom level). This parameter is mandatory
 `shapeprecision`     | The precision of the returned cluster envelope. The sum of clusterprecision and shapeprecision must not exceed 29
 `clustermode`        | The desired clustering mode. Supported values are `polygon` (default) and `heatmap`
-`y.<SERIE>.func`, `y.<SERIE>.expr` | This API also accepts a serie definition as described in the record analysis API. If a serie is defined, the aggregation will be performed using the values of the serie
+`y.<SERIE>.func`, `y.<SERIE>.expr` | This API also accepts a series definition as described in the record analysis API. If a serie is defined, the aggregation will be performed using the values of the series.
