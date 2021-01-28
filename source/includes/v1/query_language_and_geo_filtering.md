@@ -42,10 +42,10 @@ Parenthesis can be used to group together expressions and alter the default prio
 
 ### Field queries
 
-> Search on https://public.opendatasoft.com for datasets having "Paris" in their title or description and containing at least 50 000 records
+> Search on the `documentation-resources` domain for datasets having "Paris" in their title or description and containing at least 50 records
 
 ``` text
-GET https://public.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50000
+GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50
 ```
 
 One of the major feature of the query language is to allow per field filtering. You can use field names as a prefix to

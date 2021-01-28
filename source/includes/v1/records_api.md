@@ -35,10 +35,44 @@ Parameter            | Description
 GET /api/datasets/1.0/<dataset_id>/records/<record_id> HTTP/1.1
 ```
 
-> Example lookup for record `ff1f5b718ce2ee87f18dfaf20610f257979f2f4a` in dataset `world-heritage-unesco-list`:
+> Example lookup for the record `d087227c3595eb1e5b7d09dacfdfd6cafb86562a` in the dataset `doc-geonames-cities-5000`:
 
 ```text
-https://examples.opendatasoft.com/api/datasets/1.0/world-heritage-unesco-list/records/ff1f5b718ce2ee87f18dfaf20610f257979f2f4a
+https://documentation-resources.opendatasoft.com/api/datasets/1.0/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a
+```
+
+```json
+{
+    "datasetid": "doc-geonames-cities-5000",
+    "recordid": "d087227c3595eb1e5b7d09dacfdfd6cafb86562a",
+    "fields": {
+        "name": "Paris",
+        "modification_date": "2020-05-26",
+        "geonameid": "2988507",
+        "feature_class": "P",
+        "admin2_code": "75",
+        "geo_point_2d": [
+            48.85341,
+            2.3488
+        ],
+        "timezone": "Europe/Paris",
+        "feature_code": "PPLC",
+        "dem": 42,
+        "country_code": "FR",
+        "admin1_code": "11",
+        "alternatenames": "Baariis,Bahliz,Ile-de-France,Lungsod ng Paris,Lutece,Lutetia,Lutetia Parisorum,Lutèce,PAR,Pa-ri,Paarys,Palika,Paname,Pantruche,Paraeis,Paras,Pari,Paries,Parigge,Pariggi,Parighji,Parigi,Pariis,Pariisi,Pariizu,Pariižu,Parij,Parijs,Paris,Parisi,Parixe,Pariz,Parize,Parizh,Parizh osh,Parizh',Parizo,Parizs,Pariž,Parys,Paryz,Paryzh,Paryzius,Paryż,Paryžius,Paräis,París,Paríž,Parîs,Parĩ,Parī,Parīze,Paříž,Páras,Párizs,Ville-Lumiere,Ville-Lumière,ba li,barys,pairisa,pali,pari,paris,parys,paryzh,perisa,pryz,pyaris,pyarisa,pyrs,Île-de-France,Παρίσι,Париж,Париж ош,Парижь,Париз,Парис,Парыж,Паріж,Փարիզ,פאריז,פריז,باريس,پارىژ,پاريس,پاریس,پیرس,ܦܐܪܝܣ,पॅरिस,पेरिस,पैरिस,প্যারিস,ਪੈਰਿਸ,પૅરિસ,பாரிஸ்,పారిస్,ಪ್ಯಾರಿಸ್,പാരിസ്,ปารีส,ཕ་རི།,ပါရီမြို့,პარიზი,ፓሪስ,ប៉ារីស,パリ,巴黎,파리",
+        "asciiname": "Paris",
+        "population": 2138551
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            2.3488,
+            48.85341
+        ]
+    },
+    "record_timestamp": "2021-01-04T11:22:14.440000+00:00"
+}
 ```
 
 This API makes it possible to fetch an individual record using its identifier (Record ID).
@@ -67,20 +101,57 @@ It returns analyzed results in light and easy to parse format which can used as 
 
 #### Filtering parameters
 
-> Count World Heritage Unesco sites in each category, filtered by a polygon in Central Europe:
+> Count cities with a population greater than 5,000 inhabitants in each country code, filtered by a polygon in Central Europe:
 
 ```text
-https://examples.opendatasoft.com/api/records/1.0/analyze/?dataset=world-heritage-unesco-list&x=category&y.my_count.func=COUNT&geofilter.polygon=(50.0,0.0),(50.0,10.0),(40.0,10.0),(40.0,0.0)
+https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.my_count.func=COUNT&geofilter.polygon=(50.0,0.0),(50.0,10.0),(40.0,10.0),(40.0,0.0)
 ```
 
 ```json
-[{
-        "x": "Cultural",
-        "my_count": 59
+[
+    {
+        "x": "AD",
+        "my_count": 7
     },
     {
-        "x": "Natural",
-        "my_count": 5
+        "x": "AT",
+        "my_count": 16
+    },
+    {
+        "x": "BE",
+        "my_count": 13
+    },
+    {
+        "x": "CH",
+        "my_count": 342
+    },
+    {
+        "x": "DE",
+        "my_count": 677
+    },
+    {
+        "x": "ES",
+        "my_count": 261
+    },
+    {
+        "x": "FR",
+        "my_count": 1468
+    },
+    {
+        "x": "IT",
+        "my_count": 512
+    },
+    {
+        "x": "LI",
+        "my_count": 11
+    },
+    {
+        "x": "LU",
+        "my_count": 17
+    },
+    {
+        "x": "MC",
+        "my_count": 3
     }
 ]
 ```
@@ -100,58 +171,30 @@ Parameter            | Description
 
 #### Aggregation parameters
 
-> Return the area in hectares of the biggest World Heritage Unesco site in each country:
+> Return the population size of the biggest city for each country code:
 
 ```text
-https://examples.opendatasoft.com/api/records/1.0/analyze/?dataset=world-heritage-unesco-list&x=country_en&y.max_area.func=MAX&y.max_area.expr=area_hectares
+https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.max_population.func=MAX&y.max_population.expr=population
 ```
 
 ```json
-[{
-        "x": "Afghanistan",
-        "max_area": 158.9265
+[
+    {
+        "x": "AD",
+        "max_population": 20430
     },
     {
-        "x": "Albania",
-        "max_area": 58.9
-    },
-    {
-        "x": "Algeria",
-        "max_area": 665.03
+        "x": "AE",
+        "max_population": 2956587
     },
     /* ... */
     {
-        "x": "Zimbabwe",
-        "max_area": 676600
+        "x": "ZM",
+        "max_population": 1267440
     },
     {
-        "x": "the Former Yugoslav Republic of Macedonia",
-        "max_area": 83350
-    }
-]
-```
-
-> Return the count of sites inscribed each month and year:
-
-```text
-https://examples.opendatasoft.com/api/records/1.0/analyze/?dataset=world-heritage-unesco-list&x=date_inscribed&periodic=year&precision=month&y.another_count.func=COUNT
-```
-
-```json
-[{
-        "x": {
-            "month": 1,
-            "year": 1978
-        },
-        "another_count": 12
-    },
-    /* ... */
-    {
-        "x": {
-            "month": 1,
-            "year": 1980
-        },
-        "another_count": 27
+        "x": "ZW",
+        "max_population": 1542813
     }
 ]
 ```
@@ -169,24 +212,30 @@ Parameter            | Description
 
 ### Expression language
 
-> Return the average value of twice the sinus of the areas for each category (for the sake of example):
+> Return the average value of twice the square root of the population for each country code (for the sake of example):
 
 ``` text
-https://examples.opendatasoft.com/api/records/1.0/analyze/?dataset=world-heritage-unesco-list&x=category&y.series1.func=AVG&y.series1.expr=sin(area_hectares)*2
+https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.series1.func=AVG&y.series1.expr=sqrt(population)*2
 ```
 
 ```json
-[{
-        "x": "Cultural",
-        "series1": 0.06208366995525825
+[
+    {
+        "x": "AD",
+        "series1": 189.14616030045894
     },
     {
-        "x": "Mixed",
-        "series1": 0.47869568886889907
+        "x": "AE",
+        "series1": 849.7322922436006
+    },
+    /* ... */
+    {
+        "x": "ZM",
+        "series1": 389.98380339301144
     },
     {
-        "x": "Natural",
-        "series1": 0.018136045219311035
+        "x": "ZW",
+        "series1": 438.7610954217565
     }
 ]
 ```
@@ -256,54 +305,84 @@ Parameter            | Description
 
 ### Clustering parameters
 
-> Return clusters and shapes with low precision and the average area in each cluster
+> Return clusters and shapes with low precision and the average population in each cluster
 
 ```text
-https://examples.opendatasoft.com/api/records/1.0/geocluster/?dataset=world-heritage-unesco-list&shapeprecision=1&clusterprecision=3&y.avg_area.func=AVG&y.avg_area.expr=area_hectares```
+https://documentation-resources.opendatasoft.com/api/records/1.0/geocluster/?dataset=doc-geonames-cities-5000&shapeprecision=1&clusterprecision=3&clusterdistance=50&y.avg_population.func=AVG&y.avg_population.expr=population
 ```
 
 ```json
 {
-    "clusters": [{
-            "cluster_center": [
-                10.523538180927272, -60.95864515091818
-            ],
-            "cluster": {
-                "type": "Polygon",
-                "coordinates": [
-                    [[-62.00833333, -2.333333333],[-66.89068,10.49073],[-66.125,18.46666667],[-61.7616666667,17.0069444444],[-55.15,5.82611],[-56.5,4],[-62.00833333, -2.333333333]]
-                ]
-            },
-            "count": 11,
-            "series": {
-                "avg_area": 917952.2154545453
-            }
-        },
+    "clusters": [
         /* ... */
         {
             "cluster_center": [
-                49.942863890000005, -55.08576666776667
+                64.73423996474594,
+                177.51029999926686
             ],
+            "count": 1,
+            "series": {
+                "avg_population": 10332
+            },
+            "cluster": {
+                "type": "Point",
+                "coordinates": [
+                    177.51029999926686,
+                    64.73423996474594
+                ]
+            }
+        },
+        {
+            "cluster_center": [
+                54.03621598239988,
+                158.9805759564042
+            ],
+            "count": 5,
+            "series": {
+                "avg_population": 54285.8
+            },
             "cluster": {
                 "type": "Polygon",
                 "coordinates": [
-                    [[-53.2111111111, 46.635],[-56.4295222222, 51.726925],[-55.61666667, 51.46666667],[-53.2111111111, 46.635]]
+                    [
+                        [
+                            158.40468998998404,
+                            52.93109998572618
+                        ],
+                        [
+                            158.38134999386966,
+                            53.18908997811377
+                        ],
+                        [
+                            158.6206699255854,
+                            54.69609996769577
+                        ],
+                        [
+                            160.84540992043912,
+                            56.32034998387098
+                        ],
+                        [
+                            158.65075995214283,
+                            53.0444399965927
+                        ],
+                        [
+                            158.40468998998404,
+                            52.93109998572618
+                        ]
+                    ]
                 ]
-            },
-            "count": 3,
-            "series": {
-                "avg_area": 2838.3243333333335
             }
-        }
+        },
+        /* ... */
     ],
     "count": {
-        "max": 137,
+        "max": 5473,
         "min": 1
     },
     "series": {
-        "avg_area": {
-            "max": 40825000,
-            "min": 0
+        "avg_population": {
+            "max": 645386.6153846154,
+            "min": 2
         }
     },
     "clusterprecision": 3
