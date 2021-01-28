@@ -1,6 +1,6 @@
 # Facets
 
-A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as facet: associated values for this facet could be `English`, `French` or `Swedish`.
+A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as facet: associated values for this facet could be `English` or `French`.
 
 In an Opendatasoft portal, facets are especially used for building the left filtering column of both the datasets catalog and dataset records exploration pages.
 
@@ -8,72 +8,103 @@ In an Opendatasoft portal, facets are especially used for building the left filt
 
 Enumerating facets values allows to discover the existing values for a facet.
 
-For example, an API call to enumerate facets in a catalog can show that there are 13 datasets in English, 10 in French and 2 in Swedish.
+For example, an API call to enumerate facets in a catalog can show that there are 12 datasets in English, and 1 in French.
 
 ### Catalog
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/facets'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/facets'
 ```
 
 > API Response
 
 ```json
 {
-    /*...*/
-  "facets": [
-    {
-      "name": "language",
-      "facets": [
+    "links": [
         {
-          "count": 13,
-          "state": "displayed",
-          "name": "en",
-          "value": "en"
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/facets",
+            "rel": "self"
         },
         {
-          "count": 10,
-          "state": "displayed",
-          "name": "fr",
-          "value": "fr"
-        },
-        {
-          "count": 2,
-          "state": "displayed",
-          "name": "sv",
-          "value": "sv"
-        },
-      ]
-    },
-    {
-      "name": "modified",
-      "facets": [
-        {
-          "count": 25,
-          "state": "displayed",
-          "name": "2019",
-          "value": "2019"
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog",
+            "rel": "source"
         }
-      ]
-    },
-    {
-      "name": "federated",
-      "facets": [
+    ],
+    "facets": [
+        /*...*/
         {
-          "count": 8,
-          "state": "displayed",
-          "name": "false",
-          "value": "false"
+            "name": "language",
+            "facets": [
+                {
+                    "count": 7,
+                    "state": "displayed",
+                    "name": "en",
+                    "value": "en"
+                },
+                {
+                    "count": 1,
+                    "state": "displayed",
+                    "name": "fr",
+                    "value": "fr"
+                }
+            ]
         },
         {
-          "count": 17,
-          "state": "displayed",
-          "name": "true",
-          "value": "true"
-        }
-      ]
-    }
-  ]
+            "name": "modified",
+            "facets": [
+                {
+                    "count": 8,
+                    "state": "refined",
+                    "name": "2020",
+                    "value": "2020",
+                    "facets": [
+                        {
+                            "count": 2,
+                            "state": "displayed",
+                            "name": "11",
+                            "value": "2020/11"
+                        },
+                        {
+                            "count": 6,
+                            "state": "displayed",
+                            "name": "12",
+                            "value": "2020/12"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "theme",
+            "facets": [
+                {
+                    "count": 2,
+                    "state": "displayed",
+                    "name": "Culture, Heritage",
+                    "value": "Culture, Heritage"
+                },
+                {
+                    "count": 1,
+                    "state": "displayed",
+                    "name": "Administration, Government, Public finances, Citizenship",
+                    "value": "Administration, Government, Public finances, Citizenship"
+                },
+                {
+                    "count": 1,
+                    "state": "displayed",
+                    "name": "Environment",
+                    "value": "Environment"
+                },
+                {
+                    "count": 1,
+                    "state": "displayed",
+                    "name": "Spatial planning, Town planning, Buildings, Equipment, Housing",
+                    "value": "Spatial planning, Town planning, Buildings, Equipment, Housing"
+                }
+            ]
+        },
+        /*...*/
+    ]
 }
 ```
 
@@ -111,44 +142,61 @@ Parameter  | Default | Multiple | Description
 
 Filtering facets values allows to limit the result set, either by refining or excluding.
 
-For example, an API call that enumerates the facets in a catalog can be refined to limit the result set to English datasets only. The subsequent call will show that among the 13 datasets of the catalog that are in English, 5 are federated datasets, and 8 aren't. It could then be possible to exclude federated datasets, etc.
+For example, an API call that enumerates the facets in a catalog can be refined to limit the result set to English datasets only. The subsequent call will show that among the 12 datasets of the catalog that are in English, only one dataset deals with environment. It could then be possible to exclude this dataset, etc.
 
 ### Refine
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/facets?refine=modified:2019'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/facets?refine=modified:2020'
 ```
 
 ```json
 {
+    "links": [
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/facets",
+            "rel": "self"
+        },
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog",
+            "rel": "source"
+        }
+    ],
     "facets": [
+        /* ... */  
         {
             "name": "modified",
             "facets": [
                 {
-                    "name": "2019",
-                    "path": "2019",
-                    "count": 154,
+                    "count": 8,
                     "state": "refined",
+                    "name": "2020",
+                    "value": "2020",
                     "facets": [
                         {
-                            "name": "08",
-                            "path": "2019/08",
-                            "count": 74,
-                            "state": "displayed"
+                            "count": 2,
+                            "state": "displayed",
+                            "name": "11",
+                            "value": "2020/11"
                         },
-                        /* ... */
+                        {
+                            "count": 6,
+                            "state": "displayed",
+                            "name": "12",
+                            "value": "2020/12"
+                        }
                     ]
                 }
             ]
-        }
+        },
+        /* ... */
     ]
 }
 ```
 
 It is possible to limit the result set by refining on a given facet value.
 
-For example, when using `refine=modified:2019`, only datasets modified in 2019 will be returned.
+For example, when using `refine=modified:2020`, only datasets modified in 2020 will be returned.
 
 #### Format:
 
@@ -162,7 +210,7 @@ For date, and other hierarchical facets, when refining on one value, all second-
 
 Using the same principle as above, it is possible to exclude a given facet value from the result set.
 
-For example, when using `exclude=modified:2019`, only results that have not been modified in 2019 will be returned. Facets enumeration will display 2019 as `excluded` without any count information.
+For example, when using `exclude=modified:2020`, only results that have not been modified in 2020 will be returned. Facets enumeration will display 2020 as `excluded` without any count information.
 
 #### Format:
 

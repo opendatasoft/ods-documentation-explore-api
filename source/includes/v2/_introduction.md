@@ -1,9 +1,9 @@
 # Search API v2
 
-> Search API endpoint for examples domain
+> Search API endpoint for the `documentation-resources` domain
 
 ```text
-https://examples.opendatasoft.com/api/v2
+https://documentation-resources.opendatasoft.com/api/v2
 ```
 
 The Opendatasoft search API v2 is organized around REST. It provides access to all the data available through the platform in a coherent, hierarchical way.
@@ -15,5 +15,5 @@ The Opendatasoft search API v2 is organized around REST. It provides access to a
 - The same internal query language is used for all endpoints of the search API. It means that most of the time, parameters work the same way for all endpoints.
 
 <aside>
-The domain https://examples.opendatasoft.com/ will be used by default in all the examples of this documentation.
+The domain <a href="https://documentation-resources.opendatasoft.com/">https://documentation-resources.opendatasoft.com/</a> is used as an example in this documentation, but you should replace it with your custom domain name.
 </aside>

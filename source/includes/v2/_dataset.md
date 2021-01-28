@@ -20,7 +20,7 @@ In dataset search, a field literal can either be a technical field or a field fr
 
 ```shell
 # Sort records by their technical size
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?sort=record_size'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?sort=record_size'
 ```
 
 Field name | Description
@@ -35,11 +35,11 @@ Field name | Description
 > Use a field name as field_literal
 
 ```shell
-#Use field_name `name` to restrict records where `name` is Jonathan
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?where=name="Jonathan"'
+#Use field_name `name` to restrict records where `name` is Paris
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where=name="Paris"'
 
 # Select only `name` column
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?select=name'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=name'
 ```
 
 Any field name from a dataset can be used as [field literal](#field-literal) in query parameters.
@@ -56,19 +56,19 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 > Get first 10 records
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?rows=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10'
 ```
 
 > Get 10 records starting at the 10th result
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?rows=10&start=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10&start=10'
 ```
 
 > Search datasets containing `noa` in their fields
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/records?where="Noa"'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where="Noa"'
 ```
 
 This endpoint provides a search facility in the dataset catalog.
@@ -103,7 +103,7 @@ The sum of `start` and `rows` parameters must not exceed 10000. Use the export A
 > Aggregation query without group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_2013/aggregates?select=count(*) as count'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as count'
 ```
 
 > Returns an array with one element
@@ -112,7 +112,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_20
 {
     "aggregations": [
         {
-            "count": 2841
+            "count": 50335
         }
     ]
 }
@@ -121,8 +121,8 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/baby_names_nc_20
 > Aggregation query with a single group_by
 
 ```shell
-# Retrieve population, state name, number of cities for each state (for the 1000 largest cities in the US)
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-cities/aggregates?select=count(*) as num_cities,state,sum(population) as sum_population&group_by=state'
+# Retrieve the total number of cities with more than 5,000 inhabitants, the country code, and the total population for each country code
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
 ```
 
 > Returns an array with an object for each `feature` containing feature's name and number of datasets
@@ -130,17 +130,24 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-citie
 ```json
 {
     "aggregations": [
+        /* ... */
         {
-            "state": "California",
-            "num_cities": 212,
-            "sum_population": 27910620
+            "num_cities": 1982,
+            "country_code": "FR",
+            "sum_population": 39549205
         },
+        /* ... */
         {
-            "state": "Texas",
-            "num_cities": 83,
-            "sum_population": 14836230
+            "num_cities": 7197,
+            "country_code": "US",
+            "sum_population": 243520909
         },
-        ...
+        /* ... */
+        {
+            "num_cities": 43,
+            "country_code": "ZW",
+            "sum_population": 4043922
+        }
     ]
 }
 ```
@@ -149,20 +156,65 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-citie
 > Invalid aggregation with a selected field not present in group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-cities/aggregates?select=state'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=country_code'
 ```
 
 > Valid aggregation with an aggregation function
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/largest-us-cities/aggregates?select=sum(population)'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=sum(population)'
+```
+
+```json
+{
+    "aggregations": [
+        {
+            "sum(population)": 2992377919
+        }
+    ]
+}
 ```
 
 > Aggregation with an multiple group_by
 
 ```shell
-# Retrieve number of Unesco sites grouped by continent and cities
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/aggregates?select=continent_en,country_en,count(*)&group_by=continent_en,country_en'
+# Retrieve number of cities with more than 5,000 inhabitatnts grouped by time zone and country code
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=timezone,country_code,count(*)&group_by=timezone,country_code'
+```
+
+```json
+{
+    "aggregations": [
+        /* ... */
+        {
+            "timezone": "America/Chicago",
+            "count(*)": 2013,
+            "country_code": "US"
+        },
+        {
+            "timezone": "America/Chihuahua",
+            "count(*)": 35,
+            "country_code": "MX"
+        },
+        /* ... */
+        {
+            "timezone": "Europe/Paris",
+            "count(*)": 1982,
+            "country_code": "FR"
+        },
+        {
+            "timezone": "Europe/Podgorica",
+            "count(*)": 25,
+            "country_code": "ME"
+        },
+        /* ... */
+        {
+            "timezone": "Pacific/Wallis",
+            "count(*)": 3,
+            "country_code": "WF"
+        }
+    ]
+}
 ```
 
 This endpoint provides an aggregation facility for records.
@@ -196,7 +248,7 @@ Parameter  | Default | Description
 > Get a list of available export formats
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports'
 ```
 
 This endpoint allows to download all records for a requested dataset.
@@ -220,10 +272,10 @@ Records can be exported in 10 different formats:
 
 ### Exporting records in JSON
 
-> Export records in json format
+> Export records in JSON format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/json'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/json'
 ```
 
 ##### HTTP Request
@@ -234,7 +286,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 > Export records in GeoJSON format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/geojson'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/geojson'
 ```
 
 ##### HTTP Request
@@ -247,7 +299,7 @@ Export records to a [GeoJSON format](http://geojson.org/).
 > Export records in json lines format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/jsonl'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonl'
 ```
 
 ##### HTTP Request
@@ -261,7 +313,7 @@ The JSONlines format returns a record by line. It can be useful for streaming op
 > Export records in csv format using **,** as delimiter
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/csv?delimiter=,'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/csv?delimiter=,'
 ```
 
 Export records to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
@@ -281,7 +333,7 @@ Parameter | Default | Description
 > Export records in xls format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/xls'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/xls'
 ```
 
 Export records to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
@@ -295,7 +347,7 @@ Export records to an XLS format using [SpreadsheetML specification](https://en.w
 > Export records to shapefile format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/shp'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/shp'
 ```
 
 Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile).
@@ -308,7 +360,7 @@ Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile)
 > Export records in turle rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/turtle'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/turtle'
 ```
 
 ##### HTTP Request
@@ -320,7 +372,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 > Export records in rdf-xml format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/rdfxml'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/rdfxml'
 ```
 
 ##### HTTP Request
@@ -332,7 +384,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 > Export records in n3 rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/n3'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/n3'
 ```
 
 ##### HTTP Request
@@ -343,7 +395,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 > Export records in json-ld rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/exports/jsonld'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonld'
 ```
 
 ##### HTTP Request
@@ -356,8 +408,41 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-u
 
 ```shell
 
-# Get eiffel tower specific record from Unesco dataset
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list/records/0ef334837810f591330d1c6bc0e9289d00ff1c9d'
+# Get the record for Paris, the capital of France, from the GeoNames dataset
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a'
+```
+
+```json
+{
+    "record": {
+        "id": "d087227c3595eb1e5b7d09dacfdfd6cafb86562a",
+        "timestamp": "2021-01-04T11:22:14.44Z",
+        "size": 1926,
+        "fields": {
+            "elevation": null,
+            "name": "Paris",
+            "modification_date": "2020-05-26",
+            "geonameid": "2988507",
+            "feature_class": "P",
+            "admin3_code": null,
+            "admin2_code": "75",
+            "geo_point_2d": {
+                "lat": 48.85341,
+                "lon": 2.3488
+            },
+            "cc2": null,
+            "timezone": "Europe/Paris",
+            "feature_code": "PPLC",
+            "dem": 42,
+            "country_code": "FR",
+            "admin1_code": "11",
+            "alternatenames": "Baariis,Bahliz,Ile-de-France,Lungsod ng Paris,Lutece,Lutetia,Lutetia Parisorum,Lutèce,PAR,Pa-ri,Paarys,Palika,Paname,Pantruche,Paraeis,Paras,Pari,Paries,Parigge,Pariggi,Parighji,Parigi,Pariis,Pariisi,Pariizu,Pariižu,Parij,Parijs,Paris,Parisi,Parixe,Pariz,Parize,Parizh,Parizh osh,Parizh',Parizo,Parizs,Pariž,Parys,Paryz,Paryzh,Paryzius,Paryż,Paryžius,Paräis,París,Paríž,Parîs,Parĩ,Parī,Parīze,Paříž,Páras,Párizs,Ville-Lumiere,Ville-Lumière,ba li,barys,pairisa,pali,pari,paris,parys,paryzh,perisa,pryz,pyaris,pyarisa,pyrs,Île-de-France,Παρίσι,Париж,Париж ош,Парижь,Париз,Парис,Парыж,Паріж,Փարիզ,פאריז,פריז,باريس,پارىژ,پاريس,پاریس,پیرس,ܦܐܪܝܣ,पॅरिस,पेरिस,पैरिस,প্যারিস,ਪੈਰਿਸ,પૅરિસ,பாரிஸ்,పారిస్,ಪ್ಯಾರಿಸ್,പാരിസ്,ปารีส,ཕ་རི།,ပါရီမြို့,პარიზი,ፓሪስ,ប៉ារីស,パリ,巴黎,파리",
+            "asciiname": "Paris",
+            "admin4_code": null,
+            "population": 2138551
+        }
+    }
+}
 ```
 
 This endpoint allows to retrieve information about a specific record.

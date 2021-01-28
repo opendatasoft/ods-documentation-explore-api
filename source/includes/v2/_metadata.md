@@ -14,7 +14,7 @@ Each metadata belongs to a metadata template. There are 3 different types of met
 > List metadata template types
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates'
 ```
 
 > API response:
@@ -22,23 +22,23 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates'
 ```json
 {
 	"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
 			"rel": "self"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/interop",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/interop",
 			"rel": "Interoperatibility"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
 			"rel": "Basic"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/extra",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/extra",
 			"rel": "Extra"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/admin",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/admin",
 			"rel": "Admin"
 		}
 	]
@@ -57,7 +57,7 @@ This endpoint returns the list of all available metadata template types.
 > List templates for `basic` type
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 ```
 
 > API response:
@@ -65,17 +65,17 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 ```json
 {
 	"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
 			"rel": "self"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
 			"rel": "metadata_templates"
 		}
 	],
 	"metadata_templates": [{
 		"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
 			"rel": "self"
 		}],
 		"matadata_template": {
@@ -107,7 +107,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic'
 					"type": "longstring",
 					"values_domain_property": null
 				},
-                ...
+                /* ... */
 			]
 		}
 	}]
@@ -126,7 +126,7 @@ This endpoint returns the list of existing metadata templates for a chosen type.
 > List metadata for `default` template
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default'
 ```
 
 
@@ -135,15 +135,15 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/
 ```json
 {
 	"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
 			"rel": "self"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
 			"rel": "basic"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
 			"rel": "metadata_templates"
 		}
 	],
@@ -189,7 +189,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/metadata_templates/basic/
 				"type": "list",
 				"values_domain_property": "metadata.themes"
 			},
-            ...
+            /* ... */
 		]
 	}
 }

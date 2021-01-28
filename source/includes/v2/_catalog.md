@@ -3,7 +3,7 @@
 > List available entrypoints on a catalog
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/'
 ```
 
 > API Response
@@ -12,19 +12,19 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/'
 
 {
 	"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog",
 			"rel": "self"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/datasets",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets",
 			"rel": "datasets"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/exports",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/exports",
 			"rel": "exports"
 		},
 		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog/metadata_templates",
+			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
 			"rel": "metadata_templates"
 		}
 	]
@@ -54,7 +54,7 @@ Some parameters, such as `select`, `where` or `group_by`, accept [field literals
 
 ```shell
 # Count dataset grouped by their features
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
 # Note: (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
 
@@ -69,12 +69,12 @@ Field name | Description
 >  Use metadata as field literal
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2015'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where=default.modified>2020'
 # Since modified is a `basic` metadata, `where` expression can be simplified to `modified>2015`
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=modified>2015'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where=modified>2020'
 
 # Get datasets that have been downloaded more than a 100 times
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where=explore.download_count>100'
 ```
 
 All metadata can be used as field literal in a query parameter.
@@ -89,19 +89,19 @@ The list of metadata and their types for a domain can be obtained with the [meta
 > Get first 10 datasets
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?rows=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?rows=10'
 ```
 
 > Get 10 datasets starting at the 10th result
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10'
 ```
 
 > Search datasets containing `world` in their metas
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets?where="world"'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where="world"'
 ```
 
 This endpoint provides a search facility in the dataset catalog.
@@ -134,16 +134,22 @@ The value of both `start` and `rows` parameters must not exceed 10000. Use the e
 > Aggregation query without group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
 ```
 
 > API Response
 
 ```json
 {
+    "links": [
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
+            "rel": "self"
+        }
+    ],
     "aggregations": [
         {
-            "count": 2
+            "count": 13
         }
     ]
 }
@@ -152,25 +158,31 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=count(
 > Aggregation query with a single group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
 ```
 
 > API Response
 
 ```json
 {
+    "links": [
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
+            "rel": "self"
+        }
+    ],
     "aggregations": [
         {
-            "count": 2,
+            "count(*)": 12,
             "features": "analyze"
         },
         {
-            "count": 2,
-            "features": "timeserie"
+            "count(*)": 4,
+            "features": "geo"
         },
         {
-            "count": 1,
-            "features": "geo"
+            "count(*)": 9,
+            "features": "timeserie"
         }
     ]
 }
@@ -180,13 +192,13 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=featur
 > Invalid aggregation with a selected field not present in group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
 ```
 
 > Valid aggregation with an aggregation function
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
 ```
 
 > API Response
@@ -195,7 +207,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(re
 {
     "aggregations": [
         {
-            "sum(records_count)": 3893
+            "sum(records_count)": 105936
         }
     ]
 }
@@ -204,43 +216,91 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(re
 > Aggregation with an multiple group_by
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
 ```
 
 > API Response
 
 ```json
 {
-	"links": [{
-		"href": "https://examples.opendatasoft.com/api/v2/catalog/aggregates",
-		"rel": "self"
-	}],
-	"aggregations": [{
-			"theme": "Administration, Government, Public finances, Citizenship",
-			"count(*)": 1,
-			"features": "analyze"
-		},
-		{
-			"theme": "Culture, Heritage",
-			"count(*)": 1,
-			"features": "analyze"
-		},
-		{
-			"theme": "Administration, Government, Public finances, Citizenship",
-			"count(*)": 1,
-			"features": "timeserie"
-		},
-		{
-			"theme": "Culture, Heritage",
-			"count(*)": 1,
-			"features": "timeserie"
-		},
-		{
-			"theme": "Culture, Heritage",
-			"count(*)": 1,
-			"features": "geo"
-		}
-	]
+    "links": [
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
+            "rel": "self"
+        }
+    ],
+    "aggregations": [
+        {
+            "theme": "Administration, Government, Public finances, Citizenship",
+            "count(*)": 1,
+            "features": "analyze"
+        },
+        {
+            "theme": "Culture, Heritage",
+            "count(*)": 2,
+            "features": "analyze"
+        },
+        {
+            "theme": "Economy, Business, SME, Economic development, Employment",
+            "count(*)": 2,
+            "features": "analyze"
+        },
+        {
+            "theme": "Environment",
+            "count(*)": 1,
+            "features": "analyze"
+        },
+        {
+            "theme": "Product",
+            "count(*)": 1,
+            "features": "analyze"
+        },
+        {
+            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
+            "count(*)": 2,
+            "features": "analyze"
+        },
+        {
+            "theme": "Culture, Heritage",
+            "count(*)": 1,
+            "features": "geo"
+        },
+        {
+            "theme": "Environment",
+            "count(*)": 1,
+            "features": "geo"
+        },
+        {
+            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
+            "count(*)": 2,
+            "features": "geo"
+        },
+        {
+            "theme": "Culture, Heritage",
+            "count(*)": 2,
+            "features": "timeserie"
+        },
+        {
+            "theme": "Economy, Business, SME, Economic development, Employment",
+            "count(*)": 2,
+            "features": "timeserie"
+        },
+        {
+            "theme": "Environment",
+            "count(*)": 1,
+            "features": "timeserie"
+        },
+        {
+            "theme": "Product",
+            "count(*)": 1,
+            "features": "timeserie"
+        },
+        {
+            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
+            "count(*)": 1,
+            "features": "timeserie"
+        }
+    ]
 }
 ```
 
@@ -275,7 +335,7 @@ Parameter  | Default | Description
 > Get a list of available export formats
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/'
 ```
 
 The endpoint allows to download all datasets for a requested domain.
@@ -303,7 +363,7 @@ A dataset catalog can be exported in different formats:
 > Export datasets in json format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/json'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/json'
 ```
 
 ##### HTTP Request
@@ -314,7 +374,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/json'
 > Export datasets in csv format using **,** as delimiter
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/csv?delimiter=,'
 ```
 
 In the CSV format, the default separator is `;`. It can be changed with the `delimiter` parameter.
@@ -334,7 +394,7 @@ Parameter | Default | Description
 > Export datasets in xls format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/xls'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/xls'
 ```
 
 Export datasets to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
@@ -347,7 +407,7 @@ Export datasets to an XLS format using [SpreadsheetML specification](https://en.
 > Export datasets in rss format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rss'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/rss'
 ```
 
 ##### HTTP Request
@@ -358,7 +418,7 @@ curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rss'
 > Export datasets in turle rdf format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/ttl'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/ttl'
 ```
 
 Export datasets to a Turtle RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
@@ -371,7 +431,7 @@ Export datasets to a Turtle RDF format using [DCAT application for data portals 
 > Export datasets in rdf-xml format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/rdf'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/rdf'
 ```
 
 Export datasets to an XML-RDF format using [DCAT application for data portals in Europe](https://joinup.ec.europa.eu/asset/dcat_application_profile/description).
@@ -384,7 +444,7 @@ Export datasets to an XML-RDF format using [DCAT application for data portals in
 > Export datasets in data.json format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/data.json'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/data.json'
 ```
 
 Export datasets in the [Project Open Data Metadata Schema v1.1](https://project-open-data.cio.gov/) (data.json).
@@ -398,7 +458,7 @@ Export datasets in the [Project Open Data Metadata Schema v1.1](https://project-
 > Export datasets in DCAT-AP DE format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_de'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/dcat_ap_de'
 ```
 
 Export datasets in an RDF format, using DCAT application specific to Germany.
@@ -414,7 +474,7 @@ Export datasets in an RDF format, using DCAT application specific to Germany.
 > Export datasets in DCAT-AP CH format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch'
 ```
 
 Export datasets in an RDF format, using DCAT application specific to Switzerland.
@@ -430,7 +490,7 @@ Export datasets in an RDF format, using DCAT application specific to Switzerland
 > Export datasets in DCAT-AP SE format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_se'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/dcat_ap_se'
 ```
 
 Export datasets in an RDF format, using DCAT application specific to Sweden.
@@ -446,7 +506,7 @@ Export datasets in an RDF format, using DCAT application specific to Sweden.
 > Export datasets in DCAT-AP SP format
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/exports/dcat_ap_sp'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/exports/dcat_ap_sp'
 ```
 
 Export datasets in an RDF format, using DCAT application specific to Spain.
@@ -459,13 +519,13 @@ Export datasets in an RDF format, using DCAT application specific to Spain.
 
 ## Looking up a dataset
 
-> Lookup Unesco dataset
+> Lookup the GeoNames dataset
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets/world-heritage-unesco-list'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000'
 ```
 
-This endpoint allows to retrieve information about a specific datasets.
+This endpoint allows to retrieve information about a specific dataset.
 
 ##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>`
