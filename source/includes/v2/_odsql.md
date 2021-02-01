@@ -789,7 +789,7 @@ RANGE(date, 1 day)
 - 2020-01-04
 - ...
 ```
-> Note that no group is created for 2020-01-03 since no data is available for this day
+> Note that no group is created for 2020-01-03 since no data is available for this day.
 
 
 It is possible to group values of a field by ranges of equal widths, a.k.a. histograms. 
@@ -824,7 +824,7 @@ and `<interval_unit>` is one of the following (case sensitive) string constants:
 - `q`, `quarter` or `quarters`,
 - `y`, `year` or `years`.
 
-Note that for some interval units (week, month, quarter and year), an interval value of more than one is not supported yet.
+Note that for some interval units (week, month, quarter, and year), an interval value of more than one is not supported yet.
 
 ### Group by date functions
 
