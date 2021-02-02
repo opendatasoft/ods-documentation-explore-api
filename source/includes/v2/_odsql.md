@@ -702,8 +702,8 @@ Like selects, a group by expression can have an `AS` statement to give it a labe
 A group by expression can be:
 
 - a field
-- a static range
-- an equi range
+- static ranges
+- ranges of equal widths
 - a date function
 - a date format
 
@@ -723,14 +723,15 @@ A group by field expression allows the grouping of specified field values. It cr
 
 
 <div class=“clearfix”></div>
-### Group by static range
+### Group by static ranges
 
-> group by static range examples
+> group by static ranges examples
 
 ```sql
-RANGE(population, ]10, 50, 100[) -- Creates 4 groups: *-10, 10-50, 50-100 and 100-*
-RANGE(population, [20.5[)        -- Creates 1 group: 20.5-*
-RANGE(population, [1,2,3])       -- Creates 2 groups: 1-2 and 2-3
+RANGE(population, ]10, 50, 100[)                  -- Creates 4 groups: *-10, 10-50, 50-100 and 100-*
+RANGE(population, [20.5[)                         -- Creates 1 group: 20.5-*
+RANGE(population, [1,2,3])                        -- Creates 2 groups: 1-2 and 2-3
+RANGE(date, ]date'2020-11-13', date'2021-01-01']) -- Creates 2 groups: *-2020-11-13 and 2020-11-13-2021-01-01
 ```
 
 The static range function takes 2 parameters:
@@ -740,42 +741,90 @@ The static range function takes 2 parameters:
 
 The side of the brackets determines if the values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
 
-##### Format:
+Ranges can be set on numerical fields and on date/datetime fields.
+
+##### Format for numerical ranges:
 `group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])`
 in which `<field_literal>` must be a numeric field
 
+##### Format for date/datetime ranges:
+`group_by=range(<field_literal>, [|] <date_literal> [,<date_literal>]* [|])`
+in which `<field_literal>` must be a date or datetime field.
+
+For a recall, date literals are composed of the `date` identifier followed by a date in ISO format, e.g. `date'2021-02-01'`
+
 
 <div class=“clearfix”></div>
-### Group by equi range
+### Group by ranges of equal widths
 
-> group by equi range examples
+> Example of group by ranges of equal widths:
 
 ```sql
-RANGE(population, EQUI(5, 10, 30))  -- 5 is step value. 10 is the lower bound and 30 The higher bound.
+RANGE(population, 5)
 ```
-> Creates the following group:
+> `5` is the desired width of each returned group.
+
+> For values of a `population` field that span from 10 to 28, it creates the following groups:
+
 ```markdown
-- *-10
+
 - 10-15
 - 15-20
 - 20-25
 - 25-30
-- 30-*
 ```
 
-An equi range function can be used in a [static range function](#group-by-static-range) replacing the static range parameter.
+> Example of a date histogram:
 
-The equi range function takes 3 parameters:
+```sql
+RANGE(date, 1 day)
+```
 
-- a step value
-- a lower bound
-- a higher bound
+> Groups created (one for each day):
 
-The equi range function creates a group for the lower bound. It then creates another group at each step, adding the step value from the previous value until the higher bound is reached.
+```markdown
 
-##### Format:
-`group_by=range(<field_literal>, EQUI(<numeric_literal>[,<numeric_literal>]*))`
+- 2020-01-01
+- 2020-01-02
+- 2020-01-04
+- ...
+```
+> Note that no group is created for 2020-01-03 since no data is available for this day.
+
+
+It is possible to group values of a field by ranges of equal widths, a.k.a. histograms. 
+
+Ranges of equal widths are supported for numerical fields and date/datetime fields.
+
+The `range` function for ranges of equal widths takes for parameters:
+
+- a field name,
+- the desired width of each group.
+
+For date/datetime fields, the width of each group is expressed by a time interval with a special syntax (see below).
+
+**Note**: groups that do not contain any data are not returned.
+
+##### Format for numerical fields:
+`group_by=range(<field_literal>, <numeric_literal>)`
 in which `<field_literal>` must be a numeric field
+
+##### Format for date/datetime fields:
+`group_by=range(<field_literal>, <integer><interval_unit>)`
+where `<field_literal>` must be a date/datetime field
+and `<interval_unit>` is one of the following (case sensitive) string constants:
+
+- `ms`, `millisecond` or `milliseconds`,
+- `s`, `second` or `seconds`,
+- `m`, `minute` or `minutes`,
+- `h`, `hour` or `hours`,
+- `d`, `day` or `days`,
+- `w`, `week` or `weeks`,
+- `M`, `month` or `months`,
+- `q`, `quarter` or `quarters`,
+- `y`, `year` or `years`.
+
+Note that for some interval units (week, month, quarter, and year), an interval value of more than one is not supported yet.
 
 ### Group by date functions
 
