@@ -11,7 +11,7 @@ GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request
 > Example POST request
 
 ```http
-POST hhttps://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 ```xml
