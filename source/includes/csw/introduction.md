@@ -1,6 +1,6 @@
 # CSW API
 
-Opendatasoft datasets can be accessed through a Catalog Service for the Web (CSW) API. This is a standard for exposing a catalogue of geospatial records in XML.
+Opendatasoft datasets can be accessed through a Catalog Service for the Web (CSW) API. CSW is a standard for exposing a catalog of geospatial records in XML.
 
 The Opendatasoft platform uses the CSW specification version 2.0.2.
 
@@ -11,7 +11,7 @@ Opendatasoft platform implements four operations defined by the CSW standard:
 Operation | Description
 --------- | -----------
 `GetCapabilities` | Retrieve service metadata
-`DescribeRecord` | Discover elements of the information model by the catalogue
+`DescribeRecord` | Discover elements of the information model by the catalog
 `GetRecords` | Search for records and get their metadata and identifier
 `GetRecordById` | Search for a record with a specific identifier
 
@@ -21,13 +21,12 @@ Operation | Description
 > Service entry address
 
 ```http
-GET https://examples.opendatasoft.com/api/csw HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-For this documentation, we use the domain `https://examples.opendatasoft.com` as an example but you should replace it
-by your custom domain name.
+The domain `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
 
 The CSW API supports both `GET` and `POST` HTTP methods.
 
