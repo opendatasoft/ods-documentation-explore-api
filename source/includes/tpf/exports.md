@@ -17,9 +17,9 @@ Format name | Description | Syntax specification
 > Export a dataset using turtle format
 
 ```http
-GET http://public.opendatasoft.com/api/v2/catalog/datasets/roman-emperors/exports/turtle
+GET http://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/roman-emperors/exports/turtle
 ```
 
 RDF exports of datasets are available at this address and use the format name in the previous table.
 
-GET http://public.opendatasoft.com/api/v2/catalog/datasets/{DATASET_ID}/exports/{FORMAT_NAME}
+GET http://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/{DATASET_ID}/exports/{FORMAT_NAME}
