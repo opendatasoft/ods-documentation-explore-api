@@ -79,13 +79,13 @@ The monitoring API gives access to the data of one specific dataset containing t
 
 ## Opendatasoft source
 
-> Get a list of all public datasets on the Opendatasoft Data Network
+> Get a list of all public datasets on Opendatasoft's Data Network
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/opendatasoft/datasets'
 ```
 
-The Opendatasoft source allows to search and work on all available public datasets from the Opendatasoft Data Network.
+The Opendatasoft source allows to search and work on all available public datasets from Opendatasoft's Data Network.
 
 <aside>
 The following HTTP request returns the same datasets as https//data.opendatasoft.com/api/v2/catalog.

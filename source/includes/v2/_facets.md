@@ -1,6 +1,6 @@
 # Facets
 
-A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as a facet: associated values for this facet could be `English` or `French`.
+A facet can be considered as a valued tag associated with a dataset or a record. For example, datasets of a catalog could have `language` as a facet: associated values for this facet could be `English`, `French`, or other languages (depending on the domain configuration and the publisher's choice).
 
 In an Opendatasoft portal, facets are specially used for building the left filtering column of both the datasets catalog and dataset records exploration pages.
 
@@ -8,7 +8,7 @@ In an Opendatasoft portal, facets are specially used for building the left filte
 
 Enumerating facets values allows to discover the existing values for a facet.
 
-For example, an API call to enumerate facets in a catalog can show that there are 12 datasets in English and 1 in French.
+For example, an API call to enumerate facets in a catalog can show that there are 11 datasets in English and 1 in French.
 
 ### Catalog
 
@@ -20,16 +20,6 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/facets'
 
 ```json
 {
-    "links": [
-        {
-            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/facets",
-            "rel": "self"
-        },
-        {
-            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog",
-            "rel": "source"
-        }
-    ],
     "facets": [
         /*...*/
         {

@@ -64,21 +64,12 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_t
 
 ```json
 {
-	"links": [{
-			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
-			"rel": "self"
-		},
-		{
-			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
-			"rel": "metadata_templates"
-		}
-	],
 	"metadata_templates": [{
 		"links": [{
 			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
 			"rel": "self"
 		}],
-		"matadata_template": {
+		"metadata_template": {
 			"type": "basic",
 			"name": "default",
 			"schema": [{
@@ -134,19 +125,6 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_t
 
 ```json
 {
-	"links": [{
-			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic/default",
-			"rel": "self"
-		},
-		{
-			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates/basic",
-			"rel": "basic"
-		},
-		{
-			"href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/metadata_templates",
-			"rel": "metadata_templates"
-		}
-	],
 	"metadata_template": {
 		"type": "basic",
 		"name": "default",

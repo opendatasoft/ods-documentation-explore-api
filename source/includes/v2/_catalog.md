@@ -3,7 +3,7 @@
 > List available entrypoints on a catalog
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog'
 ```
 
 > API Response
@@ -141,15 +141,9 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates
 
 ```json
 {
-    "links": [
-        {
-            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
-            "rel": "self"
-        }
-    ],
     "aggregations": [
         {
-            "count": 13
+            "count": 12
         }
     ]
 }
@@ -165,12 +159,6 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates
 
 ```json
 {
-    "links": [
-        {
-            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
-            "rel": "self"
-        }
-    ],
     "aggregations": [
         {
             "count(*)": 12,
@@ -216,19 +204,13 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates
 > Aggregation with an multiple group_by
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme&limit=5'
 ```
 
 > API Response
 
 ```json
 {
-    "links": [
-        {
-            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates",
-            "rel": "self"
-        }
-    ],
     "aggregations": [
         {
             "theme": "Administration, Government, Public finances, Citizenship",
@@ -254,51 +236,6 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates
             "theme": "Product",
             "count(*)": 1,
             "features": "analyze"
-        },
-        {
-            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
-            "count(*)": 2,
-            "features": "analyze"
-        },
-        {
-            "theme": "Culture, Heritage",
-            "count(*)": 1,
-            "features": "geo"
-        },
-        {
-            "theme": "Environment",
-            "count(*)": 1,
-            "features": "geo"
-        },
-        {
-            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
-            "count(*)": 2,
-            "features": "geo"
-        },
-        {
-            "theme": "Culture, Heritage",
-            "count(*)": 2,
-            "features": "timeserie"
-        },
-        {
-            "theme": "Economy, Business, SME, Economic development, Employment",
-            "count(*)": 2,
-            "features": "timeserie"
-        },
-        {
-            "theme": "Environment",
-            "count(*)": 1,
-            "features": "timeserie"
-        },
-        {
-            "theme": "Product",
-            "count(*)": 1,
-            "features": "timeserie"
-        },
-        {
-            "theme": "Spatial planning, Town planning, Buildings, Equipment, Housing",
-            "count(*)": 1,
-            "features": "timeserie"
         }
     ]
 }

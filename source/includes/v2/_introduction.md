@@ -15,5 +15,5 @@ The Opendatasoft search API v2 is organized around REST. It provides access to a
 - The same internal query language is used for all endpoints of the search API. It means that most of the time, parameters work the same way for all endpoints.
 
 <aside>
-The domain <a href="https://documentation-resources.opendatasoft.com/">https://documentation-resources.opendatasoft.com/</a> is used as an example in this documentation, but you should replace it with your custom domain name.
+The domain <a target="_blank" rel="noopener noreferrer" href="https://documentation-resources.opendatasoft.com/">https://documentation-resources.opendatasoft.com/</a> is used as an example in this documentation. You should replace it with your custom domain name,  or `data.opendatasoft.com`, which is the main hub for all open data portals published by Opendatasoft customers. It contains a lot of ready-to-play interesting datasets.
 </aside>
