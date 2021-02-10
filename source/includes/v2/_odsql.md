@@ -1,24 +1,24 @@
 # ODSQL
 
-Filtering features are built in the core of Opendatasoft API engine.
+Filtering features are built in the core of the Opendatasoft API engine.
 
 The Opendatasoft Query Language (ODSQL) makes it possible to express complex queries as a filtering context for datasets or records, but also to build aggregations or computed fields.
 
-Note that a given filtering context can simply be copied from one API to another. For example, it is possible to build a user interface which first allows the user to visually select the records they are are interested in, using full text search, facets and geo filtering ; and then allowing them to download these records with the same filtering context.
+Note that a given filtering context can simply be copied from one API to another. For example, it is possible to build a user interface that first allows the user to visually select the records they are interested in, using full-text search, facets, and geo filtering; and then allowing them to download these records with the same filtering context.
 
 ## Introduction
 
 The ODSQL is split into 5 different kinds of clauses:
 
-- the `select` clause: it allows choosing the returned fields, to give them an alias, or to manipulate them with functions like count, sum, min, max, etc.
+- the `select` clause: it allows choosing the returned fields, giving them an alias, manipulating them with functions like count, sum, min, max, etc.
 - the `where` clause: it acts as a filter for the returned datasets or records, thanks to boolean operations, filter functions, arithmetic expressions, etc.
 - the `group by` clause: it allows aggregating rows together based on fields, numeric ranges, or dates
 - the `order by` and `limit` clauses: they allow choosing the order and quantity of rows received as a response
 
-These clauses are used as parameters in the Search API v2 for searching, aggregating and exporting datasets and records. Depending on the used endpoint, some features of the query language are available or not in the request.
+These clauses are used as parameters in the Search API v2 for searching, aggregating, and exporting datasets and records. Depending on the used endpoint, some features of the query language are available or not in the request.
 
 <aside>
-The whole query language is case insensitive and spaces are optional. In this documentation, upper case will however be used for language keywords, only for clarity purpose.
+The whole query language is case insensitive, and spaces are optional. In this documentation, the uppercase is used for language keywords, only for clarity purposes.
 </aside>
 
 
@@ -28,7 +28,7 @@ ODSQL clauses are composed of basic language elements. These can either be liter
 
 ### Literals in ODSQL clauses
 
-Literals are used in comparison, assignments or functions.
+Literals are used in comparison, assignments, or functions.
 
 There are 7 types of literal:
 
@@ -50,7 +50,7 @@ my_field > 10  -- my_field is a string literal
 `and`: "value" -- AND is a keyword
 ```
 
-A field literals is a literal not enclosed in quotes. It can only contain alphanumeric characters or underscores.
+A field literal is a literal not enclosed in quotes. It can only contain alphanumeric characters or underscores.
 
 <aside>
 If a field name contains only numbers or is a keyword, it must be enclosed in back-quotes.
@@ -97,7 +97,7 @@ A date literal is defined with a date keyword followed by a valid date format en
 A valid date can be:
 
 - an [ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)
-- a slash separated date in the YYYY/MM/DD (year/month/day) format
+- a slash-separated date in the YYYY/MM/DD (year/month/day) format
 
 <div class=“clearfix”></div>
 #### Boolean literal
@@ -121,7 +121,7 @@ distance(my_geo_field, geom'POINT(1 1)', 10km)
 geometry(my_geo_field, geom'{"type": "Polygon","coordinates":[[[100.0, 0.0],[101.0, 0.0],[101.0, 1.0],[100.0, 1.0],[100.0,0.0]]]}')
 ```
 
-A geometry literal is defined with a geom keyword followed by a valid geometry expression enclosed in single quotes.
+A geometry literal is defined with a `geom` keyword followed by a valid geometry expression enclosed in single quotes.
 
 Supported geometry expressions are:
 
@@ -149,10 +149,10 @@ Function|Parameters|Description|Limitation
 <div class=“clearfix”></div>
 ### Reserved keywords in ODSQL clauses
 
-> `not` is a reserved keywords and must be escaped with back-quotes if referred as field literal
+> `not` is a reserved keyword and must be escaped with back-quotes if referred to as a field literal
 
 ```sql
-my_field_literal is not true -- my_field_literal is not a reserved keyword, no need to escape it
+my_field_literal is not true -- my_field_literal is not a reserved keyword, there's no need to escape it
 `not` is not true -- not is a reserved keyword and must be escaped
 ```
 
@@ -201,7 +201,7 @@ List of reserved keywords:
 
 The select clause can be used in records search APIs as the parameter `select`.
 
-The select clause allows :
+The select clause allows:
 - choosing the fields that will be returned for each row,
 - transforming fields using arithmetic,
 - renaming fields,
@@ -226,12 +226,12 @@ A select expression can be:
 
 ```sql
 *                           -- Select all fields
-field1, field2, field3      -- Only select field1, field2 and field3
+field1, field2, field3      -- Only select field1, field2, and field3
 field1 AS my_field, field2  -- Renaming field1 as my_field and select field2
 ```
 
 A select field literal is the simplest form of select expression. It takes a field literal that must be returned in the result.
-It also accepts the special character `*` to select all fields (it is the default behaviour).
+It also accepts the special character `*` to select all fields (it is the default behavior).
 
 <aside>
 If a select expression is used in conjunction with a `group by` clause, the selected field literal must be in the `group by` clause.
@@ -250,7 +250,7 @@ include(pop*) -- Will include fields beginning with pop
 
 Include and exclude are functions that accept fields names.
 
-Fields listed in an include function are present in the result whereas fields listed in an exclude function are absent from the result.
+Fields listed in an include function are present in the result, whereas fields listed in an exclude function are absent from the result.
 
 Fields can contain a wildcard suffix (the `*` character). In that case, the inclusion/exclusion works on all field names beginning with the value preceding the wildcard.
 
@@ -267,7 +267,7 @@ Fields can contain a wildcard suffix (the `*` character). In that case, the incl
 length(country_name) -- Get length (number of characters) of country_name field values
 ```
 
-An arithmetic select expression accepts simple arithmetic operations. It accepts field literals, constant numeric or text values and [scalar functions](#scalar-functions). More complex arithmetic expressions can be formed by connecting these elements with arithmetic operators:
+An arithmetic select expression accepts simple arithmetic operations. It accepts field literals, constant numeric or text values, and [scalar functions](#scalar-functions). More complex arithmetic expressions can be formed by connecting these elements with arithmetic operators:
 
  - `+`: add
  - `-`: substract
@@ -309,7 +309,7 @@ This function computes numbers of elements.
 
 It accepts the following parameters:
   - a field literal: only returns the count for not `null` value of this field
-  - a `*` : returns the count of all elements
+  - a `*`: returns the count of all elements
 
 
 <div class=“clearfix”></div>
@@ -377,7 +377,7 @@ This function takes a numeric field literal and a percentile. It returns the nth
 median(age) as med # Return the median of the age field
 ```
 
-This function takes a numeric field literal. It returns the median (`median`) of this field. Since the median is in fact the 50th percentile, it is a shortcut for `percentile(field, 50)`.
+This function takes a numeric field literal. It returns the median (`median`) of this field. Since the median is the 50th percentile, it is a shortcut for `percentile(field, 50)`.
 
 
 ## Where clause
@@ -390,7 +390,7 @@ my_numeric_field > 10 and my_text_field like "paris" or distance(my_geo_field, g
 
 > This where clause filters results where numeric_field > 10 and (my_text_field contains the word `paris` or distance between my_geo_field and the point with 1,1 as lat,lon is under 1 kilometer)
 
-The where clause can be used in the whole search API as the parameter `where`.
+The where clause can be used in the whole Search API as the parameter `where`.
 
 The where clause allows one to filter rows with a combination of where expressions.
 
@@ -418,15 +418,15 @@ my_boolean_field OR my_numeric_field > 50 and my_date_field > date'1972'
 
 Where expressions can use boolean operators to express boolean filter.
 
-There are 3 different boolan operations:
+There are 3 different boolean operations:
 
 - `AND`: results must match left and right expressions
 - `OR`: results must match left or right expression
 - `NOT`: inverses the next expression
 
-`AND` has precedence over `OR` operator. It means that, in the expression `a or b and c`, the sub-expression `b and c` is interpreted and executed first. It can also be written with parenthesis: `a or (b and c)`.
+`AND` has precedence over the `OR` operator. It means that, in the expression `a or b and c`, the sub-expression `b and c` is interpreted and executed first. It can also be written with parenthesis: `a or (b and c)`.
 
-In order to change operator precedence, it is possible to use parenthesis in the expression. To give precedence to `OR` operator, the above expression can be written `(a or b) and c`.
+In order to change operator precedence, it is possible to use parenthesis in the expression. To give precedence to the `OR` operator, the above expression can be written `(a or b) and c`.
 
 
 <div class=“clearfix”></div>
@@ -455,7 +455,7 @@ NOT "dog"
 "film*"      -- returns results that contain film, films, filmography, etc.
 ```
 
-Filter search queries are queries that don’t refer to fields, they only contain quoted strings and boolean operators. Filter search queries perform full-text searches on all visible fields of each record and return matching rows.
+Filter search queries are queries that don’t refer to fields. They only contain quoted strings and boolean operators. Filter search queries perform full-text searches on all visible fields of each record and return matching rows.
 
 If the string contains more than one word, the query will be an `AND` query on each tokenized word.
 
@@ -485,7 +485,7 @@ distance(field_name, GEOM'<geometry>', 100yd)
 The distance function limits the result set to a geographical area defined by a circle. This circle must be defined by its center and a distance.
 
 - The center of the circle is expressed as a [geometry literal](#geometry-literal)).
-- The distance is numeric and can have an unit in:
+- The distance is numeric and can have a unit in:
 
   - miles (mi)
   - yards (yd)
@@ -547,7 +547,7 @@ bbox(field_name, GEOM'<geometry>', GEOM'<geometry>')
 
 The bbox function limits the result set to a rectangular box.
 
-This rectangular box is defined by its top left and its bottom right coordinates, both expressed with 2 [geometry literals](#geometry-literal).
+This rectangular box is defined by its top-left and its bottom-right coordinates, both expressed with 2 [geometry literals](#geometry-literal).
 
 <div class=“clearfix”></div>
 ### Comparison filter
@@ -626,7 +626,7 @@ film_name like "star"      -- matches `star wars` and `Star Trek`
 film_name like "star wars" -- match fields containing `star` and `wars`
 ```
 
-A like filter restricts results to field literal values containing a defined string literal.
+A `like` filter restricts results to field literal values containing a defined string literal.
 
 ##### Format:
 `<field_literal> LIKE <string_literal>`
@@ -865,7 +865,7 @@ date_format(date_field, "w") -- Create a group for each different week in date_f
 A group by date format expression allows grouping by a custom date format.
 
 A `date format` is a string enclosed in double-quotes.
-Every character between a-z and A-Z is considered to be a pattern representing a date unit. In order to use these characters as simple characters and not pattern, they must be enclosed in single-quotes.
+Every character between a-z and A-Z is considered to be a pattern representing a date unit. In order to use these characters as simple characters and not as patterns, they must be enclosed in single-quotes.
 
 The formats below are available for a date format expression. They come from [joda time documentation](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html).
 
@@ -971,6 +971,6 @@ An order by expression can be :
 The direction, if not specified, is by default ASC (ascending).
 
 <aside>
-When ordering by both aggregations and fields, the aggregation order must be in head of the list.
+When ordering by both aggregations and fields, the aggregation order must be at the head of the list.
 For example : <code>order_by = avg(age), gender</code> works, but <code>order_by = gender, avg(age)</code> returns an error.
 </aside>

@@ -1,32 +1,33 @@
 # Sources
 
-> Retrieve a list of available sources on `public` domain
+> Retrieve a list of available sources on the `documentation-resource` domain
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/'
 ```
 
 > The above command returns
 
 ```json
 {
-	"links": [{
-			"href": "https://examples.opendatasoft.com/api/v2",
-			"rel": "self"
-		},
-		{
-			"href": "https://examples.opendatasoft.com/api/v2/catalog",
-			"rel": "catalog"
-		},
-		{
-			"href": "https://examples.opendatasoft.com/api/v2/monitoring",
-			"rel": "monitoring"
-		},
-		{
-			"href": "https://examples.opendatasoft.com/api/v2/opendatasoft",
-			"rel": "opendatasoft"
-		}
-	]
+    "links": [
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2",
+            "rel": "self"
+        },
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/catalog",
+            "rel": "catalog"
+        },
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/monitoring",
+            "rel": "monitoring"
+        },
+        {
+            "href": "https://documentation-resources.opendatasoft.com/api/v2/opendatasoft",
+            "rel": "opendatasoft"
+        }
+    ]
 }
 ```
 
@@ -45,10 +46,10 @@ For now, the metadata API only works on the catalog data source.
 
 ## Catalog source
 
-> Get a list of published datasets on `public` domain
+> Get a list of published datasets on the `documentation-resource` domain
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/catalog/datasets'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets'
 ```
 
 The catalog source works on the published dataset of a requested domain. Use this source to retrieve actual data from a specific domain.
@@ -59,10 +60,10 @@ The catalog source works on the published dataset of a requested domain. Use thi
 
 ## Monitoring source
 
-> Get a list of monitoring datasets on `public` domain
+> Get a list of monitoring datasets on the `documentation-resource` domain
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/monitoring/datasets'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/monitoring/datasets'
 ```
 
 The monitoring source allows to search and work on special datasets providing analysis information about a requested domain.
@@ -78,16 +79,16 @@ The monitoring API gives access to the data of one specific dataset containing t
 
 ## Opendatasoft source
 
-> Get a list of all public datasets on Opendatasoft Data Hub
+> Get a list of all public datasets on Opendatasoft's Data Network
 
 ```shell
-curl 'https://examples.opendatasoft.com/api/v2/opendatasoft/datasets'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/opendatasoft/datasets'
 ```
 
-The Opendatasoft allows to search and work on all available public datasets from the Opendatasoft data network.
+The Opendatasoft source allows to search and work on all available public datasets from Opendatasoft's Data Network.
 
 <aside>
-The HTTP request below returns the same datasets as `https//data.opendatasoft.com/api/v2/catalog`.
+The following HTTP request returns the same datasets as https//data.opendatasoft.com/api/v2/catalog.
 </aside>
 
 ##### HTTP Request
