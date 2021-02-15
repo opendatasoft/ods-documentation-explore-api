@@ -2,7 +2,7 @@
 
 Opendatasoft datasets are accessible by developers through an HTTP REST API.
 
-The domain <https://examples.opendatasoft.com> will be used to illustrate examples given in the following documentation.
+The domain <https://documentation-resources.opendatasoft.com> is used to illustrate examples in the following documentation.
 
 ![API Console](v1/available_apis__console.png)
 
@@ -70,7 +70,7 @@ The API response contains three headers to indicate the current state of a user'
 > Example of an error occurring when you reach the domain requests limit
 
 ``` http
-> GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+> GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
 ```
@@ -78,7 +78,7 @@ The API response contains three headers to indicate the current state of a user'
 ``` json
 {
   "errorcode": 10002,
-  "reset_time": "2017-10-17T00:00:00Z",
+  "reset_time": "2021-01-26T00:00:00Z",
   "limit_time_unit": "day",
   "call_limit": 10000,
   "error": "Too many requests on the domain. Please contact the domain administrator."
@@ -88,7 +88,7 @@ The API response contains three headers to indicate the current state of a user'
 > Example of an error occurring when you reach the requests limit for anonymous users
 
 ``` http
-> GET https://examples.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+> GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
 ```
@@ -96,7 +96,7 @@ The API response contains three headers to indicate the current state of a user'
 ``` json
 {
   "errorcode": 10005,
-  "reset_time": "2017-10-17T00:00:00Z",
+  "reset_time": "2021-01-26T00:00:00Z",
   "limit_time_unit": "day",
   "call_limit": 1000,
   "error": "You have exceeded the requests limit for anonymous users."

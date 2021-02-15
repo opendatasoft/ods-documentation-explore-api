@@ -1,11 +1,10 @@
 # Query Language and Geo Filtering
 
-Filtering features are built in the core of Opendatasoft API engine. Many of the previously listed APIs can take as a
-parameter filters for constraining the list of returned datasets or records.
+Filtering features are built in the core of the Opendatasoft API engine. Many of the previously listed APIs can take filters as parameters, so that the response only contains the datasets or records you want.
 
 Note that a given filtering context can simply be copied from one API to another. For example, you can easily build a
-user interface which first allows the user to visually select the records their are interested in, using full text
-search, facets and geo filtering, and then allowing them to download these records with the same filtering context.
+user interface that first allows the user to visually select the records they are interested in, using full-text
+search, facets, and geo filtering, and then allowing them to download these records with the same filtering context.
 
 ## Query language
 
@@ -20,9 +19,9 @@ q=film -> results that contain film, films, filmography, etc.
 q="film" -> results containing exactly film.
 ```
 
-The query language accepts full text queries.
+The query language accepts full-text queries.
 
-If a given word or compounds is surrounded with double quotes, only exact matches are returned (modulo an accent and
+If a given word, or compounds, is surrounded with double quotes, only exact matches are returned (modulo an accent and
 case insensitive match).
 
 ### Boolean expressions
@@ -32,7 +31,7 @@ film OR trees
 (film OR trees) AND paris
 ```
 
-The query language supports the following boolean operators `AND`, `OR` and `NOT`.
+The query language supports the following boolean operators `AND`, `OR`, and `NOT`.
 
 Parenthesis can be used to group together expressions and alter the default priority model:
 
@@ -42,13 +41,13 @@ Parenthesis can be used to group together expressions and alter the default prio
 
 ### Field queries
 
-> Search on https://public.opendatasoft.com for datasets having "Paris" in their title or description and containing at least 50 000 records
+> Search on the `documentation-resources` domain for datasets having "Paris" in their title or description and containing at least 50 records
 
 ``` text
-GET https://public.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50000
+GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50
 ```
 
-One of the major feature of the query language is to allow per field filtering. You can use field names as a prefix to
+One of the major features of the query language is to allow per field filtering. You can use field names as a prefix to
 your queries to filter the results based on a specific field's value.
 
 For the dataset search API, the list of available fields corresponds exactly to available metadata. By default
@@ -170,7 +169,7 @@ Function name | Description
 
 ## Geo Filtering
 
-> Example geo filtering expressions
+> Examples of geo filtering expressions
 
 ``` text
 geofilter.distance=48.8520930694,2.34738897685,1000
