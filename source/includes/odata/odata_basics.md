@@ -10,7 +10,7 @@ hostname. Unless stated otherwise, all addresses in the rest of this documentati
 
 ### HTTP Method
 
-The Opendatasoft OData service currently is read only, hence the only allowed method is GET.
+The Opendatasoft OData service currently is read-only; hence the only allowed method is GET.
 
 ## Versions
 
@@ -26,9 +26,7 @@ Header | Description
 **OData-MaxVersion** | This header specifies the maximum version supported by the client.
 **maxDataServiceVersion** | This header specifies the maximum version the service should use.
 
-From the next paragraph on, in order to keep things simple and relevant, all examples will illustrate protocol version
-4.0. Keep in mind however that all described features work in both supported version. If version 3.0 use a specific
-syntax or needs special attention, it shall be described.
+From the next paragraph on, in order to keep things simple and relevant, all the examples in this documentation use the OData protocol version 4.0. Keep in mind however that all described features work in both supported versions. If version 3.0 uses a specific syntax or needs special attention, it will be described in the documentation.
 
 ## Metadata
 
@@ -576,18 +574,17 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 50335
 ```
 
-There are 2 ways of obtaining the number of records in a dataset.
+There are 2 ways of obtaining the number of records in a dataset:
 
-- use the `$count` query parameter (`$inlinecount` for protocol version 3.0).
+- Using the `$count` query parameter (`$inlinecount` for protocol version 3.0)
 
-- navigate to the count document for a resource. This is achieved by querying `/<dataset_id>/$count`.
+- Navigating to the count document for a resource. This is achieved by querying `/<dataset_id>/$count`
 
 These two methods have slightly different semantics:
 
-- the first one returns the count relative to the payload, taking all operations into account, except for paging and is
-returned along with the payload,
-- the second one returns the absolute resource count, irrespective of anything
-other than the number of records present on the server and only returns the number, without any other information
+- The first one returns the count relative to the payload, taking all operations into account, except for paging, and is returned along with the payload.
+- The second one returns the absolute resource count, irrespective of anything
+other than the number of records present on the server, and only returns the number without any other information.
 
 ## Sort
 
@@ -599,7 +596,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000(name,population,recordid)",
+    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "e4b10f40f0dd992afc44e7cac52ede6b39f83bf5",
@@ -636,7 +633,7 @@ GET hhttps://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cit
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000(name,population,recordid)",
+    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",
@@ -704,11 +701,11 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 }
 ```
 
-To access a specific record, its record id surrounded by parenthesis, can be appended to the dataset address.
+To access a specific record, append its record id surrounded by parentheses to the dataset address.
 
 ## Projection
 
-> Get all records that contain "Turin" in any of their fields and select only their `name`and `population` properties using projection
+> Get all records that contain "Turin" in any of their fields and select only their `name` and `population` properties using projection
 
 ```text
 GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$select=name, population
@@ -744,6 +741,6 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 
 Results can be projected over specific fields using the `$select` parameter.
 
-For multiple fields to be subject of the projection, their names must be separated by a comma and an optional space.
+For fields to be included in a projection, their names must be separated by a comma and an optional space.
 
 This parameter can be used with datasets and specific records.
