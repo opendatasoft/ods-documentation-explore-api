@@ -1,7 +1,6 @@
 # Query Language and Geo Filtering
 
-Filtering features are built in the core of the Opendatasoft API engine. Many of the previously listed APIs can take as
-parameters filters for constraining the list of returned datasets or records.
+Filtering features are built in the core of the Opendatasoft API engine. Many of the previously listed APIs can take filters as parameters, so that the response only contains the datasets or records you want.
 
 Note that a given filtering context can simply be copied from one API to another. For example, you can easily build a
 user interface that first allows the user to visually select the records they are interested in, using full-text
