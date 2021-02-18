@@ -628,7 +628,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 > Get all records that contain "Turin" in any of their fields and order records by population size in descending order
 
 ```text
-GET hhttps://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population desc
+GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population desc
 ```
 
 ```json
@@ -701,7 +701,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 }
 ```
 
-To access a specific record, append its record id surrounded by parentheses to the dataset address.
+To access a specific record, append its recordid surrounded by parentheses to the dataset address.
 
 ## Projection
 
