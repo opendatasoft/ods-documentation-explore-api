@@ -3,7 +3,7 @@
 A facet can be considered as a valued tag associated with a record. For instance, let's say a dataset has a facet
 "City". A record in this dataset could have the value "Paris" for the "City" facet.
 
-Facets are for instance used for building the left navigation column, both for dataset catalog exploration page and
+Facets are, for instance, used for building the left navigation column, both for dataset catalog exploration page and
 dataset records exploration page.
 
 Facets are especially useful to implement guided navigation in large result sets.
@@ -54,8 +54,8 @@ Facet Name           | Description
 }
 ```
 
-In the records API, facets are defined at field level. A field facet can be available depending on the data producer
-choices. Fields (retrieved for instance from the Dataset Lookup API) for which faceting is available can be easily
+In the records API, facets are defined at the field level. A field facet can be available depending on the data producer
+choices. Fields (retrieved, for instance, from the Dataset Lookup API) for which faceting is available can be easily
 identified as shown in the example on the right.
 
 When faceting is enabled, facets are returned in the response after the result set.
@@ -95,7 +95,7 @@ the query context.
 ]
 ```
 
-Facets are hierarchical, for instance, a year facet will contain months facets and a month facet will contain days
+Facets are hierarchical. For instance, a year facet will contain months facets, and a month facet will contain days
 facets.
 
 > Example of a facet with all its attributes
@@ -170,9 +170,9 @@ the state attribute are:
 It is possible to limit the result set by refining on a given facet value. To do so, use the following API parameter:
 `refine.FACETNAME=FACETVALUE`.
 
-For example: <https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013>.
+For example: <https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?refine.modified=2020>.
 
-In the returned result set, only the datasets modified in 2013 will be returned.
+In the returned result set, only the datasets modified in 2020 will be returned.
 
 As the refinement occurs on the "year" and as the "modified" facet is hierarchical, the sub-level is returned. Results
 are dispatched in the "month" sub value.
@@ -182,16 +182,16 @@ are dispatched in the "month" sub value.
 Using the same principle as above, it is possible to exclude from the result set the hits matching a given value of a
 given facet. To do so, use the following API parameter: `exclude.FACETNAME=FACETVALUE`.
 
-For example: <https://public.opendatasoft.com/api/datasets/1.0/search?exclude.modified=2013>
+For example: <https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?exclude.modified=2020>
 
-Only results that have not been modified in 2013 will be returned.
+Only results that have not been modified in 2020 will be returned.
 
 ## Disjunctive faceting
 
 By default, faceting is conjunctive. This means that the following context will lead down to no results:
-<https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014>.
+<https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?refine.modified=2020&refine.modified=2021>.
 
 You can enable disjunctive faceting using the following API parameter: `disjunctive.FACETNAME=true`.
 
 For example:
-<https://public.opendatasoft.com/api/datasets/1.0/search?refine.modified=2013&refine.modified=2014&disjunctive.modified=true>
+<https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?refine.modified=2020&refine.modified=2021&disjunctive.modified=true>
