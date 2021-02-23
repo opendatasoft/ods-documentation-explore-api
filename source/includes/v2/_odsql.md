@@ -30,7 +30,7 @@ ODSQL clauses are composed of basic language elements. These can either be liter
 
 Literals are used in comparison, assignments, or functions.
 
-There are 7 types of literal:
+There are six types of literal:
 
 - field
 - string
