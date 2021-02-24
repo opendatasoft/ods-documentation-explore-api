@@ -154,8 +154,8 @@ Function|Parameters|Description|Limitation
 date_format(date_field, 'dd/MM/YYYY') -- Returns '20/11/2007'
 date_format(date_field, "'The date is 'dd/MM/YYYY") -- Returns 'The date is 20/11/2007'
 date_format(date_field, "'The date is '''dd/MM/YYYY''") -- Returns "The date is '20/11/2007'"
-date_format(date_field, 'E') -- Returns the abbreviated day of week, e.g. "Tue"
-date_format(date_field, 'EEEE') -- Returns the day of week, e.g. "Tuesday"
+date_format(date_field, 'E') -- Returns 'mar.'
+date_format(date_field, 'EEEE') -- Returns 'mardi'
 date_format(date_field, 'H') -- Returns '1'
 date_format(date_field, 'HH') -- Returns '01'
 date_format(date_field, 'yy') -- Returns '07'
