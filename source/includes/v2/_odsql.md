@@ -130,21 +130,88 @@ Supported geometry expressions are:
 
 
 <div class=“clearfix”></div>
-#### Scalar functions
+### Scalar functions
 
-A scalar function can be used in [select arithmetic expressions](#arithmetic-select-expression) or [filter expressions](#filter-expression).
+A scalar function can be used in [select arithmetic expressions](#arithmetic-select-expression), [filter expressions](#filter-expression) or in the [group by clause](#group-by-clause).
 
 Function|Parameters|Description|Limitation
 --------|-----------|----------|----------
 `length`|string literal or string field literal|Returns the number of characters|
 `now`|no parameter|Returns the current date|Only works on filter expressions
-`year`|date field literal|Returns the year of the field literal|
-`month`|date field literal|Returns the month of the field literal|
-`day`|date field literal|Returns the day of the field literal|
-`hour`|date field literal|Returns the hour of the field literal|
-`minute`|date field literal|Returns the minute of the field literal|
-`second`|date field literal|Returns the second of the field literal|
-`date_format`|date field literal|Returns the formatted date (see [Group by date format](#group-by-date-format) for examples)|
+`year`|date field literal|Returns the year of a date|
+`month`|date field literal|Returns the month of a date|
+`day`|date field literal|Returns the day of a date|
+`hour`|date field literal|Returns the hour of a date|
+`minute`|date field literal|Returns the minute of a date|
+`second`|date field literal|Returns the second of a date|
+`date_format`|date field literal|Returns a formatted date|
+
+#### Date format function
+
+> Examples, where `date_field` = '2007-11-20T01:23:45'
+
+```sql
+date_format(date_field, 'dd/MM/YYYY') -- Returns '20/11/2007'
+date_format(date_field, "'The date is 'dd/MM/YYYY") -- Returns 'The date is 20/11/2007'
+date_format(date_field, "'The date is '''dd/MM/YYYY''") -- Returns "The date is '20/11/2007'"
+date_format(date_field, 'E') -- Returns the abbreviated day of week, e.g. "Tue"
+date_format(date_field, 'EEEE') -- Returns the day of week, e.g. "Tuesday"
+date_format(date_field, 'H') -- Returns '1'
+date_format(date_field, 'HH') -- Returns '01'
+date_format(date_field, 'yy') -- Returns '07'
+date_format(date_field, 'yyyy') -- Returns '2007'
+date_format(date_field, 'M') -- Returns '11'
+date_format(date_field, 'MM') -- Returns '11'
+```
+
+**Syntax**: `date_format(<date>, <date_format>)`
+
+**Arguments**:
+
+- `<date>`: a date field,
+- `<date_format>`: a string describing how to format the date (see below)
+
+**Returned value**: a string.
+
+`<date_format>` is a string, where each character or group of characters will be replaced by parts of the date in the returned string.
+
+The formats below are available for a date format expression.
+
+Symbol | Meaning | Examples
+------ | ------- | --------
+yy or YY | year on two digits | 20
+yyyy or YYYY | year on four digits | 2020
+xx | weekyear* on two digits| 96
+xxxx | weekyear* on four digits| 1996
+w | week of weekyear | 7
+ww | week of weekyear, left-padded with 0 | 07
+e | day of week, as a number, 1 for monday to 7 for sunday | 2
+E | day of week, abbreviated name | sun.
+EEEE | day of week, full name | sunday
+D | day of year | 89
+DDD | day of year, left-padded with 0 | 089
+M | month of year | 7
+MM | month of year, left-padded with 0 | 07
+d | day of month | 8
+dd | day of month, left-padded with 0 | 08
+H | hour of day, 0-23 | 9
+HH | hour of day, 00-23, left-padded with 0 | 09
+m | minute of hour, 0-59 | 13
+mm | minute of hour, 00-59, left-padded with 0 | 09
+s | second of minute, 0-59 | 13
+ss | second of minute, 00-59, left-padded with 0 | 09
+
+*Years and week years differ sligthly, see the [definition](https://en.wikipedia.org/wiki/ISO_week_date) of week years.
+
+The date format can contain free texts that won't be interpreted, they must be surrounded by a single quote `'`.
+To insert a single quote in the final string, it must be doubled.
+
+Some special characters can also be used as delimiters between date components: `?`, `,`, `.`, `:`, `/` and `-`.
+
+When used in the `where` clause, `date_format` must be compared to string values, e.g.
+```sql
+where=date_format(date_field, 'dd') = '08'
+```
 
 <div class=“clearfix”></div>
 ### Reserved keywords in ODSQL clauses
@@ -839,13 +906,12 @@ Group by date functions allow grouping data on a date field by a specific unit o
 
 Function name | Description
 ------------- | -----------
-`year` | Groups by year
-`month` | Groups by month
-`day` | Groups by day
-`hour` | Groups by hour
-`minute` | Groups by minute
-`second` | Groups by second
-`millisecond` | Groups by millisecond
+`year` | Group by year
+`month` | Group by month
+`day` | Group by day
+`hour` | Group by hour
+`minute` | Group by minute
+`second` | Group by second
 
 ##### Format:
 `group_by=<date_function>(<field_literal>)`
@@ -858,87 +924,11 @@ in which `<field_literal>` must be a datetime field
 > group by date format examples
 
 ```sql
-date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each hour in date_field and return date with a pseudo ISO 8061 format
-date_format(date_field, "w") -- Create a group for each different week in date_field
+group_by=date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each hour in date_field and return date with a pseudo ISO 8061 format
+group_by=date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
-A group by date format expression allows grouping by a custom date format.
-
-A `date format` is a string enclosed in double-quotes.
-Every character between a-z and A-Z is considered to be a pattern representing a date unit. In order to use these characters as simple characters and not as patterns, they must be enclosed in single-quotes.
-
-The formats below are available for a date format expression. They come from [joda time documentation](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html).
-
-Symbol | Meaning | Presentation | Examples
------- | ------- | ------------ | --------
-G | era | text | AD
-C | century of era (>=0) | number | 20
-Y | year of era (>=0) | year | 1996
-x | weekyear | year | 1996
-w | week of weekyear | number | 27
-e | day of week | number | 2
-E | day of week | text | Tuesday; Tue
-y | year | year | 1996
-D | day of year | number | 189
-M | month of year | month | July; Jul; 07
-d | day of month | number | 10
-a | halfday of day | text | PM
-K | hour of halfday (0~11) | number | 0
-h | clockhour of halfday (1~12) | number | 12
-H | hour of day (0~23) | number | 0
-k | clockhour of day (1~24) | number | 24
-m | minute of hour | number | 30
-s | second of minute | number | 55
-S | fraction of second | number | 978
-z | time zone | text | Pacific Standard Time; PST
-Z | time zone offset/id | zone | -0800; -08:00; America/Los_Angeles
-' | escape for text | delimiter
-'' | single quote | literal | '
-
-Each pattern letter may be repeated to change the displayed value.
-The meaning of such a repetition depends on the type of value returned :
-
-- Text: if the number of pattern letters is 4 or more, the full form is used; otherwise a short or abbreviated form is used if available.
-
-> Example:
-```sql
-date_format(date_field, 'E') -- Returns the abbreviated day of week, e.g. "Tue"
-date_format(date_field, 'EEEE') -- Returns the day of week, e.g. "Tuesday"
-```
-
-- Number: the minimum number of digits. Shorter numbers are zero-padded to this amount.
-
-> Example, where `date_field` = '02:00`
-```sql
-date_format(date_field, 'H') -- Returns '2'
-date_format(date_field, 'HH') -- Returns '02'
-```
-
-- Year: numeric presentation for year and weekyear fields are handled specially. For example, if the count of 'y' is 2, the year will be displayed as the zero-based year of the century, which is 2 digits.
-
-> Example, where `date_field` = '1902-01-01`
-```sql
-date_format(date_field, 'y') -- Returns '1902'
-date_format(date_field, 'yy') -- Returns '02'
-date_format(date_field, 'yyyy') -- Returns '1902'
-```
-
-- Month: 3 or over, use text, otherwise use number.
-
-> Example, where `date_field` = '1902-01-01`
-```sql
-date_format(date_field, 'M') -- Returns '1'
-date_format(date_field, 'MM') -- Returns '01'
-date_format(date_field, 'MMM') -- Returns 'jan.'
-date_format(date_field, 'MMMM') -- Returns 'january'
-```
-
-- Zone: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 'ZZZ' or more outputs the zone id.
-- Zone names: time zone names ('z') cannot be parsed.
-
-##### Format:
-`group_by=date_format(<string_literal>)`
-in which `<string_literal>` contains a date format
+Results can be grouped by parts of a date, using the `date_format` function. See the [description of the function](#date-format-function) for the full syntax.
 
 ## Order by clause
 
