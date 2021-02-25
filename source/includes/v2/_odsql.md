@@ -203,7 +203,7 @@ ss | second of minute, 00-59, left-padded with 0 | 09
 
 *Years and week years differ sligthly, see the [definition](https://en.wikipedia.org/wiki/ISO_week_date) of week years.
 
-The date format can contain free texts that won't be interpreted, they must be surrounded by a single quote `'`.
+The date format can contain a free text that won't be interpreted. Free text must be surrounded by single quotes `'`.
 To insert a single quote in the final string, it must be doubled.
 
 Some special characters can also be used as delimiters between date components: `?`, `,`, `.`, `:`, `/` and `-`.
@@ -928,7 +928,7 @@ group_by=date_format(date_field, "YYYY-MM-dd'T'HH") -- Creates a group for each 
 group_by=date_format(date_field, "w") -- Create a group for each different week in date_field
 ```
 
-Results can be grouped by parts of a date, using the `date_format` function. See the [description of the function](#date-format-function) for the full syntax.
+Results can be grouped by parts of a date, using the `date_format` function. For the full syntax, see the [description of the function](#date-format-function).
 
 ## Order by clause
 
