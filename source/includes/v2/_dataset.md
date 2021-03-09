@@ -56,13 +56,13 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 > Get the first 10 records
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10'
 ```
 
 > Get 10 records starting at the 10th result
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10&start=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10&offset=10'
 ```
 
 > Search datasets containing `noa` in their fields
@@ -94,7 +94,7 @@ Parameter | Default | Description
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-The sum of `start` and `rows` parameters must not exceed 10000. Use the export API to download all records.
+The sum of `offset` and `limit` parameters must not exceed 10000. Use the export API to download all records.
 </aside>
 
 

@@ -89,13 +89,13 @@ The list of metadata and their types for a domain can be obtained with the [meta
 > Get first 10 datasets
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?rows=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?limit=10'
 ```
 
 > Get 10 datasets starting at the 10th result
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?rows=10&start=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?limit=10&offset=10'
 ```
 
 > Search datasets containing `world` in their metas
@@ -120,13 +120,13 @@ Parameter | Default | Description
 `where` | None | Filter expression used to restrict returned datasets ([ODSQL documentation](#where-clause))
 `refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
-`start` | 0 | Index of the first item to return
-`rows` | 10 | Number of items to return. Max value: 100
+`offset` | 0 | Index of the first item to return
+`limit` | 10 | Number of items to return. Max value: 100
 `include_app_metas` | false | Explicitly request application metadata for each datasets
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-The value of both `start` and `rows` parameters must not exceed 10000. Use the export API to download all datasets.
+The value of both `offset` and `limit` parameters must not exceed 10000. Use the export API to download all datasets.
 </aside>
 
 ## Aggregating datasets
