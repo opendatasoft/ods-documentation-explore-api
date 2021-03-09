@@ -56,13 +56,13 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 > Get the first 10 records
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10'
 ```
 
 > Get 10 records starting at the 10th result
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?rows=10&start=10'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10&offset=10'
 ```
 
 > Search datasets containing `noa` in their fields
@@ -88,13 +88,13 @@ Parameter | Default | Description
 `where` | None | Filter expression used to restrict returned datasets (see [ODSQL documentation](#where-clause))
 `refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
-`start` | 0 | Index of the first item to return
-`rows` | 10 | Number of items to return.
+`offset` | 0 | Index of the first item to return
+`limit` | 10 | Number of items to return
 `include_app_metas` | false | Explicitly request application metadata for each dataset
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 
 <aside>
-The sum of `start` and `rows` parameters must not exceed 10000. Use the export API to download all records.
+The sum of `offset` and `limit` parameters must not exceed 10000. Use the export API to download all records.
 </aside>
 
 
