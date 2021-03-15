@@ -357,6 +357,7 @@ Available aggregation functions are:
 - count
 - max (maximum)
 - min (minimum)
+- sum
 - avg (average)
 - envelope
 - percentile
@@ -400,6 +401,18 @@ min(population) as min_population -- Return min value for population field
 ```
 
 This function takes a numeric field literal. It returns the minimum value (`min`) of this field.
+
+
+<div class=“clearfix”></div>
+#### Sum aggregation
+
+> Examples of sum aggregation
+
+```sql
+sum(population) as sum_population -- Return the sum of all values for the population field
+```
+
+This function takes a numeric field literal as an argument. It returns the sum of all values for a field.
 
 
 <div class=“clearfix”></div>
