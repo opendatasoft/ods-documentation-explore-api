@@ -20,7 +20,7 @@ In dataset search, a field literal can either be a technical field or a field fr
 
 ```shell
 # Sort records by their technical size
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?sort=record_size'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?order_by=record_size'
 ```
 
 Field name | Description
