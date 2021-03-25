@@ -5,7 +5,6 @@ All datasets contain specific data called "records".
 The dataset API allows to work on these records. More specifically, the dataset API allows to:
 
 - search records from a chosen dataset
-- aggregate records from a chosen dataset
 - export records from a chosen dataset
 - lookup a specific record from a chosen dataset
 
@@ -53,6 +52,15 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 
 ## Searching records
 
+This endpoint provides a facility to access records for a given dataset.
+
+A dataset has fields (which can be thought as column names from a tabular point of view), and contains records.
+
+A record is a collection of values for each field of the dataset.
+
+The API response is a list of records with their values, optionnaly grouped.
+
+
 > Get the first 10 records
 
 ```shell
@@ -70,8 +78,164 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where="Noa"'
 ```
+> Grouping all records of a dataset in order to perform a count
 
-This endpoint provides a search facility in the dataset catalog.
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=count(*) as count&group_by'
+```
+
+> API reponse
+
+```json
+{
+    "records": [
+        {"record":
+            {"fields":
+                {
+                    "count": 50335
+                }
+            }
+        }
+    ]
+}
+```
+
+> Grouping records by a field name (here, `country_code`) and perform an analytic
+
+```shell
+# Retrieve the total number of cities with more than 5,000 inhabitants, the country code, and the total population for each country code
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
+```
+
+> API reponse
+
+```json
+{
+    "records": [
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "num_cities": 1982,
+                    "country_code": "FR",
+                    "sum_population": 39549205
+                }
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "num_cities": 7197,
+                    "country_code": "US",
+                    "sum_population": 243520909
+                }
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "num_cities": 43,
+                    "country_code": "ZW",
+                    "sum_population": 4043922
+                }
+            }
+        }
+    ]
+}
+```
+
+> Invalid analytic on grouped records because no grouping is asked
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=country_code'
+```
+
+> Valid analytic (here, a `sum`) on grouped records, with an aggregation function
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=sum(population)&group_by'
+```
+
+```json
+{
+    "records": [
+        {"record":
+            {"fields":
+                {
+                    "sum(population)": 2992377919
+                }
+            }
+        }
+    ]
+}
+```
+
+> Grouped records by grouping with multiple fields
+
+```shell
+# Retrieve the number of cities with more than 5,000 inhabitants grouped by time zone and country code
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=timezone,country_code,count(*)&group_by=timezone,country_code'
+```
+
+```json
+{
+    "records": [
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "timezone": "America/Chicago",
+                    "count(*)": 2013,
+                    "country_code": "US"
+                }
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "timezone": "America/Chihuahua",
+                    "count(*)": 35,
+                    "country_code": "MX"
+                }
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "timezone": "Europe/Paris",
+                    "count(*)": 1982,
+                    "country_code": "FR"
+                },
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "timezone": "Europe/Podgorica",
+                    "count(*)": 25,
+                    "country_code": "ME"
+                }
+            }
+        },
+        /* ... */
+        {"record":
+            {"fields":
+                {
+                    "timezone": "Pacific/Wallis",
+                    "count(*)": 3,
+                    "country_code": "WF"
+                }
+            }
+        }
+    ]
+}
+```
+
 
 <aside>
 It is not possible to retrieve all records from a dataset with this API. To do so, export endpoints must be used.
@@ -82,12 +246,21 @@ It is not possible to retrieve all records from a dataset with this API. To do s
 
 ##### URL Parameters
 
+With the `select` clause you'll be able to chose which field to return for each record result (default to all), but also rename fields or compute new ones with functions.
+
+With the `where` clause you'll be able to filter the records results with given conditions.
+
+With the `group_by` clause you'll be able to group the records results by field name or custom grouping functions. It's useful for specific use cases or performing analytics on the dataset content. If a query contains multiple `group_by` clauses, returned groups are combined together.
+
+
 Parameter | Default | Description
 --------- | ------- | -----------
 `select` | * | Select expression used to retrieve specific fields (see [ODSQL documentation](#select-clause))
 `where` | None | Filter expression used to restrict returned datasets (see [ODSQL documentation](#where-clause))
 `refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
+`group_by` | None    | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
+`order_by` | None    | Order by clause for sorting results (see [order_by clause in ODSQL documentation](#order-by-clause))
 `offset` | 0 | Index of the first item to return
 `limit` | 10 | Number of items to return
 `include_app_metas` | false | Explicitly request application metadata for each dataset
@@ -97,150 +270,6 @@ Parameter | Default | Description
 The sum of `offset` and `limit` parameters must not exceed 10000. Use the export API to download all records.
 </aside>
 
-
-## Aggregating records
-
-> Aggregation query without group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as count'
-```
-
-> Returns an array with one element
-
-```json
-{
-    "aggregations": [
-        {
-            "count": 50335
-        }
-    ]
-}
-```
-
-> Aggregation query with a single group_by
-
-```shell
-# Retrieve the total number of cities with more than 5,000 inhabitants, the country code, and the total population for each country code
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
-```
-
-> Returns an array with an object for each `feature` containing the feature's name and number of datasets
-
-```json
-{
-    "aggregations": [
-        /* ... */
-        {
-            "num_cities": 1982,
-            "country_code": "FR",
-            "sum_population": 39549205
-        },
-        /* ... */
-        {
-            "num_cities": 7197,
-            "country_code": "US",
-            "sum_population": 243520909
-        },
-        /* ... */
-        {
-            "num_cities": 43,
-            "country_code": "ZW",
-            "sum_population": 4043922
-        }
-    ]
-}
-```
-
-
-> Invalid aggregation with a selected field not present in group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=country_code'
-```
-
-> Valid aggregation with an aggregation function
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=sum(population)'
-```
-
-```json
-{
-    "aggregations": [
-        {
-            "sum(population)": 2992377919
-        }
-    ]
-}
-```
-
-> Aggregation with an multiple group_by
-
-```shell
-# Retrieve the number of cities with more than 5,000 inhabitants grouped by time zone and country code
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=timezone,country_code,count(*)&group_by=timezone,country_code'
-```
-
-```json
-{
-    "aggregations": [
-        /* ... */
-        {
-            "timezone": "America/Chicago",
-            "count(*)": 2013,
-            "country_code": "US"
-        },
-        {
-            "timezone": "America/Chihuahua",
-            "count(*)": 35,
-            "country_code": "MX"
-        },
-        /* ... */
-        {
-            "timezone": "Europe/Paris",
-            "count(*)": 1982,
-            "country_code": "FR"
-        },
-        {
-            "timezone": "Europe/Podgorica",
-            "count(*)": 25,
-            "country_code": "ME"
-        },
-        /* ... */
-        {
-            "timezone": "Pacific/Wallis",
-            "count(*)": 3,
-            "country_code": "WF"
-        }
-    ]
-}
-```
-
-This endpoint provides an aggregation facility for records.
-
-An aggregation query returns a JSON array containing an object for each group created by the query.
-Each JSON object contains a key/value pair for each `select` instruction.
-However, without the `group_by` parameter, it returns an array with only one object.
-
-The `select` parameter can only be composed of an aggregation function or by aggregated value.
-It means that a literal field in a select clause outside aggregation function must be present in `group_by` clauses.
-
-If a query contains multiple `group_by` clauses, returned groups are combined together.
-
-##### HTTP Request
-`GET /api/v2/catalog/datasets/<dataset_id>/aggregates`
-
-##### URL Parameters
-
-Parameter  | Default | Description
----------  | ------- | -----------
-`select`   | None    | Select clause for aggregation (see [select clause in ODSQL documentation](#select-clause))
-`where`    | None    | Filter expression used to restrict returned datasets (see [where clause in ODSQL documentation](#where-clause))
-`group_by` | None    | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
-`order_by` | None    | Order by clause for aggregation (see [order_by clause in ODSQL documentation](#order-by-clause))
-`timezone` | UTC     | Timezone applied on datetime fields in query and response
-`limit`    | None    | Number of items to return
 
 
 ## Exporting records

@@ -17,5 +17,6 @@ includes:
   - v2/dataset
   - v2/facets
   - v2/odsql
+  - v2/deprecated
 search: true
 ---

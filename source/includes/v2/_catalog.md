@@ -37,7 +37,6 @@ A catalog is the list of datasets sourced in a domain.
 The catalog API allows to:
 
 - search the datasets of a chosen domain's catalog
-- aggregate datasets from a chosen domain's catalog
 - export the datasets of a chosen domain's catalog
 - lookup a dataset from a domain's catalog
 
@@ -54,7 +53,7 @@ Some parameters, such as `select`, `where` or `group_by`, accept [field literals
 
 ```shell
 # Count dataset grouped by their features
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates?select=count(*)&group_by=features'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?select=count(*)&group_by=features'
 # Note: (since a dataset can have multiple features, total count is not the number of datasets in the domain)
 ```
 
@@ -86,6 +85,11 @@ The list of metadata and their types for a domain can be obtained with the [meta
 
 ## Searching datasets
 
+This endpoint provides a facility to access datasets for a given catalog. You can search and filter datasets from their metadata.
+
+The API response is a list of datasets metadata.
+
+
 > Get first 10 datasets
 
 ```shell
@@ -104,7 +108,144 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?l
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where="world"'
 ```
 
-This endpoint provides a search facility in the dataset catalog.
+> Grouping results (here, by `feature` metadata) with a single group_by
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=features,count(*) as count&group_by=features'
+```
+
+> API Response
+
+```json
+{
+    "datasets": [
+        {"dataset":
+            {
+                "count": 12,
+                "features": "analyze"
+            }
+        },
+        {"dataset":
+            {
+                "count": 4,
+                "features": "geo"
+            },
+        },
+        {"dataset":
+            {
+                "count": 9,
+                "features": "timeserie"
+            }
+        }
+    ]
+}
+```
+
+> Performing an analytic on grouped results (here, a catalog datasets `count`), without grouping by a dedicated metadata
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=count(*) as count&group_by'
+```
+
+> API Response
+
+```json
+{
+    "datasets": [
+        {"dataset":
+            {
+                "count": 12
+            }
+        }
+    ]
+}
+```
+
+> Invalid analytic on grouped results because no grouping is asked
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=count(*)'
+```
+
+> Valid analytic (here, a `sum`) on grouped results, with an aggregation function
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=sum(records_count)&group_by'
+```
+
+> API Response
+
+```json
+{
+    "datasets": [
+        {"dataset":
+            {
+                "sum(records_count)": 105891
+            }
+        }
+    ]
+}
+```
+
+> Grouped results by grouping with multiple metadata
+
+```shell
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=features,theme,count(*)&group_by=features,theme&limit=5'
+```
+
+> API Response
+
+```json
+{
+    "datasets": [
+        {"dataset":
+            {
+                "theme": "Administration, Government, Public finances, Citizenship",
+                "count(*)": 1,
+                "features": "analyze"
+            },
+        },
+        {"dataset":
+            {
+                "theme": "Culture, Heritage",
+                "count(*)": 2,
+                "features": "analyze"
+            },
+        },
+        {"dataset":
+            {
+                "theme": "Economy, Business, SME, Economic development, Employment",
+                "count(*)": 2,
+                "features": "analyze"
+            },
+        },
+        {"dataset":
+            {
+                "theme": "Environment",
+                "count(*)": 1,
+                "features": "analyze"
+            },
+        },
+        {"dataset":
+            {
+                "theme": "Product",
+                "count(*)": 1,
+                "features": "analyze"
+            }
+        }
+    ]
+}
+```
+
+
+By defaut, this endpoint returns a list of datasets metadata, one item of the list containing metadata of a given dataset.
+
+With the `group_by` parameter, you will retrieve a list of metadata not grouped by dataset, but grouped by a metadata of your choice. It's useful for specific use cases or for performing analytics.
+
+`select` parameter can only be composed of aggregation function or by aggregated value.
+It means that literal field in `select` clause outside aggregation function must be present in `group_by` clauses.
+
+If query contains multiple `group_by` clauses, returned groups are combined together.
 
 <aside>
 It is not possible to retrieve all datasets from a domain with this API. To do that, export endpoints must be used.
@@ -118,8 +259,10 @@ It is not possible to retrieve all datasets from a domain with this API. To do t
 Parameter | Default | Description
 --------- | ------- | -----------
 `where` | None | Filter expression used to restrict returned datasets ([ODSQL documentation](#where-clause))
+`group_by` | None    | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
 `refine` | None | Refine the result set on a given facet value (see [refine in Facet documentation](#refine))
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
+`order_by` | None    | Order by clause for sorting results (see [order_by clause in ODSQL documentation](#order-by-clause))
 `offset` | 0 | Index of the first item to return
 `limit` | 10 | Number of items to return. Max value: 100
 `include_app_metas` | false | Explicitly request application metadata for each datasets
@@ -129,142 +272,6 @@ Parameter | Default | Description
 The value of both `offset` and `limit` parameters must not exceed 10000. Use the export API to download all datasets.
 </aside>
 
-## Aggregating datasets
-
-> Aggregation query without group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=count(*) as count'
-```
-
-> API Response
-
-```json
-{
-    "aggregations": [
-        {
-            "count": 12
-        }
-    ]
-}
-```
-
-> Aggregation query with a single group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,count(*) as count&group_by=features'
-```
-
-> API Response
-
-```json
-{
-    "aggregations": [
-        {
-            "count(*)": 12,
-            "features": "analyze"
-        },
-        {
-            "count(*)": 4,
-            "features": "geo"
-        },
-        {
-            "count(*)": 9,
-            "features": "timeserie"
-        }
-    ]
-}
-```
-
-
-> Invalid aggregation with a selected field not present in group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=records_count'
-```
-
-> Valid aggregation with an aggregation function
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=sum(records_count)'
-```
-
-> API Response
-
-```json
-{
-    "aggregations": [
-        {
-            "sum(records_count)": 105936
-        }
-    ]
-}
-```
-
-> Aggregation with an multiple group_by
-
-```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/aggregates/?select=features,theme,count(*)&group_by=features,theme&limit=5'
-```
-
-> API Response
-
-```json
-{
-    "aggregations": [
-        {
-            "theme": "Administration, Government, Public finances, Citizenship",
-            "count(*)": 1,
-            "features": "analyze"
-        },
-        {
-            "theme": "Culture, Heritage",
-            "count(*)": 2,
-            "features": "analyze"
-        },
-        {
-            "theme": "Economy, Business, SME, Economic development, Employment",
-            "count(*)": 2,
-            "features": "analyze"
-        },
-        {
-            "theme": "Environment",
-            "count(*)": 1,
-            "features": "analyze"
-        },
-        {
-            "theme": "Product",
-            "count(*)": 1,
-            "features": "analyze"
-        }
-    ]
-}
-```
-
-This endpoint provides an aggregation facility in the datasets catalog.
-
-An aggregation query returns a JSON array containing an object for each group created by the query.
-Each JSON object contains a key/value pair for each `select` instruction.
-However, without the `group_by` parameter, the query returns an array with only one object.
-
-`select` parameter can only be composed of aggregation function or by aggregated value.
-It means that literal field in `select` clause outside aggregation function must be present in `group_by` clauses.
-
-If query contains multiple `group_by` clauses, returned groups are combined together.
-
-##### HTTP Request
-`GET /api/v2/catalog/aggregates`
-
-##### URL Parameters
-
-Parameter  | Default | Description
----------  | ------- | -----------
-`select`   | None    | Select clause for aggregation (see [select clause in ODSQL documentation](#select-clause))
-`where`    | None    | Filter expression used to restrict returned datasets (see [where clause in ODSQL documentation](#where-clause))
-`group_by` | None    | Group by clause for aggregation (see [group_by clause in ODSQL documentation](#group-by-clause))
-`order_by` | None    | Order by clause for aggregation (see [order_by clause in ODSQL documentation](#order-by-clause))
-`timezone` | UTC     | Timezone applied on datetime fields in query and response
-`limit`    | None    | Number of items to return
 
 
 ## Exporting datasets
