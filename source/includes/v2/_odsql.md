@@ -354,13 +354,27 @@ Like in the SQL language, a `select` can also express an aggregation expression.
 
 Available aggregation functions are:
 
-- count
-- max (maximum)
-- min (minimum)
 - avg (average)
+- count
 - envelope
-- percentile
+- max (maximum)
 - median
+- min (minimum)
+- percentile
+- sum
+
+
+<div class=“clearfix”></div>
+#### Avg aggregation
+
+> Examples of avg aggregation
+
+```sql
+avg(population) as avg_population -- Return the average of the population
+```
+
+This function takes a numeric field literal. It returns the average (`avg`) of this field.
+
 
 <div class=“clearfix”></div>
 #### Count aggregation
@@ -380,6 +394,18 @@ It accepts the following parameters:
 
 
 <div class=“clearfix”></div>
+#### Envelope aggregation
+
+> Examples of envelope aggregation
+
+```plain-text
+envelope(geo_point) as convex_hull # Return the convex_hull for the geo_point field
+```
+
+This function takes a geo_point field literal. It returns the convex hull (`envelope`) of all the points of the geo_point field.
+
+
+<div class=“clearfix”></div>
 #### Max aggregation
 
 > Examples of max aggregation
@@ -389,6 +415,19 @@ max(population) as max_population -- Return max value for population field
 ```
 
 This function takes a numeric field literal. It returns the maximum value (`max`) of this field.
+
+
+<div class=“clearfix”></div>
+#### Median aggregation
+
+> Examples of median aggregation
+
+```plain-text
+median(age) as med # Return the median of the age field
+```
+
+This function takes a numeric field literal. It returns the median (`median`) of this field. Since the median is the 50th percentile, it is a shortcut for `percentile(field, 50)`.
+
 
 <div class=“clearfix”></div>
 #### Min aggregation
@@ -403,28 +442,6 @@ This function takes a numeric field literal. It returns the minimum value (`min`
 
 
 <div class=“clearfix”></div>
-#### Avg aggregation
-
-> Examples of avg aggregation
-
-```sql
-avg(population) as avg_population -- Return the average of the population
-```
-
-This function takes a numeric field literal. It returns the average (`avg`) of this field.
-
-<div class=“clearfix”></div>
-#### Envelope aggregation
-
-> Examples of envelope aggregation
-
-```plain-text
-envelope(geo_point) as convex_hull # Return the convex_hull for the geo_point field
-```
-
-This function takes a geo_point field literal. It returns the convex hull (`envelope`) of all the points of the geo_point field.
-
-<div class=“clearfix”></div>
 #### Percentile aggregation
 
 > Examples of percentile aggregation
@@ -435,16 +452,17 @@ percentile(age, 1) as first_percentile # Return the first percentile of the age 
 
 This function takes a numeric field literal and a percentile. It returns the nth percentile (`percentile`) of this field. Percentile must be a decimal value between `0` and `100`.
 
+
 <div class=“clearfix”></div>
-#### Median aggregation
+#### Sum aggregation
 
-> Examples of median aggregation
+> Examples of sum aggregation
 
-```plain-text
-median(age) as med # Return the median of the age field
+```sql
+sum(population) as sum_population -- Return the sum of all values for the population field
 ```
 
-This function takes a numeric field literal. It returns the median (`median`) of this field. Since the median is the 50th percentile, it is a shortcut for `percentile(field, 50)`.
+This function takes a numeric field literal as an argument. It returns the sum of all values for a field.
 
 
 ## Where clause
