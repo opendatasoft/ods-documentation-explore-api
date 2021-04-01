@@ -586,7 +586,7 @@ The distance function limits the result set to a geographical area defined by a 
 > Geometry function examples
 
 ```sql
-geometry(field_name, GEOM'<geometry>', INTERSECT)
+geometry(field_name, GEOM'<geometry>', INTERSECTS)
 geometry(field_name, GEOM'<geometry>', DISJOINT)
 geometry(field_name, GEOM'<geometry>', WITHIN)
 ```
