@@ -8,7 +8,7 @@ The following endpoints are deprecated and will be removed in a future release.
 
 
 <aside>
-Will be removed in september 2021.
+Will be removed in September 2021.
 </aside>
 
 ##### URL Parameters
@@ -31,7 +31,7 @@ Parameter  | Default | Description
 `GET /api/v2/catalog/datasets/<dataset_id>/aggregates`
 
 <aside>
-Will be removed in september 2021.
+Will be removed in September 2021.
 </aside>
 
 ##### URL Parameters
