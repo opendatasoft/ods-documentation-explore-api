@@ -78,13 +78,13 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where="Noa"'
 ```
-> Grouping all records of a dataset in order to perform a count
+> Grouping all records of the dataset with a `group_by` clause without value. Then, performing a `count` analytic function on the resulting group.
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=count(*) as count&group_by'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?group_by&select=count(*) as count'
 ```
 
-> API reponse
+> API response
 
 ```json
 {
@@ -100,14 +100,14 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 }
 ```
 
-> Grouping records by a field name (here, `country_code`) and perform an analytic
+> Grouping records by a field name (here, `country_code`) and perform an analytics
 
 ```shell
 # Retrieve the total number of cities with more than 5,000 inhabitants, the country code, and the total population for each country code
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
 ```
 
-> API reponse
+> API response
 
 ```json
 {
@@ -146,13 +146,13 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 }
 ```
 
-> Invalid analytic on grouped records because no grouping is asked
+> Invalid analytics on grouped records because no grouping is asked for
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=country_code'
 ```
 
-> Valid analytic (here, a `sum`) on grouped records, with an aggregation function
+> Valid `sum` analytic function on grouped records, with an aggregation function
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=sum(population)&group_by'
@@ -246,7 +246,7 @@ It is not possible to retrieve all records from a dataset with this API. To do s
 
 ##### URL Parameters
 
-With the `select` clause you'll be able to chose which field to return for each record result (default to all), but also rename fields or compute new ones with functions.
+With the `select` clause, you'll be able to choose which fields to return for each record result (default to all), but also rename fields or compute new ones with functions.
 
 With the `where` clause you'll be able to filter the records results with given conditions.
 

@@ -87,7 +87,7 @@ The list of metadata and their types for a domain can be obtained with the [meta
 
 This endpoint provides a facility to access datasets for a given catalog. You can search and filter datasets from their metadata.
 
-The API response is a list of datasets metadata.
+The API response is a list of metadata about datasets.
 
 
 > Get first 10 datasets
@@ -141,10 +141,10 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?
 }
 ```
 
-> Performing an analytic on grouped results (here, a catalog datasets `count`), without grouping by a dedicated metadata
+> Grouping all datasets with a `group_by` clause without value. Then, performing a `count` analytic function on the resulting group.
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=count(*) as count&group_by'
+curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?group_by&select=count(*) as count'
 ```
 
 > API Response
@@ -161,13 +161,13 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?
 }
 ```
 
-> Invalid analytic on grouped results because no grouping is asked
+> Invalid analytic function on grouped results because no grouping is asked
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=count(*)'
 ```
 
-> Valid analytic (here, a `sum`) on grouped results, with an aggregation function
+> Valid `sum` analytic function on grouped results, with an aggregation function
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=sum(records_count)&group_by'
@@ -238,9 +238,9 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?
 ```
 
 
-By defaut, this endpoint returns a list of datasets metadata, one item of the list containing metadata of a given dataset.
+By default, this endpoint returns a list of metadata about datasets, one item containing a given dataset's metadata.
 
-With the `group_by` parameter, you will retrieve a list of metadata not grouped by dataset, but grouped by a metadata of your choice. It's useful for specific use cases or for performing analytics.
+With the `group_by` parameter, you will retrieve a list of metadata not grouped by dataset but grouped by the metadata of your choice. It's useful for specific use cases or for performing analytics.
 
 `select` parameter can only be composed of aggregation function or by aggregated value.
 It means that literal field in `select` clause outside aggregation function must be present in `group_by` clauses.
@@ -264,7 +264,7 @@ Parameter | Default | Description
 `exclude` | None | Exclude a given facet value from the result set (see [exclude in Facet documentation](#exclude))
 `order_by` | None    | Order by clause for sorting results (see [order_by clause in ODSQL documentation](#order-by-clause))
 `offset` | 0 | Index of the first item to return
-`limit` | 10 | Number of items to return. Max value: 100
+`limit` | 10 | Number of items to return. Max. value: 100
 `include_app_metas` | false | Explicitly request application metadata for each datasets
 `timezone` | UTC | Timezone applied on datetime fields in query and response
 

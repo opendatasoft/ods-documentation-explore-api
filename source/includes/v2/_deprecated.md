@@ -24,7 +24,7 @@ Parameter  | Default | Description
 
 ##### New endpoint
 
-`GET /api/v2/catalog/aggregates` has moved to `GET /api/v2/catalog/datasets?group_by`, which are equivalent. See [searching-datasets](#searching-datasets).
+`GET /api/v2/catalog/aggregates` has moved to `GET /api/v2/catalog/datasets?group_by`. They are equivalent except the output format, which has changed. See [searching-datasets](#searching-datasets).
 
 
 ## Dataset aggregates
