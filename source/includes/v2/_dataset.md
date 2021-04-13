@@ -54,11 +54,11 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 
 This endpoint provides a facility to access records for a given dataset.
 
-A dataset has fields (which can be thought as column names from a tabular point of view), and contains records.
+A dataset has fields (which can be thought of as column names from a tabular point of view) and contains records.
 
 A record is a collection of values for each field of the dataset.
 
-The API response is a list of records with their values, optionnaly grouped.
+The API response is a list of records with their values, optionally grouped.
 
 
 > Get the first 10 records
@@ -248,9 +248,9 @@ It is not possible to retrieve all records from a dataset with this API. To do s
 
 With the `select` clause you'll be able to chose which field to return for each record result (default to all), but also rename fields or compute new ones with functions.
 
-With the `where` clause you'll be able to filter the records results with given conditions.
+With the `where` clause, you'll be able to filter the records results with given conditions.
 
-With the `group_by` clause you'll be able to group the records results by field name or custom grouping functions. It's useful for specific use cases or performing analytics on the dataset content. If a query contains multiple `group_by` clauses, returned groups are combined together.
+With the `group_by` clause, you'll be able to group the records' results by field name or custom grouping functions. It's useful for specific use cases or performing analytics on the dataset content. If a query contains multiple `group_by` clauses, returned groups are combined.
 
 
 Parameter | Default | Description

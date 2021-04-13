@@ -108,7 +108,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?l
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets?where="world"'
 ```
 
-> Grouping results (here, by `feature` metadata) with a single group_by
+> Grouping results (here, by `feature` metadata) with a single group_by expression
 
 ```shell
 curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/?select=features,count(*) as count&group_by=features'
