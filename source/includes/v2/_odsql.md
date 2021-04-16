@@ -554,8 +554,7 @@ Filter functions are built-in functions that can be used in a `where` clause.
 There are 3 filter functions:
 
 - distance functions, to filter in a geographical area defined by a circle
-- geometry functions, to filter in a geographical area defined by a polygon
-- bbox functions, to filter in a rectangular box
+- geometry and polygon functions, to filter in a geographical area defined by a polygon
 
 <div class=“clearfix”></div>
 #### Distance function
@@ -620,19 +619,6 @@ Field defined by `field_name` must be of type `geo_point`.
 
 The polygon must be defined with a [geometry literal](#geometry-literal).
 
-
-<div class=“clearfix”></div>
-#### Bbox function
-
-> Bbox function example
-
-```sql
-bbox(field_name, GEOM'<geometry>', GEOM'<geometry>')
-```
-
-The bbox function limits the result set to a rectangular box.
-
-This rectangular box is defined by its top-left and its bottom-right coordinates, both expressed with 2 [geometry literals](#geometry-literal).
 
 <div class=“clearfix”></div>
 ### Comparison filter
