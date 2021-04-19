@@ -43,13 +43,13 @@ By default, every API key authenticates requests as coming from your user, which
 {
     "total_count": 4,
     "links": [{
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "self"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "first"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "last"
     }],
     "datasets": [...]
@@ -69,13 +69,13 @@ Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 {
     "total_count": 4,
     "links": [{
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "self"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "first"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?start=0&include_app_metas=False&rows=10",
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "last"
     }],
     "datasets": [...]
