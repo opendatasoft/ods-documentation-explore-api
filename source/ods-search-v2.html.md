@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - v2/introduction
+  - v2/getting-started
   - common/authentication
   - common/oauth2
   - v2/sources
