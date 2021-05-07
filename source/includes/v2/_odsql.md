@@ -137,7 +137,7 @@ A scalar function can be used in [select arithmetic expressions](#arithmetic-sel
 Function|Parameters|Description
 --------|-----------|----------
 `length`|string literal or string field literal|Returns the number of characters
-`now`|optional named parameters (see below)|Returns the current date
+`now`|optional named [parameters](#parameters-to-the-now-function)|Returns the current date
 `year`|date field literal|Returns the year of a date
 `month`|date field literal|Returns the month of a date
 `day`|date field literal|Returns the day of a date
@@ -148,52 +148,52 @@ Function|Parameters|Description
 
 #### Parameters to the now() function
 
-> Examples, assuming the current date time is 2021-05-06 12:34:55.450500+00:00, which is a thursday
+> Examples, assuming the current date time is 2021-05-06 12:34:55.450500+00:00, which is a Thursday
 
 ```sql
 now() -- Returns '2021-05-06T12:34:55.450500+00:00'
 now(year=2000) -- Sets the year component to return '2000-05-06T12:34:55.450500+00:00'
-now(year=2001, months=-1) -- Sets the year to 2001 and substract 1 month to return '2000-04-06T12:34:55.450500+00:00'
+now(year=2001, months=-1) -- Sets the year to 2001 and subtract 1 month to return '2000-04-06T12:34:55.450500+00:00'
 now(day=31,month=2) -- Sets the day to 31, then the month to 2. The actual day part is rounded to 28 '2021-02-28T12:34:55.450500+00:00'
-now(weekday=0) -- Sets the day to the next monday which is '2021-05-10T12:34:55.450500+00:00'
-now(mondays=+1) -- Sets the day to the next monday which is also '2021-05-10T12:34:55.450500+00:00'
-now(mondays=-1) -- Sets the day to the previous monday which is '2021-05-03T12:34:55.450500+00:00'
+now(weekday=0) -- Sets the day to the next Monday which is '2021-05-10T12:34:55.450500+00:00'
+now(mondays=+1) -- Sets the day to the next Monday which is also '2021-05-10T12:34:55.450500+00:00'
+now(mondays=-1) -- Sets the day to the previous Monday which is '2021-05-03T12:34:55.450500+00:00'
 ```
 
 Without any parameters, the `now()` function returns the current date and time.
 
 The function may also be called with named parameters to set or modify certain parts of the current date and time.
 
-With each parameter an integer value is required, interpreted as an absolute value or as a relative value to a part of the current date and time.
+With each parameter, an integer value is required, interpreted as an absolute value or as a relative value to a part of the current date and time.
 
-Parameter names in their singular form will set a certain part of the current date and time to the given value. Parameter names written in plural will add or substract the given value to a part of the current date and time.
+Parameter names in their singular form will set a certain part of the current date and time to the given value. Parameter names written in plural will add or subtract the given value to a part of the current date and time.
 
 If a parameter is used multiple times in the call, only the last one is actually used, the others are ignored.
 
 Parameter name|Accepted values|Description
 --------------|---------------|-----------
 `year`|1 to 9999|Year component
-`years`|Any integer|Value to add to or substract from the year component
+`years`|Any integer|Value to add to or subtract from the year component
 `month`|1 to 12|Month component
-`months`|Any integer|Value to add to or substract from the month component, then the year component in case of overflow
+`months`|Any integer|Value to add to or subtract from the month component, then the year component in case of overflow
 `day`|Any positive integer|Day component, rounded to the maximum valid day number for the current month
-`days`|Any integer|Value to add to or substract from the day component, then the month component in case of overflow
+`days`|Any integer|Value to add to or subtract from the day component, then the month component in case of overflow
 `hour`|0 to 23|Hour component
-`hours`|Any integer|Value to add to or substract from the hour component, then the day component in case of overflow
+`hours`|Any integer|Value to add to or subtract from the hour component, then the day component in case of overflow
 `minute`|0 to 59|Minute component
-`minutes`|Any integer|Value to add to or substract from the minute component, then the hour component in case of overflow
+`minutes`|Any integer|Value to add to or subtract from the minute component, then the hour component in case of overflow
 `second`|0 to 59|Second component
-`seconds`|Any integer|Value to add to or substract from the second component, then the minute component in case of overflow
+`seconds`|Any integer|Value to add to or subtract from the second component, then the minute component in case of overflow
 `microsecond`|0 to 999999|Microsecond component
-`microseconds`|Any integer|Value to add to or substract from the microsecond component, then the second component in case of overflow
+`microseconds`|Any integer|Value to add to or subtract from the microsecond component, then the second component in case of overflow
 `weekday`|0 to 6|Day of the week, 0 for monday to 6 for sunday
-`mondays`|Any integer|Number of mondays to add to or substract from the current date
-`tuesdays`|Any integer|Number of tuesdays to add to or substract from the current date
-`wednesdays`|Any integer|Number of wednesdays to add to or substract from the current date
-`thursdays`|Any integer|Number of thursdays to add to or substract from the current date
-`fridays`|Any integer|Number of fridays to add to or substract from the current date
-`saturdays`|Any integer|Number of saturdays to add to or substract from the current date
-`sundays`|Any integer|Number of sundays to add to or substract from the current date
+`mondays`|Any integer|Number of Mondays to add to or subtract from the current date
+`tuesdays`|Any integer|Number of Tuesdays to add to or subtract from the current date
+`wednesdays`|Any integer|Number of Wednesdays to add to or subtract from the current date
+`thursdays`|Any integer|Number of Thursdays to add to or subtract from the current date
+`fridays`|Any integer|Number of Fridays to add to or subtract from the current date
+`saturdays`|Any integer|Number of Saturdays to add to or subtract from the current date
+`sundays`|Any integer|Number of Sundays to add to or subtract from the current date
 
 #### Date format function
 
