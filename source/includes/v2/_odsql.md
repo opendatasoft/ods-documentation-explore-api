@@ -153,6 +153,7 @@ Function|Parameters|Description
 ```sql
 now() -- Returns '2021-05-06T12:34:55.450500+00:00'
 now(year=2000) -- Sets the year component to return '2000-05-06T12:34:55.450500+00:00'
+now(years=-1) -- Sets the year to one year ago which is '2020-05-06T12:34:55.450500+00:00'
 now(year=2001, months=-1) -- Sets the year to 2001 and subtract 1 month to return '2000-04-06T12:34:55.450500+00:00'
 now(day=31,month=2) -- Sets the day to 31, then the month to 2. The actual day part is rounded to 28 '2021-02-28T12:34:55.450500+00:00'
 now(weekday=0) -- Sets the day to the next Monday which is '2021-05-10T12:34:55.450500+00:00'
