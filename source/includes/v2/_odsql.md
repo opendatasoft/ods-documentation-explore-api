@@ -464,7 +464,7 @@ This function takes a geo_point field literal. It returns the convex hull (`enve
 max(population) as max_population -- Return max value for population field
 ```
 
-This function takes a numeric field literal. It returns the maximum value (`max`) of this field.
+This function takes a numeric or a date field literal. It returns the maximum value (`max`) of this field.
 
 
 <div class=“clearfix”></div>
@@ -488,7 +488,7 @@ This function takes a numeric field literal. It returns the median (`median`) of
 min(population) as min_population -- Return min value for population field
 ```
 
-This function takes a numeric field literal. It returns the minimum value (`min`) of this field.
+This function takes a numeric or a date field literal. It returns the minimum value (`min`) of this field.
 
 
 <div class=“clearfix”></div>
