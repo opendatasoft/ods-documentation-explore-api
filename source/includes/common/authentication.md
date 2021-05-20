@@ -4,8 +4,8 @@ An authenticated user can be granted access to restricted datasets and benefit f
 
 For the platform to authenticate a user, you need to either:
 
-* be logged in a portal so a session cookie authenticating your user is passed along your API calls
-* provide an **API key** as a request parameter or header
+* be logged in a portal so a session cookie authenticating your user is passed along your API calls, or
+* provide an API key via the Authorization header or as a query parameter.
 
 ## Finding and generating API keys
 
@@ -23,7 +23,7 @@ By default, every API key authenticates requests as coming from your user, which
 
 ## Providing API keys within requests
 
-> Unauthenticated request on private portal
+> Unauthenticated request on a private portal
 
 ``` http
 > GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
@@ -31,32 +31,7 @@ By default, every API key authenticates requests as coming from your user, which
 < HTTP/1.0 401 Unauthorized
 ```
 
-> Request authenticated with an API key in request parameter
-
-``` http
-> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
-
-< HTTP/1.0 200 OK
-```
-
-``` json
-{
-    "total_count": 4,
-    "links": [{
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
-        "rel": "self"
-    }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
-        "rel": "first"
-    }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
-        "rel": "last"
-    }],
-    "datasets": [...]
-}
-```
-
-> Request authenticated with an API key in Authorization header
+> Authenticated request using an `Authorization: Apikey <API_KEY>` header
 
 ``` http
 > GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
@@ -82,8 +57,45 @@ Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 }
 ```
 
-API keys can be passed along requests through the query parameter `apikey` or through the `Authorization` header.
+> Authenticated request using an API key as a query parameter
 
-For example, accessing a private portal's catalog unauthenticated will return a `401 Unauthorized` error.
+``` http
+> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
 
-But passing the API key of an authorized user will return the JSON response with the list of accessible datasets for this user on the portal.
+< HTTP/1.0 200 OK
+```
+
+``` json
+{
+    "total_count": 4,
+    "links": [{
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "rel": "self"
+    }, {
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "rel": "first"
+    }, {
+        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "rel": "last"
+    }],
+    "datasets": [...]
+}
+```
+
+If you try to access a private portal's catalog without being authenticated, the API returns a `401 Unauthorized` error.
+
+After generating an API key, you can use it to make authenticated requests. Depending on the permissions granted to the user for which the API key has been created, the JSON response contains only data about the datasets this user can access on the portal.
+
+It is good practice to pass the API key to the `Authorization` header in the following format:
+
+`Authorization: Apikey <API_KEY>`
+
+Alternatively, you can pass the API key as a query parameter in the following format:
+
+`apikey=<API_KEY>`
+
+Replace `<API_KEY>`with your API key.
+
+<aside class="important">
+<p>We recommend passing the API key via a header over in a query parameter because headers are not stored in your browser history or server logs, minimizing the risk of exposure of your API key.</p>
+</aside>
