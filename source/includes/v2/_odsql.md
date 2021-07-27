@@ -601,10 +601,11 @@ It is possible to perform a greedy query by adding a wildcard `*` at the end of 
 
 Filter functions are built-in functions that can be used in a `where` clause.
 
-There are 3 filter functions:
+There are 4 filter functions:
 
 - distance functions, to filter in a geographical area defined by a circle
 - geometry and polygon functions, to filter in a geographical area defined by a polygon
+- bbox functions, to filter in a rectangular box
 
 <div class=“clearfix”></div>
 #### Distance function
@@ -669,6 +670,18 @@ Field defined by `field_name` must be of type `geo_point`.
 
 The polygon must be defined with a [geometry literal](#geometry-literal).
 
+<div class=“clearfix”></div>
+#### Bbox function
+
+> Bbox function example
+
+```sql
+bbox(field_name, lat1, lon1, lat2, lon2)
+```
+
+The `bbox` function limits the result set to a rectangular box.
+
+This rectangular box is defined by its upper-left corner latitude (`lat1`) and longitude (`lon1`), and its bottom-right corner latitude (`lat2`) and longitude (`lon2`).
 
 <div class=“clearfix”></div>
 ### Comparison filter
