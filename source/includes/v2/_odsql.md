@@ -684,14 +684,14 @@ The polygon must be defined with a [geometry literal](#geometry-literal).
 
 Operators | Description
 --------- | -----------
-`:`,`=` | Perform an exact query (not tokenized and not normalized) on the specified field
+`=` | Perform an exact query (not tokenized and not normalized) on the specified field
 
 <div class=“clearfix”></div>
 #### Numeric comparison filter
 
 Operators | Description
 --------- | -----------
-`:`,`=` | Match a numeric value
+`=` | Match a numeric value
 `>`,`<`,`>=`,`<=` | Return results whose field values are larger, smaller, larger or equal, smaller or equal to the given value
 
 <div class=“clearfix”></div>
@@ -699,7 +699,7 @@ Operators | Description
 
 Operators | Description
 --------- | -----------
-`:`,`=` | Match a date value
+`=` | Match a date value
 `>`,`<`,`>=`,`<=` | Return results whose field date are after or before the given value.
 
 
@@ -760,7 +760,6 @@ A `like` filter restricts results to field literal values containing a defined s
 ```sql
 numeric_field IN [1..10] -- Filter results such as 1 <= numeric_field <= 10
 numeric_field IN ]1..10[ -- Filter results such as 1 < numeric_field < 10
-numeric_field: [1..10]   -- Use `:` instead of `IN` operator
 ```
 
 > `In filter` on date
