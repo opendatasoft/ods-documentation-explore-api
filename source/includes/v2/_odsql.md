@@ -848,10 +848,10 @@ A group by field expression allows the grouping of specified field values. It cr
 > group by static ranges examples
 
 ```sql
-RANGE(population, ]10, 50, 100[)                  -- Creates 4 groups: *-10, 10-50, 50-100 and 100-*
-RANGE(population, [20.5[)                         -- Creates 1 group: 20.5-*
-RANGE(population, [1,2,3])                        -- Creates 2 groups: 1-2 and 2-3
-RANGE(date, ]date'2020-11-13', date'2021-01-01']) -- Creates 2 groups: *-2020-11-13 and 2020-11-13-2021-01-01
+RANGE(population, ]10, 50, 100[)                  -- Creates 4 groups: [*, 9], [10, 49], [50, 99] and [100, *]
+RANGE(population, [20.5[)                         -- Creates 1 group: [20.5, *]
+RANGE(population, [1,2,3])                        -- Creates 3 groups: [1-1], [2, 2] and [3, 3]
+RANGE(date, ]date'2020-11-13', date'2021-01-01']) -- Creates 2 groups: [*, 2020-11-12T23:59:59.999000.000Z] and [2020-11-13T00:00:00.000Z, 2021-01-01T00:00:00.000Z]
 ```
 
 The static range function takes 2 parameters:
@@ -888,10 +888,10 @@ RANGE(population, 5)
 
 ```markdown
 
-- 10-15
-- 15-20
-- 20-25
-- 25-30
+- [10, 15[
+- [15, 20[
+- [20, 25[
+- [25, 30[
 ```
 
 > Example of a date histogram:
@@ -904,9 +904,9 @@ RANGE(date, 1 day)
 
 ```markdown
 
-- 2020-01-01
-- 2020-01-02
-- 2020-01-04
+- [2020-01-01T00:00:00.000Z, 2020-01-02T00:00:00.000Z[
+- [2020-01-02T00:00:00.000Z, 2020-01-03T00:00:00.000Z[
+- [2020-01-04T00:00:00.000Z, 2020-01-05T00:00:00.000Z[
 - ...
 ```
 > Note that no group is created for 2020-01-03 since no data is available for this day.
