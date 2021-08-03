@@ -848,27 +848,29 @@ A group by field expression allows the grouping of specified field values. It cr
 > group by static ranges examples
 
 ```sql
-RANGE(population, ]10, 50, 100[)                  -- Creates 4 groups: [*, 9], [10, 49], [50, 99] and [100, *]
-RANGE(population, [20.5[)                         -- Creates 1 group: [20.5, *]
-RANGE(population, [1,2,3])                        -- Creates 3 groups: [1-1], [2, 2] and [3, 3]
-RANGE(date, ]date'2020-11-13', date'2021-01-01']) -- Creates 2 groups: [*, 2020-11-12T23:59:59.999000.000Z] and [2020-11-13T00:00:00.000Z, 2021-01-01T00:00:00.000Z]
+RANGE(population, *, 10, 50, 100, *)                  -- Creates 4 groups: [*, 9], [10, 49], [50, 99] and [100, *]
+RANGE(population, 20.5, *)                         -- Creates 1 group: [20.5, *[
+RANGE(population, 1,2,3)                        -- Creates 2 groups: [1-1], [2, 2]
+RANGE(date, *, date'2020-11-13', date'2021-01-01') -- Creates 2 groups: [*, 2020-11-13T00:00:00.000Z[ and [2020-11-13T00:00:00.000Z, 2021-01-01T00:00:00.000Z[
 ```
 
-The static range function takes 2 parameters:
+The static range function takes *n* parameters:
 
 - a field name
-- an array of steps inside brackets
+- *n* steps that are numerical literals or date literals and that can start and end with a `*`
 
-The side of the brackets determines if the values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
+The `*` at the beggining or the end of the steps respectively determines if the values lower than the lower bound and higher than the higher bound should be grouped together or ignored.
+
+Note that the resulting aggregation includes the lower bound and excludes the higher bound.
 
 Ranges can be set on numerical fields and on date/datetime fields.
 
 ##### Format for numerical ranges:
-`group_by=range(<field_literal>, [|] <numeric_literal> [,<numeric_literal>]* [|])`
+`group_by=range(<field_literal> [, *]?, <numeric_literal> [,<numeric_literal>]* [, *]?)`
 in which `<field_literal>` must be a numeric field
 
 ##### Format for date/datetime ranges:
-`group_by=range(<field_literal>, [|] <date_literal> [,<date_literal>]* [|])`
+`group_by=range(<field_literal> [, *]?, <date_literal> [,<date_literal>]* [, *]?)`
 in which `<field_literal>` must be a date or datetime field.
 
 For a recall, date literals are composed of the `date` identifier followed by a date in ISO format, e.g. `date'2021-02-01'`
