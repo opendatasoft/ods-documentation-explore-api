@@ -1,7 +1,7 @@
 # Unique header generation
 require './lib/unique_head.rb'
 
-["ods-search-v1", "ods-search-v2", "wfs", "csw", "tpf", "odata"].each do |apis|
+["ods-search-v1", "wfs", "csw", "tpf", "odata"].each do |apis|
   proxy "/#{apis}/index.html", "#{apis}.html", :locals => { :page_apis => apis }
 end
 
