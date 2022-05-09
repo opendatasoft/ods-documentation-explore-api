@@ -108,6 +108,12 @@ birthdate <= #now()
 #exact(firstname, "Marie")
 ```
 
+> Return records where `fistname` field contain "Jean" followed by a word starting with "c":
+
+```text
+#search(firstname, "Jean-C")
+```
+
 > Return records in `firstname` field that start with "Mar":
 
 ```text
@@ -139,6 +145,7 @@ Function name | Description
 `now`         | Return the current date. This function should be called as a query value for a field
 `null`        | Search for records where no value is defined for the given field
 `exact`       | Search for records with a field exactly matching a given value
+`search`      | Search for records with one or more fields containing a given value
 `startswith`  | Search for records with a field starting with a given value
 `distance`    | Search for records within a given distance from a given point
 `polygon`     | Search for records within a given polygon
@@ -166,6 +173,30 @@ Function name | Description
 * weekday: Specifies a day of the week. This parameter accepts either an integer between 0 and 6 (where 0 is Monday and
   6 is Sunday) or the first two letters of the day (in English) followed by the cardinal of the first week on which to
   start the query.
+  
+#### Usage of the `#search` function
+
+`#search` function accepts multiple fields.
+The `n` first parameters are the fields to search in, and the last parameter is the string value to search for.
+
+``` text
+#search(firstname, lastname, "Jean") -> search for firstname or lastname containing "Jean" 
+```
+
+The function also accepts `*` character as first parameter to search in all fields.
+
+``` text
+#search(*, "Jean") -> search for records containing "Jean" in their fields 
+```
+
+When search value contains multiple words, only the last word is treated as a prefix.
+
+```text
+#search(firstname, "Jean-C") -> search for firstname containing Jean followed by a word starting with "c"
+```
+
+When searching for a small prefix, `#search` function can sometimes return incomplete results.
+For complete results consider using `#startswith` function or contact the support.
 
 ## Geo Filtering
 
