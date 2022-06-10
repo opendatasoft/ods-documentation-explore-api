@@ -108,7 +108,7 @@ birthdate <= #now()
 #exact(firstname, "Marie")
 ```
 
-> Return records where `fistname` field contain "Jean" followed by a word starting with "c":
+> Return records where `fistname` field contains "Jean" followed by a word starting with "c":
 
 ```text
 #search(firstname, "Jean-C")
@@ -145,8 +145,8 @@ Function name | Description
 `now`         | Return the current date. This function should be called as a query value for a field
 `null`        | Search for records where no value is defined for the given field
 `exact`       | Search for records with a field exactly matching a given value
-`search`      | Search for records with one or more fields containing a given value
-`startswith`  | Search for records with a field starting with a given value
+`search`      | Search for records with one or more fields with a word starting with a given value
+`startswith`  | Search for records with a field starting with a given value (case sensitive).
 `distance`    | Search for records within a given distance from a given point
 `polygon`     | Search for records within a given polygon
 `geometry`    | Search for records which value (point, polygon) is a given type
