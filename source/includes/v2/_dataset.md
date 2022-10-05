@@ -253,7 +253,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 This endpoint allows to download all records for a requested dataset.
 
-Records can be exported in 10 different formats:
+Records can be exported in different formats:
 
 - JSON
 - GeoJSON
@@ -265,6 +265,7 @@ Records can be exported in 10 different formats:
 - RDF-XML
 - N3 RDF
 - JSON-LD RDF
+- iCalendar (only if the calendar visualization has been enabled for the dataset)
 
 ##### HTTP Request
 `GET /api/v2/catalog/datasets/<dataset_id>/exports`
