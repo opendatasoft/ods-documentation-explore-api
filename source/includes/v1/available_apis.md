@@ -1,5 +1,10 @@
 # Search API v1
 
+<aside style="border: 1px solid rgba(239, 183, 27, 0.4);background: rgba(239, 183, 27, 0.1);">
+This API is deprecated: it is still supported but you should not start a new project or a new integration with it.
+You should use <a href="https://help.opendatasoft.com/apis/ods-explore-v2/">Opendatasoft Explore API V2</a> instead.
+</aside>
+
 Opendatasoft datasets are accessible by developers through an HTTP REST API.
 
 The domain <https://documentation-resources.opendatasoft.com> is used to illustrate examples in the following documentation.
