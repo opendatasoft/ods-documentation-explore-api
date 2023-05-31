@@ -47,6 +47,12 @@ The existing parameters in the WFS standard that are not listed in this table ar
 | `Filter`        | A filter expression used to filter the results by attribute values                                                                                                                | Optional                                                                |
 *(OutputFormat and SortBy are not supported)*
 
+### Response paging
+
+​One of the new features introduced from version 1.1.0 to 2.0.0 of the WFS API is the ability to set pagination for the results of this action. NumberMatched and NumberReturned allow you to determine the total number of results matching the query and the number of results returned, respectively. The "startindex" and "count" parameters are available for this operation and allow you to interact with the paging mechanism. 
+
+It's important to note that enabling paging limits the number of results to 10,000 (**start_index + count must be lower than 10,000**) and is recommended for visualizing extents that contain relatively small amounts of data. In order to get all data, do not use the **count** parameter.
+
 ### Filter encoding
 
 The WFS API standard implement the FilterEncoding Standard in order to filter certain features. [See more](https://www.ogc.org/standard/filter/).
