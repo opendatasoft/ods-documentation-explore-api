@@ -35,7 +35,7 @@ GET https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
 
 The service can be reached at the following entry address.
 
-The domain `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
+The workspace `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom workspace name.
 
 The WFS supports only `GET` HTTP methods in <span style="color:green">v2.0.0</span> (`POST` HTTP method is supported in <span style="color:red">v1.1.0</span> with only `text/xml` as `Content-Type` header, but this version is deprecated)
 
@@ -55,6 +55,7 @@ Here is the list of the common parameters, supported by all WFS operations:
 | `request` | The requested operation              | `GetCapabilities`, `DescribeFeatureType`, `GetFeature`, `ListStoredQueries`, `DescribeStoredQueries` | One (Mandatory)                        |
 | `version` | The requested version of the service | `2.0.0`                                                                                              | One (Mandatory except GetCapabilities) |
 
+Notice that all usable parameters in this API are **case-insensitive**.
 ## Common usages
 
 * Viewing and analyzing geographic data: QGIS or ArcGIS can be used to connect to a WFS service and visualize the retrieved data in a map. This allows users to explore and analyze the data in a familiar GIS environment.
@@ -114,7 +115,7 @@ GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST
 
 #### ListStoredQueries
 
-* Example : To retrieve stored queries from the domain.
+* Example : To retrieve stored queries from the workspace.
 > [<span style="color:white">Basic example ListStoredQueries</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0 HTTP/1.1
@@ -122,7 +123,7 @@ GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST
 
 #### DescribeStoredQueries
 
-* Example : To retrieve stored queries structure from the domain (it gives details about input parameters and responses of stored queries).
+* Example : To retrieve stored queries structure from the workspace (it gives details about input parameters and responses of stored queries).
 > [<span style="color:white">Basic example DescribeStoredQueries</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0 HTTP/1.1
