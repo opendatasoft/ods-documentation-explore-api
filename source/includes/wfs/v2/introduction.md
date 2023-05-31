@@ -44,8 +44,6 @@ The WFS supports only `GET` HTTP methods in <span style="color:green">v2.0.0</sp
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
 encoding.
 
-When the HTTP `POST` method is used, the operation request message is encoded as an XML document in the body
-of the `POST` message.
 
 Here is the list of the common parameters, supported by all WFS operations:
 
@@ -55,7 +53,7 @@ Here is the list of the common parameters, supported by all WFS operations:
 | `request` | The requested operation              | `GetCapabilities`, `DescribeFeatureType`, `GetFeature`, `ListStoredQueries`, `DescribeStoredQueries` | One (Mandatory)                        |
 | `version` | The requested version of the service | `2.0.0`                                                                                              | One (Mandatory except GetCapabilities) |
 
-Notice that all usable parameters in this API are **case-insensitive**.
+**Notice that all usable parameters in this API are case-insensitive**.
 ## Common usages
 
 * Viewing and analyzing geographic data: QGIS or ArcGIS can be used to connect to a WFS service and visualize the retrieved data in a map. This allows users to explore and analyze the data in a familiar GIS environment.
