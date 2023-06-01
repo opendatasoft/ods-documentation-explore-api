@@ -7,27 +7,6 @@
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
 ```
 
-> [<span style="color:white">Same request using a **POST** method in <span style="color:red">v.1.1.0</span></span><style>a:hover{text-decoration: none;}</style>]()
-```http
-POST https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<GetCapabilities xmlns="http://www.opengis.net/ows"
-  xmlns:ows="http://www.opengis.net/ows"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/ows
-  fragmentGetCapabilitiesRequest.xsd"
-  service="WFS" 
-  version="1.1.0">
-  <Sections>
-      <Section>OperationsMetadata</Section>
-      <Section>FeatureTypeList</Section>
-  </Sections>
-</GetCapabilities>
-```
-
 The `GetCapabilities` operation allows clients to retrieve service metadata. The response is an XML document
 containing the information.
 

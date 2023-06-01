@@ -5,22 +5,6 @@
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&typeNames=ods:roman-emperors HTTP/1.1
 ```
 
-> [<span style="color:white">Same request using a **POST** method</span><style>a:hover{text-decoration: none}</style>]()
-```http
-POST documentation-resources.opendatasoft/api/wfs HTTP/1.1
-```
-
-```xml
-<?xml version="1.0" ?>
-<DescribeFeatureType
-    version="1.1.0"
-    service="WFS"
-    xmlns="http://www.opengis.net/wfs"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.opengis.net/wfs ../wfs/1.1.0/WFS.xsd">
-    <TypeName>ods:roman-emperors</TypeName>
-</DescribeFeatureType>
-```
 
 The `DescribeFeatureType` operation generates a schema description of features types serviced by the WFS.
 
