@@ -9,8 +9,8 @@ toc_footers:
 
 includes:
   - wfs-v1/introduction
-  - common/v1/authentication
-  - common/v1/oauth2
+  - common/authentication
+  - common/oauth2
   - wfs-v1/get_capabilities
   - wfs-v1/describe_feature_type
   - wfs-v1/get_feature
