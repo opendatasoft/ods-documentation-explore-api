@@ -3,6 +3,9 @@
 ## GetCapabilities
 
 > [GetCapabilities operation with the optional Sections parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
 ```
