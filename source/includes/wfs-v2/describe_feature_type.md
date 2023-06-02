@@ -1,6 +1,6 @@
 ## DescribeFeatureType
 
-> [<span style="color:white">**DescribeFeatureType** operation with the optional **TypeNames** parameter</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:roman-emperors)
+> [DescribeFeatureType operation with the optional TypeNames parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:roman-emperors)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:roman-emperors HTTP/1.1
 ```

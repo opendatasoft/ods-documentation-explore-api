@@ -1,6 +1,6 @@
 ## GetFeature
 
-> [<span style="color:white">**GetFeature** operation with the optional **PropertyName** parameter</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name)
+> [GetFeature operation with the optional PropertyName parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name HTTP/1.1
 ```
@@ -39,19 +39,19 @@ It's important to note that enabling paging limits the number of results to 10,0
 Filter parameter is used to specify a filter expression that can be used to retrieve only the relevant features that match the given condition from a dataset. The filter expression is typically written in XML format and is used to query the data based on specific criteria.
 
 * Example 1 : To retrieve features from the `roman-emperors` dataset with a filter expression. *(replace <filter_expression> by your own expression)*
-> [<span style="color:white">**GetFeature** operation with the optional **Filter** parameter</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter=<filter_expression>)
+> [GetFeature operation with the optional Filter parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter=<filter_expression>)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter=<filter_expression> HTTP/1.1
 ```
 
 * Example 2 : To retrieve the features from the `roman-emperors` dataset which refer to Caligula emperor.
-> [<span style="color:white">**GetFeature** operation with the optional **PropertyIsEqualTo Filter** parameter</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter%3D%3Cfes%3AFilter%20xmlns%3Afes%3Dhttp%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3Ename%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3ECaligula%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3C%2Ffes%3AFilter%3E)
+> [GetFeature operation with the optional PropertyIsEqualTo Filter parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter%3D%3Cfes%3AFilter%20xmlns%3Afes%3Dhttp%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3Ename%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3ECaligula%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3C%2Ffes%3AFilter%3E)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter=<fes:Filter xmlns:fes=http://www.opengis.net/fes/2.0"><fes:PropertyIsEqualTo><fes:ValueReference>name</fes:ValueReference><fes:Literal>Caligula</fes:Literal></fes:PropertyIsEqualTo></fes:Filter> HTTP/1.1
 ```
 
 * Example 3 : To retrieve the features from the `roman-emperors` dataset which refer to Caligula emperor.
-> [<span style="color:white">**GetFeature** operation with the optional **PropertyIsBetween Filter** parameter</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter%3D%3Cfes%3AFilter%20xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3APropertyIsBetween%3E%3Cfes%3AValueReference%3Ereign_start%3C%2Ffes%3AValueReference%3E%3Cfes%3ALowerBoundary%3E%3Cfes%3ALiteral%3E200-01-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3ALowerBoundary%3E%3Cfes%3AUpperBoundary%3E%3Cfes%3ALiteral%3E300-01-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3AUpperBoundary%3E%3C%2Ffes%3APropertyIsBetween%3E%3C%2Ffes%3AFilter%3E%0A)
+> [GetFeature operation with the optional PropertyIsBetween Filter parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter%3D%3Cfes%3AFilter%20xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3APropertyIsBetween%3E%3Cfes%3AValueReference%3Ereign_start%3C%2Ffes%3AValueReference%3E%3Cfes%3ALowerBoundary%3E%3Cfes%3ALiteral%3E200-01-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3ALowerBoundary%3E%3Cfes%3AUpperBoundary%3E%3Cfes%3ALiteral%3E300-01-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3AUpperBoundary%3E%3C%2Ffes%3APropertyIsBetween%3E%3C%2Ffes%3AFilter%3E%0A)
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&filter=<fes:Filter xmlns:fes="http://www.opengis.net/fes/2.0"><fes:PropertyIsBetween><fes:ValueReference>reign_start</fes:ValueReference><fes:LowerBoundary><fes:Literal>200-01-01</fes:Literal></fes:LowerBoundary><fes:UpperBoundary><fes:Literal>300-01-01</fes:Literal></fes:UpperBoundary></fes:PropertyIsBetween></fes:Filter> HTTP/1.1
 ```
