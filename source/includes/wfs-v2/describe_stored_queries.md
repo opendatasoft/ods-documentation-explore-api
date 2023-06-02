@@ -3,7 +3,7 @@
 > `DescribeFeatureType` operation with the optional `TypeName` parameter
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&typeName=ods:roman-emperors HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeName=ods:roman-emperors HTTP/1.1
 ```
 
 The `DescribeFeatureType` operation generates a schema description of features types serviced by the WFS.

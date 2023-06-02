@@ -12,18 +12,18 @@ If you have any questions or encounter any issues while using the WFS API, refer
 Let's get started with using the WFS API in version <span style="color:green">v2.0.0</span>.
 <span style="color:red">(v1.1.0 is deprecated)</span>
 
-## Operations supporteds
+## Operations supported
 Opendatasoft platform implements only by HTTP GET method the
 5 following operations defined by the WFS standard with simple conformance class :
 GetCapabilities, DescribeFeatureType, ListStoredQueries, DescribeStoredQueries, GetFeature operation with only the StoredQuery action. One stored query, that fetches a feature using its id, is available.
 
-| Operation               | Description                                                                               |
-|-------------------------|-------------------------------------------------------------------------------------------|
-| `GetCapabilities`       | Retrieves metadata about the WFS service                                                  |
-| `DescribeFeatureType`   | Generate a schema description of features types serviced by the service                   |
-| `GetFeature`            | Retrieve features from the service and output them using the GML representation           |
-| `ListStoredQueries`     | Lists the stored queries that are available in the WFS service                            |
-| `DescribeStoredQueries` | Generates a description of the named stored queries that are available in the WFS service |
+| Operation               | Description                                                                      |
+|-------------------------|----------------------------------------------------------------------------------|
+| `GetCapabilities`       | Retrieves metadata about the WFS service                                         |
+| `DescribeFeatureType`   | Generates a schema description of features types                                 |
+| `GetFeature`            | Retrieves features from the service and output them using the GML representation |
+| `ListStoredQueries`     | Lists the stored queries that are available                                      |
+| `DescribeStoredQueries` | Generates a description of the named stored queries that are available           |
 
 ## Service address and methods
 
@@ -56,10 +56,7 @@ Here is the list of the common parameters, supported by all WFS operations:
 **Notice that all usable parameters in this API are case-insensitive**.
 ## Common usages
 
-* Viewing and analyzing geographic data: QGIS or ArcGIS can be used to connect to a WFS service and visualize the retrieved data in a map. This allows users to explore and analyze the data in a familiar GIS environment.
-
-
-* Querying for specific features: With the WFS API, users can query for specific features or sets of features based on attributes or location. This can be useful for tasks such as identifying all buildings in a certain area or finding all roads with a speed limit above a certain threshold.
+* Viewing and analyzing geographic data: QGIS or ArcGIS can be used to connect to a WFS service and visualize the retrieved data on a map. This allows users to explore and analyze the data in a familiar GIS environment.
 
 
 * Filtering data based on attributes or location: Users can also use the WFS API to filter data based on attributes or location. For example, users may want to filter out features that are not relevant to their analysis or only include features near from a point of interest.
