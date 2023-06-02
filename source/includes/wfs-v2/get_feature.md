@@ -1,11 +1,11 @@
 ## GetFeature
 
-> [GetFeature operation with the optional PropertyName parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name)
+> [GetFeature operation with the optional PropertyName parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:gender-equality-in-europe&propertyname=country)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name HTTP/1.1
+GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&version=2.0.0&typename=ods:gender-equality-in-europe&propertyname=country HTTP/1.1
 ```
 
 The `GetFeature` operation allows retrieval of features from the WFS, and output them using the GML 3.1.1
