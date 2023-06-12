@@ -8,12 +8,12 @@ toc_footers:
   - <a href='https://help.opendatasoft.com/'>Opendatasoft documentation</a>
 
 includes:
-  - wfs/introduction
+  - wfs-v2/introduction
   - common/authentication
   - common/oauth2
-  - wfs/get_capabilities
-  - wfs/describe_feature_type
-  - wfs/get_feature
+  - wfs-v2/get_capabilities
+  - wfs-v2/describe_feature_type
+  - wfs-v2/get_feature
 
 search: true
 ---
