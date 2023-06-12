@@ -14,6 +14,7 @@ includes:
   - wfs-v2/get_capabilities
   - wfs-v2/describe_feature_type
   - wfs-v2/get_feature
+  - wfs-v2/stored_queries
 
 search: true
 ---

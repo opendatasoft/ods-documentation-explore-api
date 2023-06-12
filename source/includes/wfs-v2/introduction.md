@@ -27,7 +27,7 @@ GetCapabilities, DescribeFeatureType, ListStoredQueries, DescribeStoredQueries, 
 
 ## Service address and methods
 
-> [<span style="color:white">Service entry address</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs)
+> [Service entry address</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs)
 
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
@@ -66,63 +66,94 @@ Overall, the WFS API provides a flexible and powerful tool for accessing and ana
 
 ## Examples
 
-#### GetCapabilities
+<h3>GetCapabilities</h3>
+ 
+> [Basic example GetCapabilities](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities)
 
-* Example 1 : To retrieve the service metadata. This will return an XML document that describes the capabilities of the WFS service, including supported operations, data types, and service metadata.
-> [<span style="color:white">Basic example GetCapabilities</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities)
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities HTTP/1.1
 ```
+* Example 1 : To retrieve the service metadata. This will return an XML document that describes the capabilities of the WFS service, including supported operations, data types, and service metadata.
 
-* Example 2 : To retrieve the service provider metadata, you can use the following URL.
-> [<span style="color:white">Parameterized example GetCapabilities</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider)
+>
+
+> [Parameterized example GetCapabilities](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider)
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider HTTP/1.1
 ```
 
-#### DescribeFeatureType
+* Example 2 : To retrieve the service provider metadata, you can use the following URL.
 
-* Example 1 : To retrieve schema description of features types serviced by the service. This will return an XSD document that describes the features types.
-> [<span style="color:white">Basic example DescribeFeatureType</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0)
+<h3>DescribeFeatureType</h3>
+
+> [Basic example DescribeFeatureType](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0 HTTP/1.1
 ```
 
-* Example 2 : To retrieve schema description of a feature type. This will return the XSD document that describes an Opendatasoft dataset.
-> [<span style="color:white">Parameterized example DescribeFeatureType</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+* Example 1 : To retrieve schema description of features types serviced by the service. This will return an XSD document that describes the features types.
+
+> [Parameterized example DescribeFeatureType](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
 ```
 
-#### GetFeature
+* Example 2 : To retrieve schema description of a feature type. This will return the XSD document that describes an Opendatasoft dataset.
 
-* Example 1 : To retrieve features from the `arrondissements-paris` dataset.
-> [<span style="color:white">Basic example GetFeature</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+<h3>GetFeature</h3>
+
+> [Basic example GetFeature](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
 ```
 
-* Example 2 : To retrieve features from the `arrondissements-paris` dataset within a bounding box.
-> [<span style="color:white">Parameterized example GetFeature</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375))
+* Example 1 : To retrieve features from the `arrondissements-paris` dataset.
+
+> [Parameterized example GetFeature](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375))
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375) HTTP/1.1
 ```
 
-#### ListStoredQueries
+* Example 2 : To retrieve features from the `arrondissements-paris` dataset within a bounding box.
 
-* Example : To retrieve stored queries from the workspace.
-> [<span style="color:white">Basic example ListStoredQueries</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0)
+<h3>ListStoredQueries</h3>
+
+> [Basic example ListStoredQueries](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0 HTTP/1.1
 ```
 
-#### DescribeStoredQueries
+* Example : To retrieve stored queries from the workspace.
 
-* Example : To retrieve stored queries structure from the workspace (it gives details about input parameters and responses of stored queries).
-> [<span style="color:white">Basic example DescribeStoredQueries</span><style>a:hover{text-decoration: none}</style>](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0)
+<h3>DescribeStoredQueries</h3>
+
+> [Basic example DescribeStoredQueries](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0)
+
+>
+
 ```http
 GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0 HTTP/1.1
 ```
+
+* Example : To retrieve stored queries structure from the workspace (it gives details about input parameters and responses of stored queries).
 
 ## Exception reports
 
