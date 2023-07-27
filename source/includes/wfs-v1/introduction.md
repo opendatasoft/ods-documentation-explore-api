@@ -44,7 +44,7 @@ of the `POST` message.
 
 Here is the list of the common parameters, supported by all WFS operations:
 
-Operation | Description | Possible values | Optionality and use
+Parameter | Description | Possible values | Optionality and use
 --------- | ----------- | --------------- | -------------------
 `service` | The requested service | `WFS` | One (Mandatory)
 `request` | The requested operation | `GetCapabilities`, `DescribeFeatureType`, `GetFeature` | One (Mandatory)
