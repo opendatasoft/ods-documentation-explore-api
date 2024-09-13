@@ -29,7 +29,13 @@ ready do
   require './lib/multilang.rb'
 end
 
-activate :sprockets
+# sprockets should not be used to compile '.css.scss' files since middleman v4 does it.
+# When sprockets tries to compile some (already compiled) .css as .scss files, it fails.
+# just use sprockets to bundle the Javascript files.
+# see https://github.com/middleman/middleman-sprockets/issues/127#issuecomment-736958140
+activate :sprockets do |sprockets|
+  sprockets.supported_output_extensions = ['.js']
+end
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
