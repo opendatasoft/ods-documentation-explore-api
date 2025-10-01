@@ -56,9 +56,13 @@ a {
     outline: none;
 }
 .ods-header-logo img {
-    height: 26px;
-    width: 140px;
-    vertical-align: middle;
+    height: 30px;
+    width: auto;
+    margin-right: 60px;
+}
+
+.ods-header__nav-item {
+  padding-top: 10px;
 }
 
 .ods-header__brandname {
@@ -184,7 +188,7 @@ button {
         flex-direction: column;
     }
     @media (min-width: $tablet-width) {
-        margin-left: $spacing-400;
+        margin-left: 0;
         position: static;
         width: auto;
         flex-direction: row;
