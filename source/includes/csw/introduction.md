@@ -1,12 +1,12 @@
 # CSW API
 
-Opendatasoft datasets can be accessed through a Catalog Service for the Web (CSW) API. CSW is a standard for exposing a catalog of geospatial records in XML.
+Huwise datasets can be accessed through a Catalog Service for the Web (CSW) API. CSW is a standard for exposing a catalog of geospatial records in XML.
 
-The Opendatasoft platform uses the CSW specification version 2.0.2.
+The Huwise platform uses the CSW specification version 2.0.2.
 
 ## Operations supported
 
-Opendatasoft platform implements four operations defined by the CSW standard:
+Huwise platform implements four operations defined by the CSW standard:
 
 Operation | Description
 --------- | -----------
@@ -21,12 +21,12 @@ Operation | Description
 > Service entry address
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
+GET https://documentation-resources.huwise.com/api/csw HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-The domain `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
+The domain `https://documentation-resources.huwise.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
 
 The CSW API supports both `GET` and `POST` HTTP methods.
 

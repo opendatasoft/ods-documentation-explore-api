@@ -1,10 +1,10 @@
 # Triple Pattern Fragments API
 
-Opendatasoft datasets can be queried using Triple Pattern Fragments (TPF). This is an approach for querying linked data described with Resource Description Framework (RDF) without using traditional SPARQL Endpoints. More information on TPF [here](http://linkeddatafragments.org/).
+Huwise datasets can be queried using Triple Pattern Fragments (TPF). This is an approach for querying linked data described with Resource Description Framework (RDF) without using traditional SPARQL Endpoints. More information on TPF [here](http://linkeddatafragments.org/).
 
 ## Concepts
 
-The TPF API enables triple pattern querying over Opendatasoft datasets.
+The TPF API enables triple pattern querying over Huwise datasets.
 
 > A triple representing the fact that Nero was born in Rome
 
@@ -31,9 +31,9 @@ More complex queries can be run using a TPF client [See here](#tpf-client).
 
 The service can be reached at the following entry address.
 
-GET http://documentation-resources.opendatasoft.com/api/tpf/{DATASET_ID}
+GET http://documentation-resources.huwise.com/api/tpf/{DATASET_ID}
 
-For this documentation, the domain [http://documentation-resources.opendatasoft.com](http://documentation-resources.opendatasoft.com) will be used as an example but it can be replaced with any other custom domain name.
+For this documentation, the domain [http://documentation-resources.huwise.com](http://documentation-resources.huwise.com) will be used as an example but it can be replaced with any other custom domain name.
 
 The TPF API supports `GET` HTTP methods.
 
@@ -42,7 +42,7 @@ The TPF API supports `GET` HTTP methods.
 > TPF API call with parameters
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fdocumentation-resources.opendatasoft.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
+GET https://documentation-resources.huwise.com/api/tpf/roman-emperors/?predicate=http%3A%2F%2Fdocumentation-resources.huwise.com%3A8000%2Fld%2Fontologies%2Froman-emperors%2Fname&object=%22Nero%22%5E%5Ehttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23string
 ```
 
 When the HTTP `GET` method is used, the parameters are appended to the URL using a Keyword Value Pair (KVP)
@@ -59,7 +59,7 @@ Parameter | Description | Possible values | Optionality and use
 
 ## TPF Client
 
-A TPF client decomposes a SPARQL query into simple triple patterns. Thus, it can be used to run SPARQL queries over Opendatasoft TPF API.
+A TPF client decomposes a SPARQL query into simple triple patterns. Thus, it can be used to run SPARQL queries over Huwise TPF API.
 
 Multiple implementations of TPF client can be found [here](http://linkeddatafragments.org/software/). Online version of the client available [here](http://query.linkeddatafragments.org/) can also be used (Warning, this service does not support HTTPS).
 
@@ -77,7 +77,7 @@ Parameter | Description | Optionality
 > a SPARQL query to retrieve roman emperors whose reign start after AD 14.
 
 ```turtle
-PREFIX roman: <https://documentation-resources.opendatasoft.com/ld/ontologies/roman-emperors/>
+PREFIX roman: <https://documentation-resources.huwise.com/ld/ontologies/roman-emperors/>
 
 SELECT ?name WHERE {
   ?s roman:reign_start ?date .
@@ -86,7 +86,7 @@ SELECT ?name WHERE {
 }
 ```
 
-SPARQL Protocol and RDF Query Language (SPARQL) is a SQL-like query language that can be used with a TPF client to access Opendatasoft datasets described in RDF. Such query can be used to run multiple triple patterns, filters and [more](https://www.w3.org/TR/rdf-sparql-query/).
+SPARQL Protocol and RDF Query Language (SPARQL) is a SQL-like query language that can be used with a TPF client to access Huwise datasets described in RDF. Such query can be used to run multiple triple patterns, filters and [more](https://www.w3.org/TR/rdf-sparql-query/).
 
 The following SPARQL query is composed of 2 triple patterns and a filter. See the usage of the
-`PREFIX` declaration to shorten predicate URI's. This SPARQL query can be executed [here](http://query.linkeddatafragments.org/#datasources=https%3A%2F%2Fdocumentation-resources.opendatasoft.com%2Fapi%2Ftpf%2Froman-emperors%2F&query=PREFIX%20roman%3A%20%3Chttps%3A%2F%2Fdocumentation-resources.opendatasoft.com%2Fld%2Fontologies%2Froman-emperors%2F%3E%0A%0ASELECT%20%3Fname%20WHERE%20%7B%0A%20%20%3Fs%20roman%3Areign_start%20%3Fdate%20.%0A%20%20%20%20FILTER%20(%3Fdate%20%3E%20%220014-12-31T00%3A00%3A00%2B00%3A00%22%5E%5Exsd%3AdateTime)%0A%20%20%3Fs%20%20roman%3Aname%20%3Fname%20.%0A%7D) (Warning, this service does not support HTTPS).
+`PREFIX` declaration to shorten predicate URI's. This SPARQL query can be executed [here](http://query.linkeddatafragments.org/#datasources=https%3A%2F%2Fdocumentation-resources.huwise.com%2Fapi%2Ftpf%2Froman-emperors%2F&query=PREFIX%20roman%3A%20%3Chttps%3A%2F%2Fdocumentation-resources.huwise.com%2Fld%2Fontologies%2Froman-emperors%2F%3E%0A%0ASELECT%20%3Fname%20WHERE%20%7B%0A%20%20%3Fs%20roman%3Areign_start%20%3Fdate%20.%0A%20%20%20%20FILTER%20(%3Fdate%20%3E%20%220014-12-31T00%3A00%3A00%2B00%3A00%22%5E%5Exsd%3AdateTime)%0A%20%20%3Fs%20%20roman%3Aname%20%3Fname%20.%0A%7D) (Warning, this service does not support HTTPS).

@@ -20,7 +20,7 @@ In dataset search, a field literal can either be a technical field or a field fr
 
 ```shell
 # Sort records by their technical size
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?order_by=record_size'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?order_by=record_size'
 ```
 
 Field name | Description
@@ -36,10 +36,10 @@ Field name | Description
 
 ```shell
 #Use field_name `name` to restrict records where `name` is Paris
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where=name="Paris"'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where=name="Paris"'
 
 # Select only `name` column
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=name'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?select=name'
 ```
 
 Any field name from a dataset can be used as a [field literal](#field-literal) in query parameters.
@@ -56,19 +56,19 @@ The list of fields for a specific dataset can be obtained with the [dataset look
 > Get the first 10 records
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10'
 ```
 
 > Get 10 records starting at the 10th result
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10&offset=10'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?limit=10&offset=10'
 ```
 
 > Search datasets containing `noa` in their fields
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where="Noa"'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records?where="Noa"'
 ```
 
 This endpoint provides a search facility in the dataset catalog.
@@ -103,7 +103,7 @@ The sum of `offset` and `limit` parameters must not exceed 10000. Use the export
 > Aggregation query without group_by
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as count'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as count'
 ```
 
 > Returns an array with one element
@@ -122,7 +122,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 ```shell
 # Retrieve the total number of cities with more than 5,000 inhabitants, the country code, and the total population for each country code
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=count(*) as num_cities,country_code,sum(population) as sum_population&group_by=country_code'
 ```
 
 > Returns an array with an object for each `feature` containing the feature's name and number of datasets
@@ -156,13 +156,13 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Invalid aggregation with a selected field not present in group_by
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=country_code'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=country_code'
 ```
 
 > Valid aggregation with an aggregation function
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=sum(population)'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=sum(population)'
 ```
 
 ```json
@@ -179,7 +179,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 
 ```shell
 # Retrieve the number of cities with more than 5,000 inhabitants grouped by time zone and country code
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=timezone,country_code,count(*)&group_by=timezone,country_code'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/aggregates?select=timezone,country_code,count(*)&group_by=timezone,country_code'
 ```
 
 ```json
@@ -248,7 +248,7 @@ Parameter  | Default | Description
 > Get a list of available export formats
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports'
 ```
 
 This endpoint allows to download all records for a requested dataset.
@@ -276,7 +276,7 @@ Records can be exported in different formats:
 > Export records in JSON format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/json'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/json'
 ```
 
 ##### HTTP Request
@@ -287,7 +287,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Export records in GeoJSON format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/geojson'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/geojson'
 ```
 
 ##### HTTP Request
@@ -300,7 +300,7 @@ Export records to a [GeoJSON format](http://geojson.org/).
 > Export records in JSON Lines format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonl'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonl'
 ```
 
 ##### HTTP Request
@@ -314,7 +314,7 @@ The JSONlines format returns a record by line. It can be useful for streaming op
 > Export records in CSV format using **,** as delimiter
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/csv?delimiter=,'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/csv?delimiter=,'
 ```
 
 Export records to CSV format. Default separator is `;`. It can be changed with `delimiter` parameter.
@@ -334,7 +334,7 @@ Parameter | Default | Description
 > Export records in XLS format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/xls'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/xls'
 ```
 
 Export records to an XLS format using [SpreadsheetML specification](https://en.wikipedia.org/wiki/SpreadsheetML).
@@ -348,7 +348,7 @@ Export records to an XLS format using [SpreadsheetML specification](https://en.w
 > Export records to shapefile format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/shp'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/shp'
 ```
 
 Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile).
@@ -361,7 +361,7 @@ Export datasets to a [Shapefile format](https://en.wikipedia.org/wiki/Shapefile)
 > Export records in Turtle RDF format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/turtle'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/turtle'
 ```
 
 ##### HTTP Request
@@ -373,7 +373,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Export records in RDF/XML format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/rdfxml'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/rdfxml'
 ```
 
 ##### HTTP Request
@@ -385,7 +385,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Export records in N3 RDF format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/n3'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/n3'
 ```
 
 ##### HTTP Request
@@ -396,7 +396,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 > Export records in JSON-LD RDF format
 
 ```shell
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonld'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/exports/jsonld'
 ```
 
 ##### HTTP Request
@@ -410,7 +410,7 @@ curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/d
 ```shell
 
 # Get the record for Paris, the capital of France, from the GeoNames dataset
-curl 'https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a'
+curl 'https://documentation-resources.huwise.com/api/v2/catalog/datasets/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a'
 ```
 
 ```json

@@ -9,8 +9,8 @@ GET /api/datasets/1.0/search HTTP/1.1
 > Examples of Dataset Search Queries
 
 ```text
-https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?refine.language=en&refine.modified=2021/01
-https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?exclude.publisher=GeoNames&sort=-modified
+https://documentation-resources.huwise.com/api/datasets/1.0/search?refine.language=en&refine.modified=2021/01
+https://documentation-resources.huwise.com/api/datasets/1.0/search?exclude.publisher=GeoNames&sort=-modified
 ```
 
 This API provides a search facility in the dataset catalog. Full-text search as well as multi-criteria field queries
@@ -40,13 +40,13 @@ GET /api/datasets/1.0/<dataset_id> HTTP/1.1
 > Example of Dataset Lookup API URL
 
 ```text
-https://documentation-resources.opendatasoft.com/api/datasets/1.0/doc-geonames-cities-5000/?pretty_print=true&format=json
+https://documentation-resources.huwise.com/api/datasets/1.0/doc-geonames-cities-5000/?pretty_print=true&format=json
 ```
 
 > Example of JSONP request
 
 ```text
-https://documentation-resources.opendatasoft.com/api/datasets/1.0/doc-geonames-cities-5000/?format=jsonp&callback=myFunction
+https://documentation-resources.huwise.com/api/datasets/1.0/doc-geonames-cities-5000/?format=jsonp&callback=myFunction
 ```
 
 This API makes it possible to fetch an individual dataset information.

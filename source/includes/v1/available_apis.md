@@ -2,12 +2,12 @@
 
 <aside style="border: 1px solid rgba(239, 183, 27, 0.4);background: rgba(239, 183, 27, 0.1);">
 This API is deprecated: it is still supported but you should not start a new project or a new integration with it.
-You should use <a href="https://help.opendatasoft.com/apis/ods-explore-v2/">Opendatasoft Explore API V2</a> instead.
+You should use <a href="https://help.huwise.com/apis/ods-explore-v2/">Huwise Explore API V2</a> instead.
 </aside>
 
-Opendatasoft datasets are accessible by developers through an HTTP REST API.
+Huwise datasets are accessible by developers through an HTTP REST API.
 
-The domain <https://documentation-resources.opendatasoft.com> is used to illustrate examples in the following documentation.
+The domain <https://documentation-resources.huwise.com> is used to illustrate examples in the following documentation.
 
 ![API Console](v1/available_apis__console.png)
 
@@ -32,7 +32,7 @@ These APIs return JSON by default, except:
 - the download API that returns CSV by default but supports several output formats like JSON and geographic formats
 - the multimedia download API that depends on the file
 
-The real time push API is very specific and will not be detailed in the following documentation. Please refer to the [platform documentation](https://docs.opendatasoft.com/en/sourcing_and_processing_data/realtime.html#pushing-real-time-data) for more information about this API.
+The real time push API is very specific and will not be detailed in the following documentation. Please refer to the [platform documentation](https://docs.huwise.com/en/sourcing_and_processing_data/realtime.html#pushing-real-time-data) for more information about this API.
 
 These APIs support cross-domain access from a browser using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). For older browsers or other specific purposes, [JSONP](https://en.wikipedia.org/wiki/JSONP) is supported when returning JSON content by adding a `callback` parameter.
 
@@ -57,8 +57,8 @@ All API endpoints are available in HTTPS, which use is highly recommended wherev
 
 The following authentication modes are available:
 
-- **API key authentication:** via an API key generated from [the account settings page](https://docs.opendatasoft.com/en/using_api/authentication.html#finding-and-generating-api-keys)
-- **Session authentication:** API calls performed from a browser will authenticate logged users via the Opendatasoft session cookie
+- **API key authentication:** via an API key generated from [the account settings page](https://docs.huwise.com/en/using_api/authentication.html#finding-and-generating-api-keys)
+- **Session authentication:** API calls performed from a browser will authenticate logged users via the Huwise session cookie
 
 ## Quotas
 
@@ -75,7 +75,7 @@ The API response contains three headers to indicate the current state of a user'
 > Example of an error occurring when you reach the domain requests limit
 
 ``` http
-> GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+> GET https://documentation-resources.huwise.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
 ```
@@ -93,7 +93,7 @@ The API response contains three headers to indicate the current state of a user'
 > Example of an error occurring when you reach the requests limit for anonymous users
 
 ``` http
-> GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search/ HTTP/1.1
+> GET https://documentation-resources.huwise.com/api/datasets/1.0/search/ HTTP/1.1
 
 < HTTP/1.0 429 TOO MANY REQUESTS
 ```

@@ -1,11 +1,11 @@
 ---
-title: Opendatasoft - Search API v1 documentation
+title: Huwise - Search API v1 documentation
 
 language_tabs:
   - shell
 
 toc_footers:
-  - <a href='https://help.opendatasoft.com/'>Opendatasoft documentation</a>
+  - <a href='https://help.huwise.com/'>Huwise documentation</a>
 
 includes:
   - v1/available_apis

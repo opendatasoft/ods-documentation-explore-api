@@ -1,3 +1,3 @@
 # OData API
 
-Opendatasoft features an OData API that supports versions 3.0 and 4.0 of the protocol.
+Huwise features an OData API that supports versions 3.0 and 4.0 of the protocol.

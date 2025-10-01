@@ -5,16 +5,16 @@
 ### Service address
 
 In this documentation, we will use the words "service root" or "service document" to refer to the base address of the OData
-service. For the Opendatasoft platform, this URL can be found on the `/api/odata` path, relative to the platform
+service. For the Huwise platform, this URL can be found on the `/api/odata` path, relative to the platform
 hostname. Unless stated otherwise, all addresses in the rest of this documentation are relative to the service root.
 
 ### HTTP Method
 
-The Opendatasoft OData service currently is read-only; hence the only allowed method is GET.
+The Huwise OData service currently is read-only; hence the only allowed method is GET.
 
 ## Versions
 
-The Opendatasoft platform supports versions 3.0 and 4.0 of the OData protocol. Versions requirements can be
+The Huwise platform supports versions 3.0 and 4.0 of the OData protocol. Versions requirements can be
 communicated to the service via the following six headers:
 
 Header | Description
@@ -31,13 +31,13 @@ From the next paragraph on, in order to keep things simple and relevant, all the
 ## Metadata
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/$metadata HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/$metadata HTTP/1.1
 ```
 
 ```xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
     <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">
-        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Alias="Ods" Namespace="com.opendatasoft.odata.types">
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Alias="Ods" Namespace="com.huwise.odata.types">
             <ComplexType Name="GeoPoint2D">
                 <Property Type="Edm.Double" Name="latitude"/>
                 <Property Type="Edm.Double" Name="longitude"/>
@@ -83,7 +83,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/$metadata HTTP/1.
         <Property Type="Edm.Int32" Name="dem"/>
         <Property Type="Edm.String" Name="timezone"/>
         <Property Type="Edm.DateTimeOffset" Name="modification_date"/>
-        <Property Type="com.opendatasoft.odata.types.GeoPoint2D" Name="geo_point_2d"/>
+        <Property Type="com.huwise.odata.types.GeoPoint2D" Name="geo_point_2d"/>
     </EntityType>
 </Schema>
   </edmx:DataServices>
@@ -100,7 +100,7 @@ The metadata document is located on `/$metadata`. This documents determines:
 ## Formats
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/error?$format=json HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/error?$format=json HTTP/1.1
 ```
 
 ```json
@@ -113,7 +113,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/error?$format=jso
 ```
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/error?$format=xml HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/error?$format=xml HTTP/1.1
 ```
 
 ```xml
@@ -143,12 +143,12 @@ keep in mind that everything will work the same in the ATOM format.
 ## Catalog
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/?$format=json HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/?$format=json HTTP/1.1
 ```
 
 ```json
 {
-"@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata",
+"@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata",
 "value": [
     /* ... */
     {
@@ -165,12 +165,12 @@ The service root document displays the catalog of all datasets available through
 ## Datasets
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000 HTTP/1.1
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         /* ... */
         {
@@ -195,7 +195,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
         },
         /* ... */
     ],
-    "@odata.nextLink": "https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$skiptoken=100"
+    "@odata.nextLink": "https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$skiptoken=100"
 }
 }
 ```
@@ -208,12 +208,12 @@ document to a dataset by following the URL attribute of the catalog items.
 > Get the top 2 results
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$top=2 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$top=2 HTTP/1.1
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "9a5943b0ace876e384142c032f6b229a9c77e1fe",
@@ -262,12 +262,12 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 > Skip the top result and get the next two results
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$skip=1&$top=2 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$skip=1&$top=2 HTTP/1.1
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "e2e9d83f86c4dddfeefd349be9fbdd67c7b8ce23",
@@ -321,7 +321,7 @@ The server will ignore `$skip` results and then return the first `$top` items.
 When paging is applied, a link to the next results will be added at the end of the payload.
 
 <aside>
-    The OData API only operates on the 10,000 first dataset results. For instance, it isn’t possible to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, use <a href="../ods-search-v1/#records-download-api">the Opendatasoft Download API</a>.
+    The OData API only operates on the 10,000 first dataset results. For instance, it isn’t possible to request more than 100 pages of 100 results. To retrieve the whole content of datasets larger than 10,000 records, use <a href="../ods-search-v1/#records-download-api">the Huwise Download API</a>.
 </aside>
 
 
@@ -330,12 +330,12 @@ When paging is applied, a link to the next results will be added at the end of t
 > Get all records that contain "Turin" in any of their fields
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$search=Turin HTTP/1.1
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",
@@ -428,12 +428,12 @@ The `$search` parameter can be used to search data.
 > Get all cities named "Turin"
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$filter=name eq Turin
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$filter=name eq Turin
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",
@@ -465,12 +465,12 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 > Get all cities with a population between 100,000 and 100,050 inhabitants
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$filter=population gt 100000 and not population ge 100050
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$filter=population gt 100000 and not population ge 100050
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "c8ed94ed7799ed2be371b705c210e3caced7003a",
@@ -532,12 +532,12 @@ Expressions can be negated with the `not` operator.
 > Get the number of cities with a population of more than 3 million inhabitants and the top result
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$filter=population gt 3000000&$top=1&$count=true
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$filter=population gt 3000000&$top=1&$count=true
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "@odata.count": 93,
     "value": [
         {
@@ -567,7 +567,7 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 > Get the number of records in the `doc-geonames-cities-5000` dataset
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000/$count
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000/$count
 ```
 
 ```text
@@ -591,12 +591,12 @@ other than the number of records present on the server, and only returns the num
 > Get all records that contain "Turin" in any of their fields and order records by population size in ascending order
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "e4b10f40f0dd992afc44e7cac52ede6b39f83bf5",
@@ -628,12 +628,12 @@ GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-citi
 > Get all records that contain "Turin" in any of their fields and order records by population size in descending order
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population desc
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$search=Turin&$orderby=population desc
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000",
     "value": [
         {
             "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",
@@ -671,12 +671,12 @@ followed by the `asc` and `desc` keywords to specify the sort order (default is 
 > Get the record with the recordid `c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8`
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000(c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8) HTTP/1.1
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000(c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8) HTTP/1.1
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000/$entity",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000/$entity",
     "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",
     "geonameid": "3165524",
     "name": "Turin",
@@ -708,12 +708,12 @@ To access a specific record, append its recordid surrounded by parentheses to th
 > Get all records that contain "Turin" in any of their fields and select only their `name` and `population` properties using projection
 
 ```text
-GET https://documentation-resources.opendatasoft.com/api/odata/doc-geonames-cities-5000?$search=Turin&$select=name, population
+GET https://documentation-resources.huwise.com/api/odata/doc-geonames-cities-5000?$search=Turin&$select=name, population
 ```
 
 ```json
 {
-    "@odata.context": "https://documentation-resources.opendatasoft.com/api/odata/$metadata#doc-geonames-cities-5000(name,population,recordid)",
+    "@odata.context": "https://documentation-resources.huwise.com/api/odata/$metadata#doc-geonames-cities-5000(name,population,recordid)",
     "value": [
         {
             "recordid": "c8f5d3e8e38ea441d9c4bfae5809655a58d4c2e8",

@@ -2,18 +2,18 @@
 
 ## Overview
 
-Opendatasoft implements the OAuth2 authorization flow, allowing third party application makers to access the data
-hosted on an Opendatasoft platform on behalf of a user while never having to deal with a password, thus avoiding any user
+Huwise implements the OAuth2 authorization flow, allowing third party application makers to access the data
+hosted on an Huwise platform on behalf of a user while never having to deal with a password, thus avoiding any user
 credential to be compromised.
 
-The Opendatasoft OAuth2 authorization flow is compliant with [RFC 6749](https://tools.ietf.org/html/rfc6749) and makes
+The Huwise OAuth2 authorization flow is compliant with [RFC 6749](https://tools.ietf.org/html/rfc6749) and makes
 use of Bearer Tokens in compliance with [RFC 6750](https://tools.ietf.org/html/rfc6750).
 
-Application developers who want to use the Opendatasoft APIs with OAuth2 must go through the following steps, which will be explained in this section.
+Application developers who want to use the Huwise APIs with OAuth2 must go through the following steps, which will be explained in this section.
 
-1. Register their application with the Opendatasoft platform.
+1. Register their application with the Huwise platform.
 2. Request approval from users via an OAuth2 authorization grant.
-3. Request a bearer token that will allows them to query the Opendatasoft platform APIs for a limited amount of time.
+3. Request a bearer token that will allows them to query the Huwise platform APIs for a limited amount of time.
 4. Refresh the Bearer Token when it expires.
 
 Currently, applications are registered on a specific domain and can only access data on this domain.

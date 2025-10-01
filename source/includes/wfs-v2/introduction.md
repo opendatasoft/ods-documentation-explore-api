@@ -1,9 +1,9 @@
 # WFS API
 
-Opendatasoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
+Huwise records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
 requests for geographical datasets.
 
-The WFS API provides an interface that enables requests for geographical features from the Opendatasoft records.
+The WFS API provides an interface that enables requests for geographical features from the Huwise records.
 
 This documentation is designed to guide you through the usage of the WFS API in version 2.0.0 with simple conformance class. It includes information on the supported operations, examples of typical use cases, common errors, and additional resources.
 
@@ -13,7 +13,7 @@ Let's get started with using the WFS API in version <span style="color:green">v2
 <span style="color:red">(v1.1.0 is deprecated)</span>
 
 ## Operations supported
-Opendatasoft platform implements only by HTTP GET method the
+Huwise platform implements only by HTTP GET method the
 5 following operations defined by the WFS standard with simple conformance class :
 GetCapabilities, DescribeFeatureType, ListStoredQueries, DescribeStoredQueries, GetFeature operation with only the StoredQuery action. One stored query, that fetches a feature using its id, is available.
 
@@ -27,15 +27,15 @@ GetCapabilities, DescribeFeatureType, ListStoredQueries, DescribeStoredQueries, 
 
 ## Service address and methods
 
-> [Service entry address</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.opendatasoft.com/api/wfs)
+> [Service entry address</span><style>a:hover{text-decoration: none;}</style>](https://documentation-resources.huwise.com/api/wfs)
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-The workspace `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom workspace name.
+The workspace `https://documentation-resources.huwise.com/` is used as an example in this documentation, but you should replace it with your custom workspace name.
 
 The WFS supports only `GET` HTTP methods in <span style="color:green">v2.0.0</span> (`POST` HTTP method is supported in <span style="color:red">v1.1.0</span> with only `text/xml` as `Content-Type` header, but this version is deprecated)
 
@@ -68,89 +68,89 @@ Overall, the WFS API provides a flexible and powerful tool for accessing and ana
 
 <h3>GetCapabilities</h3>
  
-> [Basic example GetCapabilities](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities)
+> [Basic example GetCapabilities](https://documentation-resources.huwise.com/api/wfs?service=WFS&request=GetCapabilities)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?service=WFS&request=GetCapabilities HTTP/1.1
 ```
 * Example 1 : To retrieve the service metadata. This will return an XML document that describes the capabilities of the WFS service, including supported operations, data types, and service metadata.
 
 >
 
-> [Parameterized example GetCapabilities](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider)
+> [Parameterized example GetCapabilities](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider)
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetCapabilities&SECTIONS=ServiceProvider HTTP/1.1
 ```
 
 * Example 2 : To retrieve the service provider metadata, you can use the following URL.
 
 <h3>DescribeFeatureType</h3>
 
-> [Basic example DescribeFeatureType](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0)
+> [Basic example DescribeFeatureType](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0 HTTP/1.1
 ```
 
 * Example 1 : To retrieve schema description of features types serviced by the service. This will return an XSD document that describes the features types.
 
-> [Parameterized example DescribeFeatureType](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+> [Parameterized example DescribeFeatureType](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
 ```
 
-* Example 2 : To retrieve schema description of a feature type. This will return the XSD document that describes an Opendatasoft dataset.
+* Example 2 : To retrieve schema description of a feature type. This will return the XSD document that describes an Huwise dataset.
 
 <h3>GetFeature</h3>
 
-> [Basic example GetFeature](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
+> [Basic example GetFeature](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris HTTP/1.1
 ```
 
 * Example 1 : To retrieve features from the `arrondissements-paris` dataset.
 
-> [Parameterized example GetFeature](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375))
+> [Parameterized example GetFeature](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375))
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375) HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=arrondissements-paris&BBOX=(48.811090519909115,2.34832763671875,48.90686235347725,2.4300384521484375) HTTP/1.1
 ```
 
 * Example 2 : To retrieve features from the `arrondissements-paris` dataset within a bounding box.
 
 <h3>ListStoredQueries</h3>
 
-> [Basic example ListStoredQueries](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0)
+> [Basic example ListStoredQueries](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=ListStoredQueries&VERSION=2.0.0 HTTP/1.1
 ```
 
 * Example : To retrieve stored queries from the workspace.
 
 <h3>DescribeStoredQueries</h3>
 
-> [Basic example DescribeStoredQueries](https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0)
+> [Basic example DescribeStoredQueries](https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0 HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?SERVICE=WFS&REQUEST=DescribeStoredQueries&VERSION=2.0.0 HTTP/1.1
 ```
 
 * Example : To retrieve stored queries structure from the workspace (it gives details about input parameters and responses of stored queries).

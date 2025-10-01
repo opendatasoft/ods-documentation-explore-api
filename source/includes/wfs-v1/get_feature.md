@@ -3,13 +3,13 @@
 > `GetFeature` operation with the optional `PropertyName` parameter
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetFeature&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?service=WFS&request=GetFeature&typename=ods:roman-emperors&propertyname=ods:roman-emperors/name HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
+POST https://documentation-resources.huwise.com/api/wfs HTTP/1.1
 ```
 
 ```xml

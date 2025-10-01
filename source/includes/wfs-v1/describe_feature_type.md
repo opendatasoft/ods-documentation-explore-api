@@ -3,13 +3,13 @@
 > `DescribeFeatureType` operation with the optional `TypeName` parameter
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&typeName=ods:roman-emperors HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?service=WFS&request=DescribeFeatureType&typeName=ods:roman-emperors HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST documentation-resources.opendatasoft/api/wfs HTTP/1.1
+POST documentation-resources.huwise/api/wfs HTTP/1.1
 ```
 
 ```xml

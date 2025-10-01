@@ -1,11 +1,11 @@
 ## DescribeFeatureType
 
-> [DescribeFeatureType operation with the optional TypeNames parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:gender-equality-in-europe)
+> [DescribeFeatureType operation with the optional TypeNames parameter](https://documentation-resources.huwise.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:gender-equality-in-europe)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:gender-equality-in-europe HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?service=WFS&request=DescribeFeatureType&version=2.0.0&typeNames=ods:gender-equality-in-europe HTTP/1.1
 ```
 
 

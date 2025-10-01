@@ -2,12 +2,12 @@
 
 ## GetCapabilities
 
-> [GetCapabilities operation with the optional Sections parameter](https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList)
+> [GetCapabilities operation with the optional Sections parameter](https://documentation-resources.huwise.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList)
 
 >
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs?service=WFS&request=GetCapabilities&sections=OperationsMetadata,FeatureTypeList HTTP/1.1
 ```
 
 The `GetCapabilities` operation allows clients to retrieve service metadata. The response is an XML document
