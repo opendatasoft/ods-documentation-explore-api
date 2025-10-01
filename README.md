@@ -7,12 +7,30 @@ https://docs.opendatasoft.com/api/
 
 ## Building the documentation
 
+You must install [Ruby](https://www.ruby-lang.org/en/) to build this documentation. Note that on MacOS, you can find a
+Ruby v2.6 installed with the OS. As you can read on this following page [Ruby Branches
+Maintenance](https://www.ruby-lang.org/en/downloads/branches/), that the 2.6 version is quite obsolete and unmaintained.
+
+### Ruby Install
+
+You can use the [rbenv](https://github.com/rbenv/rbenv) tool which, as the pyenv tool, helps you to install any version
+of Ruby. You can just do `brew install rbenv`. Make sure you also have these packages `openssl@3 readline libyaml gmp`
+necessary to build Ruby on your laptop.
+
+Then:
+
+* `rbenv install -l` to see the latest stable versions of Ruby
+* `rbenv install 3.3.0` or any `3.3.x` version.
+
+You might need to add `eval "$(rbenv init - zsh)"` to your `.zshrc` file. If you use Bash, change and use zsh :)
+
 ### Prerequisites
 
 You will need bundler to build the documentation.
 
 ```shell
-bundle install --path vendor/bundle
+bundle config set path 'vendor/bundle'
+bundle install
 ```
 
 ### Development server
@@ -23,7 +41,7 @@ To run the development server
 bundle exec middleman server
 ```
 
-You can now see the docs at http://localhost:4567.
+You can now see the docs at http://localhost:4567. As you don't have a `index.html` file, you have to update the URL adding `/wfs-v2.html` for instance to check out the content related to WFS v2.
 
 ### Build
 
@@ -33,9 +51,9 @@ bundle exec middleman build
 
 ### Deploy
 
-The `develop` branch is automatically deployed to https://help.opendatasoft.com/en/apis
+The `develop` branch is automatically deployed to https://betahelp.opendatasoft.com/en/apis
 
-The `master` branch is automatically deployed to https://betahelp.opendatasoft.com/en/apis
+The `master` branch is automatically deployed to https://help.opendatasoft.com/en/apis
 
 ## Writing rules
 
