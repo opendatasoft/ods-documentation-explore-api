@@ -11,7 +11,7 @@ env:
     - secure: "eunPXqsdrCtnoCosX3YWu5DQpG4jvMLZECvyuXBZJ+NSJH3wTyDSVI9V+zEoxejzhnvtxgieSfRCpQCMzrc4w6PL3T+lIBfaTlQn817kBn2hBq1rjVtqk24IBZoFQ0ZRY2+Lt1xNgtRHZCZlMzfC02ANd6+CPcFB1bzYokpBXa6bVhijRFqYli8J8MnS3WEjnSKc18D0ywLpcNJeoAPXBBAER7CzAgExYUlGgB1mXDCz/weGaHog4tsJwn/AKg7iaHWNGFnrUV13Bsxo56raiyC0j7zvNAjX0igwCFEOPPSG/wmD69a+76mDyUui36mfWjjgOpC0xBoYXbk8KX/vE/ahLBdyQlHUpBLaWBFx1z6AqSu9wfVevNW0j/ymw7Slrg+l/xMSAAUtHm/LA9VnkVP/dXx0AUbOwHdrLAeNcntV7FFaA50x3Pehn4HSpc0iBKAuD145UZndHDD1cR3ygkd2DPHlO2AMEIJUIR0QaeFNRRC5qQ4oxJy9T8oIRDCea2znaPv/UBzH9IxJqDNgvZP2WjN7DoueFbEnAtOUczB2W2AeHCZC6uZxgbSvcbna5TpQjIXZyjn9k/s6Pjpvff1MtztrOGT0hloBFTBZyB0bfZSBDbD+OtYAFOQB/zVxvUURsVkvcXdt1EV3CSwF+TTkfthJUTn86SmUKSHdjgU="
 before_install:
   - sudo apt-get install zlib1g-dev liblzma-dev patch
-  - gem install nokogiri --platform=ruby
+  - gem install nokogiri -v 1.15.7 --platform=ruby
   - bundle update --bundler
 install: bundle install
 script: bundle exec middleman build
