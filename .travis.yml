@@ -12,6 +12,7 @@ env:
 before_install:
   - sudo apt-get install zlib1g-dev liblzma-dev patch
   - gem install nokogiri -v 1.15.7 --platform=ruby
+  - gem install bundler:1.16.1
 #  - bundle update --bundler
 install: bundle install
 script: bundle exec middleman build
