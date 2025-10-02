@@ -11,11 +11,7 @@ For the platform to authenticate a user, you need to either:
 
 API keys are managed via your user profile page at `https://<domain_id>.com/account/` or by clicking on your name in the header.
 
-![Link to account settings](common/authentication__profile-link.png)
-
-Go to the tab named **My API keys** to see your existing API keys, revoke them and create new ones.
-
-![Account's API keys page](common/authentication__my-api-keys.png)
+Go to the tab named **API keys** to see your existing API keys, revoke them and create new ones.
 
 <aside>
 By default, every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys. For advanced usages, API key permissions can be edited using the <a href="https://help.huwise.com/apis/ods-automation-v1/#tag/API-keys">API key management API</a>.
