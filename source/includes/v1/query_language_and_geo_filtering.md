@@ -1,6 +1,6 @@
 # Query Language and Geo Filtering
 
-Filtering features are built in the core of the Opendatasoft API engine. Many of the previously listed APIs can take filters as parameters, so that the response only contains the datasets or records you want.
+Filtering features are built in the core of the Huwise API engine. Many of the previously listed APIs can take filters as parameters, so that the response only contains the datasets or records you want.
 
 Note that a given filtering context can simply be copied from one API to another. For example, you can easily build a
 user interface that first allows the user to visually select the records they are interested in, using full-text
@@ -8,7 +8,7 @@ search, facets, and geo filtering, and then allowing them to download these reco
 
 ## Query language
 
-The Opendatasoft query language makes it possible to express complex boolean conditions as a filtering context.
+The Huwise query language makes it possible to express complex boolean conditions as a filtering context.
 
 The user query can most of the time be expressed through the `q` HTTP parameter.
 
@@ -44,7 +44,7 @@ Parenthesis can be used to group together expressions and alter the default prio
 > Search on the `documentation-resources` domain for datasets having "Paris" in their title or description and containing at least 50 records
 
 ``` text
-GET https://documentation-resources.opendatasoft.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50
+GET https://documentation-resources.huwise.com/api/datasets/1.0/search?q=(title:paris OR description:paris) AND records_count >= 50
 ```
 
 One of the major features of the query language is to allow per field filtering. You can use field names as a prefix to

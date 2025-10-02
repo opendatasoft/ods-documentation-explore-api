@@ -5,13 +5,13 @@
 > Example GET request
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider HTTP/1.1
+GET https://documentation-resources.huwise.com/api/csw?service=CSW&request=GetCapabilities&sections=ServiceIdentification,ServiceProvider HTTP/1.1
 ```
 
 > Example POST request
 
 ```http
-POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.huwise.com/api/csw HTTP/1.1
 ```
 
 ```xml
@@ -54,4 +54,4 @@ Section name | Contents
 `ServiceIdentification` |	Metadata about the CSW implementation.
 `ServiceProvider` |	Metadata about the organization offering the CSW service.
 `OperationsMetadata` |	Metadata about the CSW operations offered by a the CSW implementation.
-`Filter_Capabilities` |	Metadata about the filter capabilities of the server. The Opendatasoft CSW currently does not support filters.
+`Filter_Capabilities` |	Metadata about the filter capabilities of the server. The Huwise CSW currently does not support filters.

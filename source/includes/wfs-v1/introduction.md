@@ -1,13 +1,13 @@
 # WFS API
 
-Opendatasoft records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
+Huwise records can be accessed through a Web Feature Service (WFS), which provides an interface allowing
 requests for geographical features.
 
-The Opendatasoft platform uses the WFS specification version 1.1.0.
+The Huwise platform uses the WFS specification version 1.1.0.
 
 ## Operations supported
 
-Opendatasoft platform implements three operations defined by the WFS standard:
+Huwise platform implements three operations defined by the WFS standard:
 
 Operation | Description
 --------- | -----------
@@ -20,12 +20,12 @@ Operation | Description
 > Service entry address
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/wfs HTTP/1.1
+GET https://documentation-resources.huwise.com/api/wfs HTTP/1.1
 ```
 
 The service can be reached at the following entry address.
 
-The domain `https://documentation-resources.opendatasoft.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
+The domain `https://documentation-resources.huwise.com/` is used as an example in this documentation, but you should replace it with your custom domain name.
 
 The WFS supports both `GET` and `POST` HTTP methods.
 

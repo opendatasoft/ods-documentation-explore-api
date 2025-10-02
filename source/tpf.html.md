@@ -1,11 +1,11 @@
 ---
-title: Opendatasoft - TPF API documentation
+title: Huwise - TPF API documentation
 
 language_tabs:
   - shell
 
 toc_footers:
-  - <a href='https://help.opendatasoft.com/'>Opendatasoft documentation</a>
+  - <a href='https://help.huwise.com/'>Huwise documentation</a>
 
 includes:
   - tpf/introduction

@@ -1,5 +1,5 @@
 ---
-title: Huwise - Search API v1 documentation
+title: Huwise - WFS API documentation
 
 language_tabs:
   - shell
@@ -8,12 +8,13 @@ toc_footers:
   - <a href='https://help.huwise.com/'>Huwise documentation</a>
 
 includes:
-  - v1/available_apis
+  - wfs-v2/introduction
   - common/authentication
   - common/oauth2
-  - v1/query_language_and_geo_filtering
-  - v1/using_facets
-  - v1/catalog_api
-  - v1/records_api
+  - wfs-v2/get_capabilities
+  - wfs-v2/describe_feature_type
+  - wfs-v2/get_feature
+  - wfs-v2/stored_queries
+
 search: true
 ---

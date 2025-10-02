@@ -9,7 +9,7 @@ For the platform to authenticate a user, you need to either:
 
 ## Finding and generating API keys
 
-API keys are managed via your user profile page at `https://<youropendatasoftportal>.com/account/` or by clicking on your name in the header.
+API keys are managed via your user profile page at `https://<domain_id>.com/account/` or by clicking on your name in the header.
 
 ![Link to account settings](common/authentication__profile-link.png)
 
@@ -18,7 +18,7 @@ Go to the tab named **My API keys** to see your existing API keys, revoke them a
 ![Account's API keys page](common/authentication__my-api-keys.png)
 
 <aside>
-By default, every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys. For advanced usages, API key permissions can be edited using the <a href="https://help.opendatasoft.com/management-api/#api-keys">API key management API</a>.
+By default, every API key authenticates requests as coming from your user, which means they grant the same rights (yours) to any person using them. Therefore, you should not share your keys. For advanced usages, API key permissions can be edited using the <a href="https://help.huwise.com/apis/ods-automation-v1/#tag/API-keys">API key management API</a>.
 </aside>
 
 ## Providing API keys within requests
@@ -26,7 +26,7 @@ By default, every API key authenticates requests as coming from your user, which
 > Unauthenticated request on a private portal
 
 ``` http
-> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
+> GET https://private-portal.huwise.com/api/v2/catalog/datasets/ HTTP/1.1
 
 < HTTP/1.0 401 Unauthorized
 ```
@@ -34,7 +34,7 @@ By default, every API key authenticates requests as coming from your user, which
 > Authenticated request using an `Authorization: Apikey <API_KEY>` header
 
 ``` http
-> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/ HTTP/1.1
+> GET https://private-portal.huwise.com/api/v2/catalog/datasets/ HTTP/1.1
 Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 
 < HTTP/1.0 200 OK
@@ -44,13 +44,13 @@ Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 {
     "total_count": 4,
     "links": [{
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "self"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "first"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "last"
     }],
     "datasets": [...]
@@ -60,7 +60,7 @@ Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 > Authenticated request using an API key as a query parameter
 
 ``` http
-> GET https://private-portal.opendatasoft.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
+> GET https://private-portal.huwise.com/api/v2/catalog/datasets/?apikey=7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee HTTP/1.1
 
 < HTTP/1.0 200 OK
 ```
@@ -69,13 +69,13 @@ Authorization: Apikey 7511e8cc6d6dbe65f9bc8dae19e08c08a2cab96ef45a86112d303eee
 {
     "total_count": 4,
     "links": [{
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "self"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "first"
     }, {
-        "href": "https://private-portal.opendatasoft.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
+        "href": "https://private-portal.huwise.com/api/v2/catalog/datasets?include_app_metas=False&limit=10&offset=0",
         "rel": "last"
     }],
     "datasets": [...]

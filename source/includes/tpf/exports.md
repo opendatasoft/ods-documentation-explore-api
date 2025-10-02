@@ -1,9 +1,9 @@
 # RDF exports
 
-Opendatasoft datasets can be exported in multiple RDF formats. More information on RDF [here](https://en.wikipedia.org/wiki/Resource_Description_Framework).
+Huwise datasets can be exported in multiple RDF formats. More information on RDF [here](https://en.wikipedia.org/wiki/Resource_Description_Framework).
 
 ## RDF serialization formats
-Opendatasoft RDF datasets are available in 4 serialization formats:
+Huwise RDF datasets are available in 4 serialization formats:
 
 Format name | Description | Syntax specification
 --------- | ----------- | -----------
@@ -17,9 +17,9 @@ Format name | Description | Syntax specification
 > Export a dataset using turtle format
 
 ```http
-GET http://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/roman-emperors/exports/turtle
+GET http://documentation-resources.huwise.com/api/v2/catalog/datasets/roman-emperors/exports/turtle
 ```
 
 RDF exports of datasets are available at this address and use the format name in the previous table.
 
-GET http://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/{DATASET_ID}/exports/{FORMAT_NAME}
+GET http://documentation-resources.huwise.com/api/v2/catalog/datasets/{DATASET_ID}/exports/{FORMAT_NAME}

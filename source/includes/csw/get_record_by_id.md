@@ -3,13 +3,13 @@
 > `GetRecordById` operation with the optional `outputSchema` parameter
 
 ```http
-GET https://documentation-resources.opendatasoft.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=roman-emperors HTTP/1.1
+GET https://documentation-resources.huwise.com/api/csw?service=CSW&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&id=roman-emperors HTTP/1.1
 ```
 
 > Same request using a POST method
 
 ```http
-POST https://documentation-resources.opendatasoft.com/api/csw HTTP/1.1
+POST https://documentation-resources.huwise.com/api/csw HTTP/1.1
 ```
 
 ```xml

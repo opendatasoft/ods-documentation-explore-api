@@ -38,7 +38,7 @@ GET /api/datasets/1.0/<dataset_id>/records/<record_id> HTTP/1.1
 > Example lookup for the record `d087227c3595eb1e5b7d09dacfdfd6cafb86562a` in the dataset `doc-geonames-cities-5000`:
 
 ```text
-https://documentation-resources.opendatasoft.com/api/datasets/1.0/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a
+https://documentation-resources.huwise.com/api/datasets/1.0/doc-geonames-cities-5000/records/d087227c3595eb1e5b7d09dacfdfd6cafb86562a
 ```
 
 ```json
@@ -104,7 +104,7 @@ It returns analyzed results in light and easy to parse format, which can be used
 > Count cities with a population greater than 5,000 inhabitants in each country code, filtered by a polygon in Central Europe:
 
 ```text
-https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.my_count.func=COUNT&geofilter.polygon=(50.0,0.0),(50.0,10.0),(40.0,10.0),(40.0,0.0)
+https://documentation-resources.huwise.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.my_count.func=COUNT&geofilter.polygon=(50.0,0.0),(50.0,10.0),(40.0,10.0),(40.0,0.0)
 ```
 
 ```json
@@ -174,7 +174,7 @@ Parameter            | Description
 > Return the population size of the biggest city for each country code:
 
 ```text
-https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.max_population.func=MAX&y.max_population.expr=population
+https://documentation-resources.huwise.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.max_population.func=MAX&y.max_population.expr=population
 ```
 
 ```json
@@ -215,7 +215,7 @@ Parameter            | Description
 > Return the average value of twice the square root of the population for each country code (for the sake of example):
 
 ``` text
-https://documentation-resources.opendatasoft.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.series1.func=AVG&y.series1.expr=sqrt(population)*2
+https://documentation-resources.huwise.com/api/records/1.0/analyze/?dataset=doc-geonames-cities-5000&x=country_code&y.series1.func=AVG&y.series1.expr=sqrt(population)*2
 ```
 
 ```json
@@ -308,7 +308,7 @@ Parameter            | Description
 > Return clusters and shapes with low precision and the average population in each cluster
 
 ```text
-https://documentation-resources.opendatasoft.com/api/records/1.0/geocluster/?dataset=doc-geonames-cities-5000&shapeprecision=1&clusterprecision=3&clusterdistance=50&y.avg_population.func=AVG&y.avg_population.expr=population
+https://documentation-resources.huwise.com/api/records/1.0/geocluster/?dataset=doc-geonames-cities-5000&shapeprecision=1&clusterprecision=3&clusterdistance=50&y.avg_population.func=AVG&y.avg_population.expr=population
 ```
 
 ```json
